@@ -38,4 +38,16 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# large video files (served from Cloudinary)
+/public/video/
+
+# design reference files (not needed in production)
+/docs/design-references/
+
+# local image drafts
+/image/
+
+# playwright MCP cache
+.playwright-mcp/
 next-env.d.ts
