@@ -2,14 +2,12 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Quote } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
 import { SiteHeader } from "@/components/sections/site-header";
 import { SiteFooter } from "@/components/sections/site-footer";
 import { PageBanner } from "@/components/sections/page-banner";
 import { Container } from "@/components/ui/container";
-import { CTARow } from "@/components/ui/cta-row";
-import { Stat } from "@/components/ui/stat";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import { CASE_STUDY_QUERY, CASE_STUDY_SLUGS_QUERY } from "@/sanity/lib/queries";
 import { getCaseStudy, getAllCaseStudySlugs } from "@/lib/content/case-studies";
@@ -64,67 +62,97 @@ export default async function CaseStudyPage({ params }: Props) {
     <>
       <SiteHeader />
       <PageBanner title={cs.company} />
-      <main className="flex-1">
-        <section className="section gradient-mesh-navy text-center">
-          <Container className="max-w-3xl">
-            <Link href="/case-studies" className="btn-ghost-arrow mb-6 inline-flex text-sm">
-              <ArrowLeft className="h-4 w-4" />All Case Studies
+      <main className="flex-1 bg-white">
+        <section className="relative overflow-hidden border-b border-[var(--color-gray-200)] py-16 md:py-24">
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:48px_48px]" />
+          <Container className="relative z-10 max-w-4xl text-center">
+            <Link href="/case-studies" className="mb-8 inline-flex items-center gap-2 rounded-full border border-[var(--color-navy-200)] bg-white px-5 py-2 text-xs font-bold uppercase tracking-widest text-[var(--color-navy-950)] shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5">
+              <ArrowLeft className="h-4 w-4" />All Customer Stories
             </Link>
-            <p className="text-xs font-semibold text-[var(--brand-lime)]">{cs.industry} &middot; {cs.companySize}</p>
-            <h1 className="heading-lg mx-auto mt-2 max-w-2xl">{cs.headline}</h1>
+            <p className="mb-4 text-xs font-bold uppercase tracking-widest text-[var(--color-green-600)]">{cs.industry} &middot; {cs.companySize}</p>
+            <h1 className="text-4xl font-black uppercase leading-[0.92] tracking-tighter md:text-6xl text-balance text-[var(--color-navy-950)]" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+              {cs.headline}
+            </h1>
           </Container>
         </section>
 
-        <section className="section-tight bg-[var(--brand-navy-deep)]">
+        <section className="py-12 bg-[var(--color-navy-50)]">
           <Container>
-            <div className="grid grid-cols-2 gap-6 md:grid-cols-3">
-              {cs.metrics.map((m) => (<Stat key={m.label} value={m.value} label={m.label} />))}
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+              {cs.metrics.map((m) => (
+                <div
+                  key={m.label}
+                  className="rounded-3xl border border-[var(--color-navy-100)] bg-white p-6 shadow-sm transition-all text-center hover:shadow-md hover:-translate-y-1 hover:border-[var(--color-green-400)]"
+                >
+                  <div
+                    className="text-2xl font-black text-[var(--color-navy-950)] md:text-4xl"
+                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                  >
+                    {m.value}
+                  </div>
+                  <div className="mt-2 text-[10px] sm:text-xs font-bold leading-snug text-[var(--color-gray-500)] uppercase tracking-wider">
+                    {m.label}
+                  </div>
+                </div>
+              ))}
             </div>
           </Container>
         </section>
 
-        <section className="section-tight">
-          <Container className="max-w-3xl">
-            <div className="relative aspect-[16/9] overflow-hidden rounded-2xl">
+        <section className="py-16">
+          <Container className="max-w-4xl">
+            <div className="relative aspect-[16/9] overflow-hidden rounded-3xl shadow-sm border border-[var(--color-gray-200)]">
               <Image src={cs.image} alt={cs.company} fill className="object-cover" />
             </div>
           </Container>
         </section>
 
-        <section className="section">
-          <Container className="max-w-2xl">
-            <h2 className="heading-md">The Challenge</h2>
-            <p className="mt-4 leading-relaxed text-[var(--text-muted)]">{cs.challenge}</p>
+        <section className="py-10">
+          <Container className="max-w-3xl">
+            <h2 className="text-2xl font-black uppercase tracking-tight text-[var(--color-navy-950)]" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>The Challenge</h2>
+            <div className="mt-4 prose prose-lg prose-slate max-w-none text-base font-medium leading-relaxed text-[var(--color-gray-600)] selection:bg-[var(--color-green-500)] selection:text-white" dangerouslySetInnerHTML={{ __html: `<p>${cs.challenge}</p>` }} />
           </Container>
         </section>
 
-        <section className="section bg-[var(--surface-muted)]">
-          <Container className="max-w-2xl">
-            <h2 className="heading-md">The Solution</h2>
-            <p className="mt-4 leading-relaxed text-[var(--text-muted)]">{cs.solution}</p>
+        <section className="py-10 bg-[var(--color-gray-50)]">
+          <Container className="max-w-3xl">
+            <h2 className="text-2xl font-black uppercase tracking-tight text-[var(--color-navy-950)]" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>The Solution</h2>
+            <div className="mt-4 prose prose-lg prose-slate max-w-none text-base font-medium leading-relaxed text-[var(--color-gray-600)] selection:bg-[var(--color-green-500)] selection:text-white" dangerouslySetInnerHTML={{ __html: `<p>${cs.solution}</p>` }} />
           </Container>
         </section>
 
-        <section className="section">
-          <Container className="max-w-2xl">
-            <h2 className="heading-md">The Results</h2>
-            <p className="mt-4 leading-relaxed text-[var(--text-muted)]">{cs.results}</p>
+        <section className="py-10">
+          <Container className="max-w-3xl">
+            <h2 className="text-2xl font-black uppercase tracking-tight text-[var(--color-navy-950)]" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>The Results</h2>
+            <div className="mt-4 prose prose-lg prose-slate max-w-none text-base font-medium leading-relaxed text-[var(--color-gray-600)] selection:bg-[var(--color-green-500)] selection:text-white" dangerouslySetInnerHTML={{ __html: `<p>${cs.results}</p>` }} />
           </Container>
         </section>
 
         {cs.quote && (
-          <section className="section-tight bg-[var(--brand-navy-deep)] text-center">
-            <Container className="max-w-2xl">
-              <blockquote className="text-lg font-medium italic text-white/90">&ldquo;{cs.quote.text}&rdquo;</blockquote>
-              <p className="mt-4 text-sm text-white/60">{cs.quote.author}, {cs.quote.role}</p>
+          <section className="py-16 bg-[var(--color-navy-950)] text-center relative overflow-hidden">
+            <div className="absolute right-[-10%] top-[-10%] w-[100%] h-[100%] bg-[radial-gradient(ellipse_at_center,_var(--color-green-500)_0%,_transparent_60%)] opacity-10 pointer-events-none" />
+            <Container className="max-w-3xl relative z-10">
+              <Quote className="mx-auto mb-6 size-10 text-[var(--color-green-500)] opacity-80" />
+              <blockquote className="text-xl md:text-2xl font-medium italic text-white leading-relaxed text-balance">&ldquo;{cs.quote.text}&rdquo;</blockquote>
+              <div className="mt-8">
+                <p className="text-sm font-bold uppercase tracking-widest text-[var(--color-green-500)]">{cs.quote.author}</p>
+                <p className="mt-1 text-xs text-white/60">{cs.quote.role}</p>
+              </div>
             </Container>
           </section>
         )}
 
-        <section className="section text-center">
+        <section className="py-24 text-center">
           <Container>
-            <h2 className="heading-md">Get Similar Results</h2>
-            <CTARow primary={{ label: "See How OpsFlo Ensures Execution", href: "/contact" }} secondary={{ label: "Calculate Your ROI", href: "/roi-calculator" }} className="mt-8 justify-center" />
+            <h2 className="text-4xl font-black uppercase tracking-tight text-[var(--color-navy-950)] text-balance" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>Get Similar Results</h2>
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link href="/contact" className="inline-flex items-center justify-center rounded-xl bg-[var(--color-navy-950)] px-8 py-4 text-sm font-bold uppercase tracking-widest text-white transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-500)] hover:text-[var(--color-navy-950)] w-full sm:w-auto">
+                See How OpsFlo Ensures Execution
+              </Link>
+              <Link href="/roi-calculator" className="inline-flex items-center justify-center rounded-xl border border-[var(--color-gray-200)] bg-white px-8 py-4 text-sm font-bold uppercase tracking-widest text-[var(--color-navy-950)] transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-[var(--color-green-400)] hover:text-[var(--color-green-700)] w-full sm:w-auto">
+                Calculate Your ROI
+              </Link>
+            </div>
           </Container>
         </section>
       </main>

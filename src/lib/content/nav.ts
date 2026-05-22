@@ -118,7 +118,6 @@ export const NAV: NavGroup[] = [
           { label: "Partners", href: "/partners" },
           { label: "Contact", href: "/contact" },
           { label: "Security & Compliance", href: "/security" },
-          { label: "Press / News", href: "/news" },
         ],
       },
     ],
@@ -171,7 +170,6 @@ export const FOOTER_NAV = {
     { label: "Partners", href: "/partners" },
     { label: "Contact", href: "/contact" },
     { label: "Security", href: "/security" },
-    { label: "News", href: "/news" },
   ],
   legal: [
     { label: "Privacy Policy", href: "/legal/privacy" },

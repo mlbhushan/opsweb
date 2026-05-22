@@ -93,39 +93,39 @@ export default async function CaseStudiesPage() {
           <div className="pointer-events-none absolute right-0 top-0 h-[400px] w-[400px] translate-x-1/3 -translate-y-1/4 rounded-full bg-[var(--color-green-500)]/8 blur-[100px]" />
 
           <Container className="relative z-10 py-16 md:py-24">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--color-navy-800)]/15 bg-white px-4 py-2 shadow-[var(--shadow-xs)]">
-              <span className="flex size-2 rounded-full bg-[var(--color-green-500)]" />
-              <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-navy-900)]">
+            <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-[var(--color-navy-200)] bg-white px-5 py-2 shadow-sm">
+              <span className="flex size-2 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+              <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-navy-950)]">
                 Customer Stories
               </span>
             </div>
 
             <h1
-              className="mb-4 text-5xl font-black uppercase leading-[0.92] tracking-tighter md:text-7xl"
-              style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+              className="mb-4 text-5xl font-black uppercase leading-[0.92] tracking-tighter md:text-7xl text-balance"
+              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
             >
               <span className="text-[var(--color-green-500)]">Results</span>
               <br />
               <span className="text-[var(--color-navy-950)]">That Prove It.</span>
             </h1>
-            <p className="max-w-xl text-base font-light leading-relaxed text-[var(--color-gray-600)] md:text-lg">
+            <p className="max-w-xl text-base font-medium leading-relaxed text-[var(--color-gray-600)] md:text-lg">
               Real oilfield operations. Real numbers. See how companies like yours recovered revenue, eliminated downtime, and achieved compliance with OpsFlo.
             </p>
 
             {/* Aggregate stats strip */}
-            <div className="mt-10 grid grid-cols-2 gap-0 border-2 border-[var(--color-navy-950)] sm:grid-cols-4">
+            <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4">
               {AGGREGATE_STATS.map((s, i) => (
                 <div
                   key={s.label}
-                  className={`p-5 ${i < AGGREGATE_STATS.length - 1 ? "border-r border-[var(--color-navy-950)]" : ""}`}
+                  className="rounded-3xl border border-[var(--color-gray-200)] bg-white p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-1 hover:border-[var(--color-green-400)]"
                 >
                   <div
                     className="text-2xl font-black text-[var(--color-navy-950)] md:text-3xl"
-                    style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                   >
                     {s.value}
                   </div>
-                  <div className="mt-1 text-xs font-medium leading-snug text-[var(--color-gray-500)]">
+                  <div className="mt-2 text-xs font-semibold leading-snug text-[var(--color-gray-500)] uppercase tracking-wider">
                     {s.label}
                   </div>
                 </div>
@@ -145,16 +145,15 @@ export default async function CaseStudiesPage() {
                 {/* Featured Case Study */}
                 <div>
                   <div className="mb-6 flex items-center gap-3">
-                    <span className="h-4 w-4 shrink-0 block bg-[var(--color-green-500)]" />
+                    <span className="h-4 w-4 shrink-0 block bg-[var(--color-green-500)] rounded-sm" />
                     <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)]">
                       Featured Story
                     </span>
-                    <div className="h-px flex-1 bg-[var(--color-gray-200)]" />
                   </div>
 
                   <Link
                     href={`/case-studies/${featured.slug}`}
-                    className="group block overflow-hidden border-2 border-[var(--color-navy-950)] bg-white transition-shadow shadow-[6px_6px_0px_0px_var(--color-green-500)] hover:shadow-[8px_8px_0px_0px_var(--color-green-500)]"
+                    className="group block overflow-hidden rounded-3xl border border-[var(--color-gray-200)] bg-white shadow-sm transition-all hover:shadow-md hover:-translate-y-1 hover:border-[var(--color-green-400)]"
                   >
                     <div className="relative aspect-[16/7] overflow-hidden">
                       <Image
@@ -170,11 +169,11 @@ export default async function CaseStudiesPage() {
                         </span>
                         <h2
                           className="mt-3 text-2xl font-black uppercase leading-tight tracking-tight text-white md:text-3xl"
-                          style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+                          style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                         >
                           {featured.company}
                         </h2>
-                        <p className="mt-2 text-sm font-light text-[var(--color-gray-300)]">
+                        <p className="mt-2 text-sm font-medium text-[var(--color-gray-300)]">
                           {featured.headline}
                         </p>
                       </div>
@@ -182,19 +181,19 @@ export default async function CaseStudiesPage() {
 
                     <div className="p-6 md:p-8">
                       {/* Metrics */}
-                      <div className="grid grid-cols-3 gap-0 border border-[var(--color-gray-200)]">
+                      <div className="grid grid-cols-3 gap-4 mb-6">
                         {featured.metrics.map((m, i) => (
                           <div
                             key={m.label}
-                            className={`p-4 text-center ${i < featured.metrics.length - 1 ? "border-r border-[var(--color-gray-200)]" : ""}`}
+                            className="rounded-2xl border border-[var(--color-gray-100)] bg-[var(--color-gray-50)] p-4 text-center transition-colors group-hover:border-[var(--color-green-200)] group-hover:bg-[var(--color-green-50)]"
                           >
                             <div
                               className="text-2xl font-black text-[var(--color-navy-950)]"
-                              style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+                              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                             >
                               {m.value}
                             </div>
-                            <div className="mt-1 text-xs font-medium text-[var(--color-gray-500)]">
+                            <div className="mt-1 text-xs font-bold uppercase tracking-wider text-[var(--color-gray-500)]">
                               {m.label}
                             </div>
                           </div>
@@ -203,9 +202,9 @@ export default async function CaseStudiesPage() {
 
                       {/* Quote */}
                       {featured.quote && (
-                        <div className="mt-6 border-l-4 border-[var(--color-green-500)] pl-5">
+                        <div className="mt-6 border-l-4 border-[var(--color-green-500)] pl-6 bg-[var(--color-gray-50)] py-4 rounded-r-2xl pr-4">
                           <Quote className="mb-2 size-5 text-[var(--color-green-500)]" />
-                          <p className="text-sm font-light italic leading-relaxed text-[var(--color-gray-600)]">
+                          <p className="text-sm font-medium italic leading-relaxed text-[var(--color-gray-600)]">
                             &ldquo;{featured.quote.text}&rdquo;
                           </p>
                           <div className="mt-3">
@@ -219,8 +218,8 @@ export default async function CaseStudiesPage() {
                         </div>
                       )}
 
-                      <div className="mt-6 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-[var(--color-navy-950)] underline underline-offset-4 transition-colors group-hover:text-[var(--color-navy-700)]">
-                        Read Full Story <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                      <div className="mt-8 inline-flex items-center justify-center gap-2 rounded-xl bg-[var(--color-navy-950)] px-6 py-3.5 text-sm font-bold uppercase tracking-widest text-white transition-all shadow-sm group-hover:bg-[var(--color-green-500)] group-hover:text-[var(--color-navy-950)] group-hover:shadow-md group-hover:-translate-y-0.5">
+                        Read Full Story <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
                       </div>
                     </div>
                   </Link>
@@ -230,19 +229,18 @@ export default async function CaseStudiesPage() {
                 {rest.length > 0 && (
                   <div>
                     <div className="mb-6 flex items-center gap-3">
-                      <span className="h-4 w-4 shrink-0 block bg-[var(--color-navy-950)]" />
+                      <span className="h-4 w-4 shrink-0 block bg-[var(--color-navy-950)] rounded-sm" />
                       <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)]">
                         More Stories
                       </span>
-                      <div className="h-px flex-1 bg-[var(--color-gray-200)]" />
                     </div>
 
-                    <div className="grid gap-0 border-t-2 border-l-2 border-[var(--color-navy-950)]">
+                    <div className="grid gap-4">
                       {rest.map((cs) => (
                         <Link
                           key={cs.slug}
                           href={`/case-studies/${cs.slug}`}
-                          className="group flex items-start gap-0 border-r-2 border-b-2 border-[var(--color-navy-950)] bg-white transition-colors hover:bg-[var(--color-navy-950)] overflow-hidden"
+                          className="group flex items-stretch gap-0 rounded-3xl border border-[var(--color-gray-200)] bg-white transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-[var(--color-green-400)] overflow-hidden"
                         >
                           {/* Image */}
                           <div className="relative hidden h-full w-40 shrink-0 sm:block">
@@ -262,21 +260,21 @@ export default async function CaseStudiesPage() {
                               </span>
                             </div>
                             <h3
-                              className="mb-2 text-lg font-black uppercase leading-tight tracking-tight text-[var(--color-navy-950)] group-hover:text-white transition-colors"
-                              style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+                              className="mb-2 text-lg font-black uppercase leading-tight tracking-tight text-[var(--color-navy-950)] transition-colors"
+                              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                             >
                               {cs.company}
                             </h3>
-                            <p className="mb-4 text-sm font-light leading-relaxed text-[var(--color-gray-500)] group-hover:text-[var(--color-gray-300)] transition-colors">
+                            <p className="mb-6 text-sm font-medium leading-relaxed text-[var(--color-gray-500)] transition-colors">
                               {cs.headline}
                             </p>
-                            <div className="flex flex-wrap gap-4">
+                            <div className="flex flex-wrap gap-4 mt-auto border-t border-[var(--color-gray-100)] pt-4">
                               {cs.metrics.slice(0, 3).map((m) => (
                                 <div key={m.label}>
-                                  <div className="text-xl font-black text-[var(--color-navy-950)] group-hover:text-[var(--color-green-400)] transition-colors" style={{ fontFamily: "'TASA Orbiter', sans-serif" }}>
+                                  <div className="text-xl font-black text-[var(--color-navy-950)] group-hover:text-[var(--color-green-600)] transition-colors" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
                                     {m.value}
                                   </div>
-                                  <div className="text-xs font-medium text-[var(--color-gray-500)] group-hover:text-[var(--color-gray-400)] transition-colors">
+                                  <div className="text-[10px] font-bold uppercase tracking-wider text-[var(--color-gray-500)] transition-colors">
                                     {m.label}
                                   </div>
                                 </div>
@@ -284,8 +282,8 @@ export default async function CaseStudiesPage() {
                             </div>
                           </div>
 
-                          <div className="flex items-center justify-center p-6">
-                            <ArrowRight className="size-5 text-[var(--color-gray-300)] group-hover:text-[var(--color-green-400)] transition-colors" />
+                          <div className="flex items-center justify-center p-6 bg-[var(--color-gray-50)] transition-colors group-hover:bg-[var(--color-green-50)] border-l border-[var(--color-gray-100)]">
+                            <ArrowRight className="size-5 text-[var(--color-gray-400)] group-hover:text-[var(--color-green-600)] transition-transform group-hover:translate-x-1" />
                           </div>
                         </Link>
                       ))}
@@ -294,81 +292,84 @@ export default async function CaseStudiesPage() {
                 )}
 
                 {/* Bottom inline CTA */}
-                <div className="border border-[var(--color-gray-200)] bg-[var(--color-green-50)] p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+                <div className="rounded-3xl border border-[var(--color-gray-200)] bg-[var(--color-green-50)] p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
                   <div>
                     <p className="text-xs font-bold uppercase tracking-widest text-[var(--color-green-700)] mb-1">
                       Want results like these?
                     </p>
                     <h3
                       className="text-xl font-black uppercase tracking-tight text-[var(--color-navy-950)]"
-                      style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+                      style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                     >
                       Get a 15-Min Revenue Diagnostic
                     </h3>
-                    <p className="mt-1 text-sm font-light text-[var(--color-gray-600)]">
+                    <p className="mt-1 text-sm font-medium text-[var(--color-gray-600)]">
                       We apply these frameworks directly to your operation and show you the exact gap.
                     </p>
                   </div>
                   <Link
                     href="/contact"
-                    className="group shrink-0 inline-flex items-center gap-3 bg-[var(--color-navy-950)] px-6 py-4 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-[var(--color-green-500)] hover:text-[var(--color-navy-950)]"
+                    className="group/cta shrink-0 inline-flex items-center gap-3 rounded-xl bg-[var(--color-navy-950)] px-6 py-4 text-sm font-bold uppercase tracking-widest text-white transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-500)] hover:text-[var(--color-navy-950)]"
                   >
                     Book a Demo
-                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="size-5 transition-transform group-hover/cta:translate-x-1" />
                   </Link>
                 </div>
               </div>
 
               {/* ── SIDEBAR ── */}
-              <aside className="lg:col-span-4 space-y-8">
+              <aside className="lg:col-span-4 space-y-6">
 
                 {/* CTA card */}
-                <div className="bg-[var(--color-navy-950)] p-8 border-2 border-[var(--color-navy-950)] shadow-[6px_6px_0px_0px_var(--color-green-500)]">
-                  <TrendingUp className="mb-4 size-8 text-[var(--color-green-500)]" />
-                  <h3
-                    className="mb-2 text-2xl font-black uppercase tracking-tighter text-white leading-tight"
-                    style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
-                  >
-                    Calculate Your ROI
-                  </h3>
-                  <p className="mb-6 text-sm font-light leading-relaxed text-[var(--color-gray-400)]">
-                    Enter your crew size and monthly jobs — see your exact revenue recovery potential in 60 seconds.
-                  </p>
-                  <Link
-                    href="/roi-calculator"
-                    className="group mb-2 flex w-full items-center justify-between bg-[var(--color-green-500)] px-5 py-4 text-sm font-bold uppercase tracking-wider text-[var(--color-navy-950)] transition-colors hover:bg-[var(--color-green-400)]"
-                  >
-                    Try ROI Calculator
-                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                  <Link
-                    href="/contact"
-                    className="group flex w-full items-center justify-between border border-[var(--color-navy-700)] px-5 py-3 text-sm font-semibold uppercase tracking-wider text-[var(--color-gray-300)] transition-colors hover:border-[var(--color-gray-400)] hover:text-white"
-                  >
-                    Book a Demo
-                    <ChevronRight className="size-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
+                <div className="rounded-3xl bg-[var(--color-navy-950)] p-8 shadow-xl relative overflow-hidden group">
+                  <div className="absolute right-[-10%] top-[-10%] w-[100%] h-[100%] bg-[radial-gradient(ellipse_at_center,_var(--color-green-500)_0%,_transparent_60%)] opacity-10 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none" />
+                  <div className="relative z-10">
+                    <TrendingUp className="mb-4 size-8 text-[var(--color-green-500)]" />
+                    <h3
+                      className="mb-2 text-2xl font-black uppercase tracking-tighter text-white leading-tight"
+                      style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    >
+                      Calculate Your ROI
+                    </h3>
+                    <p className="mb-6 text-sm font-medium leading-relaxed text-[var(--color-gray-400)]">
+                      Enter your crew size and monthly jobs — see your exact revenue recovery potential in 60 seconds.
+                    </p>
+                    <Link
+                      href="/roi-calculator"
+                      className="group/cta mb-3 flex w-full items-center justify-between rounded-xl bg-[var(--color-green-500)] px-5 py-4 text-sm font-bold uppercase tracking-wider text-[var(--color-navy-950)] transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-400)]"
+                    >
+                      Try ROI Calculator
+                      <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-1" />
+                    </Link>
+                    <Link
+                      href="/contact"
+                      className="group/cta2 flex w-full items-center justify-between rounded-xl border border-[var(--color-navy-700)] px-5 py-4 text-sm font-bold uppercase tracking-wider text-[var(--color-gray-300)] transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-[var(--color-gray-400)] hover:text-white"
+                    >
+                      Book a Demo
+                      <ChevronRight className="size-4 transition-transform group-hover/cta2:translate-x-1" />
+                    </Link>
+                  </div>
                 </div>
 
                 {/* Solutions links */}
-                <div className="bg-white border border-[var(--color-gray-200)] p-8">
+                <div className="rounded-3xl bg-white border border-[var(--color-gray-200)] p-8 shadow-sm">
                   <p className="mb-5 text-xs font-bold uppercase tracking-widest text-[var(--color-navy-900)]">
                     These Stories Address
                   </p>
-                  <ul className="space-y-1">
+                  <ul className="space-y-2">
                     {SIDEBAR_LINKS.map((link) => {
                       const Icon = link.icon;
                       return (
                         <li key={link.href}>
                           <Link
                             href={link.href}
-                            className="group flex items-center justify-between px-4 py-3 text-sm font-medium text-[var(--color-gray-600)] transition-all hover:bg-[var(--color-gray-50)] hover:text-[var(--color-navy-900)]"
+                            className="group flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium text-[var(--color-gray-600)] transition-all hover:bg-[var(--color-gray-50)] hover:text-[var(--color-navy-900)]"
                           >
                             <div className="flex items-center gap-3">
                               <Icon className="size-4 text-[var(--color-green-500)]" />
                               <span>{link.label}</span>
                             </div>
-                            <ChevronRight className="size-3.5 text-[var(--color-gray-300)] transition-transform group-hover:translate-x-0.5" />
+                            <ChevronRight className="size-4 text-[var(--color-gray-300)] transition-transform group-hover:translate-x-1" />
                           </Link>
                         </li>
                       );
@@ -377,7 +378,7 @@ export default async function CaseStudiesPage() {
                 </div>
 
                 {/* Aggregate proof */}
-                <div className="bg-[var(--color-navy-50)] border border-[var(--color-navy-100)] p-8">
+                <div className="rounded-3xl bg-[var(--color-navy-50)] border border-[var(--color-navy-100)] p-8 shadow-sm">
                   <p className="mb-5 text-xs font-bold uppercase tracking-widest text-[var(--color-navy-700)]">
                     Across All Customers
                   </p>
@@ -388,8 +389,8 @@ export default async function CaseStudiesPage() {
                       { value: "3wks→½day", label: "Audit preparation time" },
                     ].map((s) => (
                       <div key={s.label} className="flex items-center justify-between border-b border-[var(--color-navy-100)] pb-4 last:border-0 last:pb-0">
-                        <span className="text-xs font-medium text-[var(--color-gray-500)]">{s.label}</span>
-                        <span className="text-sm font-black text-[var(--color-navy-950)]" style={{ fontFamily: "'TASA Orbiter', sans-serif" }}>
+                        <span className="text-xs font-bold uppercase tracking-wider text-[var(--color-gray-500)]">{s.label}</span>
+                        <span className="text-sm font-black text-[var(--color-navy-950)]" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
                           {s.value}
                         </span>
                       </div>
@@ -398,26 +399,29 @@ export default async function CaseStudiesPage() {
                 </div>
 
                 {/* Guides cross-link */}
-                <div className="bg-[var(--color-green-50)] border border-[var(--color-green-200)] p-8">
-                  <p className="mb-2 text-xs font-bold uppercase tracking-widest text-[var(--color-green-700)]">
-                    Want the playbook?
-                  </p>
-                  <h4
-                    className="mb-3 text-lg font-black uppercase tracking-tight text-[var(--color-navy-950)]"
-                    style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
-                  >
-                    Guides & Whitepapers
-                  </h4>
-                  <p className="mb-4 text-sm font-light text-[var(--color-gray-600)]">
-                    In-depth frameworks behind these results — download free.
-                  </p>
-                  <Link
-                    href="/resources/guides"
-                    className="group inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-[var(--color-navy-950)] underline underline-offset-4 transition-colors hover:text-[var(--color-navy-700)]"
-                  >
-                    View All Guides
-                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
+                <div className="rounded-3xl bg-[var(--color-gray-50)] border border-[var(--color-gray-200)] p-8 relative overflow-hidden">
+                  <div className="absolute top-0 left-0 w-1.5 h-full bg-[var(--color-green-500)]" />
+                  <div className="pl-2">
+                    <p className="mb-2 text-xs font-bold uppercase tracking-widest text-[var(--color-green-700)]">
+                      Want the playbook?
+                    </p>
+                    <h4
+                      className="mb-3 text-lg font-black uppercase tracking-tight text-[var(--color-navy-950)]"
+                      style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    >
+                      Guides & Whitepapers
+                    </h4>
+                    <p className="mb-4 text-sm font-medium text-[var(--color-gray-600)]">
+                      In-depth frameworks behind these results — download free.
+                    </p>
+                    <Link
+                      href="/resources/guides"
+                      className="group inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-[var(--color-navy-950)] underline underline-offset-4 transition-colors hover:text-[var(--color-navy-700)]"
+                    >
+                      View All Guides
+                      <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </div>
                 </div>
               </aside>
             </div>
@@ -431,31 +435,31 @@ export default async function CaseStudiesPage() {
             <div className="flex flex-col items-start justify-between gap-10 lg:flex-row lg:items-center">
               <div className="max-w-2xl">
                 <h2
-                  className="text-4xl font-black uppercase leading-[0.92] tracking-tighter md:text-5xl"
-                  style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+                  className="text-4xl font-black uppercase leading-[0.92] tracking-tighter md:text-5xl text-balance"
+                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                 >
                   <span className="text-[var(--color-green-500)]">Your Operation.</span>
                   <br />
                   <span className="text-white">Your Numbers Next.</span>
                 </h2>
-                <p className="mt-5 text-base font-light leading-relaxed text-[var(--color-gray-400)]">
+                <p className="mt-6 text-base font-medium leading-relaxed text-[var(--color-gray-400)]">
                   A 15-minute diagnostic applies these exact frameworks to your operation — and quantifies the revenue, downtime, and compliance gap in your current workflow.
                 </p>
               </div>
-              <div className="flex w-full flex-col gap-3 lg:w-auto">
+              <div className="flex w-full flex-col gap-3 lg:w-[380px]">
                 <Link
                   href="/contact"
-                  className="group flex items-center justify-between bg-[var(--color-green-500)] px-7 py-5 text-sm font-bold uppercase tracking-wide text-[var(--color-navy-950)] transition-colors hover:bg-[var(--color-green-400)]"
+                  className="group/cta flex w-full items-center justify-between rounded-xl bg-[var(--color-green-500)] px-6 py-5 text-sm font-bold uppercase tracking-widest text-[var(--color-navy-950)] transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-400)]"
                 >
                   <span>Get a Revenue Diagnostic</span>
-                  <ArrowRight className="ml-8 size-5 transition-transform group-hover:translate-x-2" />
+                  <ArrowRight className="size-5 transition-transform group-hover/cta:translate-x-1" />
                 </Link>
                 <Link
                   href="/roi-calculator"
-                  className="group flex items-center justify-between border border-[var(--color-navy-700)] px-7 py-4 text-sm font-semibold uppercase tracking-wide text-[var(--color-gray-300)] transition-colors hover:border-[var(--color-gray-500)] hover:text-white"
+                  className="group/cta2 flex w-full items-center justify-between rounded-xl border border-[var(--color-navy-700)] bg-[var(--color-navy-950)] px-6 py-5 text-sm font-bold uppercase tracking-widest text-white transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-[var(--color-gray-500)] hover:bg-[var(--color-navy-900)]"
                 >
                   <span>Calculate ROI First</span>
-                  <ArrowRight className="ml-8 size-5 transition-transform group-hover:translate-x-2" />
+                  <ArrowRight className="size-5 transition-transform group-hover/cta2:translate-x-1" />
                 </Link>
               </div>
             </div>

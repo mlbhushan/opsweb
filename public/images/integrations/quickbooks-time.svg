@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 70">
+  <rect width="200" height="70" fill="white"/>
+  <rect x="5" y="5" width="60" height="60" rx="12" fill="#2CA01C"/>
+  <text x="35" y="52" font-family="Arial" font-size="44" font-weight="bold" fill="white" text-anchor="middle">Q</text>
+  <text x="120" y="32" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#2CA01C" text-anchor="middle">QuickBooks</text>
+  <text x="120" y="54" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#555" text-anchor="middle">Time</text>
+</svg>

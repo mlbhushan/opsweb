@@ -108,22 +108,22 @@ export default async function BlogPage() {
           <div className="pointer-events-none absolute right-0 bottom-0 h-[360px] w-[360px] translate-x-1/4 translate-y-1/4 rounded-full bg-[var(--color-green-500)]/8 blur-[80px]" />
 
           <Container className="relative z-10 py-16 md:py-20">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--color-navy-800)]/15 bg-white px-4 py-2 shadow-[var(--shadow-xs)]">
-              <span className="flex size-2 rounded-full bg-[var(--color-green-500)]" />
-              <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-navy-900)]">
+            <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-[var(--color-navy-200)] bg-white px-5 py-2 shadow-sm">
+              <span className="flex size-2 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+              <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-navy-950)]">
                 Insights & Ideas
               </span>
             </div>
 
             <h1
-              className="mb-4 text-5xl font-black uppercase leading-[0.92] tracking-tighter md:text-7xl"
-              style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+              className="mb-4 text-5xl font-black uppercase leading-[0.92] tracking-tighter md:text-7xl text-balance"
+              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
             >
               <span className="text-[var(--color-green-500)]">Field Ops</span>
               <br />
               <span className="text-[var(--color-navy-950)]">Intelligence.</span>
             </h1>
-            <p className="max-w-xl text-base font-light leading-relaxed text-[var(--color-gray-600)] md:text-lg">
+            <p className="max-w-xl text-base font-medium leading-relaxed text-[var(--color-gray-600)] md:text-lg">
               Practical insights on revenue recovery, predictive maintenance, HSE compliance, and digital transformation for oilfield services operations leaders.
             </p>
 
@@ -156,14 +156,13 @@ export default async function BlogPage() {
                 {featured && (
                   <div>
                     <div className="mb-6 flex items-center gap-3">
-                      <span className="h-4 w-4 shrink-0 block bg-[var(--color-green-500)]" />
+                      <span className="h-4 w-4 shrink-0 block bg-[var(--color-green-500)] rounded-sm" />
                       <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)]">
                         Latest Post
                       </span>
-                      <div className="h-px flex-1 bg-[var(--color-gray-200)]" />
                     </div>
 
-                    <article className="group overflow-hidden border-2 border-[var(--color-navy-950)] bg-white shadow-[6px_6px_0px_0px_var(--color-green-500)] transition-shadow hover:shadow-[8px_8px_0px_0px_var(--color-green-500)]">
+                    <article className="group overflow-hidden rounded-3xl border border-[var(--color-gray-200)] bg-white shadow-sm transition-all hover:shadow-md hover:-translate-y-1 hover:border-[var(--color-green-400)]">
                       <Link href={`/blog/${featured.slug}`}>
                         <div className="relative aspect-[16/8] overflow-hidden">
                           <Image
@@ -203,7 +202,7 @@ export default async function BlogPage() {
 
                           <h2
                             className="mb-4 text-2xl font-black uppercase leading-tight tracking-tight text-[var(--color-navy-950)] transition-colors group-hover:text-[var(--color-navy-700)] md:text-3xl"
-                            style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+                            style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                           >
                             {featured.title}
                           </h2>
@@ -211,9 +210,9 @@ export default async function BlogPage() {
                             {featured.excerpt}
                           </p>
 
-                          <div className="inline-flex items-center gap-2 bg-[var(--color-navy-950)] px-5 py-3 text-sm font-bold uppercase tracking-wide text-white transition-colors group-hover:bg-[var(--color-green-500)] group-hover:text-[var(--color-navy-950)]">
+                          <div className="inline-flex items-center justify-center gap-2 rounded-xl bg-[var(--color-navy-950)] px-6 py-3.5 text-sm font-bold uppercase tracking-widest text-white transition-all shadow-sm group-hover:bg-[var(--color-green-500)] group-hover:text-[var(--color-navy-950)] group-hover:shadow-md group-hover:-translate-y-0.5">
                             Read Article
-                            <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                            <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
                           </div>
                         </div>
                       </Link>
@@ -225,18 +224,17 @@ export default async function BlogPage() {
                 {rest.length > 0 && (
                   <div>
                     <div className="mb-6 flex items-center gap-3">
-                      <span className="h-4 w-4 shrink-0 block bg-[var(--color-navy-950)]" />
+                      <span className="h-4 w-4 shrink-0 block bg-[var(--color-navy-950)] rounded-sm" />
                       <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)]">
                         All Posts
                       </span>
-                      <div className="h-px flex-1 bg-[var(--color-gray-200)]" />
                     </div>
 
-                    <div className="space-y-0 border-t-2 border-l-2 border-[var(--color-navy-950)]">
+                    <div className="space-y-4">
                       {rest.map((post) => (
                         <article
                           key={post.slug}
-                          className="group overflow-hidden border-r-2 border-b-2 border-[var(--color-navy-950)] bg-white transition-colors hover:bg-[var(--color-navy-950)]"
+                          className="group overflow-hidden rounded-3xl border border-[var(--color-gray-200)] bg-white transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-[var(--color-green-400)]"
                         >
                           <Link href={`/blog/${post.slug}`} className="flex gap-0">
                             {/* Image */}
@@ -268,12 +266,12 @@ export default async function BlogPage() {
                               </div>
 
                               <h3
-                                className="mb-2 text-lg font-black uppercase leading-tight tracking-tight text-[var(--color-navy-950)] group-hover:text-white transition-colors"
-                                style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+                                className="mb-2 text-lg font-black uppercase leading-tight tracking-tight text-[var(--color-navy-950)] transition-colors"
+                                style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                               >
                                 {post.title}
                               </h3>
-                              <p className="mb-4 line-clamp-2 text-sm font-light leading-relaxed text-[var(--color-gray-500)] group-hover:text-[var(--color-gray-300)] transition-colors">
+                              <p className="mb-4 line-clamp-2 text-sm font-medium leading-relaxed text-[var(--color-gray-500)] transition-colors">
                                 {post.excerpt}
                               </p>
 
@@ -294,46 +292,46 @@ export default async function BlogPage() {
                 )}
 
                 {/* Inline CTA */}
-                <div className="border border-[var(--color-gray-200)] bg-[var(--color-green-50)] p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+                <div className="rounded-3xl border border-[var(--color-green-200)] bg-[var(--color-green-50)] p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
                   <div>
                     <p className="text-xs font-bold uppercase tracking-widest text-[var(--color-green-700)] mb-1">
                       Want more than reading?
                     </p>
                     <h3
                       className="text-xl font-black uppercase tracking-tight text-[var(--color-navy-950)]"
-                      style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+                      style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                     >
                       Apply These Ideas to Your Operation
                     </h3>
-                    <p className="mt-1 text-sm font-light text-[var(--color-gray-600)]">
+                    <p className="mt-1 text-sm font-medium text-[var(--color-gray-600)]">
                       15 minutes with our team takes any topic from this blog and maps it to your specific workflow.
                     </p>
                   </div>
                   <Link
                     href="/contact"
-                    className="group shrink-0 inline-flex items-center gap-3 bg-[var(--color-navy-950)] px-6 py-4 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-[var(--color-green-500)] hover:text-[var(--color-navy-950)]"
+                    className="group/cta shrink-0 inline-flex items-center gap-3 rounded-xl bg-[var(--color-navy-950)] px-6 py-4 text-sm font-bold uppercase tracking-widest text-white transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-500)] hover:text-[var(--color-navy-950)]"
                   >
                     Book a Demo
-                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="size-5 transition-transform group-hover/cta:translate-x-1" />
                   </Link>
                 </div>
               </div>
 
               {/* ── SIDEBAR ── */}
-              <aside className="lg:col-span-4 space-y-8">
+              <aside className="lg:col-span-4 space-y-6">
 
                 {/* Search */}
-                <div className="bg-white border border-[var(--color-gray-200)] p-8">
+                <div className="rounded-3xl bg-white border border-[var(--color-gray-200)] p-8 shadow-sm">
                   <form className="relative" action="/blog">
                     <input
                       name="q"
                       type="text"
                       placeholder="Search articles..."
-                      className="w-full border-2 border-[var(--color-gray-200)] bg-[var(--color-gray-50)] py-4 pl-5 pr-14 text-sm font-light focus:border-[var(--color-navy-950)] focus:outline-none transition-colors"
+                      className="w-full rounded-xl border border-[var(--color-gray-200)] bg-[var(--color-gray-50)] py-4 pl-5 pr-14 text-sm font-medium focus:border-[var(--color-navy-400)] focus:bg-white focus:outline-none transition-all shadow-sm"
                     />
                     <button
                       type="submit"
-                      className="absolute bottom-2 right-2 top-2 flex w-12 items-center justify-center bg-[var(--color-navy-950)] text-white transition-colors hover:bg-[var(--color-green-500)] hover:text-[var(--color-navy-950)]"
+                      className="absolute bottom-1.5 right-1.5 top-1.5 flex w-12 items-center justify-center rounded-lg bg-[var(--color-navy-950)] text-white transition-all shadow-sm hover:bg-[var(--color-green-500)] hover:text-[var(--color-navy-950)]"
                     >
                       <Search className="size-5" />
                     </button>
@@ -341,27 +339,30 @@ export default async function BlogPage() {
                 </div>
 
                 {/* CTA card */}
-                <div className="bg-[var(--color-navy-950)] p-8 border-2 border-[var(--color-navy-950)] shadow-[6px_6px_0px_0px_var(--color-green-500)]">
-                  <h3
-                    className="mb-2 text-xl font-black uppercase tracking-tighter text-white leading-tight"
-                    style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
-                  >
-                    Calculate Your Revenue Gap
-                  </h3>
-                  <p className="mb-5 text-sm font-light leading-relaxed text-[var(--color-gray-400)]">
-                    See how much revenue your operation is leaving unbilled every month.
-                  </p>
-                  <Link
-                    href="/roi-calculator"
-                    className="group mb-2 flex w-full items-center justify-between bg-[var(--color-green-500)] px-5 py-4 text-sm font-bold uppercase tracking-wider text-[var(--color-navy-950)] transition-colors hover:bg-[var(--color-green-400)]"
-                  >
-                    Try ROI Calculator
-                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
+                <div className="rounded-3xl bg-[var(--color-navy-950)] p-8 shadow-xl relative overflow-hidden group">
+                  <div className="absolute right-[-10%] top-[-10%] w-[100%] h-[100%] bg-[radial-gradient(ellipse_at_center,_var(--color-green-500)_0%,_transparent_60%)] opacity-10 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none" />
+                  <div className="relative z-10">
+                    <h3
+                      className="mb-2 text-2xl font-black uppercase tracking-tighter text-white leading-tight"
+                      style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    >
+                      Calculate Your Revenue Gap
+                    </h3>
+                    <p className="mb-8 text-sm font-medium leading-relaxed text-[var(--color-gray-300)]">
+                      See how much revenue your operation is leaving unbilled every month.
+                    </p>
+                    <Link
+                      href="/roi-calculator"
+                      className="group/cta mb-3 flex w-full items-center justify-between rounded-xl bg-[var(--color-green-500)] px-5 py-4 text-sm font-bold uppercase tracking-wider text-[var(--color-navy-950)] transition-all hover:bg-[var(--color-green-400)] shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                    >
+                      Try ROI Calculator
+                      <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-1" />
+                    </Link>
+                  </div>
                 </div>
 
                 {/* Recent articles */}
-                <div className="bg-white border border-[var(--color-gray-200)] p-8">
+                <div className="rounded-3xl bg-white border border-[var(--color-gray-200)] p-8 shadow-sm">
                   <h3 className="mb-6 flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-[var(--color-navy-950)]">
                     <Pin className="size-4 fill-[var(--color-navy-600)] text-[var(--color-navy-600)]" />
                     Recent Articles
@@ -373,16 +374,16 @@ export default async function BlogPage() {
                         href={`/blog/${post.slug}`}
                         className="group flex items-center gap-4"
                       >
-                        <div className="relative size-16 shrink-0 overflow-hidden border border-[var(--color-gray-200)]">
+                        <div className="relative size-16 shrink-0 overflow-hidden rounded-xl border border-[var(--color-gray-200)]">
                           <Image
                             src={post.image}
                             alt={post.title}
                             fill
-                            className="object-cover transition group-hover:scale-110"
+                            className="object-cover transition duration-500 group-hover:scale-110"
                           />
                         </div>
                         <div>
-                          <h4 className="line-clamp-2 text-sm font-bold uppercase leading-tight text-[var(--color-navy-950)] transition-colors group-hover:text-[var(--color-navy-600)]" style={{ fontFamily: "'TASA Orbiter', sans-serif" }}>
+                          <h4 className="line-clamp-2 text-sm font-bold uppercase leading-tight text-[var(--color-navy-950)] transition-colors group-hover:text-[var(--color-navy-600)]" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
                             {post.title}
                           </h4>
                           <p className="mt-1 text-xs font-medium text-[var(--color-gray-400)]">
@@ -395,7 +396,7 @@ export default async function BlogPage() {
                 </div>
 
                 {/* Categories */}
-                <div className="bg-white border border-[var(--color-gray-200)] p-8">
+                <div className="rounded-3xl bg-white border border-[var(--color-gray-200)] p-8 shadow-sm">
                   <h3 className="mb-6 flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-[var(--color-navy-950)]">
                     <Folder className="size-4 text-[var(--color-navy-600)]" />
                     Categories
@@ -407,14 +408,14 @@ export default async function BlogPage() {
                         <li key={cat}>
                           <Link
                             href={`/blog?category=${cat}`}
-                            className="group flex items-center justify-between px-4 py-2.5 text-sm font-medium text-[var(--color-gray-600)] transition-all hover:bg-[var(--color-gray-50)] hover:text-[var(--color-navy-900)]"
+                            className="group flex items-center justify-between rounded-xl px-4 py-2.5 text-sm font-medium text-[var(--color-gray-600)] transition-all hover:bg-[var(--color-gray-50)] hover:text-[var(--color-navy-900)]"
                           >
                             <div className="flex items-center gap-3">
                               <span className={`rounded-sm border px-1.5 py-0.5 text-xs font-bold ${style}`}>
                                 {cat}
                               </span>
                             </div>
-                            <ChevronRight className="size-3.5 text-[var(--color-gray-300)] transition-transform group-hover:translate-x-0.5" />
+                            <ChevronRight className="size-4 text-[var(--color-gray-300)] transition-transform group-hover:translate-x-1 group-hover:text-[var(--color-navy-900)]" />
                           </Link>
                         </li>
                       );
@@ -423,7 +424,7 @@ export default async function BlogPage() {
                 </div>
 
                 {/* Tags */}
-                <div className="bg-white border border-[var(--color-gray-200)] p-8">
+                <div className="rounded-3xl bg-white border border-[var(--color-gray-200)] p-8 shadow-sm">
                   <h3 className="mb-5 flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-[var(--color-navy-950)]">
                     <Tag className="size-4 text-[var(--color-navy-600)]" />
                     Popular Topics
@@ -433,7 +434,7 @@ export default async function BlogPage() {
                       <Link
                         key={tag}
                         href={`/blog?tag=${tag}`}
-                        className="rounded-none border-2 border-[var(--color-gray-200)] bg-white px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-[var(--color-gray-500)] transition-colors hover:border-[var(--color-navy-950)] hover:bg-[var(--color-navy-950)] hover:text-white"
+                        className="rounded-xl border border-[var(--color-gray-200)] bg-white px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-[var(--color-gray-500)] transition-colors hover:border-[var(--color-navy-950)] hover:bg-[var(--color-navy-950)] hover:text-white"
                       >
                         {tag}
                       </Link>
@@ -442,26 +443,29 @@ export default async function BlogPage() {
                 </div>
 
                 {/* Guides cross-link */}
-                <div className="bg-[var(--color-green-50)] border border-[var(--color-green-200)] p-8">
-                  <p className="mb-2 text-xs font-bold uppercase tracking-widest text-[var(--color-green-700)]">
-                    Go deeper
-                  </p>
-                  <h4
-                    className="mb-3 text-lg font-black uppercase tracking-tight text-[var(--color-navy-950)]"
-                    style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
-                  >
-                    Guides & Whitepapers
-                  </h4>
-                  <p className="mb-4 text-sm font-light text-[var(--color-gray-600)]">
-                    In-depth playbooks and frameworks behind the ideas in this blog.
-                  </p>
-                  <Link
-                    href="/resources/guides"
-                    className="group inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-[var(--color-navy-950)] underline underline-offset-4 transition-colors hover:text-[var(--color-navy-700)]"
-                  >
-                    View All Guides
-                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
+                <div className="rounded-3xl bg-[var(--color-gray-50)] border border-[var(--color-gray-200)] p-8 relative overflow-hidden">
+                  <div className="absolute top-0 left-0 w-1.5 h-full bg-[var(--color-green-500)]" />
+                  <div className="pl-2">
+                    <p className="mb-2 text-xs font-bold uppercase tracking-widest text-[var(--color-green-700)]">
+                      Go deeper
+                    </p>
+                    <h4
+                      className="mb-3 text-lg font-black uppercase tracking-tight text-[var(--color-navy-950)]"
+                      style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    >
+                      Guides & Whitepapers
+                    </h4>
+                    <p className="mb-4 text-sm font-medium text-[var(--color-gray-600)]">
+                      In-depth playbooks and frameworks behind the ideas in this blog.
+                    </p>
+                    <Link
+                      href="/resources/guides"
+                      className="group inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-[var(--color-navy-950)] underline underline-offset-4 transition-colors hover:text-[var(--color-navy-700)]"
+                    >
+                      View All Guides
+                      <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </div>
                 </div>
               </aside>
             </div>
@@ -475,31 +479,31 @@ export default async function BlogPage() {
             <div className="flex flex-col items-start justify-between gap-10 lg:flex-row lg:items-center">
               <div className="max-w-2xl">
                 <h2
-                  className="text-4xl font-black uppercase leading-[0.92] tracking-tighter md:text-5xl"
-                  style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+                  className="text-4xl font-black uppercase leading-[0.92] tracking-tighter md:text-5xl text-balance"
+                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                 >
                   <span className="text-[var(--color-green-500)]">From Reading</span>
                   <br />
                   <span className="text-white">To Results.</span>
                 </h2>
-                <p className="mt-5 text-base font-light leading-relaxed text-[var(--color-gray-400)]">
+                <p className="mt-6 text-base font-medium leading-relaxed text-[var(--color-gray-400)]">
                   The insights in this blog have helped companies recover millions in unbilled revenue. See what they look like applied to your specific operation.
                 </p>
               </div>
-              <div className="flex w-full flex-col gap-3 lg:w-auto">
+              <div className="flex w-full flex-col gap-3 lg:w-[380px]">
                 <Link
                   href="/contact"
-                  className="group flex items-center justify-between bg-[var(--color-green-500)] px-7 py-5 text-sm font-bold uppercase tracking-wide text-[var(--color-navy-950)] transition-colors hover:bg-[var(--color-green-400)]"
+                  className="group/cta flex w-full items-center justify-between rounded-xl bg-[var(--color-green-500)] px-6 py-5 text-sm font-bold uppercase tracking-widest text-[var(--color-navy-950)] transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-400)]"
                 >
                   <span>Get a Revenue Diagnostic</span>
-                  <ArrowRight className="ml-8 size-5 transition-transform group-hover:translate-x-2" />
+                  <ArrowRight className="size-5 transition-transform group-hover/cta:translate-x-1" />
                 </Link>
                 <Link
                   href="/resources/guides"
-                  className="group flex items-center justify-between border border-[var(--color-navy-700)] px-7 py-4 text-sm font-semibold uppercase tracking-wide text-[var(--color-gray-300)] transition-colors hover:border-[var(--color-gray-500)] hover:text-white"
+                  className="group/cta2 flex w-full items-center justify-between rounded-xl border border-[var(--color-navy-700)] bg-[var(--color-navy-950)] px-6 py-5 text-sm font-bold uppercase tracking-widest text-white transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-[var(--color-gray-500)] hover:bg-[var(--color-navy-900)]"
                 >
                   <span>Download a Guide</span>
-                  <ArrowRight className="ml-8 size-5 transition-transform group-hover:translate-x-2" />
+                  <ArrowRight className="size-5 transition-transform group-hover/cta2:translate-x-1" />
                 </Link>
               </div>
             </div>

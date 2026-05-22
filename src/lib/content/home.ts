@@ -14,22 +14,22 @@ export const HOME = {
   },
 
   painStrip: {
-    eyebrow: "The Cost of Execution Failure",
+    eyebrow: "The True Cost of Execution Failure",
     items: [
       {
         value: "15%",
         label: "Revenue Leakage",
-        description: "Lost income from missing field tickets and undocumented services.",
+        description: "Unbilled work and missing tickets directly eroding your margins.",
       },
       {
         value: "23 Days",
         label: "Billing Delay",
-        description: "The painful gap between job completion and cash in hand.",
+        description: "The painful cash flow gap between job completion and invoicing.",
       },
       {
         value: "$4.2M",
         label: "Downtime Costs",
-        description: "Annual losses from reactive maintenance and missed inspections.",
+        description: "Capital lost annually to reactive maintenance and missed inspections.",
       },
     ],
   },

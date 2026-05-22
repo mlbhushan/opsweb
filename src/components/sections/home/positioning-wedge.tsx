@@ -9,119 +9,132 @@ import { staggerContainer, fadeUp, viewportOnce } from "@/lib/animations";
 
 export function PositioningWedge() {
   const { positioningWedge } = HOME;
-  
-  // Split headline for dual-tone effect assuming "Execution Layer" is the key phrase
-  const headlineParts = positioningWedge.headline.split("Execution Layer");
-  const hasSplit = headlineParts.length > 1;
 
   return (
-    <section className="relative py-24 md:py-32 bg-[#0A0F1C] overflow-hidden">
-      {/* Moving Subtle Background Elements */}
+    <section className="relative py-20 md:py-24 bg-[var(--color-navy-950)] overflow-hidden">
+      {/* Dynamic Ambient Background */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Soft dark grid pattern */}
-        <svg className="absolute inset-0 w-full h-full opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
+        <svg className="absolute inset-0 w-full h-full opacity-[0.02]" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <pattern id="grid-dark" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M0 40V0H40" fill="none" stroke="#ffffff" strokeWidth="1"/>
+            <pattern id="grid-dark-wedge" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M0 40V0H40" fill="none" stroke="#ffffff" strokeWidth="1" />
             </pattern>
           </defs>
-          <rect width="100%" height="100%" fill="url(#grid-dark)"/>
+          <rect width="100%" height="100%" fill="url(#grid-dark-wedge)" />
         </svg>
-        
-        {/* Floating gradient orbs */}
-        <motion.div
-          className="absolute top-[10%] left-[10%] w-[40vw] max-w-[600px] h-[40vw] max-h-[600px] rounded-full bg-[var(--color-green-600)] blur-[120px] opacity-[0.08] mix-blend-screen"
-          animate={{ 
-            x: [0, 50, -30, 0], 
-            y: [0, 40, 60, 0],
-            scale: [1, 1.1, 0.9, 1]
-          }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-        />
-        <motion.div
-          className="absolute bottom-[10%] right-[10%] w-[35vw] max-w-[500px] h-[35vw] max-h-[500px] rounded-full bg-blue-600 blur-[120px] opacity-[0.06] mix-blend-screen"
-          animate={{ 
-            x: [0, -40, 20, 0], 
-            y: [0, -50, -20, 0],
-            scale: [1, 0.95, 1.05, 1]
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        />
+
+        {/* Ambient Glows */}
+        <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-[var(--color-green-500)]/10 blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] rounded-full bg-[var(--color-navy-700)]/20 blur-[100px] pointer-events-none" />
       </div>
 
       <Container className="relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12 items-center">
-          
-          {/* Header Side */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+          {/* Left Column: Text & Positioning */}
           <motion.div
-            className="lg:col-span-5"
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            className="flex flex-col"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={viewportOnce}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <p className="text-[12px] font-mono font-bold tracking-widest text-[var(--color-green-400)] uppercase mb-6 border-l-2 border-[var(--color-green-500)] pl-4">
-              {positioningWedge.eyebrow}
-            </p>
-            <h2 className="text-4xl md:text-5xl lg:text-[64px] font-extrabold tracking-tight text-white leading-[1.05] mb-8">
-              {hasSplit ? (
-                <>
-                  {headlineParts[0]}<br />
-                  <span className="text-[var(--color-green-400)]">Execution Layer</span>
-                  {headlineParts[1]}
-                </>
-              ) : (
-                positioningWedge.headline
-              )}
+            {/* Animated Badge */}
+            <div className="inline-flex items-center gap-3 rounded-full border border-[var(--color-green-500)]/30 bg-[var(--color-green-500)]/10 px-4 py-2 mb-8 self-start shadow-[0_0_20px_-5px_rgba(34,197,94,0.3)]">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--color-green-400)] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--color-green-500)]"></span>
+              </span>
+              <span className="text-xs font-bold tracking-widest text-[var(--color-green-400)] uppercase">
+                {positioningWedge.eyebrow}
+              </span>
+            </div>
+            
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1] mb-6">
+              The Missing <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-green-400)] to-[var(--color-green-600)] drop-shadow-[0_0_15px_rgba(34,197,94,0.3)]">
+                Execution Layer
+              </span>
             </h2>
-            <div className="h-px w-12 bg-[var(--color-green-500)] mb-8" />
-            <p className="text-[17px] leading-relaxed text-[var(--color-navy-300)] max-w-md">
-              While other systems focus on scheduling or finance, OpsFlo is the only layer explicitly designed to guarantee work gets completed, validated, and billed in the field.
+            
+            <p className="text-[17px] leading-relaxed text-[var(--color-navy-200)] max-w-md">
+              ERPs handle finance. CRMs handle sales. But who handles the actual work? <strong className="text-white font-semibold">OpsFlo is the missing connective tissue</strong> that guarantees complex field operations are executed flawlessly and billed instantly.
             </p>
           </motion.div>
 
-          {/* Layer Stack Side */}
+          {/* Right Column: Animated Layer Stack */}
           <motion.div
-            className="lg:col-span-6 lg:col-start-7 relative"
+            className="relative"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={viewportOnce}
           >
-            {/* Visual connector line in the background */}
-            <div className="absolute left-[24px] top-8 bottom-8 w-[2px] bg-[var(--color-navy-800)] z-0 hidden md:block" />
-            
-            <div className="space-y-4">
+            {/* The Animated Connecting Track (Centered Behind Cards) */}
+            <div className="absolute left-1/2 -translate-x-1/2 top-4 bottom-4 w-[2px] bg-[var(--color-navy-800)] z-0 overflow-hidden">
+              <motion.div 
+                className="w-full h-32 bg-gradient-to-b from-transparent via-[var(--color-green-400)] to-transparent"
+                animate={{
+                  y: ["-100%", "400%"],
+                }}
+                transition={{
+                  duration: 2.5,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+              />
+            </div>
+
+            <div className="space-y-3 relative z-10">
               {positioningWedge.layers.map((layer) => (
                 <motion.div
                   key={layer.system}
                   variants={fadeUp}
                   className={cn(
-                    "relative flex items-start md:items-center gap-5 md:gap-6 rounded-2xl p-6 transition-all duration-500 z-10 border overflow-hidden group backdrop-blur-sm",
+                    "relative flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 md:gap-5 rounded-[16px] p-4 transition-all duration-500 group overflow-hidden",
                     layer.highlight
-                      ? "bg-[var(--color-navy-900)] border-[var(--color-green-500)/40] shadow-[0_0_30px_-5px_rgba(34,197,94,0.15)]"
-                      : "bg-[var(--color-navy-950)/80] border-[var(--color-navy-800)] hover:bg-[var(--color-navy-900)/60] hover:border-[var(--color-navy-700)]"
+                      ? "bg-[var(--color-navy-900)] border border-[var(--color-green-500)]/50 shadow-[0_10px_40px_-10px_rgba(34,197,94,0.3)] hover:-translate-y-1 hover:shadow-[0_15px_50px_-10px_rgba(34,197,94,0.4)] cursor-default"
+                      : "bg-[var(--color-navy-900)]/90 border border-[var(--color-navy-800)] backdrop-blur-md"
                   )}
                 >
-                  {/* Subtle highlight gradient inside the highlighted card */}
+                  {/* Internal Glow for OpsFlo */}
                   {layer.highlight && (
-                    <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-green-500)/10] to-transparent pointer-events-none" />
+                    <motion.div 
+                      className="absolute inset-0 bg-gradient-to-r from-[var(--color-green-500)]/5 to-transparent pointer-events-none"
+                      animate={{ opacity: [0.3, 0.8, 0.3] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                    />
                   )}
 
-                  {/* Icon / System Identifier */}
+                  {/* Animated Execution Data Particles (Only for OpsFlo) */}
+                  {layer.highlight && (
+                    <div className="absolute right-0 top-0 bottom-0 w-32 overflow-hidden pointer-events-none opacity-40">
+                      {[...Array(5)].map((_, i) => (
+                        <motion.div
+                          key={`particle-${i}`}
+                          className="absolute w-6 h-1.5 rounded-full bg-[var(--color-green-400)] blur-[1px]"
+                          initial={{ x: 100, y: 10 + i * 15, opacity: 0 }}
+                          animate={{ x: -150, opacity: [0, 1, 0] }}
+                          transition={{ duration: 1.5 + Math.random(), repeat: Infinity, delay: Math.random() * 2, ease: "linear" }}
+                        />
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Icon Block */}
                   <div
                     className={cn(
-                      "flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full text-[14px] font-mono font-bold tracking-wider relative z-10 shadow-lg overflow-hidden",
+                      "flex h-12 w-12 shrink-0 items-center justify-center rounded-[10px] text-[13px] font-mono font-bold tracking-wider relative z-10 transition-transform duration-500",
                       layer.highlight
-                        ? "bg-white text-[var(--color-navy-950)] shadow-[0_0_20px_-5px_rgba(255,255,255,0.2)]"
-                        : "bg-[var(--color-navy-800)] text-[var(--color-navy-300)] border border-[var(--color-navy-700)] group-hover:bg-[var(--color-navy-700)] group-hover:text-white transition-colors"
+                        ? "bg-white text-[var(--color-navy-950)] shadow-[0_0_20px_rgba(255,255,255,0.3)] scale-110"
+                        : "bg-[var(--color-navy-950)] text-[var(--color-navy-400)] border border-[var(--color-navy-800)] group-hover:border-[var(--color-navy-600)]"
                     )}
                   >
                     {layer.highlight ? (
-                      <div className="relative w-8 h-8 -translate-y-0.5">
-                        <Image 
-                          src="/OpsFloIcon.png" 
-                          alt="OpsFlo" 
+                      <div className="relative w-8 h-8">
+                        <Image
+                          src="/OpsFloIcon.png"
+                          alt="OpsFlo"
                           fill
                           className="object-contain"
                           priority
@@ -131,29 +144,27 @@ export function PositioningWedge() {
                       layer.system
                     )}
                   </div>
-                  
-                  {/* Content */}
-                  <div className="flex-1 relative z-10 pt-1 md:pt-0">
-                    <div className="flex items-center gap-3 mb-2">
+
+                  {/* Text Content */}
+                  <div className="flex-1 relative z-10 flex flex-col justify-center">
+                    <div className="flex flex-col sm:flex-row items-center sm:items-start gap-2 mb-1">
                       <p
                         className={cn(
-                          "text-[18px] font-bold tracking-tight",
-                          layer.highlight
-                            ? "text-white"
-                            : "text-[var(--color-navy-100)]"
+                          "text-[17px] sm:text-[18px] font-bold tracking-tight leading-tight",
+                          layer.highlight ? "text-white" : "text-[var(--color-navy-100)]"
                         )}
                       >
                         {layer.role}
                       </p>
                       {layer.highlight && (
-                        <span className="hidden sm:inline-flex items-center rounded-full bg-[var(--color-green-400)/10] px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-[var(--color-green-400)] border border-[var(--color-green-400)/30]">
-                          The Missing Link
+                        <span className="inline-flex items-center rounded-md bg-[var(--color-green-400)]/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-[var(--color-green-400)] border border-[var(--color-green-400)]/20 shadow-sm leading-none self-center sm:self-auto">
+                          OpsFlo
                         </span>
                       )}
                     </div>
                     <p className={cn(
-                      "text-[15px] leading-relaxed",
-                      layer.highlight ? "text-[var(--color-navy-200)]" : "text-[var(--color-navy-400)] group-hover:text-[var(--color-navy-300)] transition-colors"
+                      "text-[14.5px] sm:text-[15px] leading-snug",
+                      layer.highlight ? "text-[var(--color-green-50)]" : "text-[var(--color-navy-300)]"
                     )}>
                       {layer.description}
                     </p>
@@ -162,7 +173,7 @@ export function PositioningWedge() {
               ))}
             </div>
           </motion.div>
-          
+
         </div>
       </Container>
     </section>

@@ -9,10 +9,10 @@ import { ArrowRight } from "lucide-react";
 
 export function IntegrationsStrip() {
   const { integrationsStrip } = HOME;
-  
+
   // Use all integrations that have a logo
   const validIntegrations = INTEGRATIONS.filter(i => i.logo);
-  
+
   // Split into two rows for dense Swiss aesthetic
   const midPoint = Math.ceil(validIntegrations.length / 2);
   const row1 = validIntegrations.slice(0, midPoint);
@@ -24,7 +24,8 @@ export function IntegrationsStrip() {
 
   return (
     <section className="relative overflow-hidden bg-slate-50 py-12 md:py-16 border-y border-slate-200">
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @keyframes marquee-left {
           0% { transform: translateX(0%); }
           100% { transform: translateX(-33.333333%); }
@@ -40,10 +41,10 @@ export function IntegrationsStrip() {
           animation: marquee-right 40s linear infinite;
         }
       `}} />
-      
+
       {/* Swiss Style Background Grid */}
       <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center">
-        <div 
+        <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage: `linear-gradient(to right, #0f172a 1px, transparent 1px), linear-gradient(to bottom, #0f172a 1px, transparent 1px)`,
@@ -69,9 +70,9 @@ export function IntegrationsStrip() {
               <span className="text-[var(--color-green-500)]">existing tech stack</span>
             </h2>
           </div>
-          
-          <Link 
-            href="/integrations" 
+
+          <Link
+            href="/integrations"
             className="group inline-flex items-center gap-2 text-sm font-semibold text-slate-900 transition-colors hover:text-[var(--color-green-500)] pb-1 border-b-2 border-slate-900 hover:border-[var(--color-green-500)] whitespace-nowrap self-start md:self-auto"
           >
             Explore all integrations
@@ -90,8 +91,8 @@ export function IntegrationsStrip() {
         <div className="flex overflow-hidden">
           <div className="flex shrink-0 items-center gap-12 md:gap-20 pr-12 md:pr-20 animate-marquee-left hover:[animation-play-state:paused]">
             {marqueeRow1.map((item, idx) => (
-              <div 
-                key={`r1-${item.name}-${idx}`} 
+              <div
+                key={`r1-${item.name}-${idx}`}
                 className="flex flex-col items-center justify-center w-20 md:w-28 gap-3 shrink-0 group cursor-default"
               >
                 <div className="flex items-center justify-center h-8 md:h-10 w-full opacity-60 transition-all duration-500 group-hover:opacity-100 group-hover:scale-105">
@@ -116,8 +117,8 @@ export function IntegrationsStrip() {
         <div className="flex overflow-hidden">
           <div className="flex shrink-0 items-center gap-12 md:gap-20 pr-12 md:pr-20 animate-marquee-right hover:[animation-play-state:paused]">
             {marqueeRow2.map((item, idx) => (
-              <div 
-                key={`r2-${item.name}-${idx}`} 
+              <div
+                key={`r2-${item.name}-${idx}`}
                 className="flex flex-col items-center justify-center w-20 md:w-28 gap-3 shrink-0 group cursor-default"
               >
                 <div className="flex items-center justify-center h-8 md:h-10 w-full opacity-60 transition-all duration-500 group-hover:opacity-100 group-hover:scale-105">

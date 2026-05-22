@@ -17,6 +17,7 @@ const FEATURES = [
     linkHref: "/platform/field-execution",
     mockupMain: "/mockups/dashboard.png",
     mockupFloating: "/mockups/tracker.png",
+    mockupUrl: "ops-flo.com/app/dashboard",
   },
   {
     id: "dispatch",
@@ -27,6 +28,7 @@ const FEATURES = [
     linkHref: "/platform/scheduling",
     mockupMain: "/mockups/auto-assign.png",
     mockupFloating: null,
+    mockupUrl: "ops-flo.com/app/dispatching",
   },
   {
     id: "revenue",
@@ -37,6 +39,7 @@ const FEATURES = [
     linkHref: "/platform/field-ticketing",
     mockupMain: "/mockups/field-service.png",
     mockupFloating: null,
+    mockupUrl: "ops-flo.com/app/field",
   },
   {
     id: "profitability",
@@ -47,11 +50,13 @@ const FEATURES = [
     linkHref: "/platform/analytics",
     mockupMain: "/mockups/analytics.png",
     mockupFloating: null,
+    mockupUrl: "ops-flo.com/app/field",
   },
 ];
 
 export function AllInOnePlatform() {
   const [activeFeature, setActiveFeature] = useState(FEATURES[0].id);
+  const activeFeatureData = FEATURES.find((f) => f.id === activeFeature);
 
   return (
     <section className="relative bg-white py-16 lg:py-24 overflow-hidden border-t border-[var(--color-gray-200)]">
@@ -78,13 +83,13 @@ export function AllInOnePlatform() {
 
         {/* Content Split */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          
+
           {/* Accordion / Tab List (Left) */}
           <div className="lg:col-span-5 flex flex-col justify-center h-full">
             <div className="border-l-2 border-[var(--color-gray-200)] relative">
               {FEATURES.map((feature) => {
                 const isActive = activeFeature === feature.id;
-                
+
                 return (
                   <div key={feature.id} className="relative group">
                     {/* Active Line Indicator */}
@@ -109,7 +114,7 @@ export function AllInOnePlatform() {
                       )}>
                         {feature.title}
                       </h3>
-                      
+
                       <AnimatePresence initial={false}>
                         {isActive && (
                           <motion.div
@@ -143,7 +148,7 @@ export function AllInOnePlatform() {
 
           {/* Mockup Display (Right) */}
           <div className="lg:col-span-7 relative flex items-center justify-center min-h-[350px] md:min-h-[450px] z-10">
-            
+
             {/* Animated Decorative Background Elements */}
             <div className="absolute inset-0 pointer-events-none flex items-center justify-center -z-10">
               <AnimatePresence mode="wait">
@@ -157,7 +162,7 @@ export function AllInOnePlatform() {
                 >
                   <div className="absolute w-[120%] h-[120%] rounded-full border border-[var(--color-green-500)]/20" />
                   <div className="absolute w-[80%] h-[80%] rounded-full border border-[var(--color-navy-500)]/15 border-dashed" />
-                  
+
                   {/* Target marks */}
                   <div className="absolute w-4 h-4 border-t-2 border-l-2 border-[var(--color-green-500)]/60 top-[10%] left-[10%]" />
                   <div className="absolute w-4 h-4 border-t-2 border-r-2 border-[var(--color-green-500)]/60 top-[10%] right-[10%]" />
@@ -165,16 +170,16 @@ export function AllInOnePlatform() {
                   <div className="absolute w-4 h-4 border-b-2 border-r-2 border-[var(--color-green-500)]/60 bottom-[10%] right-[10%]" />
                 </motion.div>
               </AnimatePresence>
-              
+
               {/* Subtle continuous rotation */}
-              <motion.div 
+              <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
                 className="absolute w-[600px] h-[600px] rounded-full border border-dashed border-[var(--color-gray-200)]/80 -z-20 hidden md:block"
               />
             </div>
             <div className="w-full relative aspect-[16/10] bg-white rounded-xl border border-[var(--color-gray-200)] shadow-2xl overflow-hidden group">
-              
+
               {/* Fake Browser/App Header */}
               <div className="h-10 border-b border-[var(--color-gray-100)] bg-[var(--color-gray-50)] flex items-center px-4 gap-2">
                 <div className="flex gap-1.5">
@@ -184,9 +189,11 @@ export function AllInOnePlatform() {
                 </div>
                 <div className="mx-auto h-5 w-48 bg-white border border-[var(--color-gray-200)] rounded flex items-center px-2">
                   <div className="w-3 h-3 text-[var(--color-gray-400)]">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
                   </div>
-                  <span className="ml-2 text-[9px] text-[var(--color-gray-400)] font-mono">opsflo.com/app/jobs</span>
+                  <span className="ml-2 text-[9px] text-[var(--color-gray-400)] font-mono">
+                    {activeFeatureData?.mockupUrl || "ops-flo.com/app"}
+                  </span>
                 </div>
               </div>
 
@@ -201,18 +208,15 @@ export function AllInOnePlatform() {
                     transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
                     className="absolute inset-0 flex items-center justify-center text-[var(--color-gray-400)]"
                   >
-                    {(() => {
-                      const feature = FEATURES.find(f => f.id === activeFeature);
-                      return feature?.mockupMain ? (
-                        <Image
-                          src={feature.mockupMain}
-                          alt={`${feature.title} interface`}
-                          fill
-                          className="object-cover object-top"
-                          quality={95}
-                        />
-                      ) : null;
-                    })()}
+                    {activeFeatureData?.mockupMain ? (
+                      <Image
+                        src={activeFeatureData.mockupMain}
+                        alt={`${activeFeatureData.title} interface`}
+                        fill
+                        className="object-cover object-top"
+                        quality={95}
+                      />
+                    ) : null}
                   </motion.div>
                 </AnimatePresence>
               </div>
@@ -233,7 +237,7 @@ export function AllInOnePlatform() {
                   <div className="h-8 border-b border-[var(--color-gray-100)] bg-white flex items-center px-3 justify-between">
                     <span className="text-[10px] font-semibold text-[var(--color-navy-900)]">Quick Action</span>
                     <div className="w-3 h-3 text-[var(--color-gray-400)]">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6 6 18M6 6l12 12" /></svg>
                     </div>
                   </div>
                   <div className="relative w-full h-[calc(100%-32px)] bg-[var(--color-gray-50)] flex items-center justify-center overflow-hidden">

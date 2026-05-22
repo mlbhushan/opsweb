@@ -48,7 +48,7 @@ export default function AboutPage() {
                 <div className="relative inline-block">
                   <span 
                     className="text-[var(--color-navy-950)] leading-[0.8] tracking-tighter"
-                    style={{ fontFamily: "'TASA Orbiter', sans-serif", fontSize: "250px", fontWeight: 600 }}
+                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif", fontSize: "250px", fontWeight: 600 }}
                   >
                     2M+
                   </span>
@@ -86,7 +86,7 @@ export default function AboutPage() {
               <div className="lg:pl-20 flex flex-col pt-8 lg:pt-4">
                 <div className="mb-10 text-lg leading-relaxed text-[var(--color-gray-600)]">
                   <p>
-                    {hero.body} Our founders spent years managing field operations across Western Canada. They saw the same pattern everywhere: operators used 3 to 5 disconnected tools, lost revenue to missed field tickets, and dealt with billing cycles measured in weeks instead of hours.
+                    {hero.body} Our founders spent years managing field operations across the United States. They saw the same pattern everywhere: operators used 3 to 5 disconnected tools, lost revenue to missed field tickets, and dealt with billing cycles measured in weeks instead of hours.
                   </p>
                 </div>
                 
@@ -212,7 +212,7 @@ export default function AboutPage() {
                 <div key={idx} className="group relative flex flex-col pt-8 border-t-2 border-[var(--color-navy-800)] hover:border-[var(--color-green-500)] transition-colors duration-500 cursor-default">
                   <div 
                     className="text-5xl md:text-6xl tracking-tighter text-[var(--color-navy-800)] group-hover:text-[var(--color-green-500)] transition-colors duration-500 mb-6 leading-none"
-                    style={{ fontFamily: "'TASA Orbiter', sans-serif", fontWeight: 700 }}
+                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif", fontWeight: 700 }}
                   >
                     {value.id}
                   </div>
@@ -260,7 +260,7 @@ export default function AboutPage() {
                 <div className="flex flex-col sm:flex-row gap-8 sm:items-center">
                   <div>
                     <div className="flex items-baseline gap-1">
-                      <span className="text-5xl md:text-6xl tracking-tighter text-[var(--color-navy-950)]" style={{ fontFamily: "'TASA Orbiter', sans-serif", fontWeight: 700 }}>500</span>
+                      <span className="text-5xl md:text-6xl tracking-tighter text-[var(--color-navy-950)]" style={{ fontFamily: "'Cabinet Grotesk', sans-serif", fontWeight: 700 }}>500</span>
                       <span className="text-4xl font-bold text-[var(--color-green-500)]">+</span>
                     </div>
                     <p className="mt-2 text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)]">
@@ -289,7 +289,7 @@ export default function AboutPage() {
                       <Shield className="size-6 text-[var(--color-green-500)] opacity-50 group-hover:opacity-100 transition-opacity" />
                     </div>
                     <div>
-                      <h3 className="text-5xl md:text-6xl tracking-tighter text-white mb-2" style={{ fontFamily: "'TASA Orbiter', sans-serif", fontWeight: 700 }}>
+                      <h3 className="text-5xl md:text-6xl tracking-tighter text-white mb-2" style={{ fontFamily: "'Cabinet Grotesk', sans-serif", fontWeight: 700 }}>
                         99.9<span className="text-3xl ml-1 text-[var(--color-green-500)]">%</span>
                       </h3>
                       <p className="text-xs font-bold text-[var(--color-gray-400)] uppercase tracking-widest leading-snug">
@@ -329,7 +329,7 @@ export default function AboutPage() {
                       <Target className="size-6 text-[var(--color-navy-950)] opacity-50 group-hover:opacity-100 transition-opacity" />
                     </div>
                     <div>
-                      <h3 className="text-5xl md:text-6xl tracking-tighter text-[var(--color-navy-950)] mb-2" style={{ fontFamily: "'TASA Orbiter', sans-serif", fontWeight: 700 }}>
+                      <h3 className="text-5xl md:text-6xl tracking-tighter text-[var(--color-navy-950)] mb-2" style={{ fontFamily: "'Cabinet Grotesk', sans-serif", fontWeight: 700 }}>
                         &lt;4<span className="text-3xl ml-1">hr</span>
                       </h3>
                       <p className="text-xs font-bold text-[var(--color-navy-900)] uppercase tracking-widest leading-snug">

@@ -40,27 +40,27 @@ function SliderInput({
   format: (v: number) => string;
 }) {
   return (
-    <div className="border-2 border-[var(--color-navy-950)] bg-white p-3 md:p-4 shadow-[4px_4px_0px_0px_var(--color-navy-950)] transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_var(--color-green-500)]">
-      <div className="mb-2 md:mb-3 flex flex-wrap sm:flex-nowrap items-start justify-between gap-2">
+    <div className="rounded-2xl border border-[var(--color-gray-200)] bg-white p-4 md:p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md hover:border-[var(--color-green-400)]">
+      <div className="mb-3 md:mb-4 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2">
         <div>
           <div
             className="text-sm font-black uppercase tracking-tight text-[var(--color-navy-950)] leading-none"
-            style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+            style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
           >
             {label}
           </div>
-          <div className="mt-1.5 text-xs font-medium text-[var(--color-gray-600)] leading-none">
+          <div className="mt-1.5 text-xs font-medium text-[var(--color-gray-500)] leading-none">
             {hint}
           </div>
         </div>
         <div
-          className="shrink-0 rounded-none border-2 border-[var(--color-navy-950)] bg-[var(--color-green-400)] px-2 py-1 text-xs md:text-sm font-black text-[var(--color-navy-950)] shadow-[2px_2px_0px_0px_var(--color-navy-950)]"
-          style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+          className="shrink-0 rounded-full bg-[var(--color-green-50)] px-3 py-1.5 text-sm md:text-base font-black text-[var(--color-green-700)] shadow-sm border border-[var(--color-green-200)]"
+          style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
         >
           {format(value)}
         </div>
       </div>
-      <div className="relative mt-2">
+      <div className="relative mt-4">
         <input
           type="range"
           min={min}
@@ -68,9 +68,9 @@ function SliderInput({
           step={step}
           value={value}
           onChange={(e) => onChange(Number(e.target.value))}
-          className="w-full cursor-pointer appearance-none bg-transparent [&::-webkit-slider-runnable-track]:h-2 [&::-webkit-slider-runnable-track]:border-2 [&::-webkit-slider-runnable-track]:border-[var(--color-navy-950)] [&::-webkit-slider-runnable-track]:bg-[var(--color-gray-100)] [&::-webkit-slider-thumb]:mt-[-6px] [&::-webkit-slider-thumb]:h-[18px] [&::-webkit-slider-thumb]:w-[18px] [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-[var(--color-navy-950)] [&::-webkit-slider-thumb]:bg-[var(--color-green-500)] [&::-webkit-slider-thumb]:transition-colors hover:[&::-webkit-slider-thumb]:bg-[var(--color-green-400)]"
+          className="w-full cursor-pointer appearance-none bg-transparent [&::-webkit-slider-runnable-track]:h-1.5 [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-runnable-track]:bg-[var(--color-gray-200)] [&::-webkit-slider-thumb]:mt-[-6px] [&::-webkit-slider-thumb]:h-[18px] [&::-webkit-slider-thumb]:w-[18px] [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[var(--color-green-500)] [&::-webkit-slider-thumb]:shadow-md [&::-webkit-slider-thumb]:transition-all hover:[&::-webkit-slider-thumb]:scale-110 hover:[&::-webkit-slider-thumb]:bg-[var(--color-green-400)]"
         />
-        <div className="mt-1 flex justify-between text-[10px] md:text-xs font-bold uppercase text-[var(--color-navy-950)]">
+        <div className="mt-2 flex justify-between text-[10px] md:text-xs font-bold uppercase tracking-widest text-[var(--color-gray-400)]">
           <span>{format(min)}</span>
           <span>{format(max)}</span>
         </div>
@@ -116,21 +116,22 @@ export default function ROICalculatorClient() {
 
       <main className="flex-1 bg-white">
         {/* ── HERO ── */}
-        <section className="relative overflow-hidden border-b-2 border-[var(--color-navy-950)] bg-white py-16 md:py-24">
+        <section className="relative overflow-hidden border-b border-[var(--color-gray-200)] bg-white py-16 md:py-24">
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:48px_48px]" />
+          <div className="pointer-events-none absolute right-0 top-0 h-[500px] w-[500px] translate-x-1/3 -translate-y-1/4 rounded-full bg-[var(--color-green-500)]/5 blur-[100px]" />
           <Container className="relative z-10">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
               <div>
-                <div className="mb-6 inline-flex items-center gap-2 border-2 border-[var(--color-navy-950)] bg-[var(--color-green-400)] px-4 py-2 shadow-[4px_4px_0px_0px_var(--color-navy-950)]">
-                  <span className="flex size-2 shrink-0 bg-[var(--color-navy-950)]" />
-                  <span className="text-xs font-black uppercase tracking-widest text-[var(--color-navy-950)]">
+                <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-[var(--color-navy-200)] bg-white px-5 py-2 shadow-sm">
+                  <span className="flex size-2 shrink-0 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+                  <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-navy-950)]">
                     Interactive ROI Calculator
                   </span>
                 </div>
 
                 <h1
-                  className="mb-6 text-5xl font-black uppercase leading-[0.92] tracking-tighter md:text-7xl"
-                  style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+                  className="mb-6 text-5xl font-black uppercase leading-[0.92] tracking-tighter md:text-7xl text-balance"
+                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                 >
                   <span className="text-[var(--color-navy-950)]">Calculate Your</span>
                   <br />
@@ -140,28 +141,28 @@ export default function ROICalculatorClient() {
                   Enter your operational data below. In 60 seconds, see exactly how much revenue you&apos;re leaving on the table — and what OpsFlo can recover for your business.
                 </p>
 
-                <div className="mt-10 grid grid-cols-3 gap-0 border-2 border-[var(--color-navy-950)] bg-white shadow-[6px_6px_0px_0px_var(--color-green-500)]">
+                <div className="mt-10 grid grid-cols-3 gap-0 rounded-3xl border border-[var(--color-gray-200)] bg-white shadow-sm overflow-hidden divide-x divide-[var(--color-gray-200)]">
                   {[
                     { value: "5-15%", label: "Revenue Recovered" },
                     { value: "85%", label: "Faster Billing" },
                     { value: "3-6mo", label: "Avg. Payback" },
                   ].map((s, i) => (
-                    <div key={s.label} className={`p-4 text-center ${i < 2 ? "border-r-2 border-[var(--color-navy-950)]" : ""}`}>
-                      <div className="text-xl font-black text-[var(--color-navy-950)]" style={{ fontFamily: "'TASA Orbiter', sans-serif" }}>
+                    <div key={s.label} className="p-4 md:p-6 text-center bg-white transition-colors hover:bg-[var(--color-gray-50)]">
+                      <div className="text-2xl md:text-3xl font-black text-[var(--color-navy-950)]" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
                         {s.value}
                       </div>
-                      <div className="mt-1 text-xs font-bold uppercase tracking-widest text-[var(--color-gray-600)]">{s.label}</div>
+                      <div className="mt-2 text-[10px] md:text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)]">{s.label}</div>
                     </div>
                   ))}
                 </div>
               </div>
               
-              <div className="relative aspect-square md:aspect-video lg:aspect-square w-full overflow-hidden border-2 border-[var(--color-navy-950)] shadow-[8px_8px_0px_0px_var(--color-green-500)]">
+              <div className="relative aspect-square md:aspect-video lg:aspect-square w-full overflow-hidden rounded-3xl border border-[var(--color-gray-200)] shadow-xl">
                 <Image
                   src="/images/hero/refinery-tower.jpg"
                   alt="Oilfield operations facility"
                   fill
-                  className="object-cover transition-transform duration-700 hover:scale-105"
+                  className="object-cover transition-transform duration-1000 hover:scale-105"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   priority
                 />
@@ -178,11 +179,10 @@ export default function ROICalculatorClient() {
               {/* Sliders Column */}
               <div className="space-y-6">
                 <div className="mb-8 flex items-center gap-3">
-                  <span className="h-4 w-4 shrink-0 block border-2 border-[var(--color-navy-950)] bg-[var(--color-green-400)]" />
-                  <span className="text-base font-black uppercase tracking-widest text-[var(--color-navy-950)]">
+                  <span className="h-4 w-4 shrink-0 block rounded-sm bg-[var(--color-green-500)]" />
+                  <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)]">
                     Your Operation
                   </span>
-                  <div className="h-px flex-1 bg-[var(--color-navy-950)]/20" />
                 </div>
 
                 <div className="grid gap-3 md:gap-4">
@@ -236,22 +236,34 @@ export default function ROICalculatorClient() {
                 </div>
                 
                 {/* How we calculate */}
-                <div className="mt-8 border-2 border-[var(--color-navy-950)] bg-white p-6 md:p-8 shadow-[4px_4px_0px_0px_var(--color-navy-950)]">
-                  <p className="mb-6 text-sm font-black uppercase tracking-widest text-[var(--color-navy-950)] border-b-2 border-[var(--color-navy-950)] pb-4">
+                <div className="mt-10 rounded-3xl border border-[var(--color-gray-200)] bg-white p-6 md:p-8 shadow-sm">
+                  <p className="mb-6 text-xs font-bold uppercase tracking-widest text-[var(--color-navy-950)] border-b border-[var(--color-gray-100)] pb-4">
                     How We Calculate This
                   </p>
-                  <div className="grid gap-4 sm:grid-cols-2 text-sm font-medium text-[var(--color-gray-600)]">
-                    <div>
-                      <span className="font-black text-[var(--color-navy-950)]">Revenue at risk</span> = annual revenue × missed ticket %
+                  <div className="grid gap-5 sm:grid-cols-2 text-sm font-medium text-[var(--color-gray-600)]">
+                    <div className="space-y-1">
+                      <div className="font-bold text-[var(--color-navy-950)] flex items-center gap-2">
+                        <span className="size-1.5 rounded-full bg-[var(--color-green-500)]" /> Revenue at risk
+                      </div>
+                      <div className="pl-3.5 text-[var(--color-gray-500)] text-xs">Annual revenue × missed ticket %</div>
                     </div>
-                    <div>
-                      <span className="font-black text-[var(--color-navy-950)]">Recovery</span> = revenue at risk × 90% (average)
+                    <div className="space-y-1">
+                      <div className="font-bold text-[var(--color-navy-950)] flex items-center gap-2">
+                        <span className="size-1.5 rounded-full bg-[var(--color-green-500)]" /> Recovery
+                      </div>
+                      <div className="pl-3.5 text-[var(--color-gray-500)] text-xs">Revenue at risk × 90% (average)</div>
                     </div>
-                    <div>
-                      <span className="font-black text-[var(--color-navy-950)]">Billing cycle</span> = reduced 85% with digital tracking
+                    <div className="space-y-1">
+                      <div className="font-bold text-[var(--color-navy-950)] flex items-center gap-2">
+                        <span className="size-1.5 rounded-full bg-[var(--color-green-500)]" /> Billing cycle
+                      </div>
+                      <div className="pl-3.5 text-[var(--color-gray-500)] text-xs">Reduced 85% with digital tracking</div>
                     </div>
-                    <div>
-                      <span className="font-black text-[var(--color-navy-950)]">ROI</span> = recovery ÷ estimated platform cost
+                    <div className="space-y-1">
+                      <div className="font-bold text-[var(--color-navy-950)] flex items-center gap-2">
+                        <span className="size-1.5 rounded-full bg-[var(--color-green-500)]" /> ROI
+                      </div>
+                      <div className="pl-3.5 text-[var(--color-gray-500)] text-xs">Recovery ÷ estimated platform cost</div>
                     </div>
                   </div>
                 </div>
@@ -260,61 +272,61 @@ export default function ROICalculatorClient() {
               {/* Live Preview Column (Sticky) */}
               <div className="lg:sticky lg:top-24 space-y-6">
                 <div className="mb-8 flex items-center gap-3">
-                  <span className="h-4 w-4 shrink-0 block bg-[var(--color-navy-950)]" />
-                  <span className="text-base font-black uppercase tracking-widest text-[var(--color-navy-950)]">
+                  <span className="h-4 w-4 shrink-0 block rounded-sm bg-[var(--color-green-500)]" />
+                  <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)]">
                     Live Preview
                   </span>
-                  <div className="h-px flex-1 bg-[var(--color-navy-950)]/20" />
                 </div>
 
-                <div className="border-2 border-[var(--color-navy-950)] bg-[var(--color-navy-950)] shadow-[8px_8px_0px_0px_var(--color-green-500)] flex flex-col transition-all">
-                  <div className="p-6 md:p-8 space-y-8">
+                <div className="rounded-3xl border border-[var(--color-navy-800)] bg-[var(--color-navy-950)] shadow-xl overflow-hidden flex flex-col transition-all relative group">
+                  <div className="absolute right-[-20%] top-[-10%] w-[150%] h-[150%] bg-[radial-gradient(ellipse_at_center,_var(--color-green-500)_0%,_transparent_50%)] opacity-10 pointer-events-none transition-opacity duration-700 group-hover:opacity-20" />
+                  <div className="p-8 md:p-10 space-y-10 relative z-10">
                     <div>
-                      <div className="text-xs font-bold uppercase tracking-widest text-[var(--color-gray-400)] mb-1">
+                      <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-gray-400)] mb-3">
                         Annual Revenue At Risk
                       </div>
-                      <div className="text-5xl font-black text-red-500 tracking-tighter" style={{ fontFamily: "'TASA Orbiter', sans-serif" }}>
+                      <div className="text-5xl lg:text-6xl font-black text-rose-500 tracking-tighter" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
                         {fmt(results.revenueAtRisk)}
                       </div>
                     </div>
 
-                    <div className="h-0.5 w-full bg-[var(--color-navy-800)]" />
+                    <div className="h-px w-full bg-gradient-to-r from-[var(--color-navy-800)] to-transparent" />
 
                     <div>
-                      <div className="text-xs font-bold uppercase tracking-widest text-[var(--color-gray-400)] mb-1">
+                      <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-gray-400)] mb-3">
                         Projected Recovery
                       </div>
-                      <div className="text-5xl font-black text-[var(--color-green-400)] tracking-tighter" style={{ fontFamily: "'TASA Orbiter', sans-serif" }}>
+                      <div className="text-5xl lg:text-6xl font-black text-[var(--color-green-400)] tracking-tighter drop-shadow-[0_0_15px_rgba(74,222,128,0.2)]" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
                         {fmt(results.recoveredRevenue)}
                       </div>
                     </div>
 
-                    <div className="h-0.5 w-full bg-[var(--color-navy-800)]" />
+                    <div className="h-px w-full bg-gradient-to-r from-[var(--color-navy-800)] to-transparent" />
 
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-2 gap-6">
                       <div>
-                        <div className="text-xs font-bold uppercase tracking-widest text-[var(--color-gray-400)] mb-1">
+                        <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-gray-400)] mb-2">
                           New Billing Cycle
                         </div>
-                        <div className="text-3xl font-black text-white tracking-tighter" style={{ fontFamily: "'TASA Orbiter', sans-serif" }}>
+                        <div className="text-3xl font-black text-white tracking-tighter" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
                           {results.billingReduction} Days
                         </div>
                       </div>
                       <div>
-                        <div className="text-xs font-bold uppercase tracking-widest text-[var(--color-gray-400)] mb-1">
+                        <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-gray-400)] mb-2">
                           Payback Period
                         </div>
-                        <div className="text-3xl font-black text-white tracking-tighter" style={{ fontFamily: "'TASA Orbiter', sans-serif" }}>
+                        <div className="text-3xl font-black text-white tracking-tighter" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
                           {results.paybackMonths} {results.paybackMonths === 1 ? "Mo" : "Mos"}
                         </div>
                       </div>
                     </div>
 
                     <div>
-                      <div className="text-xs font-bold uppercase tracking-widest text-[var(--color-gray-400)] mb-1">
+                      <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-gray-400)] mb-2">
                         Projected ROI
                       </div>
-                      <div className="text-3xl font-black text-[var(--color-green-400)] tracking-tighter" style={{ fontFamily: "'TASA Orbiter', sans-serif" }}>
+                      <div className="text-4xl font-black text-[var(--color-green-400)] tracking-tighter" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
                         {results.roi}%
                       </div>
                     </div>
@@ -322,10 +334,10 @@ export default function ROICalculatorClient() {
 
                   <Link
                     href={`/contact?crews=${crews}&jobs=${monthlyJobs}&ticket=${avgTicket}`}
-                    className="group flex items-center justify-between bg-[var(--color-green-500)] px-6 py-6 text-sm font-black uppercase tracking-wide text-[var(--color-navy-950)] transition-colors hover:bg-[var(--color-green-400)] border-t-2 border-[var(--color-navy-950)]"
+                    className="group/btn relative z-10 flex items-center justify-between bg-[var(--color-green-500)] px-8 py-6 text-sm font-bold uppercase tracking-widest text-[var(--color-navy-950)] transition-colors hover:bg-[var(--color-green-400)]"
                   >
                     <span>Get Your Real Number</span>
-                    <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="size-5 transition-transform group-hover/btn:translate-x-1" />
                   </Link>
                 </div>
               </div>
@@ -335,14 +347,14 @@ export default function ROICalculatorClient() {
         </section>
 
         {/* ── BOTTOM CTA ── */}
-        <section className="relative overflow-hidden border-t-2 border-[var(--color-navy-950)] bg-white py-24">
+        <section className="relative overflow-hidden border-t border-[var(--color-gray-200)] bg-white py-24">
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:48px_48px]" />
           <Container className="relative z-10">
             <div className="flex flex-col items-start justify-between gap-10 lg:flex-row lg:items-center">
               <div className="max-w-2xl">
                 <h2
-                  className="text-5xl font-black uppercase leading-[0.92] tracking-tighter md:text-6xl"
-                  style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+                  className="text-5xl font-black uppercase leading-[0.92] tracking-tighter md:text-6xl text-balance"
+                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                 >
                   <span className="text-[var(--color-navy-950)]">The Number</span>
                   <br />
@@ -352,20 +364,20 @@ export default function ROICalculatorClient() {
                   This calculator uses conservative industry averages. A personalized diagnostic with your actual data almost always reveals a larger gap. Let us show you the real number.
                 </p>
               </div>
-              <div className="flex w-full flex-col gap-4 lg:w-auto">
+              <div className="flex w-full flex-col gap-4 lg:w-[380px]">
                 <Link
                   href="/contact"
-                  className="group flex items-center justify-between border-2 border-[var(--color-navy-950)] bg-[var(--color-green-500)] px-8 py-5 text-sm font-black uppercase tracking-widest text-[var(--color-navy-950)] shadow-[6px_6px_0px_0px_var(--color-navy-950)] transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] hover:bg-[var(--color-green-400)] hover:shadow-[8px_8px_0px_0px_var(--color-navy-950)]"
+                  className="group/cta flex w-full items-center justify-between rounded-xl bg-[var(--color-green-500)] px-6 py-5 text-sm font-bold uppercase tracking-widest text-[var(--color-navy-950)] shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-400)]"
                 >
                   <span>Get Your Real Number</span>
-                  <ArrowRight className="ml-8 size-5 transition-transform group-hover:translate-x-2" />
+                  <ArrowRight className="size-5 transition-transform group-hover/cta:translate-x-1" />
                 </Link>
                 <Link
                   href="/case-studies"
-                  className="group flex items-center justify-between border-2 border-[var(--color-navy-950)] bg-white px-8 py-5 text-sm font-black uppercase tracking-widest text-[var(--color-navy-950)] shadow-[6px_6px_0px_0px_var(--color-green-500)] transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] hover:bg-[var(--color-gray-50)] hover:shadow-[8px_8px_0px_0px_var(--color-green-500)]"
+                  className="group/cta2 flex w-full items-center justify-between rounded-xl border border-[var(--color-gray-200)] bg-white px-6 py-5 text-sm font-bold uppercase tracking-widest text-[var(--color-navy-950)] shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-gray-50)] hover:border-[var(--color-gray-300)]"
                 >
                   <span>See Customer Proof</span>
-                  <ArrowRight className="ml-8 size-5 transition-transform group-hover:translate-x-2" />
+                  <ArrowRight className="size-5 transition-transform group-hover/cta2:translate-x-1" />
                 </Link>
               </div>
             </div>

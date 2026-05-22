@@ -279,7 +279,7 @@ export const FOOTER = {
   ],
   contact: {
     address: "5th Street, 21st Floor, New York, USA",
-    phone: "+1 (555) 010-0123",
+    phone: "+1 (813) 398-6692",
     email: "info@opsflo.example.com",
   },
 };

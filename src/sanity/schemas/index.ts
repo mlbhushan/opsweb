@@ -5,6 +5,7 @@ import { guide } from "./guide";
 import { webinar } from "./webinar";
 import { careerOpening } from "./careerOpening";
 import { integration } from "./integration";
+import { knowledgeDoc } from "./knowledgeDoc";
 
 export const schemaTypes = [
   blogPost,
@@ -14,4 +15,5 @@ export const schemaTypes = [
   webinar,
   careerOpening,
   integration,
+  knowledgeDoc,
 ];

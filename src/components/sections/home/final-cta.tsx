@@ -22,13 +22,13 @@ export function FinalCTA() {
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.3, 0.8, 0.3]);
 
   return (
-    <section 
+    <section
       ref={containerRef}
       className="relative section overflow-hidden bg-slate-50 py-12 sm:py-16 border-t border-slate-200"
     >
       {/* Swiss Style Grid Background - Subtle */}
       <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center">
-        <div 
+        <div
           className="absolute inset-0 opacity-[0.04]"
           style={{
             backgroundImage: `linear-gradient(to right, #0f172a 1px, transparent 1px), linear-gradient(to bottom, #0f172a 1px, transparent 1px)`,
@@ -40,11 +40,11 @@ export function FinalCTA() {
       </div>
 
       {/* Moving Subtle Ambient Elements */}
-      <motion.div 
+      <motion.div
         style={{ y: y1, opacity }}
         className="absolute top-0 right-[10%] w-[600px] h-[600px] bg-blue-200/50 rounded-full blur-[120px] pointer-events-none z-0 mix-blend-multiply"
       />
-      <motion.div 
+      <motion.div
         style={{ y: y2, opacity }}
         className="absolute bottom-0 left-[10%] w-[500px] h-[500px] bg-emerald-200/40 rounded-full blur-[100px] pointer-events-none z-0 mix-blend-multiply"
       />
@@ -83,15 +83,15 @@ export function FinalCTA() {
               {/* @ts-ignore */}
               {finalCTA.headlineEnd}
             </h2>
-            
+
             <p className="mt-4 max-w-2xl text-base sm:text-lg leading-relaxed text-slate-600 font-medium">
               {finalCTA.body}
             </p>
 
             {/* Swiss Style Buttons - Clean, Structured */}
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto">
-              <Link 
-                href={finalCTA.primaryCTA.href} 
+              <Link
+                href={finalCTA.primaryCTA.href}
                 className="group relative inline-flex h-10 w-full sm:w-auto items-center justify-center gap-2 overflow-hidden rounded-xl bg-slate-900 px-6 font-semibold text-white transition-all duration-300 hover:bg-blue-600 shadow-xl shadow-slate-900/10 hover:shadow-blue-600/20"
               >
                 <span className="relative z-10 text-sm tracking-wide">{finalCTA.primaryCTA.label}</span>

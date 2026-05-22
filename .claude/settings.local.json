@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(node -e \"console.log\\(require\\('./node_modules/ai/package.json'\\).version\\)\")",
+      "Bash(npm uninstall *)",
+      "Bash(npm run *)",
+      "Bash(git stash *)"
+    ]
+  }
+}

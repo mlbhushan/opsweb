@@ -31,7 +31,7 @@ const FailurePredictionVisual = () => (
         />
       </motion.svg>
       {/* Alert badge */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.5 }}
@@ -47,7 +47,7 @@ const FailurePredictionVisual = () => (
 const RevenueRiskVisual = () => (
   <div className="w-full h-full flex items-center justify-center gap-3 p-6 relative">
     {[0, 1, 2].map((i) => (
-      <motion.div 
+      <motion.div
         key={i}
         className={`w-20 rounded-lg border flex flex-col p-2.5 gap-2.5 ${i === 1 ? 'bg-white border-[var(--color-green-500)] shadow-lg z-10 scale-110' : 'bg-white/60 border-[var(--color-navy-200)] opacity-60'}`}
         initial={{ y: 20, opacity: 0 }}
@@ -60,14 +60,14 @@ const RevenueRiskVisual = () => (
         <div className="mt-auto pt-2.5 border-t border-[var(--color-navy-50)] flex justify-between items-center">
           <div className="h-2 w-1/3 bg-[var(--color-navy-200)] rounded-full" />
           {i === 1 && (
-             <motion.div 
-               initial={{ scale: 0 }}
-               whileInView={{ scale: 1 }}
-               transition={{ delay: 0.6 }}
-               className="w-5 h-5 rounded-full bg-[var(--color-green-100)] flex items-center justify-center"
-             >
-               <DollarSign className="w-3 h-3 text-[var(--color-green-600)]" strokeWidth={3} />
-             </motion.div>
+            <motion.div
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              transition={{ delay: 0.6 }}
+              className="w-5 h-5 rounded-full bg-[var(--color-green-100)] flex items-center justify-center"
+            >
+              <DollarSign className="w-3 h-3 text-[var(--color-green-600)]" strokeWidth={3} />
+            </motion.div>
           )}
         </div>
       </motion.div>
@@ -78,32 +78,32 @@ const RevenueRiskVisual = () => (
 const NextActionVisual = () => (
   <div className="w-full h-full flex items-center justify-center p-6 relative">
     <div className="flex items-center">
-      <motion.div 
+      <motion.div
         className="w-10 h-10 rounded-full border-2 border-[var(--color-navy-200)] bg-white flex items-center justify-center z-10"
         initial={{ scale: 0 }} whileInView={{ scale: 1 }} transition={{ delay: 0.1 }}
       >
         <div className="w-2 h-2 rounded-full bg-[var(--color-navy-300)]" />
       </motion.div>
-      <motion.div 
+      <motion.div
         className="h-0.5 w-10 bg-[var(--color-navy-200)] -mx-1"
         initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} transition={{ delay: 0.3 }} style={{ originX: 0 }}
       />
-      <motion.div 
+      <motion.div
         className="w-16 h-16 rounded-full border-2 border-[var(--color-green-500)] bg-[var(--color-green-50)] flex items-center justify-center z-20 shadow-lg relative"
         initial={{ scale: 0 }} whileInView={{ scale: 1 }} transition={{ delay: 0.5 }}
       >
         <Waypoints className="w-7 h-7 text-[var(--color-green-600)]" />
-        <motion.div 
-           className="absolute -inset-3 border-2 border-[var(--color-green-300)] rounded-full"
-           animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0, 0.5] }}
-           transition={{ duration: 2, repeat: Infinity }}
+        <motion.div
+          className="absolute -inset-3 border-2 border-[var(--color-green-300)] rounded-full"
+          animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0, 0.5] }}
+          transition={{ duration: 2, repeat: Infinity }}
         />
       </motion.div>
-      <motion.div 
+      <motion.div
         className="h-0.5 w-10 bg-dashed border-t-2 border-dashed border-[var(--color-navy-200)] -mx-1"
         initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.8 }}
       />
-      <motion.div 
+      <motion.div
         className="w-10 h-10 rounded-full border-2 border-[var(--color-navy-200)] bg-white/50 flex items-center justify-center z-10"
         initial={{ scale: 0 }} whileInView={{ scale: 1 }} transition={{ delay: 1.0 }}
       >
@@ -112,14 +112,14 @@ const NextActionVisual = () => (
   </div>
 );
 
-function CapabilityCard({ 
-  title, 
-  description, 
-  index 
-}: { 
-  title: string, 
-  description: string, 
-  index: number 
+function CapabilityCard({
+  title,
+  description,
+  index
+}: {
+  title: string,
+  description: string,
+  index: number
 }) {
   return (
     <motion.div
@@ -128,25 +128,25 @@ function CapabilityCard({
     >
       {/* Visual Demo Area */}
       <div className="h-56 bg-slate-50 relative flex items-center justify-center border-b border-[var(--color-navy-100)] overflow-hidden">
-         {/* Subtle background pattern in demo area */}
-         <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(circle_at_center,_var(--color-navy-900)_1px,_transparent_1px)] bg-[size:12px_12px]" />
-         
-         {index === 0 && <FailurePredictionVisual />}
-         {index === 1 && <RevenueRiskVisual />}
-         {index === 2 && <NextActionVisual />}
+        {/* Subtle background pattern in demo area */}
+        <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(circle_at_center,_var(--color-navy-900)_1px,_transparent_1px)] bg-[size:12px_12px]" />
+
+        {index === 0 && <FailurePredictionVisual />}
+        {index === 1 && <RevenueRiskVisual />}
+        {index === 2 && <NextActionVisual />}
       </div>
-      
+
       {/* Text Area */}
       <div className="p-8 flex flex-col flex-1">
-         <div className="flex items-center gap-3 mb-4">
-            <span className="font-mono text-xs font-bold text-[var(--color-navy-400)]">0{index + 1}</span>
-            <h3 className="text-[20px] font-bold text-[var(--color-navy-950)] leading-tight group-hover:text-[var(--color-green-600)] transition-colors">
-              {title}
-            </h3>
-         </div>
-         <p className="text-[15px] text-[var(--color-navy-600)] leading-relaxed">
-           {description}
-         </p>
+        <div className="flex items-center gap-3 mb-4">
+          <span className="font-mono text-xs font-bold text-[var(--color-navy-400)]">0{index + 1}</span>
+          <h3 className="text-[20px] font-bold text-[var(--color-navy-950)] leading-tight group-hover:text-[var(--color-green-600)] transition-colors">
+            {title}
+          </h3>
+        </div>
+        <p className="text-[15px] text-[var(--color-navy-600)] leading-relaxed">
+          {description}
+        </p>
       </div>
     </motion.div>
   );
@@ -154,7 +154,7 @@ function CapabilityCard({
 
 export function AiIntelligence() {
   const { ai } = HOME;
-  
+
   // Safely split the headline if it contains a comma for the dual-tone effect
   const headlineParts = ai.headline.split(", ");
   const hasComma = headlineParts.length > 1;
@@ -167,17 +167,17 @@ export function AiIntelligence() {
         <svg className="absolute inset-0 w-full h-full opacity-[0.02]" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="grid-light" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M0 40V0H40" fill="none" stroke="#0f172a" strokeWidth="1"/>
+              <path d="M0 40V0H40" fill="none" stroke="#0f172a" strokeWidth="1" />
             </pattern>
           </defs>
-          <rect width="100%" height="100%" fill="url(#grid-light)"/>
+          <rect width="100%" height="100%" fill="url(#grid-light)" />
         </svg>
-        
+
         {/* Floating gradient orbs */}
         <motion.div
           className="absolute top-[5%] right-[5%] w-[40vw] max-w-[600px] h-[40vw] max-h-[600px] rounded-full bg-gradient-to-br from-[var(--color-green-200)] to-blue-200 blur-[120px] opacity-40 mix-blend-multiply"
-          animate={{ 
-            x: [0, 40, -20, 0], 
+          animate={{
+            x: [0, 40, -20, 0],
             y: [0, 30, 50, 0],
             scale: [1, 1.05, 0.95, 1]
           }}
@@ -185,8 +185,8 @@ export function AiIntelligence() {
         />
         <motion.div
           className="absolute bottom-[5%] left-[5%] w-[35vw] max-w-[500px] h-[35vw] max-h-[500px] rounded-full bg-gradient-to-tr from-slate-300 to-[var(--color-green-100)] blur-[120px] opacity-50 mix-blend-multiply"
-          animate={{ 
-            x: [0, -30, 20, 0], 
+          animate={{
+            x: [0, -30, 20, 0],
             y: [0, -40, -10, 0],
             scale: [1, 0.95, 1.05, 1]
           }}
@@ -197,7 +197,7 @@ export function AiIntelligence() {
       <Container className="relative z-10">
         {/* Header Layout */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-10 mb-16">
-          <motion.div 
+          <motion.div
             className="max-w-3xl"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -218,7 +218,7 @@ export function AiIntelligence() {
               )}
             </h2>
           </motion.div>
-          
+
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -244,11 +244,11 @@ export function AiIntelligence() {
           viewport={viewportOnce}
         >
           {ai.capabilities.map((cap, i) => (
-            <CapabilityCard 
-              key={cap.title} 
-              title={cap.title} 
-              description={cap.description} 
-              index={i} 
+            <CapabilityCard
+              key={cap.title}
+              title={cap.title}
+              description={cap.description}
+              index={i}
             />
           ))}
         </motion.div>

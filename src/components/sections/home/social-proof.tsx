@@ -5,27 +5,31 @@ import { TestimonialCarousel } from "@/components/ui/testimonial-carousel";
 
 export function SocialProof() {
   return (
-    <section className="py-24 md:py-32 bg-[var(--color-navy-950)] relative border-t border-[var(--color-navy-900)] overflow-hidden">
+    <section className="py-20 md:py-24 bg-[var(--color-navy-950)] relative overflow-hidden">
       <Container>
-        {/* Swiss Style Grid */}
+        {/* Modern Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16">
-          
+
           {/* Left Column: Title and Context */}
           <div className="md:col-span-4 flex flex-col justify-between">
             <div>
-              <div className="flex items-center gap-4 mb-8">
-                <span className="h-4 w-4 bg-[var(--color-green-500)] block"></span>
-                <h3 className="text-xs font-bold text-[var(--color-gray-400)] uppercase tracking-widest m-0">
+              <div className="inline-flex items-center gap-3 rounded-full border border-[var(--color-green-500)]/20 bg-[var(--color-green-500)]/10 px-4 py-1.5 mb-8 backdrop-blur-md shadow-[0_0_20px_-5px_rgba(34,197,94,0.2)]">
+                <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] shadow-[0_0_8px_var(--color-green-500)]" />
+                <span className="text-xs font-semibold tracking-wider text-[var(--color-green-400)] uppercase">
                   Operator Validation
-                </h3>
+                </span>
               </div>
-              <h2 className="text-4xl lg:text-5xl font-bold text-white leading-[1.1] tracking-tight text-balance uppercase">
-                Built for the <span className="text-[var(--color-green-500)]">field.</span><br />Proven in the <span className="text-[var(--color-green-500)]">dirt.</span>
+              
+              <h2 className="text-4xl lg:text-5xl font-extrabold text-white leading-[1.1] tracking-tight text-balance">
+                Built for the <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-green-400)] to-[var(--color-green-600)] drop-shadow-[0_0_15px_rgba(34,197,94,0.2)]">field.</span><br />
+                Proven in the <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-green-400)] to-[var(--color-green-600)] drop-shadow-[0_0_15px_rgba(34,197,94,0.2)]">dirt.</span>
               </h2>
             </div>
-            
-            <div className="hidden md:block mt-16 pt-8 border-t-2 border-[var(--color-navy-800)] max-w-xs">
-              <p className="text-sm text-[var(--color-gray-400)] leading-relaxed font-medium">
+
+            <div className="hidden md:block mt-16 pt-8 border-t border-[var(--color-navy-800)] max-w-xs relative">
+              {/* Subtle accent glow */}
+              <div className="absolute top-0 left-0 w-16 h-px bg-gradient-to-r from-[var(--color-green-500)] to-transparent -translate-y-px" />
+              <p className="text-[15px] text-[var(--color-navy-300)] leading-relaxed font-light">
                 OpsFlo is trusted by industrial operators who demand absolute precision, financial accountability, and seamless field execution.
               </p>
             </div>

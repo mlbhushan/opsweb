@@ -7,7 +7,7 @@ export const ABOUT = {
   story: {
     headline: "Our Story",
     paragraphs: [
-      "Our founders spent years managing field operations across Western Canada. They saw the same pattern everywhere: operators used 3 to 5 disconnected tools, lost revenue to missed field tickets, and dealt with billing cycles measured in weeks instead of hours.",
+      "Our founders spent years managing field operations across the United States. They saw the same pattern everywhere: operators used 3 to 5 disconnected tools, lost revenue to missed field tickets, and dealt with billing cycles measured in weeks instead of hours.",
       "When they looked for software that truly understood oilfield operations (offline-first, built for complex job structures, integrated from field to invoice) nothing existed. So they built it.",
       "Today, OpsFlo powers field operations for hundreds of companies across oilfield services, equipment rental, and fluid hauling.",
     ],

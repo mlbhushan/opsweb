@@ -115,38 +115,38 @@ export function SolutionPage({ data }: { data: SolutionPageData }) {
               {/* Text */}
               <div className="lg:col-span-7">
                 {/* Eyebrow pill */}
-                <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--color-navy-800)]/15 bg-white px-4 py-2 shadow-[var(--shadow-xs)]">
-                  <span className="flex size-2 rounded-full bg-[var(--color-green-500)]" />
-                  <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-navy-900)]">
+                <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-[var(--color-navy-200)] bg-white px-5 py-2 shadow-sm">
+                  <span className="flex size-2 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+                  <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-navy-950)]">
                     {data.eyebrow}
                   </span>
                 </div>
 
                 {/* Dual-tone heading */}
                 <h1
-                  className="mb-6 text-4xl md:text-5xl lg:text-6xl font-black uppercase leading-[0.92] tracking-tighter"
-                  style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+                  className="mb-6 text-4xl md:text-5xl lg:text-6xl font-black uppercase leading-[0.92] tracking-tighter text-balance"
+                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                 >
                   <span className="text-[var(--color-green-500)]">{data.headlineGreen}</span>
                   <br />
                   <span className="text-[var(--color-navy-950)]">{data.headlineNavy}</span>
                 </h1>
 
-                <p className="mb-10 max-w-xl text-base md:text-lg font-light leading-relaxed text-[var(--color-gray-600)]">
+                <p className="mb-10 max-w-xl text-base md:text-lg font-medium leading-relaxed text-[var(--color-gray-600)]">
                   {data.tagline}
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Link
                     href={data.sidebar.primaryCta.href}
-                    className="group inline-flex items-center justify-between bg-[var(--color-navy-950)] px-7 py-4 text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:bg-[var(--color-green-500)] hover:text-[var(--color-navy-950)]"
+                    className="group/btn inline-flex items-center justify-center bg-[var(--color-navy-950)] px-8 py-5 text-sm font-bold uppercase tracking-widest text-white transition-all duration-300 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-500)] hover:text-[var(--color-navy-950)]"
                   >
                     {data.sidebar.primaryCta.label}
-                    <ArrowRight className="ml-3 size-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-3 size-5 transition-transform group-hover/btn:translate-x-1" />
                   </Link>
                   <Link
                     href="/platform"
-                    className="group inline-flex items-center justify-center border-2 border-[var(--color-gray-200)] px-7 py-4 text-sm font-semibold uppercase tracking-wider text-[var(--color-navy-950)] transition-all hover:border-[var(--color-navy-950)]"
+                    className="group/btn inline-flex items-center justify-center border border-[var(--color-gray-200)] bg-white px-8 py-5 text-sm font-bold uppercase tracking-widest text-[var(--color-navy-950)] transition-all duration-300 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-[var(--color-gray-300)] hover:bg-[var(--color-gray-50)]"
                   >
                     View Platform
                   </Link>
@@ -158,23 +158,23 @@ export function SolutionPage({ data }: { data: SolutionPageData }) {
                 {data.stats.map((s, i) => (
                   <div
                     key={s.label}
-                    className={`flex flex-col justify-end border-2 border-[var(--color-navy-950)] p-6 ${
+                    className={`flex flex-col justify-end rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow ${
                       i === 0
                         ? "bg-[var(--color-navy-950)]"
                         : i === 1
                         ? "bg-[var(--color-green-500)]"
                         : i === 2
-                        ? "bg-[var(--color-gray-50)]"
-                        : "bg-white"
+                        ? "bg-[var(--color-gray-50)] border border-[var(--color-gray-200)]"
+                        : "bg-white border border-[var(--color-gray-200)]"
                     }`}
                   >
                     <div
-                      className={`mb-1 font-black leading-none tracking-tighter text-4xl ${
+                      className={`mb-2 font-black leading-none tracking-tighter text-4xl ${
                         i === 0
                           ? "text-[var(--color-green-500)]"
                           : "text-[var(--color-navy-950)]"
                       }`}
-                      style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+                      style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                     >
                       {s.value}
                     </div>
@@ -198,37 +198,36 @@ export function SolutionPage({ data }: { data: SolutionPageData }) {
             <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
 
               {/* ── MAIN ── */}
-              <div className="lg:col-span-8 space-y-20">
+              <div className="lg:col-span-8 order-1 lg:order-2 space-y-16">
 
                 {/* Problem */}
                 <div>
-                  <div className="mb-8 flex items-center gap-3">
-                    <span className="h-4 w-4 shrink-0 block bg-red-500" />
+                  <div className="mb-6 flex items-center gap-3">
+                    <span className="h-4 w-4 shrink-0 block bg-red-500 rounded-sm" />
                     <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)]">
                       {data.problem.label}
                     </span>
-                    <div className="h-px flex-1 bg-[var(--color-gray-200)]" />
                   </div>
 
                   <h2
                     className="mb-6 text-3xl md:text-4xl font-black uppercase leading-tight tracking-tight text-[var(--color-navy-950)]"
-                    style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                   >
                     {data.problem.headline}
                   </h2>
 
-                  <p className="text-base leading-relaxed text-[var(--color-gray-600)] font-light border-l-4 border-[var(--color-gray-200)] pl-6">
+                  <p className="text-lg leading-relaxed text-[var(--color-gray-600)] font-medium border-l-4 border-red-500/20 pl-6">
                     {data.problem.body}
                   </p>
 
                   {data.problem.bullets && data.problem.bullets.length > 0 && (
-                    <ul className="mt-6 space-y-3">
+                    <ul className="mt-8 space-y-4">
                       {data.problem.bullets.map((b) => (
                         <li
                           key={b}
-                          className="flex items-start gap-3 text-sm text-[var(--color-gray-600)] font-light"
+                          className="flex items-start gap-4 text-base text-[var(--color-gray-700)] font-medium"
                         >
-                          <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-red-400" />
+                          <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-red-400 shadow-sm" />
                           {b}
                         </li>
                       ))}
@@ -238,44 +237,43 @@ export function SolutionPage({ data }: { data: SolutionPageData }) {
 
                 {/* How it works */}
                 <div>
-                  <div className="mb-8 flex items-center gap-3">
-                    <span className="h-4 w-4 shrink-0 block bg-[var(--color-green-500)]" />
+                  <div className="mb-6 flex items-center gap-3">
+                    <span className="h-4 w-4 shrink-0 block bg-[var(--color-green-500)] rounded-sm" />
                     <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)]">
                       {data.solution.label}
                     </span>
-                    <div className="h-px flex-1 bg-[var(--color-gray-200)]" />
                   </div>
 
                   <h2
                     className="mb-10 text-3xl md:text-4xl font-black uppercase leading-tight tracking-tight text-[var(--color-navy-950)]"
-                    style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                   >
                     {data.solution.headline}
                   </h2>
 
-                  <div className="grid sm:grid-cols-3 gap-0 border-t-2 border-l-2 border-[var(--color-navy-950)]">
+                  <div className="grid sm:grid-cols-3 gap-6">
                     {data.solution.steps.map((step, i) => {
                       const Icon = step.icon;
                       return (
                         <div
                           key={step.title}
-                          className="group border-r-2 border-b-2 border-[var(--color-navy-950)] p-8 transition-colors duration-300 hover:bg-[var(--color-navy-950)]"
+                          className="group rounded-3xl border border-[var(--color-gray-200)] bg-white p-8 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 hover:border-[var(--color-green-400)]"
                         >
-                          <div className="mb-4 flex items-center gap-3">
+                          <div className="mb-6 flex items-center gap-4">
                             <span
-                              className="text-3xl font-black text-[var(--color-gray-200)] group-hover:text-[var(--color-navy-800)] transition-colors leading-none"
-                              style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+                              className="text-3xl font-black text-[var(--color-gray-200)] group-hover:text-[var(--color-green-500)] transition-colors leading-none"
+                              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                             >
                               {String(i + 1).padStart(2, "0")}
                             </span>
                             {Icon && (
-                              <Icon className="size-5 text-[var(--color-green-600)] group-hover:text-[var(--color-green-400)] transition-colors" />
+                              <Icon className="size-6 text-[var(--color-navy-950)]" />
                             )}
                           </div>
-                          <h3 className="mb-3 text-sm font-bold uppercase tracking-wide text-[var(--color-navy-900)] group-hover:text-white transition-colors">
+                          <h3 className="mb-3 text-base font-bold uppercase tracking-wide text-[var(--color-navy-950)]">
                             {step.title}
                           </h3>
-                          <p className="text-sm font-light leading-relaxed text-[var(--color-gray-500)] group-hover:text-[var(--color-gray-300)] transition-colors">
+                          <p className="text-sm font-medium leading-relaxed text-[var(--color-gray-600)]">
                             {step.description}
                           </p>
                         </div>
@@ -286,17 +284,16 @@ export function SolutionPage({ data }: { data: SolutionPageData }) {
 
                 {/* Outcomes */}
                 <div>
-                  <div className="mb-8 flex items-center gap-3">
-                    <span className="h-4 w-4 shrink-0 block bg-[var(--color-navy-950)]" />
+                  <div className="mb-6 flex items-center gap-3">
+                    <span className="h-4 w-4 shrink-0 block bg-[var(--color-navy-950)] rounded-sm" />
                     <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)]">
                       Outcomes
                     </span>
-                    <div className="h-px flex-1 bg-[var(--color-gray-200)]" />
                   </div>
 
                   <h2
                     className="mb-8 text-3xl md:text-4xl font-black uppercase leading-tight tracking-tight text-[var(--color-navy-950)]"
-                    style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                   >
                     {data.outcomes.headline}
                   </h2>
@@ -305,10 +302,10 @@ export function SolutionPage({ data }: { data: SolutionPageData }) {
                     {data.outcomes.items.map((item) => (
                       <div
                         key={item}
-                        className="flex items-start gap-4 border border-[var(--color-gray-200)] bg-white p-5 hover:border-[var(--color-green-400)] transition-colors"
+                        className="flex items-start gap-4 rounded-2xl border border-[var(--color-gray-200)] bg-white p-6 shadow-sm hover:shadow-md hover:border-[var(--color-green-400)] transition-all"
                       >
-                        <CheckCircle2 className="size-5 shrink-0 text-[var(--color-green-500)] mt-0.5" />
-                        <span className="text-sm font-medium text-[var(--color-navy-900)] leading-relaxed">
+                        <CheckCircle2 className="size-6 shrink-0 text-[var(--color-green-500)]" />
+                        <span className="text-sm font-semibold text-[var(--color-navy-900)] leading-relaxed">
                           {item}
                         </span>
                       </div>
@@ -319,38 +316,41 @@ export function SolutionPage({ data }: { data: SolutionPageData }) {
               </div>
 
               {/* ── SIDEBAR ── */}
-              <aside className="lg:col-span-4 space-y-8">
+              <aside className="lg:col-span-4 order-2 lg:order-1 space-y-6">
 
                 {/* CTA card */}
-                <div className="bg-[var(--color-navy-950)] p-8 border-2 border-[var(--color-navy-950)] shadow-[6px_6px_0px_0px_var(--color-green-500)]">
-                  <Zap className="mb-4 size-8 text-[var(--color-green-500)]" />
-                  <h3
-                    className="mb-2 text-2xl font-black uppercase tracking-tighter text-white leading-tight"
-                    style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
-                  >
-                    {data.sidebar.ctaHeadline}
-                  </h3>
-                  <p className="mb-6 text-sm font-light leading-relaxed text-[var(--color-gray-400)]">
-                    {data.sidebar.ctaBody}
-                  </p>
-                  <Link
-                    href={data.sidebar.primaryCta.href}
-                    className="group mb-2 flex w-full items-center justify-between bg-[var(--color-green-500)] px-5 py-4 text-sm font-bold uppercase tracking-wider text-[var(--color-navy-950)] transition-colors hover:bg-[var(--color-green-400)]"
-                  >
-                    {data.sidebar.primaryCta.label}
-                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                  <Link
-                    href={data.sidebar.secondaryCta.href}
-                    className="group flex w-full items-center justify-between border border-[var(--color-navy-700)] px-5 py-3 text-sm font-semibold uppercase tracking-wider text-[var(--color-gray-300)] transition-colors hover:border-[var(--color-gray-400)] hover:text-white"
-                  >
-                    {data.sidebar.secondaryCta.label}
-                    <ChevronRight className="size-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
+                <div className="rounded-3xl bg-[var(--color-navy-950)] p-8 shadow-xl relative overflow-hidden group">
+                  <div className="absolute right-[-10%] top-[-10%] w-[100%] h-[100%] bg-[radial-gradient(ellipse_at_center,_var(--color-green-500)_0%,_transparent_60%)] opacity-10 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none" />
+                  <div className="relative z-10">
+                    <Zap className="mb-4 size-8 text-[var(--color-green-500)]" />
+                    <h3
+                      className="mb-2 text-2xl font-black uppercase tracking-tighter text-white leading-tight"
+                      style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    >
+                      {data.sidebar.ctaHeadline}
+                    </h3>
+                    <p className="mb-8 text-sm font-medium leading-relaxed text-[var(--color-gray-300)]">
+                      {data.sidebar.ctaBody}
+                    </p>
+                    <Link
+                      href={data.sidebar.primaryCta.href}
+                      className="group/cta mb-3 flex w-full items-center justify-between rounded-xl bg-[var(--color-green-500)] px-5 py-4 text-sm font-bold uppercase tracking-wider text-[var(--color-navy-950)] transition-all hover:bg-[var(--color-green-400)] shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                    >
+                      {data.sidebar.primaryCta.label}
+                      <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-1" />
+                    </Link>
+                    <Link
+                      href={data.sidebar.secondaryCta.href}
+                      className="group/cta2 flex w-full items-center justify-between rounded-xl border border-[var(--color-navy-700)] px-5 py-4 text-sm font-bold uppercase tracking-wider text-white transition-all hover:border-[var(--color-gray-400)] hover:bg-[var(--color-navy-900)] shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                    >
+                      {data.sidebar.secondaryCta.label}
+                      <ChevronRight className="size-4 transition-transform group-hover/cta2:translate-x-1" />
+                    </Link>
+                  </div>
                 </div>
 
                 {/* Related links */}
-                <div className="bg-white border border-[var(--color-gray-200)] p-8 shadow-[var(--shadow-sm)]">
+                <div className="rounded-3xl bg-white border border-[var(--color-gray-200)] p-8 shadow-sm">
                   <div className="mb-5 flex items-center gap-3">
                     <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-navy-900)]">
                       {catMeta.sidebarGroup}
@@ -361,13 +361,13 @@ export function SolutionPage({ data }: { data: SolutionPageData }) {
                       <li key={link.href}>
                         <Link
                           href={link.href}
-                          className="group flex items-center justify-between px-4 py-2.5 text-sm font-medium text-[var(--color-gray-600)] transition-all hover:bg-[var(--color-gray-50)] hover:text-[var(--color-navy-900)]"
+                          className="group flex items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold text-[var(--color-gray-600)] transition-all hover:bg-[var(--color-gray-50)] hover:text-[var(--color-navy-900)]"
                         >
-                          <div className="flex items-center gap-2.5">
+                          <div className="flex items-center gap-3">
                             <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)]" />
                             <span>{link.label}</span>
                           </div>
-                          <ChevronRight className="size-3.5 text-[var(--color-gray-300)] transition-transform group-hover:translate-x-0.5" />
+                          <ChevronRight className="size-4 text-[var(--color-gray-300)] transition-transform group-hover:translate-x-1 group-hover:text-[var(--color-navy-900)]" />
                         </Link>
                       </li>
                     ))}
@@ -376,16 +376,17 @@ export function SolutionPage({ data }: { data: SolutionPageData }) {
 
                 {/* Quote */}
                 {data.sidebar.quote && (
-                  <div className="border-l-4 border-[var(--color-green-500)] bg-[var(--color-green-50)] p-8">
-                    <blockquote>
-                      <p className="mb-4 text-sm font-light italic leading-relaxed text-[var(--color-gray-700)]">
+                  <div className="rounded-3xl bg-[var(--color-gray-50)] border border-[var(--color-gray-200)] p-8 relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-1.5 h-full bg-[var(--color-green-500)]" />
+                    <blockquote className="pl-2">
+                      <p className="mb-6 text-sm font-medium italic leading-relaxed text-[var(--color-gray-700)]">
                         &ldquo;{data.sidebar.quote.text}&rdquo;
                       </p>
                       <footer>
-                        <div className="text-xs font-bold uppercase tracking-wide text-[var(--color-navy-900)]">
+                        <div className="text-xs font-bold uppercase tracking-wide text-[var(--color-navy-900)] mb-1">
                           {data.sidebar.quote.name}
                         </div>
-                        <div className="text-xs text-[var(--color-gray-500)]">
+                        <div className="text-xs font-medium text-[var(--color-gray-500)]">
                           {data.sidebar.quote.role}
                         </div>
                       </footer>
@@ -394,37 +395,37 @@ export function SolutionPage({ data }: { data: SolutionPageData }) {
                 )}
 
                 {/* Solutions nav quick link */}
-                <div className="bg-[var(--color-gray-50)] border border-[var(--color-gray-200)] p-6">
-                  <p className="mb-3 text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)]">
+                <div className="rounded-3xl bg-white border border-[var(--color-gray-200)] p-8 shadow-sm">
+                  <p className="mb-4 text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)]">
                     Explore All Solutions
                   </p>
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-3">
                     <Link
                       href="/solutions/revenue-leakage"
-                      className="group flex items-center gap-2 text-sm font-medium text-[var(--color-gray-600)] hover:text-[var(--color-navy-900)] transition-colors"
+                      className="group flex items-center gap-3 text-sm font-semibold text-[var(--color-gray-600)] hover:text-[var(--color-navy-900)] transition-colors"
                     >
-                      <ChevronRight className="size-3.5 text-[var(--color-green-500)]" />
+                      <ChevronRight className="size-4 text-[var(--color-green-500)] transition-transform group-hover:translate-x-1" />
                       Stop Revenue Leakage
                     </Link>
                     <Link
                       href="/solutions/prevent-downtime"
-                      className="group flex items-center gap-2 text-sm font-medium text-[var(--color-gray-600)] hover:text-[var(--color-navy-900)] transition-colors"
+                      className="group flex items-center gap-3 text-sm font-semibold text-[var(--color-gray-600)] hover:text-[var(--color-navy-900)] transition-colors"
                     >
-                      <ChevronRight className="size-3.5 text-[var(--color-green-500)]" />
+                      <ChevronRight className="size-4 text-[var(--color-green-500)] transition-transform group-hover:translate-x-1" />
                       Prevent Unplanned Downtime
                     </Link>
                     <Link
                       href="/solutions/faster-billing"
-                      className="group flex items-center gap-2 text-sm font-medium text-[var(--color-gray-600)] hover:text-[var(--color-navy-900)] transition-colors"
+                      className="group flex items-center gap-3 text-sm font-semibold text-[var(--color-gray-600)] hover:text-[var(--color-navy-900)] transition-colors"
                     >
-                      <ChevronRight className="size-3.5 text-[var(--color-green-500)]" />
+                      <ChevronRight className="size-4 text-[var(--color-green-500)] transition-transform group-hover:translate-x-1" />
                       Accelerate Billing Cycles
                     </Link>
                     <Link
                       href="/solutions/oilfield-services"
-                      className="group flex items-center gap-2 text-sm font-medium text-[var(--color-gray-600)] hover:text-[var(--color-navy-900)] transition-colors"
+                      className="group flex items-center gap-3 text-sm font-semibold text-[var(--color-gray-600)] hover:text-[var(--color-navy-900)] transition-colors"
                     >
-                      <ChevronRight className="size-3.5 text-[var(--color-green-500)]" />
+                      <ChevronRight className="size-4 text-[var(--color-green-500)] transition-transform group-hover:translate-x-1" />
                       Oilfield Services
                     </Link>
                   </div>
@@ -442,39 +443,39 @@ export function SolutionPage({ data }: { data: SolutionPageData }) {
             <div className="flex flex-col items-start justify-between gap-12 lg:flex-row lg:items-end">
 
               <div className="max-w-3xl">
-                <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--color-navy-200)] bg-white px-4 py-2 shadow-sm">
-                  <span className="flex size-2 rounded-full bg-[var(--color-green-500)]" />
-                  <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-navy-900)]">
+                <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-[var(--color-navy-200)] bg-white px-5 py-2 shadow-sm">
+                  <span className="flex size-2 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+                  <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-navy-950)]">
                     Ready to Start
                   </span>
                 </div>
                 <h2
-                  className="text-4xl font-black uppercase leading-[0.92] tracking-tighter md:text-6xl"
-                  style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+                  className="text-4xl font-black uppercase leading-[0.92] tracking-tighter md:text-6xl text-balance"
+                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                 >
                   <span className="text-[var(--color-green-500)]">{data.bottomCta.headlineGreen}</span>
                   <br />
                   <span className="text-[var(--color-navy-950)]">{data.bottomCta.headlineNavy}</span>
                 </h2>
-                <p className="mt-6 max-w-2xl text-lg font-light leading-relaxed text-[var(--color-gray-600)]">
+                <p className="mt-8 max-w-2xl text-lg font-medium leading-relaxed text-[var(--color-gray-600)]">
                   {data.bottomCta.body}
                 </p>
               </div>
 
-              <div className="flex w-full flex-col gap-3 lg:w-[380px] lg:border-l-2 lg:border-[var(--color-navy-900)] lg:pl-12">
+              <div className="flex w-full flex-col gap-3 lg:w-[380px] lg:pl-12">
                 <Link
                   href={data.bottomCta.primaryCta.href}
-                  className="group flex w-full items-center justify-between bg-[var(--color-navy-950)] px-6 py-5 text-sm font-bold uppercase tracking-wide text-white transition-colors duration-300 hover:bg-[var(--color-green-500)] hover:text-[var(--color-navy-950)]"
+                  className="group/cta flex w-full items-center justify-between rounded-xl bg-[var(--color-navy-950)] px-6 py-5 text-sm font-bold uppercase tracking-widest text-white transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-500)] hover:text-[var(--color-navy-950)]"
                 >
                   <span>{data.bottomCta.primaryCta.label}</span>
-                  <ArrowRight className="size-5 transition-transform group-hover:translate-x-2" />
+                  <ArrowRight className="size-5 transition-transform group-hover/cta:translate-x-1" />
                 </Link>
                 <Link
                   href={data.bottomCta.secondaryCta.href}
-                  className="group flex w-full items-center justify-between border-2 border-[var(--color-navy-200)] bg-white px-6 py-5 text-sm font-bold uppercase tracking-wide text-[var(--color-navy-950)] transition-all duration-300 hover:border-[var(--color-navy-950)]"
+                  className="group/cta2 flex w-full items-center justify-between rounded-xl border border-[var(--color-gray-200)] bg-white px-6 py-5 text-sm font-bold uppercase tracking-widest text-[var(--color-navy-950)] transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-[var(--color-gray-300)] hover:bg-[var(--color-gray-50)]"
                 >
                   <span>{data.bottomCta.secondaryCta.label}</span>
-                  <ArrowRight className="size-5 transition-transform group-hover:translate-x-2" />
+                  <ArrowRight className="size-5 transition-transform group-hover/cta2:translate-x-1" />
                 </Link>
               </div>
             </div>

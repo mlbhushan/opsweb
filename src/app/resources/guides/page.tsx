@@ -139,36 +139,36 @@ export default async function GuidesPage() {
           <div className="pointer-events-none absolute right-0 top-0 h-[360px] w-[360px] translate-x-1/3 -translate-y-1/4 rounded-full bg-[var(--color-green-500)]/10 blur-[80px]" />
 
           <Container className="relative z-10 py-16 md:py-24">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--color-navy-800)]/15 bg-white px-4 py-2 shadow-[var(--shadow-xs)]">
-              <span className="flex size-2 rounded-full bg-[var(--color-green-500)]" />
-              <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-navy-900)]">
+            <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-[var(--color-navy-200)] bg-white px-5 py-2 shadow-sm">
+              <span className="flex size-2 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+              <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-navy-950)]">
                 Resources / Guides
               </span>
             </div>
 
             <h1
-              className="mb-4 text-5xl font-black uppercase leading-[0.92] tracking-tighter md:text-7xl"
-              style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+              className="mb-4 text-5xl font-black uppercase leading-[0.92] tracking-tighter md:text-7xl text-balance"
+              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
             >
               <span className="text-[var(--color-green-500)]">Guides</span>
               <br />
               <span className="text-[var(--color-navy-950)]">& Whitepapers.</span>
             </h1>
-            <p className="max-w-xl text-base font-light leading-relaxed text-[var(--color-gray-600)] md:text-lg">
+            <p className="max-w-xl text-base font-medium leading-relaxed text-[var(--color-gray-600)] md:text-lg">
               In-depth frameworks, playbooks, and research for operations leaders in oilfield services. Built from real deployments — not theory.
             </p>
 
             {/* Stats strip */}
-            <div className="mt-10 flex flex-wrap gap-6 border-t border-[var(--color-gray-200)] pt-8">
+            <div className="mt-12 flex flex-wrap gap-6 border-t border-[var(--color-gray-200)] pt-8">
               {[
                 { value: "5+", label: "In-depth guides" },
                 { value: "Free", label: "No gate fees — ever" },
                 { value: "Updated", label: "Quarterly" },
               ].map((s) => (
-                <div key={s.label} className="flex items-baseline gap-2">
+                <div key={s.label} className="flex items-baseline gap-3 rounded-2xl bg-[var(--color-gray-50)] px-5 py-3 border border-[var(--color-gray-100)]">
                   <span
                     className="text-3xl font-black text-[var(--color-navy-950)]"
-                    style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                   >
                     {s.value}
                   </span>
@@ -192,46 +192,52 @@ export default async function GuidesPage() {
                 {/* Featured Guide */}
                 <div>
                   <div className="mb-6 flex items-center gap-3">
-                    <span className="h-4 w-4 shrink-0 block bg-[var(--color-green-500)]" />
+                    <span className="h-4 w-4 shrink-0 block bg-[var(--color-green-500)] rounded-sm" />
                     <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)]">
                       Featured
                     </span>
-                    <div className="h-px flex-1 bg-[var(--color-gray-200)]" />
                   </div>
 
                   <Link
                     href={("fileUrl" in featured && featured.fileUrl) ? (featured.fileUrl as string) : "/contact"}
-                    className="group block border-2 border-[var(--color-navy-950)] bg-[var(--color-navy-950)] p-8 md:p-10 transition-colors hover:bg-[var(--color-navy-900)] shadow-[6px_6px_0px_0px_var(--color-green-500)]"
+                    className="group block overflow-hidden rounded-3xl border border-[var(--color-navy-800)] bg-[var(--color-navy-950)] p-8 md:p-10 shadow-xl transition-all hover:shadow-2xl hover:-translate-y-1 relative"
                   >
-                    <div className="mb-4 flex items-start justify-between gap-4">
-                      <div className="flex items-center gap-3">
-                        <BookOpen className="size-6 text-[var(--color-green-500)]" />
-                        <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-green-500)]">
-                          {featured.type}
-                        </span>
-                        {"pages" in featured && (featured.pages as number) > 0 && (
-                          <span className="text-xs text-[var(--color-gray-400)]">
-                            {String(featured.pages)} pages
+                    <div className="absolute right-[-10%] top-[-10%] w-[100%] h-[100%] bg-[radial-gradient(ellipse_at_center,_var(--color-green-500)_0%,_transparent_60%)] opacity-10 pointer-events-none transition-opacity duration-700 group-hover:opacity-20" />
+                    <div className="relative z-10">
+                      <div className="mb-6 flex items-start justify-between gap-4">
+                        <div className="flex items-center gap-3 bg-[var(--color-navy-900)] rounded-full pl-2 pr-4 py-1.5 border border-[var(--color-navy-700)] shadow-sm">
+                          <div className="flex size-6 items-center justify-center rounded-full bg-[var(--color-navy-800)]">
+                            <BookOpen className="size-3 text-[var(--color-green-500)]" />
+                          </div>
+                          <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-green-500)]">
+                            {featured.type}
+                          </span>
+                          {"pages" in featured && (featured.pages as number) > 0 && (
+                            <span className="text-xs text-[var(--color-gray-400)] ml-2 border-l border-[var(--color-navy-700)] pl-3">
+                              {String(featured.pages)} pages
+                            </span>
+                          )}
+                        </div>
+                        {"stat" in featured && (
+                          <span className="shrink-0 rounded-full border border-[var(--color-green-400)] bg-[var(--color-green-500)]/10 px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-[var(--color-green-400)]">
+                            {String(featured.stat)}
                           </span>
                         )}
                       </div>
-                      <span className="shrink-0 rounded-sm bg-[var(--color-green-500)] px-3 py-1 text-xs font-bold uppercase tracking-widest text-[var(--color-navy-950)]">
-                        {"stat" in featured ? String(featured.stat) : ""}
-                      </span>
-                    </div>
 
-                    <h2
-                      className="mb-4 text-2xl font-black uppercase leading-tight tracking-tight text-white md:text-3xl"
-                      style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
-                    >
-                      {featured.title}
-                    </h2>
-                    <p className="mb-6 text-sm font-light leading-relaxed text-[var(--color-gray-400)]">
-                      {featured.description}
-                    </p>
-                    <div className="inline-flex items-center gap-2 bg-[var(--color-green-500)] px-5 py-3 text-sm font-bold uppercase tracking-wide text-[var(--color-navy-950)] transition-colors group-hover:bg-[var(--color-green-400)]">
-                      <Download className="size-4" />
-                      Download Free
+                      <h2
+                        className="mb-4 text-2xl font-black uppercase leading-tight tracking-tight text-white md:text-3xl text-balance"
+                        style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                      >
+                        {featured.title}
+                      </h2>
+                      <p className="mb-8 text-sm font-medium leading-relaxed text-[var(--color-gray-400)] max-w-2xl">
+                        {featured.description}
+                      </p>
+                      <div className="inline-flex items-center gap-2 rounded-xl bg-[var(--color-green-500)] px-6 py-3.5 text-sm font-bold uppercase tracking-widest text-[var(--color-navy-950)] transition-all shadow-sm group-hover:bg-[var(--color-green-400)] group-hover:shadow-md group-hover:-translate-y-0.5">
+                        <Download className="size-4" />
+                        Download Free
+                      </div>
                     </div>
                   </Link>
                 </div>
@@ -239,48 +245,49 @@ export default async function GuidesPage() {
                 {/* All Guides */}
                 <div>
                   <div className="mb-6 flex items-center gap-3">
-                    <span className="h-4 w-4 shrink-0 block bg-[var(--color-navy-950)]" />
+                    <span className="h-4 w-4 shrink-0 block bg-[var(--color-navy-950)] rounded-sm" />
                     <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)]">
                       All Guides
                     </span>
-                    <div className="h-px flex-1 bg-[var(--color-gray-200)]" />
                   </div>
 
-                  <div className="grid gap-0 border-t-2 border-l-2 border-[var(--color-navy-950)]">
+                  <div className="grid gap-4">
                     {rest.map((g) => {
                       const Icon = g.icon;
-                      const topicStyle = TOPIC_COLORS[g.topic as string] ?? "bg-gray-50 text-gray-700 border-gray-200";
+                      const topicStyle = TOPIC_COLORS[g.topic as string] ?? "bg-[var(--color-gray-100)] text-[var(--color-gray-700)] border-[var(--color-gray-200)]";
                       return (
                         <Link
                           key={g.title}
                           href={(g.fileUrl as string | null) ?? "/contact"}
-                          className="group flex items-start gap-6 border-r-2 border-b-2 border-[var(--color-navy-950)] bg-white p-7 transition-colors hover:bg-[var(--color-navy-950)]"
+                          className="group flex flex-col sm:flex-row sm:items-stretch gap-0 rounded-3xl border border-[var(--color-gray-200)] bg-white transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-[var(--color-green-400)] overflow-hidden"
                         >
-                          <div className="shrink-0 flex size-12 items-center justify-center border-2 border-[var(--color-gray-200)] group-hover:border-[var(--color-navy-700)] transition-colors">
-                            <Icon className="size-5 text-[var(--color-green-600)] group-hover:text-[var(--color-green-400)] transition-colors" />
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <div className="mb-2 flex flex-wrap items-center gap-2">
-                              <span className={`border rounded-sm px-2 py-0.5 text-xs font-bold uppercase tracking-wide ${topicStyle}`}>
+                          <div className="flex-1 p-6 md:p-8">
+                            <div className="mb-4 flex flex-wrap items-center gap-2">
+                              <span className={`rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest ${topicStyle}`}>
                                 {g.topic}
                               </span>
-                              <span className="text-xs font-semibold text-[var(--color-gray-400)] group-hover:text-[var(--color-gray-500)] transition-colors">
+                              <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-gray-400)] group-hover:text-[var(--color-gray-500)] transition-colors">
                                 {g.type} · {(g.pages as number) > 0 ? `${g.pages} pages` : ""}
                               </span>
                               {"stat" in g && g.stat && (
-                                <span className="text-xs font-bold text-[var(--color-green-600)] group-hover:text-[var(--color-green-400)] transition-colors">
+                                <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-green-600)] group-hover:text-[var(--color-green-500)] transition-colors ml-auto sm:ml-2">
                                   {String(g.stat)}
                                 </span>
                               )}
                             </div>
-                            <h3 className="mb-2 text-base font-bold uppercase tracking-tight text-[var(--color-navy-950)] group-hover:text-white transition-colors leading-tight" style={{ fontFamily: "'TASA Orbiter', sans-serif" }}>
+                            <h3 className="mb-2 text-lg font-black uppercase tracking-tight text-[var(--color-navy-950)] transition-colors leading-tight" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
                               {g.title}
                             </h3>
-                            <p className="text-sm font-light leading-relaxed text-[var(--color-gray-500)] group-hover:text-[var(--color-gray-300)] transition-colors">
+                            <p className="text-sm font-medium leading-relaxed text-[var(--color-gray-500)] transition-colors line-clamp-2 sm:line-clamp-none">
                               {g.description}
                             </p>
                           </div>
-                          <Download className="mt-1 size-4 shrink-0 text-[var(--color-gray-300)] group-hover:text-[var(--color-green-400)] transition-colors" />
+                          
+                          <div className="flex sm:flex-col items-center justify-center gap-3 p-6 bg-[var(--color-gray-50)] transition-colors group-hover:bg-[var(--color-green-50)] border-t sm:border-t-0 sm:border-l border-[var(--color-gray-100)] w-full sm:w-24 shrink-0">
+                            <Icon className="size-6 text-[var(--color-gray-400)] group-hover:text-[var(--color-green-600)] transition-colors hidden sm:block" />
+                            <Download className="size-5 text-[var(--color-gray-400)] group-hover:text-[var(--color-green-600)] transition-transform group-hover:-translate-y-1" />
+                            <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)] group-hover:text-[var(--color-green-700)] sm:hidden">Download</span>
+                          </div>
                         </Link>
                       );
                     })}
@@ -288,79 +295,82 @@ export default async function GuidesPage() {
                 </div>
 
                 {/* Inline CTA band */}
-                <div className="border border-[var(--color-gray-200)] bg-[var(--color-green-50)] p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+                <div className="rounded-3xl border border-[var(--color-gray-200)] bg-[var(--color-green-50)] p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
                   <div>
                     <p className="text-xs font-bold uppercase tracking-widest text-[var(--color-green-700)] mb-1">
                       Don't see what you need?
                     </p>
                     <h3
                       className="text-xl font-black uppercase tracking-tight text-[var(--color-navy-950)]"
-                      style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+                      style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                     >
                       Request a Custom Assessment
                     </h3>
-                    <p className="mt-1 text-sm font-light text-[var(--color-gray-600)]">
+                    <p className="mt-1 text-sm font-medium text-[var(--color-gray-600)]">
                       Our team builds tailored revenue and operations analyses for oilfield services companies.
                     </p>
                   </div>
                   <Link
                     href="/contact"
-                    className="group shrink-0 inline-flex items-center gap-3 bg-[var(--color-navy-950)] px-6 py-4 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-[var(--color-green-500)] hover:text-[var(--color-navy-950)]"
+                    className="group/cta shrink-0 inline-flex items-center gap-3 rounded-xl bg-[var(--color-navy-950)] px-6 py-4 text-sm font-bold uppercase tracking-widest text-white transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-500)] hover:text-[var(--color-navy-950)]"
                   >
                     Get in Touch
-                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="size-5 transition-transform group-hover/cta:translate-x-1" />
                   </Link>
                 </div>
               </div>
 
               {/* ── SIDEBAR ── */}
-              <aside className="lg:col-span-4 space-y-8">
+              <aside className="lg:col-span-4 space-y-6">
 
                 {/* CTA card */}
-                <div className="bg-[var(--color-navy-950)] p-8 border-2 border-[var(--color-navy-950)] shadow-[6px_6px_0px_0px_var(--color-green-500)]">
-                  <Zap className="mb-4 size-8 text-[var(--color-green-500)]" />
-                  <h3
-                    className="mb-2 text-2xl font-black uppercase tracking-tighter text-white leading-tight"
-                    style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
-                  >
-                    See OpsFlo Live
-                  </h3>
-                  <p className="mb-6 text-sm font-light leading-relaxed text-[var(--color-gray-400)]">
-                    Guides are a start. A 15-minute diagnostic of your operation shows exactly where you are losing revenue today.
-                  </p>
-                  <Link
-                    href="/contact"
-                    className="group mb-2 flex w-full items-center justify-between bg-[var(--color-green-500)] px-5 py-4 text-sm font-bold uppercase tracking-wider text-[var(--color-navy-950)] transition-colors hover:bg-[var(--color-green-400)]"
-                  >
-                    Book a Demo
-                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                  <Link
-                    href="/roi-calculator"
-                    className="group flex w-full items-center justify-between border border-[var(--color-navy-700)] px-5 py-3 text-sm font-semibold uppercase tracking-wider text-[var(--color-gray-300)] transition-colors hover:border-[var(--color-gray-400)] hover:text-white"
-                  >
-                    Try ROI Calculator
-                    <ChevronRight className="size-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
+                <div className="rounded-3xl bg-[var(--color-navy-950)] p-8 shadow-xl relative overflow-hidden group">
+                  <div className="absolute right-[-10%] top-[-10%] w-[100%] h-[100%] bg-[radial-gradient(ellipse_at_center,_var(--color-green-500)_0%,_transparent_60%)] opacity-10 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none" />
+                  <div className="relative z-10">
+                    <Zap className="mb-4 size-8 text-[var(--color-green-500)]" />
+                    <h3
+                      className="mb-2 text-2xl font-black uppercase tracking-tighter text-white leading-tight"
+                      style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    >
+                      See OpsFlo Live
+                    </h3>
+                    <p className="mb-6 text-sm font-medium leading-relaxed text-[var(--color-gray-400)]">
+                      Guides are a start. A 15-minute diagnostic of your operation shows exactly where you are losing revenue today.
+                    </p>
+                    <Link
+                      href="/contact"
+                      className="group/cta mb-3 flex w-full items-center justify-between rounded-xl bg-[var(--color-green-500)] px-5 py-4 text-sm font-bold uppercase tracking-wider text-[var(--color-navy-950)] transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-400)]"
+                    >
+                      Book a Demo
+                      <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-1" />
+                    </Link>
+                    <Link
+                      href="/roi-calculator"
+                      className="group/cta2 flex w-full items-center justify-between rounded-xl border border-[var(--color-navy-700)] px-5 py-4 text-sm font-bold uppercase tracking-wider text-[var(--color-gray-300)] transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-[var(--color-gray-400)] hover:text-white"
+                    >
+                      Try ROI Calculator
+                      <ChevronRight className="size-4 transition-transform group-hover/cta2:translate-x-1" />
+                    </Link>
+                  </div>
                 </div>
 
                 {/* Related solutions */}
-                <div className="bg-white border border-[var(--color-gray-200)] p-8">
+                <div className="rounded-3xl bg-white border border-[var(--color-gray-200)] p-8 shadow-sm">
                   <p className="mb-5 text-xs font-bold uppercase tracking-widest text-[var(--color-navy-900)]">
                     Relevant Solutions
                   </p>
-                  <ul className="space-y-1">
+                  <ul className="space-y-2">
                     {SIDEBAR_LINKS.map((link) => (
                       <li key={link.href}>
                         <Link
                           href={link.href}
-                          className="group flex items-center justify-between px-4 py-2.5 text-sm font-medium text-[var(--color-gray-600)] transition-all hover:bg-[var(--color-gray-50)] hover:text-[var(--color-navy-900)]"
+                          className="group flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium text-[var(--color-gray-600)] transition-all hover:bg-[var(--color-gray-50)] hover:text-[var(--color-navy-900)]"
                         >
-                          <div className="flex items-center gap-2.5">
+                          <div className="flex items-center gap-3">
                             <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)]" />
                             <span>{link.label}</span>
                           </div>
-                          <ChevronRight className="size-3.5 text-[var(--color-gray-300)] transition-transform group-hover:translate-x-0.5" />
+                          <ChevronRight className="size-4 text-[var(--color-gray-300)] transition-transform group-hover:translate-x-1" />
                         </Link>
                       </li>
                     ))}
@@ -368,39 +378,47 @@ export default async function GuidesPage() {
                 </div>
 
                 {/* Webinars cross-link */}
-                <div className="bg-[var(--color-green-50)] border border-[var(--color-green-200)] p-8">
-                  <p className="mb-2 text-xs font-bold uppercase tracking-widest text-[var(--color-green-700)]">
-                    Prefer to Watch?
-                  </p>
-                  <h4
-                    className="mb-3 text-lg font-black uppercase tracking-tight text-[var(--color-navy-950)]"
-                    style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
-                  >
-                    On-Demand Webinars
-                  </h4>
-                  <p className="mb-4 text-sm font-light text-[var(--color-gray-600)]">
-                    Expert sessions on field operations, predictive maintenance, revenue recovery, and compliance.
-                  </p>
-                  <Link
-                    href="/resources/webinars"
-                    className="group inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-[var(--color-navy-950)] underline underline-offset-4 transition-colors hover:text-[var(--color-navy-700)]"
-                  >
-                    View All Webinars
-                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
+                <div className="rounded-3xl bg-[var(--color-gray-50)] border border-[var(--color-gray-200)] p-8 relative overflow-hidden">
+                  <div className="absolute top-0 left-0 w-1.5 h-full bg-[var(--color-green-500)]" />
+                  <div className="pl-2">
+                    <p className="mb-2 text-xs font-bold uppercase tracking-widest text-[var(--color-green-700)]">
+                      Prefer to Watch?
+                    </p>
+                    <h4
+                      className="mb-3 text-lg font-black uppercase tracking-tight text-[var(--color-navy-950)]"
+                      style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    >
+                      On-Demand Webinars
+                    </h4>
+                    <p className="mb-4 text-sm font-medium text-[var(--color-gray-600)]">
+                      Expert sessions on field operations, predictive maintenance, revenue recovery, and compliance.
+                    </p>
+                    <Link
+                      href="/resources/webinars"
+                      className="group inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-[var(--color-navy-950)] underline underline-offset-4 transition-colors hover:text-[var(--color-navy-700)]"
+                    >
+                      View All Webinars
+                      <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </div>
                 </div>
 
                 {/* Pull quote */}
-                <div className="border-l-4 border-[var(--color-green-500)] bg-white border border-l-4 p-8">
+                <div className="rounded-3xl border border-[var(--color-gray-200)] bg-[var(--color-navy-50)] p-8 relative shadow-sm">
+                  <div className="absolute top-0 right-8 -translate-y-1/2">
+                    <div className="flex size-10 items-center justify-center rounded-full bg-[var(--color-green-500)] shadow-sm">
+                      <FileText className="size-4 text-[var(--color-navy-950)]" />
+                    </div>
+                  </div>
                   <blockquote>
-                    <p className="mb-4 text-sm font-light italic leading-relaxed text-[var(--color-gray-700)]">
+                    <p className="mb-6 text-sm font-medium italic leading-relaxed text-[var(--color-gray-700)]">
                       &ldquo;The Revenue Recovery guide alone identified $800K in billing gaps we didn&apos;t know existed. We actioned it in 60 days.&rdquo;
                     </p>
-                    <footer>
-                      <div className="text-xs font-bold uppercase tracking-wide text-[var(--color-navy-900)]">
+                    <footer className="border-t border-[var(--color-navy-100)] pt-4">
+                      <div className="text-xs font-bold uppercase tracking-widest text-[var(--color-navy-950)]">
                         VP of Finance
                       </div>
-                      <div className="text-xs text-[var(--color-gray-500)]">
+                      <div className="text-xs font-medium text-[var(--color-gray-500)] mt-0.5">
                         Oilfield Services, AB
                       </div>
                     </footer>
@@ -418,31 +436,31 @@ export default async function GuidesPage() {
             <div className="flex flex-col items-start justify-between gap-10 lg:flex-row lg:items-center">
               <div className="max-w-2xl">
                 <h2
-                  className="text-4xl font-black uppercase leading-[0.92] tracking-tighter md:text-5xl"
-                  style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+                  className="text-4xl font-black uppercase leading-[0.92] tracking-tighter md:text-5xl text-balance"
+                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                 >
                   <span className="text-[var(--color-green-500)]">Ready to Go</span>
                   <br />
                   <span className="text-white">Beyond the Guide?</span>
                 </h2>
-                <p className="mt-5 text-base font-light leading-relaxed text-[var(--color-gray-400)]">
+                <p className="mt-6 text-base font-medium leading-relaxed text-[var(--color-gray-400)]">
                   A 15-minute OpsFlo diagnostic applies these frameworks directly to your operations — and shows you the exact revenue and efficiency gap in your current workflow.
                 </p>
               </div>
-              <div className="flex w-full flex-col gap-3 lg:w-auto">
+              <div className="flex w-full flex-col gap-3 lg:w-[380px]">
                 <Link
                   href="/contact"
-                  className="group flex items-center justify-between bg-[var(--color-green-500)] px-7 py-5 text-sm font-bold uppercase tracking-wide text-[var(--color-navy-950)] transition-colors hover:bg-[var(--color-green-400)]"
+                  className="group/cta flex w-full items-center justify-between rounded-xl bg-[var(--color-green-500)] px-6 py-5 text-sm font-bold uppercase tracking-widest text-[var(--color-navy-950)] transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-400)]"
                 >
                   <span>Book a 15-Min Diagnostic</span>
-                  <ArrowRight className="ml-8 size-5 transition-transform group-hover:translate-x-2" />
+                  <ArrowRight className="size-5 transition-transform group-hover/cta:translate-x-1" />
                 </Link>
                 <Link
                   href="/resources/webinars"
-                  className="group flex items-center justify-between border border-[var(--color-navy-700)] px-7 py-4 text-sm font-semibold uppercase tracking-wide text-[var(--color-gray-300)] transition-colors hover:border-[var(--color-gray-500)] hover:text-white"
+                  className="group/cta2 flex w-full items-center justify-between rounded-xl border border-[var(--color-navy-700)] bg-[var(--color-navy-950)] px-6 py-5 text-sm font-bold uppercase tracking-widest text-white transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-[var(--color-gray-500)] hover:bg-[var(--color-navy-900)]"
                 >
                   <span>View Webinars</span>
-                  <ArrowRight className="ml-8 size-5 transition-transform group-hover:translate-x-2" />
+                  <ArrowRight className="size-5 transition-transform group-hover/cta2:translate-x-1" />
                 </Link>
               </div>
             </div>

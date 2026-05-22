@@ -138,3 +138,30 @@ export const INTEGRATIONS_QUERY = defineQuery(/* groq */ `
     url
   }
 `);
+
+// ─── Bot Knowledge Docs ───
+export const KNOWLEDGE_DOCS_QUERY = defineQuery(/* groq */ `
+  *[_type == "knowledgeDoc" && active == true] | order(_createdAt desc) {
+    _id,
+    title,
+    category,
+    content,
+    tags,
+    active,
+    _createdAt,
+    _updatedAt
+  }
+`);
+
+export const ALL_KNOWLEDGE_DOCS_QUERY = defineQuery(/* groq */ `
+  *[_type == "knowledgeDoc"] | order(_createdAt desc) {
+    _id,
+    title,
+    category,
+    content,
+    tags,
+    active,
+    _createdAt,
+    _updatedAt
+  }
+`);

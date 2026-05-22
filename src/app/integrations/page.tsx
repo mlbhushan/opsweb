@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
 import { SiteHeader } from "@/components/sections/site-header";
@@ -34,22 +35,8 @@ export default async function IntegrationsPage() {
     tags: ["integration"],
   });
 
-  // Merge Sanity data with local authoritative list
-  const localMap = new Map(INTEGRATIONS.map(i => [i.name.toLowerCase(), i]));
+  // Local list is the single source of truth — Sanity cannot add extra cards
   const finalIntegrations: Integration[] = [...INTEGRATIONS];
-
-  if (sanityIntegrations && sanityIntegrations.length > 0) {
-    sanityIntegrations.forEach((si) => {
-      if (!localMap.has(si.name.toLowerCase())) {
-        finalIntegrations.push({
-          name: si.name,
-          category: si.category,
-          description: si.description,
-          logo: si.logo ?? "",
-        });
-      }
-    });
-  }
 
   return (
     <>
@@ -64,18 +51,26 @@ export default async function IntegrationsPage() {
         </div>
 
         {/* Hero Section */}
-        <section className="relative z-10 py-16 md:py-24 lg:py-32 border-b border-[var(--color-border)] bg-transparent">
+        <section className="relative z-10 py-16 md:py-24 lg:py-32 border-b border-[var(--color-gray-200)] bg-transparent">
           <Container>
             <div className="grid lg:grid-cols-2 gap-16 lg:gap-8 items-center">
               {/* Left Content */}
               <div className="max-w-xl mx-auto text-center lg:text-left">
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--color-green-500)] mb-4 inline-block">
-                  Seamless Connectivity
-                </span>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--color-navy-950)] mb-6">
-                  Integrate with <span className="text-[var(--color-green-500)]">other systems</span>
+                <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-[var(--color-navy-200)] bg-white px-5 py-2 shadow-sm">
+                  <span className="flex size-2 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+                  <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-navy-950)]">
+                    Seamless Connectivity
+                  </span>
+                </div>
+                <h1 
+                  className="mb-6 text-5xl font-black uppercase leading-[0.92] tracking-tighter md:text-7xl text-balance"
+                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                >
+                  <span className="text-[var(--color-navy-950)]">Integrate with</span>
+                  <br />
+                  <span className="text-[var(--color-green-500)]">other systems.</span>
                 </h1>
-                <p className="text-lg md:text-xl text-[var(--color-text-secondary)] mb-8 leading-relaxed">
+                <p className="text-lg md:text-xl font-medium text-[var(--color-gray-600)] mb-8 leading-relaxed">
                   OpsFlo integrates with other software systems, eliminating the need for data entry from one platform to another.
                 </p>
                 <div className="flex justify-center lg:justify-start">
@@ -154,43 +149,47 @@ export default async function IntegrationsPage() {
           </Container>
         </section>
 
-        <section className="relative z-10 py-16 md:py-24 bg-white">
+        <section className="relative z-10 py-16 md:py-24 bg-[var(--color-gray-50)]">
           <Container>
             {/* Header Section */}
             <div className="text-center mb-16 max-w-3xl mx-auto px-4">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--color-navy-950)] mb-6">
-                Explore <span className="text-[var(--color-green-500)]">all integrations</span>
+              <h2 
+                className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-[var(--color-navy-950)] mb-6 leading-tight"
+                style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+              >
+                <span className="text-[var(--color-navy-950)]">Explore</span>{" "}
+                <span className="text-[var(--color-green-500)]">all integrations</span>
               </h2>
-              <p className="text-base md:text-lg text-[var(--color-text-secondary)] max-w-xl mx-auto leading-relaxed">
+              <p className="text-base md:text-lg font-medium text-[var(--color-gray-600)] max-w-xl mx-auto leading-relaxed">
                 Use this list to see if your software is on the list or to research potential partners for future use.
               </p>
             </div>
 
             {/* Integrations Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5 max-w-[1000px] mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-[1100px] mx-auto">
               {finalIntegrations.map((item) => (
                 <div 
                   key={item.name} 
-                  className="bg-white border border-[var(--color-border)] rounded-sm p-6 md:p-8 flex flex-col items-center text-center hover:border-[var(--color-green-400)] hover:shadow-md transition-all duration-300 group relative z-10"
+                  className="bg-white border border-[var(--color-gray-200)] rounded-3xl p-8 flex flex-col items-start text-left hover:border-[var(--color-green-400)] shadow-sm hover:shadow-md transition-all duration-300 group relative z-10 hover:-translate-y-1"
                 >
-                  <div className="mb-5 h-12 w-full flex items-center justify-center transition-transform duration-500 group-hover:scale-105">
+                  <div className="mb-8 h-12 w-full flex items-center justify-start">
                     {item.logo ? (
                       <Image 
                         src={item.logo} 
                         alt={item.name} 
-                        width={100}
-                        height={40}
-                        className="object-contain max-h-10 w-auto" 
+                        width={140}
+                        height={48}
+                        className="object-contain h-full w-auto max-w-[140px] opacity-80 group-hover:opacity-100 transition-opacity duration-300 grayscale group-hover:grayscale-0" 
                         unoptimized 
                       />
                     ) : (
-                      <span className="text-lg font-bold text-[var(--color-navy-700)]">{item.name}</span>
+                      <span className="text-lg font-black uppercase tracking-tight text-[var(--color-navy-950)]" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>{item.name}</span>
                     )}
                   </div>
-                  <h3 className="text-base font-bold text-[var(--color-navy-950)] mb-2 group-hover:text-[var(--color-navy-800)] transition-colors">
+                  <h3 className="text-xl font-black uppercase tracking-tight text-[var(--color-navy-950)] mb-3" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
                     {item.name}
                   </h3>
-                  <p className="text-[13px] text-[var(--color-text-secondary)] leading-relaxed flex-1 max-w-[260px]">
+                  <p className="text-sm font-medium text-[var(--color-gray-500)] leading-relaxed flex-1">
                     {item.description}
                   </p>
                 </div>
@@ -198,38 +197,34 @@ export default async function IntegrationsPage() {
             </div>
 
             {/* Bottom CTA Section */}
-            <div className="mt-16 md:mt-24 max-w-[1200px] mx-auto relative">
-              <div className="relative rounded-[2rem] border border-[var(--color-border)] overflow-hidden bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+            <div className="mt-16 md:mt-24 max-w-[1200px] mx-auto relative group">
+              <Link href="/contact" className="block relative rounded-3xl border border-[var(--color-navy-800)] overflow-hidden bg-[var(--color-navy-950)] shadow-xl transition-all hover:shadow-2xl hover:-translate-y-1">
                 
                 {/* Moving Background Elements */}
                 <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-                  <div className="absolute -top-[50%] -right-[25%] w-[1000px] h-[1000px] rounded-full bg-gradient-to-br from-[var(--color-green-100)] to-transparent opacity-80 blur-[120px] animate-[spin_40s_linear_infinite]" />
-                  <div className="absolute -bottom-[50%] -left-[25%] w-[800px] h-[800px] rounded-full bg-gradient-to-tr from-[var(--color-navy-50)] to-transparent opacity-90 blur-[100px] animate-[spin_30s_linear_infinite_reverse]" />
-                </div>
-
-                {/* Unique Watermark Logo */}
-                <div className="absolute inset-0 pointer-events-none overflow-hidden flex items-center justify-end z-0">
-                  <div className="relative w-[500px] h-[500px] md:w-[800px] md:h-[800px] translate-x-[20%] md:translate-x-[30%] opacity-[0.03] grayscale">
-                    <Image src="/OpsFloIcon.png" alt="" fill className="object-contain animate-[spin_90s_linear_infinite]" />
-                  </div>
+                  <div className="absolute right-[-10%] top-[-10%] w-[100%] h-[100%] bg-[radial-gradient(ellipse_at_center,_var(--color-green-500)_0%,_transparent_60%)] opacity-10 pointer-events-none transition-opacity duration-700 group-hover:opacity-20" />
                 </div>
 
                 <div className="relative z-10 py-16 md:py-24 px-6 sm:px-12 flex flex-col items-center text-center">
-                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--color-navy-950)] mb-6 max-w-3xl mx-auto">
+                  <h2 
+                    className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter text-white mb-6 max-w-3xl mx-auto"
+                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                  >
                     Unify your <span className="text-[var(--color-green-500)]">tech stack</span>
                   </h2>
                   
-                  <p className="text-lg md:text-xl text-[var(--color-text-secondary)] mb-10 max-w-2xl mx-auto leading-relaxed">
+                  <p className="text-lg md:text-xl font-medium text-[var(--color-gray-400)] mb-10 max-w-2xl mx-auto leading-relaxed">
                     Stop jumping between tools. See how OpsFlo integrates with your existing software to eliminate double data entry and create a single source of truth for your field operations.
                   </p>
                   
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-20">
-                    <CTARow 
-                      primary={{ label: "Request a Demo", href: "/contact" }}
-                    />
+                    <div className="group/btn inline-flex items-center gap-2 rounded-xl bg-[var(--color-green-500)] px-6 py-4 text-sm font-bold uppercase tracking-widest text-[var(--color-navy-950)] shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md hover:bg-[var(--color-green-400)]">
+                      Request a Demo
+                      <ArrowRight className="size-5 transition-transform group-hover/btn:translate-x-1" />
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             </div>
           </Container>
         </section>

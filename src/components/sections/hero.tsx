@@ -1,14 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const HERO_LINES = [
-  { prefix: "every field operation gets", highlight: "completed, validated, and billed.", suffix: "" },
-  { prefix: "", highlight: "no revenue leaks", suffix: "between the field and the invoice." },
-  { prefix: "every crew, every job, every day is", highlight: "fully accounted", suffix: "for." },
-  { prefix: "", highlight: "complete visibility", suffix: "from dispatch to final billing." },
-  { prefix: "field execution", highlight: "matches what was promised", suffix: "to the client." },
+  { prefix: "Every field operation gets", highlight: "completed, validated, and billed.", suffix: "" },
+  { prefix: "", highlight: "No revenue leaks", suffix: "between the field and the invoice." },
+  { prefix: "Every crew, every job, every day is", highlight: "fully accounted", suffix: "for." },
+  { prefix: "", highlight: "Complete visibility", suffix: "from dispatch to final billing." },
+  { prefix: "Field execution", highlight: "matches what was promised", suffix: "to the client." },
 ];
 
 export function Hero() {
@@ -25,19 +25,9 @@ export function Hero() {
 
   const currentLine = HERO_LINES[index];
   
-  const buildWords = () => {
-    const list: { text: string; isHighlight: boolean; isLastHighlight: boolean }[] = [{ text: "Ensure", isHighlight: false, isLastHighlight: false }];
-    
-    currentLine.prefix.split(" ").filter(Boolean).forEach(w => list.push({ text: w, isHighlight: false, isLastHighlight: false }));
-    
-    const hWords = currentLine.highlight.split(" ").filter(Boolean);
-    hWords.forEach((w, i) => list.push({ text: w, isHighlight: true, isLastHighlight: i === hWords.length - 1 }));
-    
-    currentLine.suffix.split(" ").filter(Boolean).forEach(w => list.push({ text: w, isHighlight: false, isLastHighlight: false }));
-    return list;
-  };
-  
-  const wordsList = buildWords();
+  const prefixWords = currentLine.prefix.split(" ").filter(Boolean);
+  const highlightWords = currentLine.highlight.split(" ").filter(Boolean);
+  const suffixWords = currentLine.suffix.split(" ").filter(Boolean);
 
   return (
     <section className="relative isolate h-[100vh] min-h-[600px] w-full overflow-hidden bg-gray-900 flex items-center justify-center">
@@ -59,35 +49,93 @@ export function Hero() {
       {/* Centered Content */}
       <div className="relative z-10 flex flex-col items-center text-center px-4 md:px-8 max-w-[900px] mx-auto pt-[72px]">
         <div
-          className="[font-family:var(--font-jakarta)] text-[36px] md:text-[48px] lg:text-[62px] font-extrabold leading-[1.15] tracking-tight h-[3.5em] overflow-hidden text-center w-full text-white cursor-default"
+          className="[font-family:var(--font-jakarta)] text-[36px] md:text-[48px] lg:text-[62px] font-extrabold leading-[1.15] tracking-tight h-[3.5em] overflow-hidden text-center w-full text-white cursor-default flex flex-col justify-end pb-[0.3em]"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
           <AnimatePresence mode="wait">
-            <motion.span
+            <motion.div
               key={index}
-              className="inline text-white"
+              className="block text-white"
             >
-              {wordsList.map((item, i) => (
-                <motion.span
-                  key={`${index}-${i}`}
-                  initial={{ opacity: 0, y: 12, filter: "blur(3px)" }}
-                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  exit={{ opacity: 0, y: -12, filter: "blur(3px)" }}
-                  transition={{
-                    duration: 0.35,
-                    delay: i * 0.06,
-                    ease: [0.25, 0.46, 0.45, 0.94],
-                  }}
-                  className="inline-block relative px-[0.15em] text-white"
-                >
-                  <span className={`relative z-10 ${item.isHighlight ? 'font-normal' : ''}`}>{item.text}</span>
-                  {item.isHighlight && (
-                    <span className="absolute bottom-[0.08em] left-[-1px] h-[0.12em] w-[calc(100%+2px)] bg-[var(--brand-lime)] -z-10" />
-                  )}
-                </motion.span>
+              {prefixWords.map((word, i) => (
+                <React.Fragment key={`prefix-${index}-${i}`}>
+                  <motion.span
+                    initial={{ opacity: 0, y: 12, filter: "blur(3px)" }}
+                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    exit={{ opacity: 0, y: -12, filter: "blur(3px)" }}
+                    transition={{
+                      duration: 0.35,
+                      delay: i * 0.06,
+                      ease: [0.25, 0.46, 0.45, 0.94],
+                    }}
+                    className="inline-block relative text-white"
+                  >
+                    <span className="relative z-10">{word}</span>
+                  </motion.span>
+                  {" "}
+                </React.Fragment>
               ))}
-            </motion.span>
+
+              <motion.span
+                className="relative inline text-white"
+                initial={{ backgroundSize: "0% 0.35em" }}
+                animate={{ backgroundSize: "100% 0.35em" }}
+                exit={{ backgroundSize: "0% 0.35em" }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: prefixWords.length * 0.06 + 0.2, 
+                  ease: "easeOut" 
+                }}
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2000 10' preserveAspectRatio='xMinYMid slice'%3E%3Cpath d='M0,5 Q50,2 100,5 C150,8 200,3 250,5 C300,7 350,4 400,5 C450,6 500,3 550,5 C600,7 650,4 700,5 C750,6 800,3 850,5 C900,7 950,4 1000,5 C1050,6 1100,3 1150,5 C1200,7 1250,4 1300,5 C1350,6 1400,3 1450,5 C1500,7 1550,4 1600,5 C1650,6 1700,3 1750,5 C1800,7 1850,4 1900,5 C1950,6 2000,3 2050,5' fill='none' stroke='%236bbf54' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E")`,
+                  backgroundRepeat: 'no-repeat',
+                  backgroundPosition: 'left bottom',
+                  WebkitBoxDecorationBreak: 'clone',
+                  boxDecorationBreak: 'clone',
+                  paddingBottom: '0.15em'
+                }}
+              >
+                {highlightWords.map((word, i) => (
+                  <React.Fragment key={`highlight-${index}-${i}`}>
+                    <motion.span
+                      initial={{ opacity: 0, y: 12, filter: "blur(3px)" }}
+                      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                      exit={{ opacity: 0, y: -12, filter: "blur(3px)" }}
+                      transition={{
+                        duration: 0.35,
+                        delay: (prefixWords.length + i) * 0.06,
+                        ease: [0.25, 0.46, 0.45, 0.94],
+                      }}
+                      className="inline-block relative font-normal"
+                    >
+                      <span className="relative z-10">{word}</span>
+                    </motion.span>
+                    {i < highlightWords.length - 1 && " "}
+                  </React.Fragment>
+                ))}
+              </motion.span>
+              {" "}
+
+              {suffixWords.map((word, i) => (
+                <React.Fragment key={`suffix-${index}-${i}`}>
+                  <motion.span
+                    initial={{ opacity: 0, y: 12, filter: "blur(3px)" }}
+                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    exit={{ opacity: 0, y: -12, filter: "blur(3px)" }}
+                    transition={{
+                      duration: 0.35,
+                      delay: (prefixWords.length + highlightWords.length + i) * 0.06,
+                      ease: [0.25, 0.46, 0.45, 0.94],
+                    }}
+                    className="inline-block relative text-white"
+                  >
+                    <span className="relative z-10">{word}</span>
+                  </motion.span>
+                  {i < suffixWords.length - 1 && " "}
+                </React.Fragment>
+              ))}
+            </motion.div>
           </AnimatePresence>
         </div>
 

@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
+import { Geist, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { LenisProvider } from "@/components/lenis-provider";
+import { ChatWidget } from "@/components/chat";
 import { SITE } from "@/lib/site";
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-mono",
+/* Cabinet Grotesk — loaded via FontShare CDN link in <head> */
+
+const geist = Geist({
+  variable: "--font-heading",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800", "900"],
   display: "swap",
 });
 
@@ -17,8 +20,6 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
-
-/* Google Sans Flex is not publicly on Google Fonts  -  loaded via CDN link below */
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -51,24 +52,19 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${jetbrainsMono.variable} ${plusJakartaSans.variable} h-full antialiased`}
+      className={`${geist.variable} ${plusJakartaSans.variable} h-full antialiased`}
     >
       <head>
-        {/* TASA Orbiter  -  headings & titles */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Cabinet Grotesk — all weights (variable font, 100-900) */}
+        <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=TASA+Orbiter:wght@400;500;600;700;800&display=swap"
-          rel="stylesheet"
-        />
-        {/* Google Sans Flex  -  body text (self-hosted or CDN fallback) */}
-        <link
-          href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Text:wght@400;500;700&display=swap"
+          href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@1,2,3,4,5,6,7,8&display=swap"
           rel="stylesheet"
         />
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <LenisProvider>{children}</LenisProvider>
+        <ChatWidget />
       </body>
     </html>
   );

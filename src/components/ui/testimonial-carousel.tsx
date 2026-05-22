@@ -101,16 +101,19 @@ export function TestimonialCarousel() {
   };
 
   return (
-    <div className="flex flex-col w-full min-w-0">
+    <div className="flex flex-col w-full h-full min-w-0">
       {/* Viewport */}
-      <div className="relative overflow-hidden w-full bg-[var(--color-navy-900)] border-t-2 border-[var(--color-green-500)]">
+      <div className="group relative overflow-hidden w-full flex-grow bg-white/[0.03] hover:bg-white/[0.05] backdrop-blur-xl border border-white/10 hover:border-white/20 rounded-3xl shadow-2xl hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5),0_0_40px_-10px_rgba(34,197,94,0.15)] transition-all duration-700 ease-out">
+        {/* Ambient interior glow */}
+        <div className="absolute -inset-24 bg-gradient-to-tr from-[var(--color-green-500)]/10 to-[var(--color-navy-400)]/10 group-hover:from-[var(--color-green-500)]/20 group-hover:to-[var(--color-navy-400)]/15 blur-3xl transition-colors duration-700 pointer-events-none" />
+        
         <div 
-          className="flex transition-transform duration-500 ease-in-out w-full"
+          className="flex transition-transform duration-500 ease-in-out w-full h-full"
           style={{ transform: `translateX(-${activeIndex * 100}%)` }}
         >
           {testimonials.map((t, idx) => (
-            <div key={idx} className="w-full shrink-0 flex flex-col p-8 md:p-12">
-              <div className="flex gap-1 mb-8">
+            <div key={idx} className="w-full h-full shrink-0 flex flex-col p-6 md:p-8">
+              <div className="flex gap-1 mb-6">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <svg key={star} className={`size-5 fill-current ${star <= t.rating ? "text-amber-400" : "text-white/10"}`} viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -118,12 +121,12 @@ export function TestimonialCarousel() {
                 ))}
               </div>
               
-              <p className="text-xl md:text-2xl font-medium text-white leading-snug mb-10 whitespace-normal break-words">
+              <p className="text-lg md:text-xl font-medium text-white leading-relaxed mb-6 whitespace-normal break-words">
                 &quot;{t.quote}&quot;
               </p>
               
-              <div className="flex items-center gap-5 mt-auto">
-                <div className="size-14 bg-white/5 flex items-center justify-center font-bold text-white text-xl border border-white/10 shrink-0">
+              <div className="flex items-center gap-4 mt-auto">
+                <div className="size-10 rounded-full bg-white/10 flex items-center justify-center font-bold text-white text-base border border-white/20 shrink-0 shadow-inner">
                   {t.initials}
                 </div>
                 <div className="min-w-0">
@@ -137,8 +140,9 @@ export function TestimonialCarousel() {
       </div>
       
       {/* Controls */}
-      <div className="flex items-center justify-between mt-6">
-        <div className="flex gap-3">
+      <div className="flex items-center justify-center relative mt-auto pt-8">
+        {/* Centered Markers */}
+        <div className="flex gap-2">
           {testimonials.map((_, idx) => (
             <button 
               key={idx}
@@ -147,25 +151,30 @@ export function TestimonialCarousel() {
                 resetTimer();
               }}
               aria-label={`Go to slide ${idx + 1}`}
-              className={`h-1.5 transition-all duration-300 ${activeIndex === idx ? "w-10 bg-[var(--color-green-500)]" : "w-4 bg-[var(--color-navy-700)] hover:bg-[var(--color-navy-600)]"}`}
+              className={`h-2 rounded-full transition-all duration-500 ease-out ${
+                activeIndex === idx 
+                  ? "w-12 bg-gradient-to-r from-[var(--color-green-400)]/80 to-[var(--color-green-600)]/80 backdrop-blur-md border border-[var(--color-green-300)]/50 shadow-[0_0_15px_rgba(34,197,94,0.4),inset_0_1px_2px_rgba(255,255,255,0.6)]" 
+                  : "w-4 bg-white/10 backdrop-blur-md border border-white/10 hover:bg-white/20 hover:w-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]"
+              }`}
             />
           ))}
         </div>
         
-        <div className="flex items-center gap-2">
+        {/* Right Aligned Arrows */}
+        <div className="flex items-center gap-3 absolute right-0">
           <button 
             onClick={handlePrev}
-            className="p-3 bg-[var(--color-navy-900)] text-white hover:bg-[var(--color-green-500)] hover:text-[var(--color-navy-950)] transition-colors border border-[var(--color-navy-800)]"
+            className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 hover:border-white/20 hover:-translate-y-0.5 transition-all backdrop-blur-md shadow-sm"
             aria-label="Previous testimonial"
           >
-            <ArrowLeft className="size-5" />
+            <ArrowLeft className="w-4 h-4" />
           </button>
           <button 
             onClick={handleNext}
-            className="p-3 bg-[var(--color-navy-900)] text-white hover:bg-[var(--color-green-500)] hover:text-[var(--color-navy-950)] transition-colors border border-[var(--color-navy-800)]"
+            className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 hover:border-white/20 hover:-translate-y-0.5 transition-all backdrop-blur-md shadow-sm"
             aria-label="Next testimonial"
           >
-            <ArrowRight className="size-5" />
+            <ArrowRight className="w-4 h-4" />
           </button>
         </div>
       </div>

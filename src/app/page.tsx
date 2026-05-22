@@ -1,6 +1,5 @@
 import { SiteHeader } from "@/components/sections/site-header";
 import { SiteFooter } from "@/components/sections/site-footer";
-import { ScrollTopButton } from "@/components/sections/scroll-top-button";
 import { Hero } from "@/components/sections/hero";
 import { AllInOnePlatform } from "@/components/sections/home/all-in-one-platform";
 import { PainStrip } from "@/components/sections/home/pain-strip";
@@ -10,6 +9,7 @@ import { ServicesCarousel } from "@/components/sections/home/services-carousel";
 import { PlatformBento } from "@/components/sections/home/platform-bento";
 import { AiIntelligence } from "@/components/sections/home/ai-intelligence";
 import { PositioningWedge } from "@/components/sections/home/positioning-wedge";
+import { CaseStudies } from "@/components/sections/home/case-studies";
 import { SocialProof } from "@/components/sections/home/social-proof";
 import { IntegrationsStrip } from "@/components/sections/home/integrations-strip";
 import { RecentBlogs } from "@/components/sections/home/recent-blogs";
@@ -29,13 +29,13 @@ export default function Home() {
         <PlatformBento />
         <AiIntelligence />
         <PositioningWedge />
+        <CaseStudies />
         <SocialProof />
         <IntegrationsStrip />
         <RecentBlogs />
         <FinalCTA />
       </main>
       <SiteFooter />
-      <ScrollTopButton />
     </>
   );
 }

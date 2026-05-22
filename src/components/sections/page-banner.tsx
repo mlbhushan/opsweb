@@ -173,7 +173,7 @@ export function PageBanner({ title, backgroundImage, className }: PageBannerProp
           <h1
             className="text-white font-bold tracking-tight"
             style={{
-              fontFamily: "var(--font-heading)", // TASA Orbiter
+              fontFamily: "var(--font-heading)", // Cabinet Grotesk
               fontSize: "clamp(26px, 3.5vw, 52px)",
               lineHeight: 1.1,
             }}
@@ -204,7 +204,7 @@ export function PageBanner({ title, backgroundImage, className }: PageBannerProp
                   <li key={`${crumb.label}-${i}`} className="flex items-center gap-2">
                     {i > 0 && (
                       <span
-                        className="" style={{ fontSize: "12px", fontWeight: 600, color: "#200043", fontFamily: "\"Google Sans Flex\", \"Google Sans\", sans-serif" }}
+                        className="" style={{ fontSize: "12px", fontWeight: 600, color: "#200043", fontFamily: "'Cabinet Grotesk', sans-serif" }}
                         aria-hidden="true"
                       >
                         /
@@ -213,13 +213,13 @@ export function PageBanner({ title, backgroundImage, className }: PageBannerProp
                     {crumb.href ? (
                       <Link
                         href={crumb.href}
-                        className="uppercase tracking-[0.08em] transition-colors hover:text-[var(--color-green-450)]" style={{ fontSize: "12px", fontWeight: 600, color: "#200043", fontFamily: "\"Google Sans Flex\", \"Google Sans\", sans-serif" }}
+                        className="uppercase tracking-[0.08em] transition-colors hover:text-[var(--color-green-450)]" style={{ fontSize: "12px", fontWeight: 600, color: "#200043", fontFamily: "'Cabinet Grotesk', sans-serif" }}
                       >
                         {crumb.label}
                       </Link>
                     ) : (
                       <span
-                        className="uppercase tracking-[0.08em]" style={{ fontSize: "12px", fontWeight: 600, color: "#200043", fontFamily: "\"Google Sans Flex\", \"Google Sans\", sans-serif" }}
+                        className="uppercase tracking-[0.08em]" style={{ fontSize: "12px", fontWeight: 600, color: "#200043", fontFamily: "'Cabinet Grotesk', sans-serif" }}
                         aria-current="page"
                       >
                         {crumb.label}

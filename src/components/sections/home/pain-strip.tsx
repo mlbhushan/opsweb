@@ -35,22 +35,20 @@ function StatItem({
 
   return (
     <div className={cn(
-      "flex flex-col sm:flex-row items-start sm:items-center gap-3 p-3 md:p-4 w-full bg-[var(--color-bg-primary)] group hover:bg-[var(--color-green-50)] transition-colors duration-200",
-      !isLast && "border-b-2 sm:border-b-0 sm:border-r-2 border-[var(--color-navy-950)]"
+      "flex flex-col gap-3 py-6 md:py-0 md:px-8",
+      !isLast && "border-b md:border-b-0 md:border-r border-gray-200"
     )}>
-      <div className="flex-shrink-0 bg-[var(--color-green-450)] border-2 border-[var(--color-navy-950)] px-2.5 py-1 shadow-[2px_2px_0_0_var(--color-navy-950)] group-hover:shadow-[1px_1px_0_0_var(--color-navy-950)] group-hover:translate-x-[1px] group-hover:translate-y-[1px] transition-all duration-200">
-        <span
-          ref={ref as React.RefObject<HTMLSpanElement>}
-          className="font-mono text-lg md:text-xl font-black text-[var(--color-navy-950)] tracking-tighter"
-        >
-          {display}
-        </span>
-      </div>
-      <div className="flex flex-col">
-        <span className="text-sm font-bold text-[var(--color-navy-950)] uppercase tracking-tight leading-tight">
+      <span
+        ref={ref as React.RefObject<HTMLSpanElement>}
+        className="font-mono text-4xl lg:text-5xl font-bold tracking-tighter text-[var(--color-navy-950)]"
+      >
+        {display}
+      </span>
+      <div className="flex flex-col gap-1.5">
+        <span className="text-[15px] font-bold text-[var(--color-green-600)] uppercase tracking-wide leading-tight">
           {label}
         </span>
-        <span className="text-xs font-medium text-[var(--color-navy-700)] leading-tight mt-0.5 text-balance">
+        <span className="text-[14px] font-medium text-gray-500 leading-relaxed text-balance">
           {description}
         </span>
       </div>
@@ -60,33 +58,50 @@ function StatItem({
 
 export function PainStrip() {
   return (
-    <section className="bg-white py-6 md:py-8 border-y-2 border-[var(--color-navy-950)] relative overflow-hidden z-10">
-      {/* Brutalist Pattern Background */}
-      <div className="absolute inset-0 opacity-[0.04] bg-[radial-gradient(var(--color-navy-950)_2px,transparent_2px)] [background-size:16px_16px] pointer-events-none"></div>
-      
-      <Container>
-        <div className="flex flex-col xl:flex-row items-center justify-center gap-4 xl:gap-6 relative">
+    <section className="bg-white py-16 md:py-20 relative overflow-hidden z-10 border-y border-gray-100">
+      {/* Swiss Style Minimal Moving Background */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <motion.div
+          className="absolute top-[-20%] right-[10%] w-[500px] h-[500px] bg-[var(--color-green-100)] opacity-50 rounded-full blur-[100px] mix-blend-multiply"
+          animate={{ x: [0, -30, 20, 0], y: [0, 30, -20, 0] }}
+          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute bottom-[-20%] left-[10%] w-[500px] h-[500px] bg-[var(--color-navy-100)] opacity-40 rounded-full blur-[100px] mix-blend-multiply"
+          animate={{ x: [0, 40, -30, 0], y: [0, -40, 20, 0] }}
+          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </div>
+
+      <Container className="relative z-10">
+        <div className="flex flex-col xl:flex-row items-start xl:items-center gap-12 xl:gap-16">
           
-          {/* Eyebrow / Title Badge */}
-          <motion.div
-            initial={{ opacity: 0, rotate: -2, scale: 0.95 }}
-            whileInView={{ opacity: 1, rotate: -2, scale: 1 }}
+          {/* Title Area */}
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={viewportOnce}
-            transition={{ duration: 0.4, type: "spring", stiffness: 200 }}
-            className="flex-shrink-0 bg-[var(--color-navy-950)] text-white px-4 py-2 border-2 border-[var(--color-navy-950)] shadow-[4px_4px_0_0_var(--color-green-500)] rotate-[-2deg] hover:rotate-0 transition-transform duration-300"
+            transition={{ duration: 0.5 }}
+            className="flex-shrink-0 max-w-sm"
           >
-            <p className="font-mono text-xs md:text-sm font-black tracking-widest uppercase m-0">
-              {painStrip.eyebrow}
+            <div className="inline-flex items-center gap-2 mb-4">
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] shadow-[0_0_8px_var(--color-green-400)] animate-pulse" />
+              <h2 className="text-xs font-mono font-bold tracking-widest text-[var(--color-green-600)] uppercase m-0">
+                {painStrip.eyebrow}
+              </h2>
+            </div>
+            <p className="text-2xl md:text-3xl text-[var(--color-navy-950)] font-semibold leading-[1.2] tracking-tight">
+              What happens when the field disconnects from the office?
             </p>
           </motion.div>
 
-          {/* Stats Container */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
+          {/* Stats Grid */}
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewportOnce}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="w-full xl:w-auto flex-1 max-w-5xl border-2 border-[var(--color-navy-950)] shadow-[4px_4px_0_0_var(--color-navy-950)] flex flex-col sm:flex-row bg-white relative z-10"
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="w-full xl:flex-1 grid grid-cols-1 md:grid-cols-3 -mx-8"
           >
             {painStrip.items.map((item, index) => (
               <StatItem

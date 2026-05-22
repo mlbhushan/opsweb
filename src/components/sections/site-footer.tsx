@@ -66,11 +66,11 @@ export function SiteFooter() {
              <div className="mt-8 relative z-10">
                <p className="text-[10px] uppercase tracking-[0.2em] text-[var(--color-green-500)] mb-1.5 font-semibold">Direct Line</p>
                <a 
-                 href="tel:+18005550199" 
+                 href="tel:+18133986692" 
                  className="text-lg md:text-xl font-medium tracking-tight text-white/90 hover:text-[var(--color-green-500)] transition-colors inline-flex items-center gap-2 group/tel"
                >
                  <Phone className="size-4 text-[var(--color-green-500)] group-hover/tel:rotate-12 transition-transform" />
-                 +1 (800) 555-0199
+                 +1 (813) 398-6692
                </a>
              </div>
           </div>
@@ -176,7 +176,7 @@ export function SiteFooter() {
                      <XIcon className="size-5 group-hover:scale-110 transition-transform" />
                    </a>
                    <a 
-                     href="https://wa.me/18005550199" 
+                     href="https://wa.me/18133986692" 
                      aria-label="WhatsApp" 
                      className="aspect-square border border-white/15 flex items-center justify-center text-white/60 hover:bg-[var(--color-green-500)] hover:border-[var(--color-green-500)] hover:text-[var(--color-navy-950)] transition-all group"
                    >

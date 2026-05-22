@@ -5,51 +5,132 @@ import { HOME } from "@/lib/content/home";
 import { Container } from "@/components/ui/container";
 import { staggerContainer, fadeUp, viewportOnce } from "@/lib/animations";
 import { ArrowRight } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+// --- Custom Animated SVG Icons ---
+
+function AnimatedCapture() {
+  return (
+    <svg viewBox="0 0 24 24" className="w-full h-full fill-none stroke-current" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+      <motion.rect x="3" y="3" width="18" height="18" rx="2" 
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 1 }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.line x1="3" y1="12" x2="21" y2="12"
+        animate={{ y: [-6, 6, -6] }}
+        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+        stroke="var(--color-green-400)"
+      />
+    </svg>
+  );
+}
+
+function AnimatedDetect() {
+  return (
+    <svg viewBox="0 0 24 24" className="w-full h-full fill-none stroke-current" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+      <motion.path d="M3 12h4l3 -9 5 18 3 -9h3"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 1 }}
+        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+        stroke="var(--color-green-400)"
+      />
+      <motion.circle cx="12" cy="12" r="9" 
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 0.15 }}
+        transition={{ duration: 2.5, repeat: Infinity, ease: "easeOut" }}
+      />
+    </svg>
+  );
+}
+
+function AnimatedDispatch() {
+  return (
+    <svg viewBox="0 0 24 24" className="w-full h-full fill-none stroke-current" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+      <motion.path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"
+        initial={{ pathLength: 0, strokeDasharray: "0 1" }}
+        animate={{ pathLength: 1, strokeDasharray: "1 0" }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+        stroke="var(--color-green-400)"
+      />
+      <motion.path d="M11 13L2 22"
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+      />
+    </svg>
+  );
+}
+
+function AnimatedExecute() {
+  return (
+    <svg viewBox="0 0 24 24" className="w-full h-full fill-none stroke-current" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+      <motion.g
+        animate={{ rotate: 360 }}
+        transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+        style={{ transformOrigin: '12px 12px' }}
+      >
+        <circle cx="12" cy="12" r="3" stroke="var(--color-green-400)" />
+        <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83" />
+      </motion.g>
+    </svg>
+  );
+}
+
+function AnimatedInvoice() {
+  return (
+    <svg viewBox="0 0 24 24" className="w-full h-full fill-none stroke-current" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+      <rect x="4" y="2" width="16" height="20" rx="2" />
+      <motion.line x1="8" y1="8" x2="16" y2="8"
+        initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 3, repeat: Infinity }} stroke="var(--color-green-400)" />
+      <motion.line x1="8" y1="12" x2="16" y2="12"
+        initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 3, repeat: Infinity, delay: 0.3 }} stroke="var(--color-green-400)" />
+      <motion.line x1="8" y1="16" x2="12" y2="16"
+        initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 3, repeat: Infinity, delay: 0.6 }} stroke="var(--color-green-400)" />
+    </svg>
+  );
+}
+
+const animatedIconsMap = [AnimatedCapture, AnimatedDetect, AnimatedDispatch, AnimatedExecute, AnimatedInvoice];
 
 export function CoreWorkflow() {
   const { coreWorkflow } = HOME;
 
   // Split headline for dual color
-  // "Zero Data Loss. Maximum Velocity." -> "Zero Data Loss." and "Maximum Velocity."
   const firstPeriodIndex = coreWorkflow.headline.indexOf(".");
-  const firstPart = firstPeriodIndex !== -1 
+  const firstPart = firstPeriodIndex !== -1
     ? coreWorkflow.headline.substring(0, firstPeriodIndex + 1)
     : coreWorkflow.headline;
-  const secondPart = firstPeriodIndex !== -1 
+  const secondPart = firstPeriodIndex !== -1
     ? coreWorkflow.headline.substring(firstPeriodIndex + 1).trim()
     : "";
 
   return (
-    <section className="section bg-[var(--color-navy-900)] text-white relative overflow-hidden py-16 md:py-24">
-      {/* Subtle background grid overlay */}
-      <div 
-        className="absolute inset-0 pointer-events-none opacity-5" 
-        style={{ 
-          backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px)', 
-          backgroundSize: '32px 32px' 
-        }} 
-      />
+    <section className="section bg-[var(--color-navy-950)] text-white relative overflow-hidden py-24 md:py-32">
+      {/* Swiss Background Subtleties */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Soft precision grid pattern */}
+        <svg className="absolute inset-0 w-full h-full opacity-[0.02]" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="grid-swiss" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M0 40V0H40" fill="none" stroke="#ffffff" strokeWidth="1" />
+              <path d="M40 0L40 40" fill="none" stroke="#ffffff" strokeWidth="1" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid-swiss)" />
+        </svg>
 
-      {/* Ambient Glows */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[var(--color-green-500)]/5 rounded-full blur-[120px] pointer-events-none translate-x-1/3 -translate-y-1/3" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[var(--color-green-500)]/5 rounded-full blur-[100px] pointer-events-none -translate-x-1/3 translate-y-1/3" />
-
-      {/* Corner Brackets for structural tech aesthetic */}
-      <div className="absolute left-6 top-6 w-8 h-8 border-l border-t border-[var(--color-green-500)]/20 pointer-events-none hidden md:block" />
-      <div className="absolute right-6 top-6 w-8 h-8 border-r border-t border-[var(--color-green-500)]/20 pointer-events-none hidden md:block" />
-      <div className="absolute left-6 bottom-6 w-8 h-8 border-l border-b border-[var(--color-green-500)]/20 pointer-events-none hidden md:block" />
-      <div className="absolute right-6 bottom-6 w-8 h-8 border-r border-b border-[var(--color-green-500)]/20 pointer-events-none hidden md:block" />
-
-      {/* Vertical subtle scanning line across the background */}
-      <motion.div 
-        className="absolute left-1/3 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[var(--color-green-500)]/10 to-transparent pointer-events-none hidden lg:block"
-        animate={{ opacity: [0.3, 0.8, 0.3] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-      />
+        {/* Ambient Glows */}
+        <motion.div
+          className="absolute top-[10%] right-[10%] w-[400px] h-[400px] bg-[var(--color-green-500)] rounded-full blur-[140px] opacity-[0.06] mix-blend-screen"
+          animate={{ x: [0, 20, -10, 0], y: [0, 30, -20, 0] }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+        />
+      </div>
 
       <Container className="relative z-10">
-        <div className="flex flex-col gap-12 md:gap-16">
-          
+        <div className="flex flex-col gap-16 md:gap-24">
+
           {/* Header Area */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
             <div className="max-w-3xl">
@@ -59,19 +140,19 @@ export function CoreWorkflow() {
                 viewport={viewportOnce}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="inline-flex items-center gap-2 rounded-full border border-[var(--color-green-500)]/30 bg-[var(--color-green-500)]/10 px-3 py-1 mb-6">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] shadow-[0_0_8px_var(--color-green-500)]" />
-                  <span className="text-xs font-semibold tracking-wider text-[var(--color-green-400)] uppercase">
+                <div className="inline-flex items-center gap-3 mb-6">
+                  <span className="h-2 w-2 rounded-full bg-[var(--color-green-500)] shadow-[0_0_8px_var(--color-green-500)]" />
+                  <span className="text-[12px] font-mono font-bold tracking-widest text-[var(--color-green-400)] uppercase">
                     {coreWorkflow.eyebrow}
                   </span>
                 </div>
-                
-                <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-white uppercase leading-[0.9]">
+
+                <h2 className="text-4xl md:text-5xl lg:text-[64px] font-medium tracking-tight text-white leading-[1.05]">
                   {firstPart}
                   {secondPart && (
                     <>
                       <br />
-                      <span className="text-[var(--color-green-500)]">
+                      <span className="text-[var(--color-green-400)]">
                         {secondPart}
                       </span>
                     </>
@@ -79,76 +160,85 @@ export function CoreWorkflow() {
                 </h2>
               </motion.div>
             </div>
-            
-            <motion.div 
-              className="max-w-sm pb-1"
+
+            <motion.div
+              className="max-w-sm pb-2"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewportOnce}
               transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
-              <p className="text-base md:text-lg font-light text-[var(--color-gray-300)] leading-relaxed">
+              <div className="h-px w-12 bg-white/20 mb-6 hidden md:block" />
+              <p className="text-[16px] md:text-[17px] text-[var(--color-navy-200)] leading-relaxed font-light text-balance">
                 OpsFlo creates a single source of truth across your entire operation, eliminating the manual handoffs that lead to lost revenue.
               </p>
             </motion.div>
           </div>
 
-          {/* Horizontal Steps Timeline */}
-          <div className="relative mt-4">
-            {/* Horizontal Connector Line (Desktop) */}
-            <div className="absolute left-6 right-6 top-[24px] h-px bg-white/10 hidden lg:block overflow-hidden">
-              {/* Energy pulse across the timeline */}
-              <motion.div 
-                className="absolute top-0 bottom-0 w-32 bg-gradient-to-r from-transparent via-[var(--color-green-500)]/50 to-transparent"
-                animate={{ left: ["-10%", "110%"] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-              />
-            </div>
-
-            <motion.div 
-              className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-4 relative z-10"
+          {/* Steps Timeline */}
+          <div className="relative">
+            <motion.div
+              className="grid grid-cols-1 lg:grid-cols-5 gap-y-10 gap-x-6 relative z-10"
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
               viewport={viewportOnce}
             >
-              {coreWorkflow.steps.map((step, index) => (
-                <motion.div 
-                  key={step.number} 
-                  variants={fadeUp}
-                  className="group relative flex flex-row lg:flex-col items-start gap-5 lg:gap-6"
-                >
-                  {/* Node / Number Box */}
-                  <div className="flex shrink-0 relative">
-                    <div className="flex h-12 w-12 items-center justify-center border border-white/20 bg-[var(--color-navy-900)] text-[var(--color-green-400)] font-mono text-lg font-light transition-all duration-300 group-hover:border-[var(--color-green-500)] group-hover:text-[var(--color-navy-950)] group-hover:bg-[var(--color-green-500)] relative z-10">
-                      {step.number}
-                    </div>
-                    {/* Vertical Connector Line (Mobile/Tablet) */}
+              {coreWorkflow.steps.map((step, index) => {
+                const IconComponent = animatedIconsMap[index % animatedIconsMap.length];
+                
+                return (
+                  <motion.div
+                    key={step.number}
+                    variants={fadeUp}
+                    className="group relative flex flex-row lg:flex-col items-start gap-5 lg:gap-6"
+                  >
+                    {/* Horizontal Connector Line (Desktop) - 32px is the exact center of the 64px box */}
                     {index !== coreWorkflow.steps.length - 1 && (
-                      <div className="absolute left-[23px] top-12 bottom-[-2rem] w-px bg-white/10 lg:hidden overflow-hidden">
-                        <motion.div 
-                          className="absolute left-0 right-0 h-16 bg-gradient-to-b from-transparent via-[var(--color-green-500)]/50 to-transparent"
-                          animate={{ top: ["-20%", "120%"] }}
-                          transition={{ duration: 2, repeat: Infinity, ease: "linear", delay: index * 0.5 }}
+                      <div className="absolute left-[32px] top-[32px] w-[calc(100%+24px)] h-px bg-white/10 hidden lg:block z-0 overflow-hidden">
+                        <motion.div
+                          className="absolute top-0 bottom-0 w-32 bg-gradient-to-r from-transparent via-[var(--color-green-500)] to-transparent"
+                          animate={{ left: ["-50%", "150%"] }}
+                          transition={{ duration: 3, repeat: Infinity, ease: "linear", delay: index * 0.4 }}
                         />
                       </div>
                     )}
-                  </div>
 
-                  {/* Content */}
-                  <div className="flex flex-col pt-1 lg:pt-0">
-                    <div className="flex items-center gap-2 mb-2">
-                      <h3 className="text-xl font-bold text-white uppercase tracking-wider">
-                        {step.label}
-                      </h3>
-                      <ArrowRight className="w-4 h-4 text-[var(--color-green-500)] opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+                    {/* Vertical Connector Line (Mobile/Tablet) */}
+                    {index !== coreWorkflow.steps.length - 1 && (
+                      <div className="absolute left-[32px] top-[32px] w-px h-[calc(100%+40px)] bg-white/10 lg:hidden z-0 overflow-hidden">
+                        <motion.div
+                          className="absolute left-0 right-0 h-32 bg-gradient-to-b from-transparent via-[var(--color-green-500)] to-transparent"
+                          animate={{ top: ["-50%", "150%"] }}
+                          transition={{ duration: 3, repeat: Infinity, ease: "linear", delay: index * 0.4 }}
+                        />
+                      </div>
+                    )}
+
+                    {/* Swiss Geometric Node Box */}
+                    <div className="flex shrink-0 relative z-10">
+                      <div className="flex h-16 w-16 items-center justify-center bg-[var(--color-navy-950)] border border-[var(--color-navy-800)] text-[var(--color-navy-300)] transition-all duration-500 group-hover:border-[var(--color-green-500)] group-hover:bg-[var(--color-green-500)/5] group-hover:text-white group-hover:shadow-[0_0_30px_rgba(34,197,94,0.1)]">
+                        <div className="w-7 h-7">
+                          <IconComponent />
+                        </div>
+                      </div>
                     </div>
-                    <p className="text-[var(--color-gray-400)] text-sm leading-relaxed">
-                      {step.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
+
+                    {/* Content */}
+                    <div className="flex flex-col pt-1 lg:pt-0 relative z-10">
+                      <div className="flex items-center gap-2 mb-2">
+                        <h3 className="text-[18px] font-semibold text-white tracking-wide group-hover:text-[var(--color-green-400)] transition-colors duration-300">
+                          {step.label}
+                        </h3>
+                        <ArrowRight className="w-4 h-4 text-[var(--color-green-400)] opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
+                      </div>
+                      <p className="text-[var(--color-navy-300)] text-[14px] leading-relaxed">
+                        {step.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </motion.div>
           </div>
 

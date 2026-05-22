@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { 
-  ArrowLeft, ArrowRight, User, MessageCircle, Folder, Pin, Calendar, Search, Quote 
+  ArrowLeft, ArrowRight, User, MessageCircle, Folder, Pin, Calendar, Search, Quote, Tag 
 } from "lucide-react";
 import { PortableText } from "@portabletext/react";
 import { buildMetadata } from "@/lib/seo";
@@ -95,7 +95,7 @@ export default async function BlogPostPage({ params }: Props) {
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
             {/* Left Column (Main Content) */}
             <div className="lg:col-span-8 space-y-12">
-              <article className="group overflow-hidden rounded-2xl bg-white shadow-[var(--shadow-sm)]">
+              <article className="group overflow-hidden rounded-3xl border border-[var(--color-gray-200)] bg-white shadow-sm">
                 {postImage && (
                   <div className="relative aspect-[16/9] w-full overflow-hidden">
                     <Image
@@ -244,7 +244,7 @@ export default async function BlogPostPage({ params }: Props) {
                         <p className="text-sm leading-relaxed text-[var(--color-gray-600)]">
                           Great insights! The construction and manufacturing sectors are evolving rapidly, and it's encouraging to see how technology, safety innovations, and sustainable practices are shaping the future of the industry. Your points on streamlining operations and improving project efficiency really resonate - especially as more companies adopt digital tools and automation to stay competitive. Looking forward to more content like this that highlights both challenges and forward-thinking solutions within the industrial landscape.
                         </p>
-                        <button className="btn-pill-lime mt-4 inline-flex h-8 px-4 text-xs">
+                        <button className="rounded-xl mt-4 inline-flex items-center justify-center bg-[var(--color-navy-950)] px-4 py-2 text-xs font-bold uppercase tracking-widest text-white transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-500)] hover:text-[var(--color-navy-950)]">
                           Reply
                         </button>
                       </div>
@@ -259,27 +259,27 @@ export default async function BlogPostPage({ params }: Props) {
                     <form className="space-y-6">
                       <div>
                         <label className="mb-2 block text-sm font-medium text-[var(--color-gray-700)]">Comment *</label>
-                        <textarea rows={5} className="w-full rounded-md border border-[var(--color-gray-200)] bg-white p-3 focus:border-[var(--color-green-500)] focus:outline-none focus:ring-1 focus:ring-[var(--color-green-500)]"></textarea>
+                        <textarea rows={5} className="w-full rounded-xl border border-[var(--color-gray-200)] bg-white p-4 focus:border-[var(--color-navy-400)] focus:outline-none focus:ring-1 focus:ring-[var(--color-navy-400)] shadow-sm"></textarea>
                       </div>
                       <div className="grid gap-6 md:grid-cols-2">
                         <div>
                           <label className="mb-2 block text-sm font-medium text-[var(--color-gray-700)]">Name *</label>
-                          <input type="text" className="w-full rounded-md border border-[var(--color-gray-200)] bg-white p-3 focus:border-[var(--color-green-500)] focus:outline-none focus:ring-1 focus:ring-[var(--color-green-500)]" />
+                          <input type="text" className="w-full rounded-xl border border-[var(--color-gray-200)] bg-white p-4 focus:border-[var(--color-navy-400)] focus:outline-none focus:ring-1 focus:ring-[var(--color-navy-400)] shadow-sm" />
                         </div>
                         <div>
                           <label className="mb-2 block text-sm font-medium text-[var(--color-gray-700)]">Email *</label>
-                          <input type="email" className="w-full rounded-md border border-[var(--color-gray-200)] bg-white p-3 focus:border-[var(--color-green-500)] focus:outline-none focus:ring-1 focus:ring-[var(--color-green-500)]" />
+                          <input type="email" className="w-full rounded-xl border border-[var(--color-gray-200)] bg-white p-4 focus:border-[var(--color-navy-400)] focus:outline-none focus:ring-1 focus:ring-[var(--color-navy-400)] shadow-sm" />
                         </div>
                       </div>
                       <div>
                         <label className="mb-2 block text-sm font-medium text-[var(--color-gray-700)]">Website</label>
-                        <input type="url" className="w-full rounded-md border border-[var(--color-gray-200)] bg-white p-3 focus:border-[var(--color-green-500)] focus:outline-none focus:ring-1 focus:ring-[var(--color-green-500)]" />
+                        <input type="url" className="w-full rounded-xl border border-[var(--color-gray-200)] bg-white p-4 focus:border-[var(--color-navy-400)] focus:outline-none focus:ring-1 focus:ring-[var(--color-navy-400)] shadow-sm" />
                       </div>
                       <div className="flex items-center gap-2">
                         <input type="checkbox" id="save-info" className="rounded border-[var(--color-gray-200)] text-[var(--color-green-600)] focus:ring-[var(--color-green-500)]" />
                         <label htmlFor="save-info" className="text-sm text-[var(--color-text-muted)]">Save my name, email, and website in this browser for the next time I comment.</label>
                       </div>
-                      <button type="submit" className="btn-pill-lime mt-4 border-none py-3 h-auto">
+                      <button type="submit" className="rounded-xl mt-4 inline-flex items-center justify-center bg-[var(--color-navy-950)] px-6 py-3.5 text-sm font-bold uppercase tracking-widest text-white transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-500)] hover:text-[var(--color-navy-950)]">
                         Post Comment
                       </button>
                     </form>
@@ -289,19 +289,19 @@ export default async function BlogPostPage({ params }: Props) {
             </div>
 
             {/* Right Column (Sidebar) - REUSED FROM LIST PAGE */}
-            <div className="lg:col-span-4 space-y-10">
+            <div className="lg:col-span-4 space-y-6">
               {/* Search */}
-              <div className="rounded-2xl bg-white p-8 shadow-[var(--shadow-sm)]">
+              <div className="rounded-3xl bg-white border border-[var(--color-gray-200)] p-8 shadow-sm">
                 <form className="relative" action="/blog">
                   <input
                     name="q"
                     type="text"
-                    placeholder="Search Here"
-                    className="w-full rounded-md border border-[var(--color-gray-200)] bg-[var(--color-gray-50)] py-4 pl-5 pr-14 text-sm focus:border-[var(--color-green-500)] focus:outline-none focus:ring-1 focus:ring-[var(--color-green-500)]"
+                    placeholder="Search articles..."
+                    className="w-full rounded-xl border border-[var(--color-gray-200)] bg-[var(--color-gray-50)] py-4 pl-5 pr-14 text-sm font-medium focus:border-[var(--color-navy-400)] focus:bg-white focus:outline-none transition-all shadow-sm"
                   />
                   <button
                     type="submit"
-                    className="absolute bottom-1 right-1 top-1 flex w-12 items-center justify-center rounded-md bg-[var(--color-navy-900)] text-white transition hover:bg-[var(--color-navy-800)]"
+                    className="absolute bottom-1.5 right-1.5 top-1.5 flex w-12 items-center justify-center rounded-lg bg-[var(--color-navy-950)] text-white transition-all shadow-sm hover:bg-[var(--color-green-500)] hover:text-[var(--color-navy-950)]"
                   >
                     <Search className="size-5" />
                   </button>
@@ -309,31 +309,31 @@ export default async function BlogPostPage({ params }: Props) {
               </div>
 
               {/* Recent Articles */}
-              <div className="rounded-2xl bg-white p-8 shadow-[var(--shadow-sm)]">
-                <h3 className="mb-6 flex items-center gap-2 text-xl font-bold text-[var(--color-navy-950)]">
-                  <Pin className="size-5 fill-[var(--color-navy-600)] text-[var(--color-navy-600)]" /> Recent
-                  Articles
+              <div className="rounded-3xl bg-white border border-[var(--color-gray-200)] p-8 shadow-sm">
+                <h3 className="mb-6 flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-[var(--color-navy-950)]">
+                  <Pin className="size-4 fill-[var(--color-navy-600)] text-[var(--color-navy-600)]" /> 
+                  Recent Articles
                 </h3>
-                <div className="flex flex-col gap-6">
+                <div className="flex flex-col gap-5">
                   {allPosts.slice(0, 3).map((recent) => (
                     <Link
                       key={recent.slug}
                       href={`/blog/${recent.slug}`}
                       className="group flex items-center gap-4"
                     >
-                      <div className="relative size-20 shrink-0 overflow-hidden rounded-lg">
+                      <div className="relative size-16 shrink-0 overflow-hidden rounded-xl border border-[var(--color-gray-200)]">
                         <Image
                           src={recent.image}
                           alt={recent.title}
                           fill
-                          className="object-cover transition group-hover:scale-110"
+                          className="object-cover transition duration-500 group-hover:scale-110"
                         />
                       </div>
                       <div>
-                        <h4 className="line-clamp-2 text-sm font-bold text-[var(--color-navy-950)] transition group-hover:text-[var(--color-navy-600)]">
+                        <h4 className="line-clamp-2 text-sm font-bold uppercase leading-tight text-[var(--color-navy-950)] transition-colors group-hover:text-[var(--color-navy-600)]" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
                           {recent.title}
                         </h4>
-                        <p className="mt-1 text-xs font-medium text-[var(--color-text-muted)]">
+                        <p className="mt-1 text-xs font-medium text-[var(--color-gray-400)]">
                           {recent.date.toUpperCase()}
                         </p>
                       </div>
@@ -343,12 +343,12 @@ export default async function BlogPostPage({ params }: Props) {
               </div>
 
               {/* Categories */}
-              <div className="rounded-2xl bg-white p-8 shadow-[var(--shadow-sm)]">
-                <h3 className="mb-6 flex items-center gap-2 text-xl font-bold text-[var(--color-navy-950)]">
-                  <Pin className="size-5 fill-[var(--color-navy-600)] text-[var(--color-navy-600)]" />{" "}
+              <div className="rounded-3xl bg-white border border-[var(--color-gray-200)] p-8 shadow-sm">
+                <h3 className="mb-6 flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-[var(--color-navy-950)]">
+                  <Folder className="size-4 text-[var(--color-navy-600)]" />
                   Categories
                 </h3>
-                <ul className="flex flex-col space-y-4">
+                <ul className="flex flex-col space-y-1">
                   {[
                     "Compliance",
                     "Construction",
@@ -360,13 +360,12 @@ export default async function BlogPostPage({ params }: Props) {
                     <li key={cat}>
                       <Link
                         href={`/blog?category=${cat}`}
-                        className="group flex items-center justify-between text-sm font-semibold text-[var(--color-text-muted)] transition hover:text-[var(--color-navy-600)]"
+                        className="group flex items-center justify-between rounded-xl px-4 py-2.5 text-sm font-medium text-[var(--color-gray-600)] transition-all hover:bg-[var(--color-gray-50)] hover:text-[var(--color-navy-900)]"
                       >
-                        <span className="flex items-center gap-3">
-                          <Folder className="size-4 fill-[var(--color-green-300)] text-[var(--color-green-600)]" />{" "}
+                        <span className="flex items-center gap-3 text-xs font-bold uppercase">
                           {cat}
                         </span>
-                        <span className="text-[var(--color-gray-400)] group-hover:text-[var(--color-navy-600)]">
+                        <span className="text-xs text-[var(--color-gray-400)] group-hover:text-[var(--color-navy-900)]">
                           ({i + 1})
                         </span>
                       </Link>
@@ -376,10 +375,10 @@ export default async function BlogPostPage({ params }: Props) {
               </div>
 
               {/* Popular Tag */}
-              <div className="rounded-2xl bg-white p-8 shadow-[var(--shadow-sm)]">
-                <h3 className="mb-6 flex items-center gap-2 text-xl font-bold text-[var(--color-navy-950)]">
-                  <Pin className="size-5 fill-[var(--color-navy-600)] text-[var(--color-navy-600)]" /> Popular
-                  Tag
+              <div className="rounded-3xl bg-white border border-[var(--color-gray-200)] p-8 shadow-sm">
+                <h3 className="mb-5 flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-[var(--color-navy-950)]">
+                  <Tag className="size-4 text-[var(--color-navy-600)]" /> 
+                  Popular Topics
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {[
@@ -396,7 +395,7 @@ export default async function BlogPostPage({ params }: Props) {
                     <Link
                       key={tag}
                       href={`/blog?tag=${tag}`}
-                      className="rounded-full border border-[var(--color-gray-200)] bg-white px-4 py-2 text-xs font-semibold text-[var(--color-text-muted)] transition hover:border-[var(--color-navy-600)] hover:bg-[var(--color-navy-600)] hover:text-white"
+                      className="rounded-xl border border-[var(--color-gray-200)] bg-white px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-[var(--color-gray-500)] transition-colors hover:border-[var(--color-navy-950)] hover:bg-[var(--color-navy-950)] hover:text-white"
                     >
                       {tag}
                     </Link>

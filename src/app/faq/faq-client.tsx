@@ -201,27 +201,29 @@ function AccordionItem({
   onToggle: () => void;
 }) {
   return (
-    <div className="border-b border-[var(--color-gray-200)] last:border-0">
+    <div className="border-b border-[var(--color-gray-200)] last:border-0 group/item">
       <button
         onClick={onToggle}
-        className="flex w-full items-start justify-between gap-4 py-5 text-left"
+        className="flex w-full items-start justify-between gap-4 py-6 text-left transition-colors hover:text-[var(--color-green-600)]"
         aria-expanded={isOpen}
       >
         <span
-          className="text-base font-bold uppercase tracking-tight text-[var(--color-navy-950)]"
-          style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+          className="text-base md:text-lg font-black uppercase tracking-tight text-[var(--color-navy-950)] leading-tight group-hover/item:text-[var(--color-green-700)] transition-colors"
+          style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
         >
           {item.question}
         </span>
-        <ChevronDown
-          className={`mt-0.5 size-5 shrink-0 text-[var(--color-gray-400)] transition-transform duration-300 ${isOpen ? "rotate-180 text-[var(--color-green-500)]" : ""}`}
-        />
+        <div className={`mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${isOpen ? "border-[var(--color-green-500)] bg-[var(--color-green-50)]" : "border-[var(--color-gray-200)] bg-white group-hover/item:border-[var(--color-green-200)]"}`}>
+          <ChevronDown
+            className={`size-4 shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180 text-[var(--color-green-600)]" : "text-[var(--color-gray-400)] group-hover/item:text-[var(--color-green-500)]"}`}
+          />
+        </div>
       </button>
       <div
-        className={`grid transition-all duration-300 ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
+        className={`grid transition-all duration-300 ease-in-out ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
       >
         <div className="overflow-hidden">
-          <p className="pb-6 text-sm font-light leading-relaxed text-[var(--color-gray-600)]">
+          <p className="pb-6 pr-8 text-sm md:text-base font-medium leading-relaxed text-[var(--color-gray-600)]">
             {item.answer}
           </p>
         </div>
@@ -243,40 +245,41 @@ export function FAQClient() {
       {/* ── HERO ── */}
       <section className="relative overflow-hidden border-b border-[var(--color-gray-200)]">
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:48px_48px]" />
+        <div className="pointer-events-none absolute right-0 top-0 h-[400px] w-[400px] translate-x-1/3 -translate-y-1/4 rounded-full bg-[var(--color-green-500)]/5 blur-[80px]" />
 
         <Container className="relative z-10 py-16 md:py-24">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--color-navy-800)]/15 bg-white px-4 py-2 shadow-[var(--shadow-xs)]">
-            <span className="flex size-2 rounded-full bg-[var(--color-green-500)]" />
-            <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-navy-900)]">
+          <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-[var(--color-navy-200)] bg-white px-5 py-2 shadow-sm">
+            <span className="flex size-2 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+            <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-navy-950)]">
               Frequently Asked Questions
             </span>
           </div>
 
           <h1
-            className="mb-4 text-5xl font-black uppercase leading-[0.92] tracking-tighter md:text-7xl"
-            style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+            className="mb-6 text-5xl font-black uppercase leading-[0.92] tracking-tighter md:text-7xl text-balance"
+            style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
           >
             <span className="text-[var(--color-green-500)]">Questions</span>
             <br />
             <span className="text-[var(--color-navy-950)]">Answered.</span>
           </h1>
-          <p className="max-w-xl text-base font-light leading-relaxed text-[var(--color-gray-600)] md:text-lg">
+          <p className="max-w-xl text-base font-medium leading-relaxed text-[var(--color-gray-600)] md:text-lg">
             Everything you need to know about OpsFlo — from how we work offline to what ROI to expect.{" "}
-            <Link href="/contact" className="font-semibold text-[var(--color-navy-950)] underline underline-offset-4 hover:text-[var(--color-navy-700)]">
+            <Link href="/contact" className="font-bold text-[var(--color-green-700)] underline underline-offset-4 hover:text-[var(--color-green-600)] transition-colors">
               Can&apos;t find your answer? Talk to our team.
             </Link>
           </p>
 
-          <div className="mt-10 flex flex-wrap gap-8 border-t border-[var(--color-gray-200)] pt-8">
+          <div className="mt-12 flex flex-wrap gap-6 border-t border-[var(--color-gray-200)] pt-8">
             {[
               { value: `${FAQ_SECTIONS.reduce((a, s) => a + s.items.length, 0)}`, label: "questions answered" },
               { value: "30-day", label: "risk-free pilot" },
               { value: "2-4wk", label: "avg. go-live" },
             ].map((s) => (
-              <div key={s.label} className="flex items-baseline gap-2">
+              <div key={s.label} className="flex items-baseline gap-3 rounded-2xl bg-[var(--color-gray-50)] px-5 py-3 border border-[var(--color-gray-100)]">
                 <span
                   className="text-3xl font-black text-[var(--color-navy-950)]"
-                  style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                 >
                   {s.value}
                 </span>
@@ -296,81 +299,90 @@ export function FAQClient() {
 
             {/* ── LEFT NAV (Sticky) ── */}
             <nav className="lg:col-span-3">
-              <div className="sticky top-24 space-y-1">
-                <p className="mb-4 text-xs font-bold uppercase tracking-widest text-[var(--color-gray-400)]">
-                  Jump to Section
-                </p>
-                {FAQ_SECTIONS.map((section) => {
-                  const Icon = section.icon;
-                  const isActive = activeSection === section.id;
-                  return (
-                    <button
-                      key={section.id}
-                      onClick={() => setActiveSection(section.id)}
-                      className={`group flex w-full items-center gap-3 px-4 py-3 text-left text-sm font-semibold transition-all ${
-                        isActive
-                          ? "bg-[var(--color-navy-950)] text-white"
-                          : "text-[var(--color-gray-600)] hover:bg-[var(--color-gray-100)] hover:text-[var(--color-navy-950)]"
-                      }`}
-                    >
-                      <Icon
-                        className={`size-4 shrink-0 ${
+              <div className="sticky top-24 space-y-6">
+                <div className="space-y-1">
+                  <p className="mb-4 text-xs font-bold uppercase tracking-widest text-[var(--color-gray-400)] pl-4">
+                    Jump to Section
+                  </p>
+                  {FAQ_SECTIONS.map((section) => {
+                    const Icon = section.icon;
+                    const isActive = activeSection === section.id;
+                    return (
+                      <button
+                        key={section.id}
+                        onClick={() => setActiveSection(section.id)}
+                        className={`group flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-sm font-bold tracking-wide uppercase transition-all ${
                           isActive
-                            ? "text-[var(--color-green-400)]"
-                            : "text-[var(--color-gray-400)] group-hover:text-[var(--color-navy-700)]"
+                            ? "bg-[var(--color-navy-950)] text-white shadow-sm"
+                            : "text-[var(--color-gray-500)] hover:bg-white hover:text-[var(--color-navy-950)] hover:shadow-sm"
                         }`}
-                      />
-                      {section.label}
-                      <ChevronRight
-                        className={`ml-auto size-3.5 transition-transform ${
-                          isActive ? "text-[var(--color-green-400)]" : "text-[var(--color-gray-300)]"
-                        }`}
-                      />
-                    </button>
-                  );
-                })}
+                      >
+                        <Icon
+                          className={`size-4 shrink-0 transition-colors ${
+                            isActive
+                              ? "text-[var(--color-green-400)]"
+                              : "text-[var(--color-gray-400)] group-hover:text-[var(--color-green-500)]"
+                          }`}
+                        />
+                        {section.label}
+                        <ChevronRight
+                          className={`ml-auto size-4 transition-transform ${
+                            isActive ? "text-[var(--color-green-400)]" : "text-transparent group-hover:text-[var(--color-gray-300)]"
+                          }`}
+                        />
+                      </button>
+                    );
+                  })}
+                </div>
 
-                <div className="mt-8 bg-[var(--color-navy-950)] p-6">
-                  <p className="text-xs font-bold uppercase tracking-widest text-[var(--color-green-500)] mb-2">
-                    Still unsure?
-                  </p>
-                  <p className="text-sm font-light text-[var(--color-gray-400)] mb-4">
-                    Talk to our team. 15 minutes, no pressure, specific to your operation.
-                  </p>
-                  <Link
-                    href="/contact"
-                    className="group flex w-full items-center justify-between bg-[var(--color-green-500)] px-4 py-3 text-xs font-bold uppercase tracking-wider text-[var(--color-navy-950)] transition-colors hover:bg-[var(--color-green-400)]"
-                  >
-                    Book a Call
-                    <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
-                  </Link>
+                <div className="rounded-3xl border border-[var(--color-gray-200)] bg-white p-6 shadow-sm overflow-hidden relative group">
+                  <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                    <HeadphonesIcon className="size-20" />
+                  </div>
+                  <div className="relative z-10">
+                    <p className="text-xs font-bold uppercase tracking-widest text-[var(--color-green-600)] mb-2">
+                      Still unsure?
+                    </p>
+                    <p className="text-sm font-medium text-[var(--color-gray-600)] mb-5">
+                      Talk to our team. 15 minutes, no pressure, specific to your operation.
+                    </p>
+                    <Link
+                      href="/contact"
+                      className="group/cta flex w-full items-center justify-between rounded-xl border border-[var(--color-navy-700)] bg-[var(--color-navy-950)] px-4 py-3 text-xs font-bold uppercase tracking-wider text-white transition-all shadow-sm hover:-translate-y-0.5 hover:shadow-md hover:bg-[var(--color-navy-900)]"
+                    >
+                      Book a Call
+                      <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-1" />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </nav>
 
             {/* ── FAQ CONTENT ── */}
-            <div className="lg:col-span-9 space-y-16">
+            <div className="lg:col-span-9 space-y-12">
               {FAQ_SECTIONS.map((section, sectionIdx) => {
                 if (section.id !== activeSection) return null;
                 const Icon = section.icon;
                 return (
-                  <div key={section.id} id={section.id}>
-                    <div className="mb-8 flex items-center gap-4 border-b-2 border-[var(--color-navy-950)] pb-5">
-                      <div className="flex size-10 items-center justify-center bg-[var(--color-navy-950)]">
-                        <Icon className="size-5 text-[var(--color-green-500)]" />
+                  <div key={section.id} id={section.id} className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+                    <div className="mb-6 flex items-center gap-4">
+                      <div className="flex size-12 items-center justify-center rounded-xl bg-[var(--color-navy-950)] text-[var(--color-green-500)] shadow-sm">
+                        <Icon className="size-6" />
                       </div>
-                      <h2
-                        className="text-2xl font-black uppercase tracking-tight text-[var(--color-navy-950)]"
-                        style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
-                      >
-                        {section.label}
-                      </h2>
-                      <span className="ml-auto text-xs font-bold text-[var(--color-gray-400)]">
-                        {section.items.length} questions
-                      </span>
+                      <div>
+                        <h2
+                          className="text-2xl md:text-3xl font-black uppercase tracking-tight text-[var(--color-navy-950)]"
+                          style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                        >
+                          {section.label}
+                        </h2>
+                        <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)]">
+                          {section.items.length} questions
+                        </span>
+                      </div>
                     </div>
 
-                    <div className="bg-white border border-[var(--color-gray-200)] px-6 md:px-8">
+                    <div className="rounded-3xl border border-[var(--color-gray-200)] bg-white px-6 md:px-10 shadow-sm">
                       {section.items.map((item) => (
                         <AccordionItem
                           key={item.id}
@@ -381,11 +393,14 @@ export function FAQClient() {
                       ))}
                     </div>
 
-                    <div className="mt-6 flex justify-end">
+                    <div className="mt-8 flex justify-end">
                       {sectionIdx < FAQ_SECTIONS.length - 1 && (
                         <button
-                          onClick={() => setActiveSection(FAQ_SECTIONS[sectionIdx + 1].id)}
-                          className="group flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-[var(--color-gray-400)] transition-colors hover:text-[var(--color-navy-950)]"
+                          onClick={() => {
+                            setActiveSection(FAQ_SECTIONS[sectionIdx + 1].id);
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                          }}
+                          className="group flex items-center gap-2 rounded-full border border-[var(--color-gray-200)] bg-white px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)] transition-all shadow-sm hover:shadow-md hover:border-[var(--color-green-400)] hover:text-[var(--color-navy-950)]"
                         >
                           Next: {FAQ_SECTIONS[sectionIdx + 1].label}
                           <ChevronRight className="size-4 transition-transform group-hover:translate-x-1" />
@@ -397,36 +412,37 @@ export function FAQClient() {
               })}
 
               {/* Still have questions */}
-              <div className="border-2 border-[var(--color-navy-950)] bg-white p-8 shadow-[6px_6px_0px_0px_var(--color-green-500)]">
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 justify-between">
+              <div className="rounded-3xl border border-[var(--color-navy-800)] bg-[var(--color-navy-950)] p-8 md:p-12 shadow-xl relative overflow-hidden group">
+                <div className="absolute right-[-10%] top-[-10%] w-[100%] h-[100%] bg-[radial-gradient(ellipse_at_center,_var(--color-green-500)_0%,_transparent_60%)] opacity-10 pointer-events-none transition-opacity duration-700 group-hover:opacity-20" />
+                <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center gap-8 justify-between">
                   <div>
-                    <p className="text-xs font-bold uppercase tracking-widest text-[var(--color-green-600)] mb-1">
+                    <p className="text-xs font-bold uppercase tracking-widest text-[var(--color-green-500)] mb-2">
                       Didn&apos;t find your answer?
                     </p>
                     <h3
-                      className="text-2xl font-black uppercase tracking-tight text-[var(--color-navy-950)]"
-                      style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+                      className="text-3xl font-black uppercase tracking-tight text-white mb-3"
+                      style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                     >
                       Talk to Our Team
                     </h3>
-                    <p className="mt-2 text-sm font-light text-[var(--color-gray-600)]">
+                    <p className="text-sm font-medium text-[var(--color-gray-400)] max-w-sm">
                       15 minutes, specific to your operation, zero pressure. We&apos;ll answer anything.
                     </p>
                   </div>
-                  <div className="flex shrink-0 flex-col gap-2 w-full sm:w-auto">
+                  <div className="flex shrink-0 flex-col gap-3 w-full sm:w-[220px]">
                     <Link
                       href="/contact"
-                      className="group flex items-center justify-between bg-[var(--color-navy-950)] px-6 py-4 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-[var(--color-green-500)] hover:text-[var(--color-navy-950)]"
+                      className="group/cta flex items-center justify-between rounded-xl bg-[var(--color-green-500)] px-6 py-4 text-sm font-bold uppercase tracking-widest text-[var(--color-navy-950)] transition-all shadow-sm hover:-translate-y-0.5 hover:shadow-md hover:bg-[var(--color-green-400)]"
                     >
                       Book a Call{" "}
-                      <ArrowRight className="ml-6 size-4 transition-transform group-hover:translate-x-1" />
+                      <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-1" />
                     </Link>
                     <Link
                       href="/roi-calculator"
-                      className="group flex items-center justify-between border border-[var(--color-gray-200)] px-6 py-3 text-sm font-semibold uppercase tracking-wide text-[var(--color-gray-500)] transition-colors hover:border-[var(--color-navy-950)] hover:text-[var(--color-navy-950)]"
+                      className="group/cta2 flex items-center justify-between rounded-xl border border-[var(--color-navy-700)] bg-transparent px-6 py-4 text-sm font-bold uppercase tracking-widest text-white transition-all hover:-translate-y-0.5 hover:border-[var(--color-gray-500)] hover:bg-[var(--color-navy-900)]"
                     >
                       Calculate ROI{" "}
-                      <ChevronRight className="ml-6 size-4 transition-transform group-hover:translate-x-1" />
+                      <ChevronRight className="size-4 transition-transform group-hover/cta2:translate-x-1" />
                     </Link>
                   </div>
                 </div>
@@ -443,31 +459,31 @@ export function FAQClient() {
           <div className="flex flex-col items-start justify-between gap-10 lg:flex-row lg:items-center">
             <div className="max-w-2xl">
               <h2
-                className="text-4xl font-black uppercase leading-[0.92] tracking-tighter md:text-5xl"
-                style={{ fontFamily: "'TASA Orbiter', sans-serif" }}
+                className="text-4xl font-black uppercase leading-[0.92] tracking-tighter md:text-5xl text-balance"
+                style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
               >
                 <span className="text-[var(--color-green-500)]">Ready to See</span>
                 <br />
                 <span className="text-white">OpsFlo in Action?</span>
               </h2>
-              <p className="mt-5 text-base font-light leading-relaxed text-[var(--color-gray-400)]">
+              <p className="mt-6 text-base font-medium leading-relaxed text-[var(--color-gray-400)]">
                 A 30-day pilot with your operation answers every remaining question — with your data, your crews, and your results on the line.
               </p>
             </div>
-            <div className="flex w-full flex-col gap-3 lg:w-auto">
+            <div className="flex w-full flex-col gap-3 lg:w-[380px]">
               <Link
                 href="/contact"
-                className="group flex items-center justify-between bg-[var(--color-green-500)] px-7 py-5 text-sm font-bold uppercase tracking-wide text-[var(--color-navy-950)] transition-colors hover:bg-[var(--color-green-400)]"
+                className="group/cta flex w-full items-center justify-between rounded-xl bg-[var(--color-green-500)] px-6 py-5 text-sm font-bold uppercase tracking-widest text-[var(--color-navy-950)] transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-400)]"
               >
                 <span>Start a 30-Day Pilot</span>
-                <ArrowRight className="ml-8 size-5 transition-transform group-hover:translate-x-2" />
+                <ArrowRight className="size-5 transition-transform group-hover/cta:translate-x-1" />
               </Link>
               <Link
                 href="/case-studies"
-                className="group flex items-center justify-between border border-[var(--color-navy-700)] px-7 py-4 text-sm font-semibold uppercase tracking-wide text-[var(--color-gray-300)] transition-colors hover:border-[var(--color-gray-500)] hover:text-white"
+                className="group/cta2 flex w-full items-center justify-between rounded-xl border border-[var(--color-navy-700)] bg-[var(--color-navy-950)] px-6 py-5 text-sm font-bold uppercase tracking-widest text-white transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-[var(--color-gray-500)] hover:bg-[var(--color-navy-900)]"
               >
                 <span>View Customer Stories</span>
-                <ArrowRight className="ml-8 size-5 transition-transform group-hover:translate-x-2" />
+                <ArrowRight className="size-5 transition-transform group-hover/cta2:translate-x-1" />
               </Link>
             </div>
           </div>
