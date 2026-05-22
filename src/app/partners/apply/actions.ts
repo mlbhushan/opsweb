@@ -8,9 +8,7 @@ const schema = z.object({
   email: z.string().email("Valid work email is required"),
   company: z.string().min(1, "Company name is required"),
   website: z.string().url("Valid URL is required").or(z.literal("")),
-  partnerType: z.enum(["technology", "implementation", "channel"], {
-    errorMap: () => ({ message: "Please select a partnership type" }),
-  }),
+  partnerType: z.enum(["technology", "implementation", "channel"], "Please select a partnership type"),
   description: z.string().min(10, "Please describe your company briefly"),
   integration: z.string().optional(),
   message: z.string().optional(),
