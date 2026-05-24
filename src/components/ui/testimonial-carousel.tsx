@@ -164,17 +164,17 @@ export function TestimonialCarousel() {
         <div className="flex items-center gap-3 absolute right-0">
           <button 
             onClick={handlePrev}
-            className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 hover:border-white/20 hover:-translate-y-0.5 transition-all backdrop-blur-md shadow-sm"
+            className="group w-10 h-10 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-sm hover:shadow-md hover:bg-white/20 hover:border-white/30 hover:scale-105 active:scale-95 transition-all duration-300"
             aria-label="Previous testimonial"
           >
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowLeft className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1" />
           </button>
           <button 
             onClick={handleNext}
-            className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 hover:border-white/20 hover:-translate-y-0.5 transition-all backdrop-blur-md shadow-sm"
+            className="group w-10 h-10 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-sm hover:shadow-md hover:bg-white/20 hover:border-white/30 hover:scale-105 active:scale-95 transition-all duration-300"
             aria-label="Next testimonial"
           >
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
           </button>
         </div>
       </div>

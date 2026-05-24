@@ -12,11 +12,11 @@ export const metadata: Metadata = buildMetadata({
 const data: ModulePageData = {
   bannerTitle: "Inventory & Parts",
   eyebrow: "Platform / Inventory & Parts",
-  headline: "Every Part Tracked. Every Usage Billed.",
+  headline: "Every Part **Tracked**. Every Usage **Billed**.",
   body: "Inventory & Parts gives you real-time visibility into stock levels across warehouses, service trucks, and job sites  -  ensuring crews never wait for parts and every component used is captured on the ticket.",
   heroImage: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1400&q=80",
   problem: {
-    headline: "Untracked Parts Are Unbilled Revenue",
+    headline: "Untracked Parts Are **Unbilled Revenue**",
     points: [
       "Parts used in the field are often recorded hours or days later  -  if they are recorded at all.",
       "Crews carry inventory on trucks with no real-time visibility into what has been consumed.",
@@ -25,7 +25,7 @@ const data: ModulePageData = {
     ],
   },
   howItWorks: {
-    headline: "How Inventory & Parts Works",
+    headline: "How **Inventory & Parts** Works",
     steps: [
       {
         title: "Real-Time Stock Tracking",
@@ -55,7 +55,7 @@ const data: ModulePageData = {
     "Supplier and lead-time management",
   ],
   differentiator: {
-    headline: "Inventory That Feeds Billing Automatically",
+    headline: "Inventory That **Feeds Billing** Automatically",
     body: "Every part consumed is linked to a job and a ticket. That means accurate billing, complete cost tracking, and no revenue left on the table  -  without asking field crews to do extra paperwork.",
   },
   problemImage: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80",

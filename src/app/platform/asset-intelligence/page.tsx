@@ -12,11 +12,11 @@ export const metadata: Metadata = buildMetadata({
 const data: ModulePageData = {
   bannerTitle: "Asset Intelligence",
   eyebrow: "Platform / Asset Intelligence",
-  headline: "Know Every Asset. Predict Every Failure.",
+  headline: "Know Every Asset. **Predict Every Failure**.",
   body: "Asset Intelligence gives you a complete, real-time view of every piece of equipment  -  its condition, service history, location, and predicted failure window  -  so you can act before downtime hits.",
   heroImage: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1400&q=80",
   problem: {
-    headline: "Blind Spots Kill Equipment Uptime",
+    headline: "Blind Spots **Kill Equipment Uptime**",
     points: [
       "Asset histories live in filing cabinets and personal notebooks  -  inaccessible to the people making maintenance decisions.",
       "Nobody knows which assets are approaching failure until they have already failed.",
@@ -25,7 +25,7 @@ const data: ModulePageData = {
     ],
   },
   howItWorks: {
-    headline: "How Asset Intelligence Works",
+    headline: "How **Asset Intelligence** Works",
     steps: [
       {
         title: "Centralized Asset Registry",
@@ -55,7 +55,7 @@ const data: ModulePageData = {
     "QR/barcode scanning for field identification",
   ],
   differentiator: {
-    headline: "Intelligence, Not Just Inventory",
+    headline: "**Intelligence**, Not Just Inventory",
     body: "Most asset management is a glorified spreadsheet. Asset Intelligence connects inspection data, work orders, and sensor feeds to build a living picture of each asset's health and predicted lifespan.",
   },
   problemImage: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80",

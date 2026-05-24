@@ -13,14 +13,14 @@ export function SocialProof() {
           {/* Left Column: Title and Context */}
           <div className="md:col-span-4 flex flex-col justify-between">
             <div>
-              <div className="inline-flex items-center gap-3 rounded-full border border-[var(--color-green-500)]/20 bg-[var(--color-green-500)]/10 px-4 py-1.5 mb-8 backdrop-blur-md shadow-[0_0_20px_-5px_rgba(34,197,94,0.2)]">
-                <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] shadow-[0_0_8px_var(--color-green-500)]" />
-                <span className="text-xs font-semibold tracking-wider text-[var(--color-green-400)] uppercase">
+              <div className="inline-flex items-center gap-3 rounded-full border border-slate-700 bg-[var(--color-navy-900)] px-4 py-1.5 mb-8 shadow-sm self-start">
+                <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+                <span className="text-xs font-semibold tracking-wider text-slate-200 uppercase">
                   Operator Validation
                 </span>
               </div>
               
-              <h2 className="text-4xl lg:text-5xl font-extrabold text-white leading-[1.1] tracking-tight text-balance">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.1] text-balance">
                 Built for the <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-green-400)] to-[var(--color-green-600)] drop-shadow-[0_0_15px_rgba(34,197,94,0.2)]">field.</span><br />
                 Proven in the <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-green-400)] to-[var(--color-green-600)] drop-shadow-[0_0_15px_rgba(34,197,94,0.2)]">dirt.</span>
               </h2>

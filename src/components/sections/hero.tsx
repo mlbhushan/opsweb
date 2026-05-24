@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useMotionValue, useMotionTemplate, useSpring } from "framer-motion";
 
 const HERO_LINES = [
   { prefix: "Every field operation gets", highlight: "completed, validated, and billed.", suffix: "" },
@@ -10,6 +10,48 @@ const HERO_LINES = [
   { prefix: "", highlight: "Complete visibility", suffix: "from dispatch to final billing." },
   { prefix: "Field execution", highlight: "matches what was promised", suffix: "to the client." },
 ];
+
+function SpotlightButton({ href, children }: { href: string; children: React.ReactNode }) {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  // Apply a smooth, slightly delayed spring effect so the light elegantly trails the cursor
+  const springConfig = { damping: 25, stiffness: 150 };
+  const smoothX = useSpring(mouseX, springConfig);
+  const smoothY = useSpring(mouseY, springConfig);
+
+  function handleMouseMove({
+    currentTarget,
+    clientX,
+    clientY,
+  }: React.MouseEvent<HTMLAnchorElement>) {
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
+
+  return (
+    <a
+      href={href}
+      onMouseMove={handleMouseMove}
+      className="group relative inline-flex h-[52px] items-center rounded-full border border-white/25 bg-white/10 backdrop-blur-sm px-8 text-[15px] font-semibold tracking-wide text-white transition-all duration-300 hover:border-white/40 hover:scale-[1.03] overflow-hidden"
+    >
+      <motion.div
+        className="pointer-events-none absolute -inset-px rounded-full opacity-0 transition duration-700 group-hover:opacity-100"
+        style={{
+          background: useMotionTemplate`
+            radial-gradient(
+              75px circle at ${smoothX}px ${smoothY}px,
+              rgba(107, 191, 84, 0.55),
+              transparent 80%
+            )
+          `,
+        }}
+      />
+      <span className="relative z-10">{children}</span>
+    </a>
+  );
+}
 
 export function Hero() {
   const [index, setIndex] = useState(0);
@@ -29,17 +71,28 @@ export function Hero() {
   const highlightWords = currentLine.highlight.split(" ").filter(Boolean);
   const suffixWords = currentLine.suffix.split(" ").filter(Boolean);
 
+  const [videoOpacity, setVideoOpacity] = useState(1);
+
   return (
-    <section className="relative isolate h-[100vh] min-h-[600px] w-full overflow-hidden bg-gray-900 flex items-center justify-center">
+    <section className="relative isolate h-[100vh] min-h-[600px] w-full overflow-hidden bg-[var(--brand-navy-deep)] flex items-center justify-center">
       {/* Background Video Container */}
-      <div className="absolute inset-0 -z-10 h-full w-full">
+      <div className="absolute inset-0 -z-10 h-full w-full bg-black">
         <video
           src="https://res.cloudinary.com/dmghhstx4/video/upload/v1778235437/one_e352ag.mp4"
           autoPlay
           loop
           muted
           playsInline
-          className="h-full w-full object-cover object-center"
+          className="h-full w-full object-cover object-center transition-opacity duration-[800ms]"
+          style={{ opacity: videoOpacity }}
+          onTimeUpdate={(e) => {
+            const video = e.currentTarget;
+            if (video.duration && video.duration - video.currentTime < 0.8) {
+              setVideoOpacity(0);
+            } else if (videoOpacity === 0) {
+              setVideoOpacity(1);
+            }
+          }}
         />
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-[var(--brand-navy-deep)]/60" />
@@ -144,12 +197,9 @@ export function Hero() {
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-4">
-          <a
-            href="/contact?type=revenue"
-            className="inline-flex h-[54px] items-center rounded-lg border border-white/30 bg-white/10 backdrop-blur-sm px-7 text-[13px] font-bold text-white transition-all hover:bg-white/20"
-          >
-            Get a Revenue Diagnostic
-          </a>
+          <SpotlightButton href="/contact?type=revenue">
+            See OpsFlo in Action
+          </SpotlightButton>
         </div>
       </div>
     </section>

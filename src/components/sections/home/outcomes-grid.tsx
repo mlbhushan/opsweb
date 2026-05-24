@@ -47,9 +47,9 @@ function OutcomeItem({
       <img 
         src={BG_IMAGES[index % BG_IMAGES.length]} 
         alt={label} 
-        className="absolute inset-0 w-full h-full object-cover z-0 scale-105 group-hover:scale-100 transition-transform duration-700 opacity-60 grayscale mix-blend-multiply group-hover:grayscale-0 group-hover:opacity-80"
+        className={`absolute inset-0 w-full h-full object-cover z-0 scale-105 group-hover:scale-100 transition-transform duration-700 grayscale mix-blend-multiply group-hover:grayscale-0 ${index === 1 ? 'opacity-40 group-hover:opacity-60' : 'opacity-80 group-hover:opacity-100'}`}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/80 to-white/40 z-0 group-hover:from-white/90 transition-colors duration-500" />
+      <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/60 to-transparent z-0 group-hover:from-white/80 transition-colors duration-500" />
       <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-[var(--color-green-500)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
       
       {/* Content */}
@@ -74,6 +74,10 @@ function OutcomeItem({
 }
 
 export function OutcomesGrid() {
+  const words = outcomes.headline.split(" ");
+  const lastWord = words.pop();
+  const firstPart = words.join(" ");
+
   return (
     <section className="bg-slate-50 py-16 md:py-24 relative overflow-hidden z-10 border-t border-[var(--color-navy-100)]">
       {/* Swiss Style Background Elements */}
@@ -122,14 +126,15 @@ export function OutcomesGrid() {
               {/* Subtle accent blob inside header card */}
               <div className="absolute -top-20 -right-20 w-64 h-64 bg-[var(--color-green-100)] rounded-full blur-3xl opacity-50 mix-blend-multiply" />
               
-              <div className="flex items-center gap-3 mb-6 relative z-10">
-                <span className="h-2 w-2 rounded-full bg-[var(--color-green-500)] shadow-[0_0_8px_var(--color-green-400)] animate-pulse" />
-                <p className="text-[12px] font-mono font-bold tracking-widest text-[var(--color-green-700)] uppercase">
+              <div className="inline-flex w-fit items-center gap-3 rounded-full border border-slate-200 bg-white/80 backdrop-blur-md px-4 py-1.5 mb-6 shadow-sm relative z-10">
+                <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+                <span className="text-xs font-semibold tracking-wider text-slate-900 uppercase">
                   {outcomes.eyebrow}
-                </p>
+                </span>
               </div>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[var(--color-navy-950)] leading-[1.1] text-balance relative z-10">
-                {outcomes.headline}
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-[1.1] relative z-10">
+                {firstPart}{" "}
+                <span className="text-[var(--color-green-500)]">{lastWord}</span>
               </h2>
             </motion.div>
           </div>

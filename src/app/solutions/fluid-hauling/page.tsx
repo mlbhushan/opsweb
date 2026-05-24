@@ -30,7 +30,7 @@ const data: SolutionPageData = {
 
   problem: {
     label: "The Industry Problem",
-    headline: "Paper BOLs Are Costing You Loads of Revenue",
+    headline: "Paper BOLs Are **Costing You** Loads of Revenue",
     body: "Every paper BOL that gets lost, smudged, or delayed is revenue left on the table. Drivers make multiple trips per day across remote locations — and paper records cannot keep up. Volume discrepancies create disputes. Missing BOLs delay billing by weeks. And without GPS verification, you cannot prove the load was delivered at all.",
     bullets: [
       "Lost BOLs between wellsite and office — unrecoverable volume revenue",
@@ -42,7 +42,7 @@ const data: SolutionPageData = {
 
   solution: {
     label: "The OpsFlo Approach",
-    headline: "Digital. Verified. Immediate.",
+    headline: "**Digital**. Verified. **Immediate**.",
     steps: [
       {
         icon: FileText,
@@ -66,7 +66,7 @@ const data: SolutionPageData = {
   },
 
   outcomes: {
-    headline: "Outcomes for Fluid Hauling Companies",
+    headline: "Outcomes for **Fluid Hauling** Companies",
     items: [
       "Zero lost BOLs — every load captured digitally with GPS verification",
       "Same-day invoicing from verified load data",
@@ -101,7 +101,7 @@ const data: SolutionPageData = {
     headlineGreen: "Go Paperless.",
     headlineNavy: "Bill Immediately.",
     body: "Stop losing revenue to paper BOLs and 30-day billing cycles. Every load captured, verified, and invoiced the same day — starting with your next truck.",
-    primaryCta: { label: "Start a Pilot", href: "/contact" },
+    primaryCta: { label: "Book a Demo", href: "/contact" },
     secondaryCta: { label: "View Field Ticketing", href: "/platform/field-ticketing" },
   },
 };

@@ -31,16 +31,17 @@ export function RecentBlogs() {
             variants={fadeUp}
             className="max-w-2xl"
           >
-            <div className="inline-flex items-center gap-3 rounded-full border border-[var(--color-navy-200)] bg-white px-4 py-1.5 mb-6 shadow-sm">
-              <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)]" />
-              <span className="text-xs font-semibold tracking-wider text-[var(--color-navy-950)] uppercase">
+            <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-1.5 mb-6 shadow-sm">
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+              <span className="text-xs font-semibold tracking-wider text-slate-900 uppercase">
                 Latest from the Blog
               </span>
             </div>
             
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--color-navy-950)] leading-[1.1]">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-[1.1]">
               Stay sharp.{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-navy-500)] to-[var(--color-navy-800)]">Stay ahead.</span>
+              <br className="hidden md:block" />
+              <span className="text-[var(--color-green-500)]">Stay ahead.</span>
             </h2>
           </motion.div>
           
@@ -57,10 +58,10 @@ export function RecentBlogs() {
             
             <Link
               href="/blog"
-              className="group inline-flex items-center gap-3 text-sm font-bold tracking-[0.1em] text-[var(--color-navy-950)] uppercase hover:text-[var(--color-green-600)] transition-colors bg-white border border-[var(--color-gray-200)] pl-6 pr-2 py-2 rounded-full shadow-sm hover:shadow-md"
+              className="group inline-flex items-center gap-3 text-sm font-bold tracking-[0.1em] text-white uppercase hover:text-[var(--color-navy-950)] transition-colors bg-[var(--color-navy-950)] border border-[var(--color-navy-950)] pl-6 pr-2 py-2 rounded-full shadow-sm hover:shadow-md hover:bg-[var(--color-green-400)]"
             >
               View All Articles
-              <span className="relative overflow-hidden w-8 h-8 flex items-center justify-center bg-[var(--color-gray-50)] group-hover:bg-[var(--color-green-50)] rounded-full transition-colors">
+              <span className="relative overflow-hidden w-8 h-8 flex items-center justify-center bg-white/20 group-hover:bg-white/30 rounded-full transition-colors">
                  <ArrowUpRight className="w-4 h-4 absolute group-hover:translate-x-[200%] group-hover:-translate-y-[200%] transition-transform duration-300" />
                  <ArrowUpRight className="w-4 h-4 absolute -translate-x-[200%] translate-y-[200%] group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300" />
               </span>

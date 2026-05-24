@@ -52,19 +52,46 @@ const ALL_MODULES = [
   { title: "Mobile App", href: "/platform/mobile" },
 ];
 
-const renderDualColor = (text: string, isDark = false) => {
+/**
+ * Renders a title with brand-green highlights.
+ * If the text contains **word** markers, those words are highlighted.
+ * Otherwise falls back to highlighting the last 1-2 words.
+ */
+const renderTitle = (text: string, isDark = false) => {
+  const baseColor = isDark ? "text-white" : "text-[var(--color-navy-950)]";
+  const greenColor = "text-[var(--color-green-500)]";
+
+  // Check for explicit **...** markers
+  if (text.includes("**")) {
+    const parts = text.split(/(\*\*[^*]+\*\*)/g);
+    return (
+      <>
+        {parts.map((part, i) => {
+          if (part.startsWith("**") && part.endsWith("**")) {
+            return <span key={i} className={greenColor}>{part.slice(2, -2)}</span>;
+          }
+          return <span key={i} className={baseColor}>{part}</span>;
+        })}
+      </>
+    );
+  }
+
+  // Fallback: highlight last 1-2 words
   const words = text.split(" ");
-  if (words.length <= 1) return <span className={isDark ? "text-white" : "text-[var(--color-navy-950)]"}>{text}</span>;
+  if (words.length <= 1) return <span className={baseColor}>{text}</span>;
   const highlightCount = words.length >= 4 ? 2 : 1;
   const prefix = words.slice(0, words.length - highlightCount).join(" ");
   const highlight = words.slice(words.length - highlightCount).join(" ");
   return (
     <>
-      <span className={isDark ? "text-white" : "text-[var(--color-navy-950)]"}>{prefix}</span>{" "}
-      <span className="text-[var(--color-green-500)]">{highlight}</span>
+      <span className={baseColor}>{prefix}</span>{" "}
+      <span className={greenColor}>{highlight}</span>
     </>
   );
 };
+
+// Keep old name as alias for any remaining usages
+const renderDualColor = renderTitle;
 
 export function ModulePage({ data }: { data: ModulePageData }) {
   const defaultStats = data.stats ?? [
@@ -82,8 +109,7 @@ export function ModulePage({ data }: { data: ModulePageData }) {
       <SiteHeader />
       {data.bannerTitle && <PageBanner title={data.bannerTitle} />}
       <main className="flex-1 bg-white">
-
-        {/* ── HERO BAND (Swiss + Brutalism) ── */}
+        {/* ── HERO BAND ── */}
         <section className="relative overflow-hidden border-b-2 border-[var(--color-navy-950)] bg-[var(--color-gray-50)]">
           <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:48px_48px] pointer-events-none" />
           
@@ -92,17 +118,14 @@ export function ModulePage({ data }: { data: ModulePageData }) {
               
               {/* Left: Text Block */}
               <div className="lg:col-span-6 flex flex-col">
-                <div className="mb-8 inline-flex items-center gap-3 self-start rounded-full border border-[var(--color-navy-200)] px-5 py-2 bg-white shadow-sm">
-                  <span className="flex size-2 rounded-full bg-[var(--color-green-500)] animate-pulse" />
-                  <span className="text-xs font-bold tracking-widest text-[var(--color-navy-950)] uppercase">
+                <div className="inline-flex items-center gap-3 self-start rounded-full border border-[var(--color-navy-200)] bg-white px-4 py-1.5 mb-6 shadow-sm">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+                  <span className="text-xs font-semibold tracking-wider text-[var(--color-navy-950)] uppercase">
                     {data.eyebrow}
                   </span>
                 </div>
 
-                <h1
-                  className="text-5xl md:text-6xl lg:text-7xl font-black uppercase leading-[0.9] tracking-tighter mb-8 text-balance"
-                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
-                >
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--color-navy-950)] leading-[1.1] mb-8 text-balance">
                   {renderDualColor(data.headline)}
                 </h1>
 
@@ -121,7 +144,7 @@ export function ModulePage({ data }: { data: ModulePageData }) {
                     href="/contact"
                     className="group/btn inline-flex items-center justify-center bg-[var(--color-navy-950)] text-white px-8 py-5 rounded-xl font-bold uppercase tracking-widest text-sm transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-500)] hover:text-[var(--color-navy-950)]"
                   >
-                    Start a Pilot
+                    Book a Demo
                     <ArrowRight className="size-5 ml-3 group-hover/btn:translate-x-1 transition-transform" />
                   </Link>
                   <Link
@@ -159,18 +182,14 @@ export function ModulePage({ data }: { data: ModulePageData }) {
 
                 {/* PROBLEM Section */}
                 <div>
-                  <div className="flex items-center gap-4 mb-10">
-                    <AlertTriangle className="size-6 text-red-500 shrink-0" />
-                    <h3 className="text-sm font-bold uppercase tracking-widest text-[var(--color-navy-900)]">
+                  <div className="inline-flex items-center gap-3 rounded-full border border-[var(--color-navy-200)] bg-white px-4 py-1.5 mb-6 shadow-sm">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+                    <span className="text-xs font-semibold tracking-wider text-[var(--color-navy-950)] uppercase">
                       The Problem
-                    </h3>
-                    <div className="h-0.5 flex-1 bg-[var(--color-navy-950)]" />
+                    </span>
                   </div>
 
-                  <h2
-                    className="text-4xl md:text-5xl lg:text-6xl font-black uppercase leading-[0.9] tracking-tighter mb-12 text-balance"
-                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
-                  >
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--color-navy-950)] leading-[1.1] mb-8 text-balance">
                     {renderDualColor(data.problem.headline)}
                   </h2>
 
@@ -204,18 +223,14 @@ export function ModulePage({ data }: { data: ModulePageData }) {
                   <div className="absolute right-0 top-0 w-64 h-64 bg-[var(--color-green-500)]/15 blur-[80px] rounded-full pointer-events-none" />
                   
                   <div className="relative z-10">
-                    <div className="flex items-center gap-4 mb-8">
-                      <Target className="size-6 text-[var(--color-green-500)] shrink-0" />
-                      <h3 className="text-sm font-bold uppercase tracking-widest text-[var(--color-gray-300)]">
+                    <div className="inline-flex items-center gap-3 rounded-full border border-slate-700 bg-[var(--color-navy-900)] px-4 py-1.5 mb-6 shadow-sm">
+                      <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+                      <span className="text-xs font-semibold tracking-wider text-slate-200 uppercase">
                         The Solution
-                      </h3>
-                      <div className="h-px flex-1 bg-[var(--color-gray-700)]" />
+                      </span>
                     </div>
 
-                    <h2
-                      className="text-4xl md:text-5xl font-black uppercase leading-[1] tracking-tighter mb-12 text-balance"
-                      style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
-                    >
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.1] mb-8 text-balance">
                       {renderDualColor(data.howItWorks.headline, true)}
                     </h2>
 
@@ -251,18 +266,14 @@ export function ModulePage({ data }: { data: ModulePageData }) {
 
                 {/* CAPABILITIES Section */}
                 <div>
-                  <div className="flex items-center gap-4 mb-10">
-                    <Zap className="size-6 text-[var(--color-navy-950)] shrink-0" />
-                    <h3 className="text-sm font-bold uppercase tracking-widest text-[var(--color-navy-900)]">
+                  <div className="inline-flex items-center gap-3 rounded-full border border-[var(--color-navy-200)] bg-white px-4 py-1.5 mb-6 shadow-sm">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+                    <span className="text-xs font-semibold tracking-wider text-[var(--color-navy-950)] uppercase">
                       Key Capabilities
-                    </h3>
-                    <div className="h-0.5 flex-1 bg-[var(--color-navy-950)]" />
+                    </span>
                   </div>
 
-                  <h2
-                    className="text-4xl md:text-5xl font-black uppercase leading-[0.9] tracking-tighter mb-12"
-                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
-                  >
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--color-navy-950)] leading-[1.1] mb-8 text-balance">
                     {renderDualColor("Built for Operators")}
                   </h2>
 
@@ -284,16 +295,13 @@ export function ModulePage({ data }: { data: ModulePageData }) {
                 {/* DIFFERENTIATOR Banner */}
                 {data.differentiator && (
                   <div className="bg-[var(--color-gray-50)] rounded-3xl border border-[var(--color-gray-200)] p-8 md:p-12 shadow-sm">
-                    <div className="mb-6 inline-flex items-center gap-3 bg-white px-4 py-2 rounded-full border border-[var(--color-gray-200)] shadow-sm">
-                      <Shield className="size-4 text-[var(--color-navy-950)]" />
-                      <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-navy-900)]">
+                    <div className="inline-flex items-center gap-3 rounded-full border border-[var(--color-navy-200)] bg-white px-4 py-1.5 mb-6 shadow-sm">
+                      <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+                      <span className="text-xs font-semibold tracking-wider text-[var(--color-navy-950)] uppercase">
                         The OpsFlo Advantage
                       </span>
                     </div>
-                    <h3
-                      className="text-3xl md:text-4xl lg:text-5xl font-black uppercase leading-[1] tracking-tighter text-[var(--color-navy-950)] mb-6 text-balance"
-                      style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
-                    >
+                    <h3 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--color-navy-950)] leading-[1.1] mb-8 text-balance">
                       {renderDualColor(data.differentiator.headline)}
                     </h3>
                     <p className="text-lg text-[var(--color-gray-600)] font-medium leading-relaxed max-w-2xl">
@@ -305,49 +313,15 @@ export function ModulePage({ data }: { data: ModulePageData }) {
               </div>
 
               {/* ── SIDEBAR COLUMN ── */}
-              <aside className="lg:col-span-4 space-y-10">
+              <aside className="lg:col-span-4 flex flex-col gap-8 relative">
 
-                {/* CTA Card - Primary */}
-                <div className="bg-[var(--color-navy-950)] rounded-3xl p-8 shadow-xl relative overflow-hidden group">
-                  <div className="absolute right-[-20px] top-[-20px] text-[var(--color-green-500)]/10 group-hover:scale-110 transition-transform duration-700">
-                    <Zap className="size-32" />
-                  </div>
-                  <div className="relative z-10 mb-8">
-                    <h3
-                      className="text-2xl font-black uppercase tracking-tighter text-white leading-[1] mb-3"
-                      style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
-                    >
-                      See It <span className="text-[var(--color-green-500)]">in Action</span>
-                    </h3>
-                    <p className="text-sm text-[var(--color-gray-300)] leading-relaxed font-medium">
-                      Get a live walkthrough tailored to your operations. No generic demos.
-                    </p>
-                  </div>
-                  <div className="relative z-10 flex flex-col gap-3">
-                    <Link
-                      href="/contact"
-                      className="group/btn flex items-center justify-between w-full bg-[var(--color-green-500)] text-[var(--color-navy-950)] px-6 py-4 rounded-xl font-bold text-sm uppercase tracking-wider transition-all hover:bg-[var(--color-green-400)] shadow-sm hover:shadow-md hover:-translate-y-0.5"
-                    >
-                      Get a Diagnostic
-                      <ArrowRight className="size-5 group-hover/btn:translate-x-1 transition-transform" />
-                    </Link>
-                    <Link
-                      href="/contact"
-                      className="group/btn flex items-center justify-between w-full bg-white/10 text-white px-6 py-4 rounded-xl font-bold text-sm uppercase tracking-wider transition-all hover:bg-white hover:text-[var(--color-navy-950)] shadow-sm hover:-translate-y-0.5"
-                    >
-                      Talk to Sales
-                      <ChevronRight className="size-5 group-hover/btn:translate-x-1 transition-transform" />
-                    </Link>
-                  </div>
-                </div>
-
-                {/* Key Stats sidebar card */}
+                {/* 1. Why It Matters - Key Stats */}
                 <div className="bg-white rounded-3xl border border-[var(--color-gray-200)] p-8 shadow-sm">
-                  <div className="flex items-center gap-3 mb-6 pb-4 border-b border-[var(--color-gray-100)]">
-                    <BarChart3 className="size-5 text-[var(--color-green-500)]" />
-                    <h3 className="text-sm font-bold uppercase tracking-widest text-[var(--color-navy-950)]">
+                  <div className="inline-flex items-center gap-3 rounded-full border border-[var(--color-navy-200)] bg-white px-4 py-1.5 mb-6 shadow-sm">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+                    <span className="text-xs font-semibold tracking-wider text-[var(--color-navy-950)] uppercase">
                       Why It Matters
-                    </h3>
+                    </span>
                   </div>
                   <div className="space-y-6">
                     {defaultStats.map((s, i) => (
@@ -366,13 +340,13 @@ export function ModulePage({ data }: { data: ModulePageData }) {
                   </div>
                 </div>
 
-                {/* Platform Modules Sidebar */}
+                {/* 2. Platform Modules */}
                 <div className="bg-[var(--color-gray-50)] rounded-3xl border border-[var(--color-gray-200)] p-6 md:p-8 shadow-sm">
-                  <div className="flex items-center gap-3 mb-6 pb-4 border-b border-[var(--color-gray-200)]">
-                    <Shield className="size-5 text-[var(--color-navy-950)]" />
-                    <h3 className="text-sm font-bold uppercase tracking-widest text-[var(--color-navy-950)]">
+                  <div className="inline-flex items-center gap-3 rounded-full border border-[var(--color-navy-200)] bg-white px-4 py-1.5 mb-6 shadow-sm">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+                    <span className="text-xs font-semibold tracking-wider text-[var(--color-navy-950)] uppercase">
                       Platform Modules
-                    </h3>
+                    </span>
                   </div>
                   <ul className="space-y-1.5">
                     {ALL_MODULES.map((mod) => {
@@ -411,28 +385,41 @@ export function ModulePage({ data }: { data: ModulePageData }) {
                   </div>
                 </div>
 
-                {/* Testimonial stub */}
-                <div className="bg-white rounded-3xl border border-[var(--color-gray-200)] p-8 shadow-sm relative overflow-hidden group">
-                  <div className="absolute -right-4 -top-8 text-[var(--color-gray-100)] text-[120px] leading-none font-serif select-none pointer-events-none group-hover:text-[var(--color-green-50)] transition-colors duration-500">
-                    &ldquo;
+                {/* 3. See It in Action - CTA Card (always last, sticks at bottom of sticky sidebar) */}
+                <div className="lg:sticky lg:top-[25vh]">
+                  <div className="bg-[var(--color-navy-950)] rounded-3xl p-8 shadow-xl relative overflow-hidden group">
+                    <div className="absolute right-[-20px] top-[-20px] text-[var(--color-green-500)]/10 group-hover:scale-110 transition-transform duration-700">
+                      <Zap className="size-32" />
+                    </div>
+                    <div className="relative z-10 mb-8">
+                      <h3 className="text-2xl font-extrabold tracking-tight text-white leading-[1.1] mb-3">
+                        See It <span className="text-[var(--color-green-500)]">in Action</span>
+                      </h3>
+                      <p className="text-sm text-[var(--color-gray-300)] leading-relaxed font-medium">
+                        Get a live walkthrough tailored to your operations. No generic demos.
+                      </p>
+                    </div>
+                    <div className="relative z-10 flex flex-col gap-3">
+                      <Link
+                        href="/contact"
+                        className="group/btn flex items-center justify-between w-full bg-[var(--color-green-500)] text-[var(--color-navy-950)] px-6 py-4 rounded-xl font-bold text-sm uppercase tracking-wider transition-all hover:bg-[var(--color-green-400)] shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                      >
+                        Book a Demo
+                        <ArrowRight className="size-5 group-hover/btn:translate-x-1 transition-transform" />
+                      </Link>
+                      <Link
+                        href="/contact"
+                        className="group/btn flex items-center justify-between w-full bg-white/10 text-white px-6 py-4 rounded-xl font-bold text-sm uppercase tracking-wider transition-all hover:bg-white hover:text-[var(--color-navy-950)] shadow-sm hover:-translate-y-0.5"
+                      >
+                        Talk to Sales
+                        <ChevronRight className="size-5 group-hover/btn:translate-x-1 transition-transform" />
+                      </Link>
+                    </div>
                   </div>
-                  <blockquote className="relative z-10">
-                    <p className="text-base font-semibold text-[var(--color-navy-900)] leading-relaxed mb-6">
-                      "OpsFlo cut our billing cycle from 45 days to under 4 hours. That is not a typo. We stopped leaving money on the table."
-                    </p>
-                    <footer className="flex items-center gap-4 pt-4 border-t border-[var(--color-gray-100)]">
-                      <div className="size-10 bg-[var(--color-green-100)] rounded-full flex items-center justify-center text-[var(--color-green-600)] font-bold text-sm shrink-0">
-                        FO
-                      </div>
-                      <div>
-                        <div className="text-xs font-bold uppercase tracking-wider text-[var(--color-navy-950)]">Field Ops VP</div>
-                        <div className="text-[11px] font-semibold text-[var(--color-gray-500)] uppercase">Mid-size Oilfield Services</div>
-                      </div>
-                    </footer>
-                  </blockquote>
                 </div>
 
               </aside>
+
             </div>
           </Container>
         </section>
@@ -443,14 +430,11 @@ export function ModulePage({ data }: { data: ModulePageData }) {
           <Container className="relative z-10">
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12">
               <div className="max-w-3xl">
-                <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-[var(--color-navy-200)] px-5 py-2 shadow-sm bg-white">
-                  <span className="flex size-2 rounded-full bg-[var(--color-green-500)] animate-pulse" />
-                  <span className="text-xs font-bold tracking-widest text-[var(--color-navy-950)] uppercase">Ready to Start</span>
+                <div className="inline-flex items-center gap-3 rounded-full border border-[var(--color-navy-200)] bg-white px-4 py-1.5 mb-6 shadow-sm">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+                  <span className="text-xs font-semibold tracking-wider text-[var(--color-navy-950)] uppercase">Ready to Start</span>
                 </div>
-                <h2
-                  className="text-4xl md:text-6xl font-black uppercase leading-[1] tracking-tighter text-balance"
-                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
-                >
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--color-navy-950)] leading-[1.1] mb-8 text-balance">
                   <span className="text-[var(--color-navy-950)]">Stop Guessing.</span>
                   <br />
                   <span className="text-[var(--color-green-500)]">Start Building.</span>

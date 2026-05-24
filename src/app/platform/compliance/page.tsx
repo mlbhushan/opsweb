@@ -12,11 +12,11 @@ export const metadata: Metadata = buildMetadata({
 const data: ModulePageData = {
   bannerTitle: "Compliance & Audit",
   eyebrow: "Platform / Compliance & Audit",
-  headline: "Audit-Ready. Always.",
+  headline: "**Audit-Ready**. Always.",
   body: "Compliance & Audit captures every inspection result, corrective action, and safety event with timestamps, photos, and e-signatures  -  creating an unbroken chain of documentation that satisfies regulators without burdening field crews.",
   heroImage: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1400&q=80",
   problem: {
-    headline: "Compliance Gaps Hide Until Auditors Find Them",
+    headline: "Compliance Gaps **Hide** Until Auditors Find Them",
     points: [
       "Paper inspection records are incomplete, illegible, or lost entirely  -  discovered only during an audit.",
       "Corrective actions from inspections are assigned verbally and never documented as resolved.",
@@ -25,7 +25,7 @@ const data: ModulePageData = {
     ],
   },
   howItWorks: {
-    headline: "How Compliance & Audit Works",
+    headline: "How **Compliance & Audit** Works",
     steps: [
       {
         title: "Structured Data Capture",
@@ -55,7 +55,7 @@ const data: ModulePageData = {
     "Historical compliance trend reporting",
   ],
   differentiator: {
-    headline: "Compliance as a Byproduct of Operations",
+    headline: "Compliance as a **Byproduct** of Operations",
     body: "When crews use OpsFlo to do their actual work, compliance documentation is generated automatically. No duplicate data entry. No after-the-fact paperwork. Compliance just happens.",
   },
   problemImage: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80",

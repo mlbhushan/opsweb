@@ -12,11 +12,11 @@ export const metadata: Metadata = buildMetadata({
 const data: ModulePageData = {
   bannerTitle: "Safety Management",
   eyebrow: "Platform / Safety Management",
-  headline: "Zero Incidents. Zero Excuses.",
+  headline: "**Zero Incidents**. Zero Excuses.",
   body: "Safety Management digitizes your entire safety workflow  -  from pre-job hazard assessments and JSAs to incident reporting and corrective action tracking  -  ensuring nothing is overlooked and everything is documented.",
   heroImage: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1400&q=80",
   problem: {
-    headline: "Paper-Based Safety Is a Liability",
+    headline: "Paper-Based Safety Is a **Liability**",
     points: [
       "Pre-job safety meetings happen but findings are not recorded or actioned digitally.",
       "Near-miss reports are discouraged by cumbersome paper processes  -  so hazards go unreported.",
@@ -25,7 +25,7 @@ const data: ModulePageData = {
     ],
   },
   howItWorks: {
-    headline: "How Safety Management Works",
+    headline: "How **Safety Management** Works",
     steps: [
       {
         title: "Digital Safety Workflows",
@@ -55,7 +55,7 @@ const data: ModulePageData = {
     "Safety meeting documentation and attendance logging",
   ],
   differentiator: {
-    headline: "Safety That Field Crews Actually Use",
+    headline: "Safety That Field Crews **Actually Use**",
     body: "Complex safety systems get ignored. OpsFlo safety workflows are built into the tools crews already use every day  -  so reporting a near-miss takes 30 seconds, not 30 minutes.",
   },
   problemImage: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80",

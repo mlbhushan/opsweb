@@ -30,7 +30,7 @@ const data: SolutionPageData = {
 
   problem: {
     label: "Your Current Reality",
-    headline: "Billing Is Broken Before It Reaches You",
+    headline: "Billing Is **Broken** Before It Reaches You",
     body: "By the time field tickets reach your desk, the damage is already done: incomplete forms, missing signatures, illegible quantities, and rates that don't match the current contract. You spend more time chasing corrections than generating invoices — and every day of delay is cash that isn't in the bank.",
     bullets: [
       "Incomplete tickets require calls back to the field — delaying billing by days",
@@ -42,7 +42,7 @@ const data: SolutionPageData = {
 
   solution: {
     label: "How OpsFlo Works for Finance",
-    headline: "Complete Data. Instant Invoicing.",
+    headline: "Complete Data. **Instant Invoicing**.",
     steps: [
       {
         icon: FileText,
@@ -66,7 +66,7 @@ const data: SolutionPageData = {
   },
 
   outcomes: {
-    headline: "What Changes for Finance",
+    headline: "What **Changes** for Finance",
     items: [
       "Billing cycle reduced from 45+ days to same-day",
       "68% fewer invoice disputes with photo and signature evidence",

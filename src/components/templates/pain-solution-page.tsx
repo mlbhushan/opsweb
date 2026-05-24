@@ -29,8 +29,15 @@ export function PainSolutionPage({ data }: { data: PainSolutionPageData }) {
         {/* Hero */}
         <section className="section gradient-mesh-hero text-center">
           <Container>
-            <p className="eyebrow mb-4">{data.eyebrow}</p>
-            <h1 className="heading-xl mx-auto max-w-3xl">{data.headline}</h1>
+            <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-1.5 mb-6 shadow-sm mx-auto">
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+              <span className="text-xs font-semibold tracking-wider text-slate-700 uppercase">
+                {data.eyebrow}
+              </span>
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-[64px] font-extrabold tracking-tight text-[var(--color-navy-950)] leading-[1.05] mb-6 text-balance mx-auto max-w-3xl">
+              {data.headline}
+            </h1>
             <p className="mx-auto mt-5 max-w-2xl text-lg text-[var(--color-text-muted)]">
               {data.body}
             </p>
@@ -61,7 +68,15 @@ export function PainSolutionPage({ data }: { data: PainSolutionPageData }) {
         {/* Problem */}
         <section className="section">
           <Container className="max-w-3xl">
-            <h2 className="heading-lg">{data.problem.headline}</h2>
+            <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-1.5 mb-6 shadow-sm">
+              <span className="h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />
+              <span className="text-xs font-semibold tracking-wider text-slate-700 uppercase">
+                The Problem
+              </span>
+            </div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--color-navy-950)] leading-[1.1] mb-6 text-balance">
+              {data.problem.headline}
+            </h2>
             <p className="mt-4 leading-relaxed text-[var(--color-text-muted)]">
               {data.problem.body}
             </p>
@@ -71,7 +86,17 @@ export function PainSolutionPage({ data }: { data: PainSolutionPageData }) {
         {/* Solution */}
         <section className="section bg-[var(--color-bg-secondary)]">
           <Container>
-            <h2 className="heading-lg text-center">{data.solution.headline}</h2>
+            <div className="flex flex-col items-center">
+              <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-1.5 mb-6 shadow-sm">
+                <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+                <span className="text-xs font-semibold tracking-wider text-slate-700 uppercase">
+                  How We Help
+                </span>
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--color-navy-950)] leading-[1.1] mb-6 text-balance text-center">
+                {data.solution.headline}
+              </h2>
+            </div>
             <div className="mt-12 grid gap-6 md:grid-cols-3">
               {data.solution.steps.map((step, i) => (
                 <div key={step.title} className="surface-card">
@@ -93,7 +118,17 @@ export function PainSolutionPage({ data }: { data: PainSolutionPageData }) {
         {/* Outcomes */}
         <section className="section">
           <Container className="max-w-3xl text-center">
-            <h2 className="heading-md">{data.outcomes.headline}</h2>
+            <div className="flex flex-col items-center">
+              <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-1.5 mb-6 shadow-sm">
+                <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-navy-950)] animate-pulse" />
+                <span className="text-xs font-semibold tracking-wider text-slate-700 uppercase">
+                  Outcomes
+                </span>
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--color-navy-950)] leading-[1.1] mb-6 text-balance text-center">
+                {data.outcomes.headline}
+              </h2>
+            </div>
             <ul className="mt-8 space-y-3">
               {data.outcomes.items.map((item) => (
                 <li key={item} className="text-[var(--color-text-muted)]">{item}</li>
@@ -105,7 +140,17 @@ export function PainSolutionPage({ data }: { data: PainSolutionPageData }) {
         {/* CTA */}
         <section className="section-tight text-center">
           <Container>
-            <h2 className="heading-md">See the Impact for Your Operations</h2>
+            <div className="flex flex-col items-center">
+              <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-1.5 mb-6 shadow-sm">
+                <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+                <span className="text-xs font-semibold tracking-wider text-slate-700 uppercase">
+                  Ready to Start
+                </span>
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--color-navy-950)] leading-[1.1] mb-6 text-balance text-center">
+                See the Impact for Your Operations
+              </h2>
+            </div>
             <CTARow
               primary={{ label: "Get a Revenue Diagnostic", href: "/contact" }}
               secondary={{ label: "View Platform", href: "/platform" }}

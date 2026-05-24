@@ -111,18 +111,18 @@ function BotAvatar() {
   return (
     <div
       style={{
-        width: 32,
-        height: 32,
-        borderRadius: "50%",
-        background: "#032044",
+        width: 30,
+        height: 30,
+        borderRadius: 6,
+        background: "var(--color-green-500, #6bbf54)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         flexShrink: 0,
         fontSize: 12,
-        fontWeight: 700,
-        color: "var(--color-primary, #6bbf54)",
-        fontFamily: "'Cabinet Grotesk', sans-serif",
+        fontWeight: 800,
+        color: "#032044",
+        fontFamily: "'Inter', sans-serif",
       }}
     >
       F
@@ -137,10 +137,10 @@ function TypingIndicator() {
       <div
         style={{
           background: "#fff",
-          border: "1px solid rgba(8,65,130,0.06)",
-          borderRadius: "4px 12px 12px 12px",
-          padding: "12px 16px",
-          boxShadow: "0 2px 4px rgba(8,65,130,0.06)",
+          border: "1px solid rgba(8,65,130,0.08)",
+          borderRadius: "2px 8px 8px 8px",
+          padding: "14px 16px",
+          boxShadow: "0 2px 8px -2px rgba(8,65,130,0.05)",
           display: "flex",
           gap: 4,
           alignItems: "center",
@@ -204,16 +204,16 @@ export function ChatMessages({ messages, isLoading }: Props) {
             {isBot && <BotAvatar />}
             <div
               style={{
-                maxWidth: "80%",
-                background: isBot ? "#fff" : "var(--color-green-100, #e8f5e2)",
-                border: isBot ? "1px solid rgba(8,65,130,0.06)" : "none",
-                borderRadius: isBot ? "4px 12px 12px 12px" : "12px 4px 12px 12px",
+                maxWidth: "85%",
+                background: isBot ? "#fff" : "rgba(107,191,84,0.1)",
+                border: isBot ? "1px solid rgba(8,65,130,0.08)" : "none",
+                borderRadius: isBot ? "2px 8px 8px 8px" : "8px 2px 8px 8px",
                 padding: "10px 14px",
-                boxShadow: isBot ? "0 2px 4px rgba(8,65,130,0.06)" : "none",
+                boxShadow: isBot ? "0 2px 8px -2px rgba(8,65,130,0.05)" : "none",
                 fontSize: 14,
-                lineHeight: 1.6,
-                color: "#1a1d1f",
-                fontFamily: "'Cabinet Grotesk', var(--font-heading), sans-serif",
+                lineHeight: 1.5,
+                color: "#032044",
+                fontFamily: "'Inter', sans-serif",
                 wordBreak: "break-word",
               }}
             >

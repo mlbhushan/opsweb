@@ -25,27 +25,28 @@ export function ChatSuggestions({ suggestions, onSelect, disabled }: Props) {
           disabled={disabled}
           onClick={() => onSelect(s)}
           style={{
-            padding: "5px 12px",
+            padding: "6px 12px",
             fontSize: 12,
             fontWeight: 600,
-            fontFamily: "'Cabinet Grotesk', var(--font-heading), sans-serif",
-            color: disabled ? "#a8aeb6" : "#084182",
-            background: disabled ? "#f0f1f3" : "#f0f7fd",
-            border: `1.5px solid ${disabled ? "#e2e5e9" : "rgba(8,65,130,0.15)"}`,
-            borderRadius: 9999,
+            fontFamily: "'Inter', sans-serif",
+            color: disabled ? "#a8aeb6" : "#032044",
+            background: disabled ? "#f0f1f3" : "#fff",
+            border: `1px solid ${disabled ? "#e2e5e9" : "rgba(8,65,130,0.15)"}`,
+            borderRadius: 6,
             cursor: disabled ? "not-allowed" : "pointer",
             transition: "all 150ms ease",
             whiteSpace: "nowrap",
+            boxShadow: "0 1px 2px rgba(0,0,0,0.02)"
           }}
           onMouseEnter={(e) => {
             if (!disabled) {
-              (e.target as HTMLButtonElement).style.background = "#e0f0fb";
-              (e.target as HTMLButtonElement).style.borderColor = "#084182";
+              (e.target as HTMLButtonElement).style.background = "#fafafa";
+              (e.target as HTMLButtonElement).style.borderColor = "#032044";
             }
           }}
           onMouseLeave={(e) => {
             if (!disabled) {
-              (e.target as HTMLButtonElement).style.background = "#f0f7fd";
+              (e.target as HTMLButtonElement).style.background = "#fff";
               (e.target as HTMLButtonElement).style.borderColor = "rgba(8,65,130,0.15)";
             }
           }}

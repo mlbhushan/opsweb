@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { HOME } from "@/lib/content/home";
 import { Container } from "@/components/ui/container";
-import { ArrowRight, Activity, DollarSign, Waypoints } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Activity, DollarSign, Waypoints } from "lucide-react";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
 
 // Custom visual components for each AI capability
@@ -196,22 +196,25 @@ export function AiIntelligence() {
 
       <Container className="relative z-10">
         {/* Header Layout */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-10 mb-16">
+        <div className="flex flex-col lg:flex-row justify-between lg:items-end gap-6 mb-12 md:mb-16">
           <motion.div
-            className="max-w-3xl"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial="hidden"
+            whileInView="visible"
             viewport={viewportOnce}
-            transition={{ duration: 0.5 }}
+            variants={fadeUp}
+            className="max-w-2xl"
           >
-            <p className="text-[12px] font-mono font-bold tracking-widest text-[var(--color-green-600)] uppercase mb-5">
-              {ai.eyebrow}
-            </p>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--color-navy-950)] leading-[1.1]">
+            <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-1.5 mb-6 shadow-sm">
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+              <span className="text-xs font-semibold tracking-wider text-slate-900 uppercase">
+                {ai.eyebrow}
+              </span>
+            </div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-[1.1]">
               {hasComma ? (
                 <>
-                  {headlineParts[0]},<br />
-                  <span className="text-[var(--color-green-600)]">{headlineParts.slice(1).join(", ")}</span>
+                  {headlineParts[0]},<br className="hidden md:block" />
+                  <span className="text-[var(--color-green-500)]">{headlineParts.slice(1).join(", ")}</span>
                 </>
               ) : (
                 ai.headline
@@ -219,18 +222,22 @@ export function AiIntelligence() {
             </h2>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
             viewport={viewportOnce}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            variants={fadeUp}
+            className="lg:max-w-md lg:pb-2 flex flex-col items-start lg:items-end text-left lg:text-right"
           >
             <Link
               href="/platform/ai"
-              className="inline-flex items-center gap-2 text-[14px] font-bold text-white bg-[var(--color-navy-950)] px-7 py-4 rounded-xl hover:bg-[var(--color-green-600)] transition-all duration-300 shrink-0 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+              className="group inline-flex items-center gap-3 text-sm font-bold tracking-[0.1em] text-white uppercase hover:text-[var(--color-navy-950)] transition-colors bg-[var(--color-navy-950)] border border-[var(--color-navy-950)] pl-6 pr-2 py-2 rounded-full shadow-sm hover:shadow-md hover:bg-[var(--color-green-400)]"
             >
               See AI in Action
-              <ArrowRight className="w-4 h-4" strokeWidth={2.5} />
+              <span className="relative overflow-hidden w-8 h-8 flex items-center justify-center bg-white/20 group-hover:bg-white/30 rounded-full transition-colors">
+                 <ArrowUpRight className="w-4 h-4 absolute group-hover:translate-x-[200%] group-hover:-translate-y-[200%] transition-transform duration-300" />
+                 <ArrowUpRight className="w-4 h-4 absolute -translate-x-[200%] translate-y-[200%] group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300" />
+              </span>
             </Link>
           </motion.div>
         </div>

@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { NAV, type NavGroup } from "@/lib/content/nav";
@@ -15,6 +16,14 @@ export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const pathname = usePathname();
+
+  const handleLogoClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [pathname]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -42,7 +51,7 @@ export function SiteHeader() {
         onMouseLeave={() => setActiveMenu(null)}
       >
         <div className="container-x flex h-[72px] items-center justify-between gap-8 lg:h-[88px] transition-all duration-500">
-          <Link href="/" className="flex shrink-0 items-center gap-2">
+          <Link href="/" onClick={handleLogoClick} className="flex shrink-0 items-center gap-2">
             <Image
               src="/OpsFloIcon.png"
               alt=""
@@ -68,49 +77,61 @@ export function SiteHeader() {
           </Link>
 
           <nav className="hidden flex-1 items-center justify-center lg:flex h-full">
-            {NAV.map((group) => (
-              <div
-                key={group.label}
-                className="h-full flex items-center px-4"
-                onMouseEnter={() =>
-                  group.columns ? setActiveMenu(group.label) : setActiveMenu(null)
-                }
-              >
-                {group.href ? (
-                  <Link
-                    href={group.href}
-                    className={cn(
-                      "flex items-center gap-1 py-2 text-[14px] font-medium tracking-wide transition-all duration-300",
-                      isSolid
-                        ? "text-[var(--color-navy-900)] hover:text-[var(--color-green-600)]"
-                        : "text-white hover:text-[var(--color-green-400)]",
-                      activeMenu === group.label && (isSolid ? "text-[var(--color-green-600)]" : "text-[var(--color-green-400)]")
-                    )}
-                  >
-                    {group.label}
-                  </Link>
-                ) : (
-                  <button
-                    type="button"
-                    className={cn(
-                      "flex items-center gap-1 py-2 text-[14px] font-medium tracking-wide transition-all duration-300",
-                      isSolid
-                        ? "text-[var(--color-navy-900)] hover:text-[var(--color-green-600)]"
-                        : "text-white hover:text-[var(--color-green-400)]",
-                      activeMenu === group.label && (isSolid ? "text-[var(--color-green-600)]" : "text-[var(--color-green-400)]")
-                    )}
-                  >
-                    {group.label}
-                    <ChevronDown
+            {NAV.map((group) => {
+              // A group is active if the current pathname matches its direct href, 
+              // or matches any of the links in its mega menu columns
+              const isActive = group.href 
+                ? pathname === group.href || pathname.startsWith(group.href + "/")
+                : group.columns?.some(col => col.links.some(link => pathname === link.href || pathname.startsWith(link.href + "/")));
+
+              return (
+                <div
+                  key={group.label}
+                  className="h-full flex items-center px-4"
+                  onMouseEnter={() =>
+                    group.columns ? setActiveMenu(group.label) : setActiveMenu(null)
+                  }
+                >
+                  {group.href ? (
+                    <Link
+                      href={group.href}
                       className={cn(
-                        "h-3.5 w-3.5 transition-transform duration-300",
-                        activeMenu === group.label && "rotate-180"
+                        "flex items-center gap-1 py-2 text-[14px] tracking-wide transition-all duration-300 relative",
+                        isSolid
+                          ? "text-[var(--color-navy-900)] hover:text-[var(--color-green-600)]"
+                          : "text-white hover:text-[var(--color-green-400)]",
+                        activeMenu === group.label && (isSolid ? "text-[var(--color-green-600)]" : "text-[var(--color-green-400)]"),
+                        isActive ? "font-bold" : "font-medium",
+                        isActive && (isSolid ? "text-[var(--color-green-600)]" : "text-[var(--color-green-400)]")
                       )}
-                    />
-                  </button>
-                )}
-              </div>
-            ))}
+                    >
+                      {group.label}
+                    </Link>
+                  ) : (
+                    <button
+                      type="button"
+                      className={cn(
+                        "flex items-center gap-1 py-2 text-[14px] tracking-wide transition-all duration-300 relative",
+                        isSolid
+                          ? "text-[var(--color-navy-900)] hover:text-[var(--color-green-600)]"
+                          : "text-white hover:text-[var(--color-green-400)]",
+                        activeMenu === group.label && (isSolid ? "text-[var(--color-green-600)]" : "text-[var(--color-green-400)]"),
+                        isActive ? "font-bold" : "font-medium",
+                        isActive && (isSolid ? "text-[var(--color-green-600)]" : "text-[var(--color-green-400)]")
+                      )}
+                    >
+                      {group.label}
+                      <ChevronDown
+                        className={cn(
+                          "h-3.5 w-3.5 transition-transform duration-300",
+                          activeMenu === group.label && "rotate-180"
+                        )}
+                      />
+                    </button>
+                  )}
+                </div>
+              );
+            })}
           </nav>
 
           <div className="hidden shrink-0 items-center gap-4 lg:flex">
@@ -183,7 +204,7 @@ export function SiteHeader() {
 
         <AnimatePresence>
           {activeMenu && (
-            <MegaMenu group={NAV.find((g) => g.label === activeMenu)!} />
+            <MegaMenu group={NAV.find((g) => g.label === activeMenu)!} pathname={pathname} />
           )}
         </AnimatePresence>
       </header>
@@ -202,7 +223,7 @@ export function SiteHeader() {
   );
 }
 
-function MegaMenu({ group }: { group: NavGroup }) {
+function MegaMenu({ group, pathname }: { group: NavGroup; pathname: string }) {
   if (!group.columns || group.columns.length === 0) return null;
 
   return (
@@ -213,10 +234,10 @@ function MegaMenu({ group }: { group: NavGroup }) {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -5 }}
           transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
-          className="bg-white border border-[var(--color-navy-900)]/10 shadow-[0_12px_40px_rgb(0,0,0,0.06)] overflow-hidden"
+          className="bg-white border border-[var(--color-navy-900)]/10 shadow-[0_12px_40px_rgb(0,0,0,0.06)] overflow-hidden rounded-b-xl"
         >
-          <div className="px-8 pt-8 pb-10 lg:px-12 lg:pt-10 lg:pb-12">
-            <div className="flex flex-wrap gap-x-12 gap-y-10 lg:gap-x-16">
+          <div className="px-8 pt-8 pb-10 lg:px-12 lg:pt-10 lg:pb-12 relative">
+            <div className="flex flex-wrap gap-x-12 gap-y-10 lg:gap-x-16 relative z-10">
               {group.columns.map((col, idx) => (
                 <div key={col.heading} className={cn("min-w-[200px]", idx > 0 && "lg:pl-12 xl:pl-16 lg:border-l lg:border-[var(--color-gray-100)]")}>
                   <div className="mb-6 border-b border-[var(--color-navy-900)]/10 pb-3">
@@ -225,25 +246,41 @@ function MegaMenu({ group }: { group: NavGroup }) {
                     </p>
                   </div>
                   <ul className="space-y-5">
-                    {col.links.map((link) => (
-                      <li key={link.href}>
-                        <Link href={link.href} className="group flex items-start">
-                          <span className="mt-1 w-0 overflow-hidden text-[var(--color-green-500)] transition-all duration-300 ease-out group-hover:w-4">
-                            <ArrowRight className="h-3.5 w-3.5" />
-                          </span>
-                          <div className="flex-1">
-                            <span className="block text-[14px] font-medium text-[var(--color-navy-800)] transition-colors duration-300 group-hover:text-[var(--color-green-600)]">
-                              {link.label}
+                    {col.links.map((link) => {
+                      const isActive = pathname === link.href || pathname.startsWith(link.href + "/");
+                      return (
+                        <li key={link.href}>
+                          <Link href={link.href} className="group flex items-start relative">
+                            <span className={cn(
+                              "mt-1 overflow-hidden transition-all duration-300 ease-out",
+                              isActive ? "w-4 text-[var(--color-green-500)]" : "w-0 text-[var(--color-green-500)] group-hover:w-4"
+                            )}>
+                              <ArrowRight className="h-3.5 w-3.5" />
                             </span>
-                            {link.description && (
-                              <span className="block text-[13px] text-[var(--color-gray-500)] mt-1 transition-colors duration-300 group-hover:text-[var(--color-navy-600)]">
-                                {link.description}
+                            <div className="flex-1 transition-transform duration-300 ease-out group-hover:translate-x-1">
+                              <span className={cn(
+                                "block text-[14px] transition-colors duration-300",
+                                isActive 
+                                  ? "font-bold text-[var(--color-green-600)]" 
+                                  : "font-medium text-[var(--color-navy-800)] group-hover:text-[var(--color-green-600)]"
+                              )}>
+                                {link.label}
                               </span>
-                            )}
-                          </div>
-                        </Link>
-                      </li>
-                    ))}
+                              {link.description && (
+                                <span className={cn(
+                                  "block text-[13px] mt-1 transition-colors duration-300",
+                                  isActive
+                                    ? "text-[var(--color-navy-700)] font-medium"
+                                    : "text-[var(--color-gray-500)] group-hover:text-[var(--color-navy-600)]"
+                                )}>
+                                  {link.description}
+                                </span>
+                              )}
+                            </div>
+                          </Link>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               ))}

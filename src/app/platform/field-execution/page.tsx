@@ -11,11 +11,11 @@ export const metadata: Metadata = buildMetadata({
 const data: ModulePageData = {
   bannerTitle: "Field Execution",
   eyebrow: "Platform / Field Execution",
-  headline: "Every Job Assigned. Every Job Completed.",
+  headline: "Every Job Assigned. Every Job **Completed**.",
   body: "The Field Execution Engine tracks every task from assignment to completion, ensuring nothing slips through the cracks.",
   heroImage: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1400&q=80",
   problem: {
-    headline: "The Cost of Dropped Tasks",
+    headline: "The Cost of **Dropped Tasks**",
     points: [
       "Jobs assigned verbally get forgotten, leading to missed revenue and customer complaints.",
       "Supervisors have no real-time visibility into what's actually happening in the field.",
@@ -24,7 +24,7 @@ const data: ModulePageData = {
     ],
   },
   howItWorks: {
-    headline: "How the Field Execution Engine Works",
+    headline: "How the **Field Execution Engine** Works",
     steps: [
       {
         title: "Assign & Dispatch",
@@ -51,7 +51,7 @@ const data: ModulePageData = {
     "Integration with scheduling & dispatch",
   ],
   differentiator: {
-    headline: "Built for Offline. Built for Oilfield.",
+    headline: "Built for **Offline**. Built for **Oilfield**.",
     body: "Unlike generic task management tools, the Field Execution Engine works fully offline and handles the complex multi-day, multi-crew job structures unique to oilfield operations.",
   },
 };

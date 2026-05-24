@@ -11,6 +11,44 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
+// ─── renderTitle helper ──────────────────────────────────────────────────────
+/**
+ * Renders a heading with brand-green highlights.
+ * Words wrapped in **word** are rendered in green; rest defaults to navy.
+ * Falls back to highlighting the last 1-2 words if no markers present.
+ */
+const renderTitle = (text: string) => {
+  const baseColor = "text-[var(--color-navy-950)]";
+  const greenColor = "text-[var(--color-green-500)]";
+
+  if (text.includes("**")) {
+    const parts = text.split(/(\*\*[^*]+\*\*)/g);
+    return (
+      <>
+        {parts.map((part, i) => {
+          if (part.startsWith("**") && part.endsWith("**")) {
+            return <span key={i} className={greenColor}>{part.slice(2, -2)}</span>;
+          }
+          return <span key={i} className={baseColor}>{part}</span>;
+        })}
+      </>
+    );
+  }
+
+  // Fallback: highlight last 1-2 words
+  const words = text.split(" ");
+  if (words.length <= 1) return <span className={baseColor}>{text}</span>;
+  const highlightCount = words.length >= 4 ? 2 : 1;
+  const prefix = words.slice(0, words.length - highlightCount).join(" ");
+  const highlight = words.slice(words.length - highlightCount).join(" ");
+  return (
+    <>
+      <span className={baseColor}>{prefix}</span>{" "}
+      <span className={greenColor}>{highlight}</span>
+    </>
+  );
+};
+
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 export type SolutionCategory = "pain" | "role" | "industry";
@@ -115,21 +153,20 @@ export function SolutionPage({ data }: { data: SolutionPageData }) {
               {/* Text */}
               <div className="lg:col-span-7">
                 {/* Eyebrow pill */}
-                <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-[var(--color-navy-200)] bg-white px-5 py-2 shadow-sm">
-                  <span className="flex size-2 rounded-full bg-[var(--color-green-500)] animate-pulse" />
-                  <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-navy-950)]">
+                <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-1.5 mb-6 shadow-sm">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+                  <span className="text-xs font-semibold tracking-wider text-slate-700 uppercase">
                     {data.eyebrow}
                   </span>
                 </div>
 
                 {/* Dual-tone heading */}
                 <h1
-                  className="mb-6 text-4xl md:text-5xl lg:text-6xl font-black uppercase leading-[0.92] tracking-tighter text-balance"
-                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                  className="text-4xl md:text-5xl lg:text-[64px] font-extrabold tracking-tight text-[var(--color-navy-950)] leading-[1.05] mb-6 text-balance"
                 >
                   <span className="text-[var(--color-green-500)]">{data.headlineGreen}</span>
-                  <br />
-                  <span className="text-[var(--color-navy-950)]">{data.headlineNavy}</span>
+                  <br className="hidden sm:block" />
+                  <span>{data.headlineNavy}</span>
                 </h1>
 
                 <p className="mb-10 max-w-xl text-base md:text-lg font-medium leading-relaxed text-[var(--color-gray-600)]">
@@ -202,18 +239,17 @@ export function SolutionPage({ data }: { data: SolutionPageData }) {
 
                 {/* Problem */}
                 <div>
-                  <div className="mb-6 flex items-center gap-3">
-                    <span className="h-4 w-4 shrink-0 block bg-red-500 rounded-sm" />
-                    <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)]">
+                  <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-1.5 mb-6 shadow-sm">
+                    <span className="h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />
+                    <span className="text-xs font-semibold tracking-wider text-slate-700 uppercase">
                       {data.problem.label}
                     </span>
                   </div>
 
                   <h2
-                    className="mb-6 text-3xl md:text-4xl font-black uppercase leading-tight tracking-tight text-[var(--color-navy-950)]"
-                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    className="text-[32px] md:text-[40px] font-extrabold tracking-tight leading-[1.05] mb-6 text-balance"
                   >
-                    {data.problem.headline}
+                    {renderTitle(data.problem.headline)}
                   </h2>
 
                   <p className="text-lg leading-relaxed text-[var(--color-gray-600)] font-medium border-l-4 border-red-500/20 pl-6">
@@ -237,18 +273,17 @@ export function SolutionPage({ data }: { data: SolutionPageData }) {
 
                 {/* How it works */}
                 <div>
-                  <div className="mb-6 flex items-center gap-3">
-                    <span className="h-4 w-4 shrink-0 block bg-[var(--color-green-500)] rounded-sm" />
-                    <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)]">
+                  <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-1.5 mb-6 shadow-sm">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+                    <span className="text-xs font-semibold tracking-wider text-slate-700 uppercase">
                       {data.solution.label}
                     </span>
                   </div>
 
                   <h2
-                    className="mb-10 text-3xl md:text-4xl font-black uppercase leading-tight tracking-tight text-[var(--color-navy-950)]"
-                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    className="text-[32px] md:text-[40px] font-extrabold tracking-tight leading-[1.05] mb-10 text-balance"
                   >
-                    {data.solution.headline}
+                    {renderTitle(data.solution.headline)}
                   </h2>
 
                   <div className="grid sm:grid-cols-3 gap-6">
@@ -284,18 +319,17 @@ export function SolutionPage({ data }: { data: SolutionPageData }) {
 
                 {/* Outcomes */}
                 <div>
-                  <div className="mb-6 flex items-center gap-3">
-                    <span className="h-4 w-4 shrink-0 block bg-[var(--color-navy-950)] rounded-sm" />
-                    <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)]">
+                  <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-1.5 mb-6 shadow-sm">
+                    <span className="h-1.5 w-1.5 rounded-full bg-slate-900 animate-pulse" />
+                    <span className="text-xs font-semibold tracking-wider text-slate-700 uppercase">
                       Outcomes
                     </span>
                   </div>
 
                   <h2
-                    className="mb-8 text-3xl md:text-4xl font-black uppercase leading-tight tracking-tight text-[var(--color-navy-950)]"
-                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    className="text-[32px] md:text-[40px] font-extrabold tracking-tight leading-[1.05] mb-8 text-balance"
                   >
-                    {data.outcomes.headline}
+                    {renderTitle(data.outcomes.headline)}
                   </h2>
 
                   <div className="grid sm:grid-cols-2 gap-4">
@@ -317,37 +351,6 @@ export function SolutionPage({ data }: { data: SolutionPageData }) {
 
               {/* ── SIDEBAR ── */}
               <aside className="lg:col-span-4 order-2 lg:order-1 space-y-6">
-
-                {/* CTA card */}
-                <div className="rounded-3xl bg-[var(--color-navy-950)] p-8 shadow-xl relative overflow-hidden group">
-                  <div className="absolute right-[-10%] top-[-10%] w-[100%] h-[100%] bg-[radial-gradient(ellipse_at_center,_var(--color-green-500)_0%,_transparent_60%)] opacity-10 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none" />
-                  <div className="relative z-10">
-                    <Zap className="mb-4 size-8 text-[var(--color-green-500)]" />
-                    <h3
-                      className="mb-2 text-2xl font-black uppercase tracking-tighter text-white leading-tight"
-                      style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
-                    >
-                      {data.sidebar.ctaHeadline}
-                    </h3>
-                    <p className="mb-8 text-sm font-medium leading-relaxed text-[var(--color-gray-300)]">
-                      {data.sidebar.ctaBody}
-                    </p>
-                    <Link
-                      href={data.sidebar.primaryCta.href}
-                      className="group/cta mb-3 flex w-full items-center justify-between rounded-xl bg-[var(--color-green-500)] px-5 py-4 text-sm font-bold uppercase tracking-wider text-[var(--color-navy-950)] transition-all hover:bg-[var(--color-green-400)] shadow-sm hover:shadow-md hover:-translate-y-0.5"
-                    >
-                      {data.sidebar.primaryCta.label}
-                      <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-1" />
-                    </Link>
-                    <Link
-                      href={data.sidebar.secondaryCta.href}
-                      className="group/cta2 flex w-full items-center justify-between rounded-xl border border-[var(--color-navy-700)] px-5 py-4 text-sm font-bold uppercase tracking-wider text-white transition-all hover:border-[var(--color-gray-400)] hover:bg-[var(--color-navy-900)] shadow-sm hover:shadow-md hover:-translate-y-0.5"
-                    >
-                      {data.sidebar.secondaryCta.label}
-                      <ChevronRight className="size-4 transition-transform group-hover/cta2:translate-x-1" />
-                    </Link>
-                  </div>
-                </div>
 
                 {/* Related links */}
                 <div className="rounded-3xl bg-white border border-[var(--color-gray-200)] p-8 shadow-sm">
@@ -373,26 +376,6 @@ export function SolutionPage({ data }: { data: SolutionPageData }) {
                     ))}
                   </ul>
                 </div>
-
-                {/* Quote */}
-                {data.sidebar.quote && (
-                  <div className="rounded-3xl bg-[var(--color-gray-50)] border border-[var(--color-gray-200)] p-8 relative overflow-hidden">
-                    <div className="absolute top-0 left-0 w-1.5 h-full bg-[var(--color-green-500)]" />
-                    <blockquote className="pl-2">
-                      <p className="mb-6 text-sm font-medium italic leading-relaxed text-[var(--color-gray-700)]">
-                        &ldquo;{data.sidebar.quote.text}&rdquo;
-                      </p>
-                      <footer>
-                        <div className="text-xs font-bold uppercase tracking-wide text-[var(--color-navy-900)] mb-1">
-                          {data.sidebar.quote.name}
-                        </div>
-                        <div className="text-xs font-medium text-[var(--color-gray-500)]">
-                          {data.sidebar.quote.role}
-                        </div>
-                      </footer>
-                    </blockquote>
-                  </div>
-                )}
 
                 {/* Solutions nav quick link */}
                 <div className="rounded-3xl bg-white border border-[var(--color-gray-200)] p-8 shadow-sm">
@@ -431,6 +414,37 @@ export function SolutionPage({ data }: { data: SolutionPageData }) {
                   </div>
                 </div>
 
+                {/* CTA card - Sticky */}
+                <div className="lg:sticky lg:top-[25vh] rounded-3xl bg-[var(--color-navy-950)] p-8 shadow-xl relative overflow-hidden group">
+                  <div className="absolute right-[-10%] top-[-10%] w-[100%] h-[100%] bg-[radial-gradient(ellipse_at_center,_var(--color-green-500)_0%,_transparent_60%)] opacity-10 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none" />
+                  <div className="relative z-10">
+                    <Zap className="mb-4 size-8 text-[var(--color-green-500)]" />
+                    <h3
+                      className="mb-2 text-2xl font-black uppercase tracking-tighter text-white leading-tight"
+                      style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    >
+                      {data.sidebar.ctaHeadline}
+                    </h3>
+                    <p className="mb-8 text-sm font-medium leading-relaxed text-[var(--color-gray-300)]">
+                      {data.sidebar.ctaBody}
+                    </p>
+                    <Link
+                      href={data.sidebar.primaryCta.href}
+                      className="group/cta mb-3 flex w-full items-center justify-between rounded-xl bg-[var(--color-green-500)] px-5 py-4 text-sm font-bold uppercase tracking-wider text-[var(--color-navy-950)] transition-all hover:bg-[var(--color-green-400)] shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                    >
+                      {data.sidebar.primaryCta.label}
+                      <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-1" />
+                    </Link>
+                    <Link
+                      href={data.sidebar.secondaryCta.href}
+                      className="group/cta2 flex w-full items-center justify-between rounded-xl border border-[var(--color-navy-700)] px-5 py-4 text-sm font-bold uppercase tracking-wider text-white transition-all hover:border-[var(--color-gray-400)] hover:bg-[var(--color-navy-900)] shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                    >
+                      {data.sidebar.secondaryCta.label}
+                      <ChevronRight className="size-4 transition-transform group-hover/cta2:translate-x-1" />
+                    </Link>
+                  </div>
+                </div>
+
               </aside>
             </div>
           </Container>
@@ -443,18 +457,17 @@ export function SolutionPage({ data }: { data: SolutionPageData }) {
             <div className="flex flex-col items-start justify-between gap-12 lg:flex-row lg:items-end">
 
               <div className="max-w-3xl">
-                <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-[var(--color-navy-200)] bg-white px-5 py-2 shadow-sm">
-                  <span className="flex size-2 rounded-full bg-[var(--color-green-500)] animate-pulse" />
-                  <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-navy-950)]">
+                <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-1.5 mb-6 shadow-sm">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+                  <span className="text-xs font-semibold tracking-wider text-slate-700 uppercase">
                     Ready to Start
                   </span>
                 </div>
                 <h2
-                  className="text-4xl font-black uppercase leading-[0.92] tracking-tighter md:text-6xl text-balance"
-                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                  className="text-[32px] md:text-[40px] font-extrabold tracking-tight leading-[1.05] mb-8 text-balance"
                 >
                   <span className="text-[var(--color-green-500)]">{data.bottomCta.headlineGreen}</span>
-                  <br />
+                  <br className="hidden sm:block" />
                   <span className="text-[var(--color-navy-950)]">{data.bottomCta.headlineNavy}</span>
                 </h2>
                 <p className="mt-8 max-w-2xl text-lg font-medium leading-relaxed text-[var(--color-gray-600)]">

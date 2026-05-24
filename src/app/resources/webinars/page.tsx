@@ -166,19 +166,16 @@ export default async function WebinarsPage() {
           <Container className="relative z-10 py-16 md:py-24">
             <div className="grid lg:grid-cols-12 gap-10 items-center">
               <div className="lg:col-span-7">
-                <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-[var(--color-navy-200)] bg-white px-5 py-2 shadow-sm">
-                  <span className="flex size-2 rounded-full bg-[var(--color-green-500)] animate-pulse" />
-                  <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-navy-950)]">
+                <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-1.5 mb-6 shadow-sm">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+                  <span className="text-xs font-semibold tracking-wider text-slate-700 uppercase">
                     Resources / Webinars
                   </span>
                 </div>
 
-                <h1
-                  className="mb-4 text-5xl font-black uppercase leading-[0.92] tracking-tighter md:text-7xl text-balance"
-                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
-                >
+                <h1 className="text-[32px] md:text-[40px] font-extrabold tracking-tight leading-[1.05] mb-8 text-balance">
                   <span className="text-[var(--color-green-500)]">Expert</span>
-                  <br />
+                  <br className="hidden sm:block" />
                   <span className="text-[var(--color-navy-950)]">Sessions.</span>
                 </h1>
                 <p className="max-w-xl text-base font-medium leading-relaxed text-[var(--color-gray-600)] md:text-lg">
@@ -504,12 +501,15 @@ export default async function WebinarsPage() {
           <Container className="relative z-10">
             <div className="flex flex-col items-start justify-between gap-10 lg:flex-row lg:items-center">
               <div className="max-w-2xl">
-                <h2
-                  className="text-4xl font-black uppercase leading-[0.92] tracking-tighter md:text-5xl text-balance"
-                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
-                >
+                <div className="inline-flex items-center gap-3 rounded-full border border-slate-700 bg-[var(--color-navy-900)] px-4 py-1.5 mb-6 shadow-sm">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+                  <span className="text-xs font-semibold tracking-wider text-slate-300 uppercase">
+                    Take Action
+                  </span>
+                </div>
+                <h2 className="text-[32px] md:text-[40px] font-extrabold tracking-tight leading-[1.05] mb-8 text-balance">
                   <span className="text-[var(--color-green-500)]">Don&apos;t Watch.</span>
-                  <br />
+                  <br className="hidden sm:block" />
                   <span className="text-white">Do It.</span>
                 </h2>
                 <p className="mt-6 text-base font-medium leading-relaxed text-[var(--color-gray-400)]">

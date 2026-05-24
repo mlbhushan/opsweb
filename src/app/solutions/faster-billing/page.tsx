@@ -30,7 +30,7 @@ const data: SolutionPageData = {
 
   problem: {
     label: "The Problem",
-    headline: "Why Billing Takes 45+ Days",
+    headline: "Why Billing Takes **45+ Days**",
     body: "The traditional billing workflow is broken at every step: paper tickets are collected weekly, driven to the office, re-keyed into accounting software, reviewed for errors, approved through email chains, and finally invoiced. Each step adds days. Each handoff introduces errors. And the longer the cycle, the more disputes arise from incomplete or illegible records.",
     bullets: [
       "Paper tickets collected weekly — not daily — delaying the entire cycle",
@@ -42,7 +42,7 @@ const data: SolutionPageData = {
 
   solution: {
     label: "How OpsFlo Fixes It",
-    headline: "Capture. Validate. Invoice.",
+    headline: "Capture. **Validate**. **Invoice**.",
     steps: [
       {
         icon: Smartphone,
@@ -66,7 +66,7 @@ const data: SolutionPageData = {
   },
 
   outcomes: {
-    headline: "Impact on Your Operations",
+    headline: "**Impact** on Your Operations",
     items: [
       "Billing cycle reduced from 45+ days to same-day",
       "Cash flow improvement of 30-40% from faster recognition",

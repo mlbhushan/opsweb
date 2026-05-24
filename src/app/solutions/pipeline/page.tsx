@@ -30,7 +30,7 @@ const data: SolutionPageData = {
 
   problem: {
     label: "The Industry Challenge",
-    headline: "Regulatory Complexity Demands Rigorous Systems",
+    headline: "Regulatory Complexity Demands **Rigorous Systems**",
     body: "Pipeline operators face inspection intervals, regulatory filing deadlines, and incident response requirements that generic field service tools cannot handle. Paper-based inspection records, siloed maintenance systems, and manual compliance assembly create risk — both operational and regulatory — that compounds over time.",
     bullets: [
       "Inspection intervals mandated by regulation — missed intervals create liability",
@@ -42,7 +42,7 @@ const data: SolutionPageData = {
 
   solution: {
     label: "The OpsFlo Approach",
-    headline: "Inspect. Monitor. Document.",
+    headline: "Inspect. **Monitor**. Document.",
     steps: [
       {
         icon: Activity,
@@ -66,7 +66,7 @@ const data: SolutionPageData = {
   },
 
   outcomes: {
-    headline: "Outcomes for Pipeline Operators",
+    headline: "Outcomes for **Pipeline Operators**",
     items: [
       "100% inspection completion with automated scheduling and reminders",
       "Zero regulatory filing gaps — compliance documentation always current",

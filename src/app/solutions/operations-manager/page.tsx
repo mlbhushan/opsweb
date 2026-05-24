@@ -30,7 +30,7 @@ const data: SolutionPageData = {
 
   problem: {
     label: "Your Current Reality",
-    headline: "You Are Managing Blind",
+    headline: "You Are **Managing Blind**",
     body: "Your operational picture is assembled from phone calls, text messages, whiteboards, and end-of-day summaries. By the time you know a job was missed, the customer has already called. You spend your day chasing status updates instead of managing operations — because your tools were not built for field reality.",
     bullets: [
       "No real-time view of field crew status or job progress",
@@ -42,7 +42,7 @@ const data: SolutionPageData = {
 
   solution: {
     label: "How OpsFlo Works for You",
-    headline: "See It. Know It. Act on It.",
+    headline: "**See It**. Know It. Act on It.",
     steps: [
       {
         icon: LayoutDashboard,
@@ -66,7 +66,7 @@ const data: SolutionPageData = {
   },
 
   outcomes: {
-    headline: "What Changes for You",
+    headline: "What **Changes** for You",
     items: [
       "Real-time visibility into every field operation — no calls required",
       "Automated escalation eliminates dropped tasks and missed jobs",

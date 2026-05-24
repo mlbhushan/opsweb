@@ -12,11 +12,11 @@ export const metadata: Metadata = buildMetadata({
 const data: ModulePageData = {
   bannerTitle: "Scheduling & Dispatch",
   eyebrow: "Platform / Scheduling & Dispatch",
-  headline: "Right Crew. Right Job. Right Time.",
+  headline: "**Right Crew**. Right Job. Right Time.",
   body: "Scheduling & Dispatch replaces whiteboards and phone calls with intelligent crew assignment  -  factoring in skills, certifications, proximity, and workload to get the right crew on the right job every time.",
   heroImage: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1400&q=80",
   problem: {
-    headline: "Manual Dispatch Wastes Hours Every Day",
+    headline: "Manual Dispatch **Wastes Hours** Every Day",
     points: [
       "Dispatch decisions are made by phone and whiteboard  -  with no visibility into who is available or where they are.",
       "Skills and certifications are not checked at dispatch time, leading to unqualified crews arriving on-site.",
@@ -25,7 +25,7 @@ const data: ModulePageData = {
     ],
   },
   howItWorks: {
-    headline: "How Scheduling & Dispatch Works",
+    headline: "How **Scheduling & Dispatch** Works",
     steps: [
       {
         title: "Intelligent Assignment",
@@ -55,7 +55,7 @@ const data: ModulePageData = {
     "Integration with field execution & work orders",
   ],
   differentiator: {
-    headline: "Dispatch That Knows Your Field Reality",
+    headline: "**Dispatch** That Knows Your Field Reality",
     body: "Generic scheduling tools do not understand multi-day oilfield jobs, equipment dependencies, or the fact that your best crew might be 3 hours from the nearest cell tower. OpsFlo does.",
   },
   problemImage: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80",

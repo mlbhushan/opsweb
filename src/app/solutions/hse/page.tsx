@@ -30,7 +30,7 @@ const data: SolutionPageData = {
 
   problem: {
     label: "Your Current Reality",
-    headline: "Paper-Based Safety Creates Paper-Based Risk",
+    headline: "Paper-Based Safety Creates **Paper-Based Risk**",
     body: "You know the inspections are happening — but you cannot prove it. Paper JSAs are filed and forgotten. Incident reports take days to reach your desk. Corrective actions are assigned in meetings but never tracked to resolution. When the auditor arrives, you are pulling all-nighters assembling evidence that should have been captured digitally from the start.",
     bullets: [
       "Paper safety records cannot be searched, filtered, or audited efficiently",
@@ -42,7 +42,7 @@ const data: SolutionPageData = {
 
   solution: {
     label: "How OpsFlo Works for HSE",
-    headline: "Digital Safety. Automatic Compliance.",
+    headline: "**Digital Safety**. Automatic Compliance.",
     steps: [
       {
         icon: ClipboardCheck,
@@ -66,7 +66,7 @@ const data: SolutionPageData = {
   },
 
   outcomes: {
-    headline: "What Changes for HSE",
+    headline: "What **Changes** for HSE",
     items: [
       "100% digital capture of all safety events and near-misses",
       "Corrective actions tracked to verified resolution — zero dropped items",

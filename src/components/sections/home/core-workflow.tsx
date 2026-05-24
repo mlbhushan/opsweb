@@ -13,13 +13,12 @@ function AnimatedCapture() {
   return (
     <svg viewBox="0 0 24 24" className="w-full h-full fill-none stroke-current" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
       <motion.rect x="3" y="3" width="18" height="18" rx="2" 
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+        animate={{ pathLength: [0, 1, 1, 0], opacity: [0, 1, 1, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", times: [0, 0.15, 0.95, 1] }}
       />
       <motion.line x1="3" y1="12" x2="21" y2="12"
-        animate={{ y: [-6, 6, -6] }}
-        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+        animate={{ y: [-6, 6, -6, -6, -6] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", times: [0, 0.075, 0.15, 0.95, 1] }}
         stroke="var(--color-green-400)"
       />
     </svg>
@@ -30,15 +29,13 @@ function AnimatedDetect() {
   return (
     <svg viewBox="0 0 24 24" className="w-full h-full fill-none stroke-current" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
       <motion.path d="M3 12h4l3 -9 5 18 3 -9h3"
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+        animate={{ pathLength: [0, 1, 1, 0], opacity: [0, 1, 1, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", times: [0, 0.2, 0.95, 1] }}
         stroke="var(--color-green-400)"
       />
       <motion.circle cx="12" cy="12" r="9" 
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 0.15 }}
-        transition={{ duration: 2.5, repeat: Infinity, ease: "easeOut" }}
+        animate={{ scale: [0.8, 1, 1, 0.8], opacity: [0, 0.2, 0.2, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeOut", times: [0, 0.2, 0.95, 1] }}
       />
     </svg>
   );
@@ -48,15 +45,13 @@ function AnimatedDispatch() {
   return (
     <svg viewBox="0 0 24 24" className="w-full h-full fill-none stroke-current" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
       <motion.path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"
-        initial={{ pathLength: 0, strokeDasharray: "0 1" }}
-        animate={{ pathLength: 1, strokeDasharray: "1 0" }}
-        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+        animate={{ pathLength: [0, 1, 1, 0], opacity: [0, 1, 1, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", times: [0, 0.15, 0.95, 1] }}
         stroke="var(--color-green-400)"
       />
       <motion.path d="M11 13L2 22"
-        initial={{ pathLength: 0 }}
-        animate={{ pathLength: 1 }}
-        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+        animate={{ pathLength: [0, 0, 1, 1, 0], opacity: [0, 0, 1, 1, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", times: [0, 0.05, 0.2, 0.95, 1] }}
       />
     </svg>
   );
@@ -66,8 +61,8 @@ function AnimatedExecute() {
   return (
     <svg viewBox="0 0 24 24" className="w-full h-full fill-none stroke-current" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
       <motion.g
-        animate={{ rotate: 360 }}
-        transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+        animate={{ rotate: [0, 360, 360, 0], opacity: [0, 1, 1, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", times: [0, 0.2, 0.95, 1] }}
         style={{ transformOrigin: '12px 12px' }}
       >
         <circle cx="12" cy="12" r="3" stroke="var(--color-green-400)" />
@@ -82,11 +77,14 @@ function AnimatedInvoice() {
     <svg viewBox="0 0 24 24" className="w-full h-full fill-none stroke-current" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
       <rect x="4" y="2" width="16" height="20" rx="2" />
       <motion.line x1="8" y1="8" x2="16" y2="8"
-        initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 3, repeat: Infinity }} stroke="var(--color-green-400)" />
+        animate={{ pathLength: [0, 1, 1, 0], opacity: [0, 1, 1, 0] }} 
+        transition={{ duration: 8, repeat: Infinity, times: [0, 0.1, 0.95, 1] }} stroke="var(--color-green-400)" />
       <motion.line x1="8" y1="12" x2="16" y2="12"
-        initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 3, repeat: Infinity, delay: 0.3 }} stroke="var(--color-green-400)" />
+        animate={{ pathLength: [0, 0, 1, 1, 0], opacity: [0, 0, 1, 1, 0] }} 
+        transition={{ duration: 8, repeat: Infinity, times: [0, 0.05, 0.15, 0.95, 1] }} stroke="var(--color-green-400)" />
       <motion.line x1="8" y1="16" x2="12" y2="16"
-        initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 3, repeat: Infinity, delay: 0.6 }} stroke="var(--color-green-400)" />
+        animate={{ pathLength: [0, 0, 1, 1, 0], opacity: [0, 0, 1, 1, 0] }} 
+        transition={{ duration: 8, repeat: Infinity, times: [0, 0.1, 0.2, 0.95, 1] }} stroke="var(--color-green-400)" />
     </svg>
   );
 }
@@ -140,19 +138,19 @@ export function CoreWorkflow() {
                 viewport={viewportOnce}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="inline-flex items-center gap-3 mb-6">
-                  <span className="h-2 w-2 rounded-full bg-[var(--color-green-500)] shadow-[0_0_8px_var(--color-green-500)]" />
-                  <span className="text-[12px] font-mono font-bold tracking-widest text-[var(--color-green-400)] uppercase">
+                <div className="inline-flex items-center gap-3 rounded-full border border-slate-700 bg-[var(--color-navy-900)] px-4 py-1.5 mb-6 shadow-sm">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+                  <span className="text-xs font-semibold tracking-wider text-slate-200 uppercase">
                     {coreWorkflow.eyebrow}
                   </span>
                 </div>
 
-                <h2 className="text-4xl md:text-5xl lg:text-[64px] font-medium tracking-tight text-white leading-[1.05]">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.1]">
                   {firstPart}
                   {secondPart && (
                     <>
-                      <br />
-                      <span className="text-[var(--color-green-400)]">
+                      <br className="hidden md:block" />
+                      <span className="text-[var(--color-green-500)]">
                         {secondPart}
                       </span>
                     </>
@@ -191,11 +189,11 @@ export function CoreWorkflow() {
                   <motion.div
                     key={step.number}
                     variants={fadeUp}
-                    className="group relative flex flex-row lg:flex-col items-start gap-5 lg:gap-6"
+                    className="group relative flex flex-col items-center gap-5 lg:gap-6 text-center"
                   >
                     {/* Horizontal Connector Line (Desktop) - 32px is the exact center of the 64px box */}
                     {index !== coreWorkflow.steps.length - 1 && (
-                      <div className="absolute left-[32px] top-[32px] w-[calc(100%+24px)] h-px bg-white/10 hidden lg:block z-0 overflow-hidden">
+                      <div className="absolute left-[50%] top-[32px] w-full h-px bg-white/10 hidden lg:block z-0 overflow-hidden">
                         <motion.div
                           className="absolute top-0 bottom-0 w-32 bg-gradient-to-r from-transparent via-[var(--color-green-500)] to-transparent"
                           animate={{ left: ["-50%", "150%"] }}
@@ -206,7 +204,7 @@ export function CoreWorkflow() {
 
                     {/* Vertical Connector Line (Mobile/Tablet) */}
                     {index !== coreWorkflow.steps.length - 1 && (
-                      <div className="absolute left-[32px] top-[32px] w-px h-[calc(100%+40px)] bg-white/10 lg:hidden z-0 overflow-hidden">
+                      <div className="absolute left-[50%] top-[64px] w-px h-[calc(100%+40px)] bg-white/10 lg:hidden z-0 overflow-hidden -translate-x-1/2">
                         <motion.div
                           className="absolute left-0 right-0 h-32 bg-gradient-to-b from-transparent via-[var(--color-green-500)] to-transparent"
                           animate={{ top: ["-50%", "150%"] }}
@@ -225,14 +223,13 @@ export function CoreWorkflow() {
                     </div>
 
                     {/* Content */}
-                    <div className="flex flex-col pt-1 lg:pt-0 relative z-10">
-                      <div className="flex items-center gap-2 mb-2">
+                    <div className="flex flex-col relative z-10 items-center">
+                      <div className="relative flex items-center justify-center mb-2">
                         <h3 className="text-[18px] font-semibold text-white tracking-wide group-hover:text-[var(--color-green-400)] transition-colors duration-300">
                           {step.label}
                         </h3>
-                        <ArrowRight className="w-4 h-4 text-[var(--color-green-400)] opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
                       </div>
-                      <p className="text-[var(--color-navy-300)] text-[14px] leading-relaxed">
+                      <p className="text-[var(--color-navy-300)] text-[14px] leading-relaxed text-balance">
                         {step.description}
                       </p>
                     </div>

@@ -15,8 +15,8 @@ const FEATURES = [
       "Eliminate blind spots with a centralized command center. Monitor active jobs, track field crews, and assign equipment instantly. Every work order, inspection, and field ticket flows into a single source of truth.",
     linkText: "Learn more about Field Execution",
     linkHref: "/platform/field-execution",
-    mockupMain: "/mockups/dashboard.png",
-    mockupFloating: "/mockups/tracker.png",
+    mockupMain: "https://res.cloudinary.com/dmghhstx4/image/upload/v1779621427/dashboard_ns1vjg.png",
+    mockupFloating: "https://res.cloudinary.com/dmghhstx4/image/upload/v1779621430/tracker_dqwk4o.png",
     mockupUrl: "ops-flo.com/app/dashboard",
   },
   {
@@ -26,7 +26,7 @@ const FEATURES = [
       "Deploy the right crew with the right equipment without the chaos. Intelligent scheduling tools and AI-based auto-assignment ensure optimal utilization and prevent costly operational delays before they happen.",
     linkText: "Learn more about Scheduling",
     linkHref: "/platform/scheduling",
-    mockupMain: "/mockups/auto-assign.png",
+    mockupMain: "https://res.cloudinary.com/dmghhstx4/image/upload/v1779621427/auto-assign_ijqera.png",
     mockupFloating: null,
     mockupUrl: "ops-flo.com/app/dispatching",
   },
@@ -37,7 +37,7 @@ const FEATURES = [
       "Transform field work into verifiable invoices instantly. Our digital ticketing system ensures every billable hour, part, and service is documented and converted to cash with total accuracy.",
     linkText: "Learn more about Field Ticketing",
     linkHref: "/platform/field-ticketing",
-    mockupMain: "/mockups/field-service.png",
+    mockupMain: "https://res.cloudinary.com/dmghhstx4/image/upload/v1779621427/field-service_jbdbst.png",
     mockupFloating: null,
     mockupUrl: "ops-flo.com/app/field",
   },
@@ -48,7 +48,7 @@ const FEATURES = [
       "Track financial performance dynamically as jobs progress. Use our built-in AI assistant to identify margin erosion early and make data-driven decisions that protect your bottom line.",
     linkText: "Learn more about Analytics",
     linkHref: "/platform/analytics",
-    mockupMain: "/mockups/analytics.png",
+    mockupMain: "https://res.cloudinary.com/dmghhstx4/image/upload/v1779621424/analytics_yzal4u.png",
     mockupFloating: null,
     mockupUrl: "ops-flo.com/app/field",
   },
@@ -66,15 +66,15 @@ export function AllInOnePlatform() {
       <div className="container-x relative z-10">
         {/* Header Block */}
         <div className="max-w-3xl mx-auto text-center mb-16 lg:mb-24">
-          <div className="mb-6 inline-flex items-center rounded-full border border-[var(--color-navy-200)] px-4 py-2 bg-white shadow-sm">
-            <span className="flex size-2 rounded-full bg-[var(--color-green-500)] mr-3"></span>
-            <span className="text-sm font-semibold tracking-widest text-[var(--color-navy-900)] uppercase">
+          <div className="mb-6 inline-flex items-center rounded-full border border-slate-200 px-4 py-1.5 bg-white shadow-sm gap-3">
+            <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+            <span className="text-xs font-semibold tracking-wider text-slate-900 uppercase">
               What is OpsFlo
             </span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[var(--color-navy-950)] mb-6 text-balance">
-            The definitive field operations{" "}
-            <span className="text-[var(--color-green-600)]">execution engine</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-[1.1] mb-6">
+            The definitive field operations <br className="hidden md:block" />
+            <span className="text-[var(--color-green-500)]">execution engine</span>
           </h2>
           <p className="text-lg md:text-xl text-[var(--color-navy-700)] leading-relaxed">
             OpsFlo is the industrial-grade operating system designed to manage every aspect of your field service projects, from field ticketing and dispatching to deep operational intelligence and automated revenue capture.

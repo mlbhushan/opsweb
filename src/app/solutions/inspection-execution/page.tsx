@@ -30,7 +30,7 @@ const data: SolutionPageData = {
 
   problem: {
     label: "The Problem",
-    headline: "Inspections Completed. Issues Unresolved.",
+    headline: "Inspections **Completed**. Issues **Unresolved**.",
     body: "The inspection happens. The checklist is signed. But the finding — the cracked fitting, the pressure anomaly, the safety hazard — gets scribbled on a paper form and handed to someone who has no system to track it. Weeks later, the same issue shows up again. Or worse, the auditor finds it first.",
     bullets: [
       "Findings captured on paper with no automated escalation path",
@@ -42,7 +42,7 @@ const data: SolutionPageData = {
 
   solution: {
     label: "How OpsFlo Closes the Loop",
-    headline: "Inspect. Detect. Resolve.",
+    headline: "Inspect. Detect. **Resolve**.",
     steps: [
       {
         icon: ClipboardCheck,
@@ -66,7 +66,7 @@ const data: SolutionPageData = {
   },
 
   outcomes: {
-    headline: "What Changes After OpsFlo",
+    headline: "What **Changes** After OpsFlo",
     items: [
       "100% of inspection findings trigger tracked corrective actions",
       "Zero items fall through the cracks between inspection and resolution",
@@ -78,10 +78,10 @@ const data: SolutionPageData = {
   },
 
   sidebar: {
-    ctaHeadline: "Start a Pilot in 30 Days",
+    ctaHeadline: "Book a Demo in 30 Days",
     ctaBody:
       "Deploy with 1-2 crews, see 100% follow-through on every inspection finding within the first month.",
-    primaryCta: { label: "Start a Pilot", href: "/contact" },
+    primaryCta: { label: "Book a Demo", href: "/contact" },
     secondaryCta: { label: "Talk to Sales", href: "/contact" },
     relatedLinks: [
       { label: "Stop Revenue Leakage", href: "/solutions/revenue-leakage" },
@@ -101,7 +101,7 @@ const data: SolutionPageData = {
     headlineGreen: "Close Every Loop.",
     headlineNavy: "Zero Items Dropped.",
     body: "Inspections without follow-through are just documentation. Start a 30-day pilot and prove 100% corrective action completion across your operations.",
-    primaryCta: { label: "Start a Pilot", href: "/contact" },
+    primaryCta: { label: "Book a Demo", href: "/contact" },
     secondaryCta: { label: "View Inspections Module", href: "/platform/inspections" },
   },
 };

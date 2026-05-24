@@ -4,7 +4,7 @@ import { useState, useRef, useCallback, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ArrowLeft } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { HOME } from "@/lib/content/home";
 import { viewportOnce, staggerContainer, fadeUp } from "@/lib/animations";
@@ -140,33 +140,48 @@ export function ServicesCarousel() {
 
       <Container className="relative z-10">
         {/* Header Area */}
-        <motion.div
-          className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-10"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={viewportOnce}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="max-w-2xl">
-            <p className="text-[12px] font-mono font-bold tracking-widest text-[var(--color-green-400)] uppercase mb-4">
-              {services.eyebrow}
-            </p>
-            <h2 className="text-4xl md:text-5xl lg:text-[56px] font-bold tracking-tight text-white leading-[1.05] mb-5">
-              Every Tool Your <span className="text-[var(--color-green-400)]">Operation Needs</span>
+        <div className="flex flex-col lg:flex-row justify-between lg:items-end gap-6 mb-12 md:mb-16">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            variants={fadeUp}
+            className="max-w-2xl"
+          >
+            <div className="inline-flex items-center gap-3 rounded-full border border-slate-700 bg-[var(--color-navy-900)] px-4 py-1.5 mb-6 shadow-sm self-start">
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+              <span className="text-xs font-semibold tracking-wider text-slate-200 uppercase">
+                {services.eyebrow}
+              </span>
+            </div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.1]">
+              Every Tool Your <br className="hidden md:block" />
+              <span className="text-[var(--color-green-400)]">Operation Needs</span>
             </h2>
-            <p className="text-[16px] md:text-[18px] text-[var(--color-navy-200)] leading-relaxed max-w-xl">
+          </motion.div>
+
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            variants={fadeUp}
+            className="lg:max-w-md lg:pb-2 flex flex-col items-start lg:items-end text-left lg:text-right"
+          >
+            <p className="text-[17px] text-[var(--color-navy-200)] leading-relaxed mb-6">
               {services.subheadline}
             </p>
-          </div>
-
-          <Link
-            href={services.cta.href}
-            className="inline-flex items-center gap-2 text-[14px] font-bold text-[var(--color-navy-950)] bg-[var(--color-green-400)] px-6 py-3.5 rounded-xl hover:bg-white transition-all duration-300 shrink-0 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
-          >
-            {services.cta.label}
-            <ArrowRight className="w-4 h-4" strokeWidth={2.5} />
-          </Link>
-        </motion.div>
+            <Link
+              href={services.cta.href}
+              className="group inline-flex items-center gap-3 text-sm font-bold tracking-[0.1em] text-[var(--color-navy-950)] uppercase hover:text-[var(--color-navy-950)] transition-colors bg-white border border-white pl-6 pr-2 py-2 rounded-full shadow-sm hover:shadow-md hover:bg-[var(--color-green-400)] hover:border-[var(--color-green-400)]"
+            >
+              {services.cta.label}
+              <span className="relative shrink-0 overflow-hidden w-8 h-8 flex items-center justify-center bg-[var(--color-gray-100)] group-hover:bg-white/30 rounded-full transition-colors">
+                 <ArrowUpRight className="w-4 h-4 absolute group-hover:translate-x-[200%] group-hover:-translate-y-[200%] transition-transform duration-300" />
+                 <ArrowUpRight className="w-4 h-4 absolute -translate-x-[200%] translate-y-[200%] group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300" />
+              </span>
+            </Link>
+          </motion.div>
+        </div>
 
         {/* Categories & Navigation Row */}
         <motion.div
@@ -202,17 +217,17 @@ export function ServicesCarousel() {
           <div className="flex items-center gap-3">
             <button
               onClick={() => scroll("left")}
-              className="w-11 h-11 flex items-center justify-center rounded-lg border border-[var(--color-navy-700)] bg-[var(--color-navy-900)] text-white hover:bg-[var(--color-green-400)] hover:text-[var(--color-navy-950)] hover:border-[var(--color-green-400)] transition-all duration-300 shadow-sm"
+              className="group w-10 h-10 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-sm hover:shadow-md hover:bg-white/20 hover:border-white/30 hover:scale-105 active:scale-95 transition-all duration-300"
               aria-label="Scroll left"
             >
-              <ChevronLeft className="w-5 h-5" strokeWidth={2.5} />
+              <ArrowLeft className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1" />
             </button>
             <button
               onClick={() => scroll("right")}
-              className="w-11 h-11 flex items-center justify-center rounded-lg border border-[var(--color-navy-700)] bg-[var(--color-navy-900)] text-white hover:bg-[var(--color-green-400)] hover:text-[var(--color-navy-950)] hover:border-[var(--color-green-400)] transition-all duration-300 shadow-sm"
+              className="group w-10 h-10 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-sm hover:shadow-md hover:bg-white/20 hover:border-white/30 hover:scale-105 active:scale-95 transition-all duration-300"
               aria-label="Scroll right"
             >
-              <ChevronRight className="w-5 h-5" strokeWidth={2.5} />
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
           </div>
         </motion.div>

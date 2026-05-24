@@ -30,7 +30,7 @@ const data: SolutionPageData = {
 
   problem: {
     label: "The Problem",
-    headline: "Where Your Revenue Disappears",
+    headline: "Where Your Revenue **Disappears**",
     body: "Revenue leakage doesn't happen in one place — it happens at every handoff. Field crews forget to record materials used. Handwritten tickets are illegible or lost in transit. Jobs are completed but never ticketed. Rate card changes aren't applied. By the time billing discovers the gap, the window to invoice has closed.",
     bullets: [
       "Paper tickets lost between wellsite and office — unrecoverable revenue",
@@ -42,7 +42,7 @@ const data: SolutionPageData = {
 
   solution: {
     label: "How OpsFlo Fixes It",
-    headline: "Capture. Validate. Invoice.",
+    headline: "**Capture**. **Validate**. Invoice.",
     steps: [
       {
         icon: FileText,
@@ -66,7 +66,7 @@ const data: SolutionPageData = {
   },
 
   outcomes: {
-    headline: "What Changes After OpsFlo",
+    headline: "What **Changes** After OpsFlo",
     items: [
       "Revenue leakage reduced from 5-8% to under 1%",
       "Billing cycle cut from 45+ days to under 4 hours",

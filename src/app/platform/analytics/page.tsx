@@ -12,11 +12,11 @@ export const metadata: Metadata = buildMetadata({
 const data: ModulePageData = {
   bannerTitle: "Analytics & Reporting",
   eyebrow: "Platform / Analytics & Reporting",
-  headline: "See Everything. Guess Nothing.",
+  headline: "**See Everything**. Guess Nothing.",
   body: "Real-time dashboards and automated reports give operations leaders, finance teams, and executives a shared view of what\u2019s happening in the field  -  updated as work is completed, not days later.",
   heroImage: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1400&q=80",
   problem: {
-    headline: "You Can\u2019t Manage What You Can\u2019t See",
+    headline: "You Can't Manage What You **Can't See**",
     points: [
       "Field data lives in spreadsheets, texts, and whiteboards  -  never in one place at the same time.",
       "Weekly reports are already stale by the time they reach leadership.",
@@ -25,7 +25,7 @@ const data: ModulePageData = {
     ],
   },
   howItWorks: {
-    headline: "How Analytics & Reporting Works",
+    headline: "How **Analytics & Reporting** Works",
     steps: [
       {
         title: "Automatic Data Collection",
@@ -55,7 +55,7 @@ const data: ModulePageData = {
     "Export to PDF, CSV, and Excel",
   ],
   differentiator: {
-    headline: "Field-Generated Data. Not Re-Keyed Data.",
+    headline: "**Field-Generated Data**. Not Re-Keyed Data.",
     body: "Unlike BI tools bolted onto legacy systems, OpsFlo analytics are built on data captured at the point of work  -  which means they\u2019re accurate, timely, and complete.",
   },
   problemImage: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80",

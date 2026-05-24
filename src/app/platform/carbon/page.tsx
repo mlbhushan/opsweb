@@ -12,11 +12,11 @@ export const metadata: Metadata = buildMetadata({
 const data: ModulePageData = {
   bannerTitle: "Carbon & Climate",
   eyebrow: "Platform / Carbon & Climate",
-  headline: "Track Emissions. Prove Compliance. Reduce Impact.",
+  headline: "**Track Emissions**. Prove Compliance. Reduce Impact.",
   body: "Carbon & Climate gives oilfield operators a clear, auditable view of operational emissions  -  from fleet fuel consumption to equipment runtime  -  tied to the jobs and assets that generate them.",
   heroImage: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1400&q=80",
   problem: {
-    headline: "Emissions Reporting Should Not Require a Consulting Firm",
+    headline: "**Emissions Reporting** Should Not Require a Consulting Firm",
     points: [
       "Operators and service companies face growing regulatory pressure to quantify and report emissions  -  often without the tools to do it.",
       "Emissions data is scattered across fleet logs, fuel receipts, and equipment run-hours that nobody consolidates.",
@@ -25,7 +25,7 @@ const data: ModulePageData = {
     ],
   },
   howItWorks: {
-    headline: "How Carbon & Climate Works",
+    headline: "How **Carbon & Climate** Works",
     steps: [
       {
         title: "Automatic Emissions Capture",
@@ -55,7 +55,7 @@ const data: ModulePageData = {
     "Reduction scenario modeling",
   ],
   differentiator: {
-    headline: "Built Into Operations. Not Bolted On.",
+    headline: "**Built Into Operations**. Not Bolted On.",
     body: "Carbon tracking that works because it pulls from the same data your crews already capture  -  job logs, equipment hours, fuel receipts  -  without adding a single extra step to the field workflow.",
   },
   problemImage: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80",

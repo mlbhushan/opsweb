@@ -12,11 +12,11 @@ export const metadata: Metadata = buildMetadata({
 const data: ModulePageData = {
   bannerTitle: "Mobile App",
   eyebrow: "Platform / Mobile App",
-  headline: "Everything Your Crew Needs. In Their Pocket.",
+  headline: "Everything Your Crew Needs. **In Their Pocket**.",
   body: "The OpsFlo mobile app gives field crews instant access to job details, inspections, field tickets, and work orders  -  with an interface designed for gloved hands, bright sunlight, and zero connectivity.",
   heroImage: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1400&q=80",
   problem: {
-    headline: "Desktop Software Does Not Work in the Field",
+    headline: "Desktop Software **Does Not Work** in the Field",
     points: [
       "Crews cannot use complex desktop interfaces while standing next to equipment in the rain.",
       "Consumer-grade apps lack the rugged, offline-capable design field work demands.",
@@ -25,7 +25,7 @@ const data: ModulePageData = {
     ],
   },
   howItWorks: {
-    headline: "How the Mobile App Works",
+    headline: "How the **Mobile App** Works",
     steps: [
       {
         title: "Field-Optimized Interface",
@@ -55,7 +55,7 @@ const data: ModulePageData = {
     "Voice-to-text notes for field observations",
   ],
   differentiator: {
-    headline: "Designed for the Roughneck, Not the Office Worker",
+    headline: "Designed for the **Roughneck**, Not the Office Worker",
     body: "Every screen, every button, and every workflow in the OpsFlo mobile app was designed and tested in actual field conditions  -  not a design studio. That is why crews actually use it.",
   },
 };

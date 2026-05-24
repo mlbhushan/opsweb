@@ -44,24 +44,24 @@ export function CaseStudies() {
     <section className="bg-[var(--color-gray-50)] py-20 md:py-24 border-t border-[var(--color-gray-200)] relative overflow-hidden">
       <Container>
         {/* Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 md:mb-16">
+        <div className="flex flex-col lg:flex-row justify-between lg:items-end gap-6 mb-12 md:mb-16">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={viewportOnce}
             variants={fadeUp}
-            className="max-w-3xl"
+            className="max-w-2xl"
           >
-            <div className="inline-flex items-center gap-3 rounded-full border border-[var(--color-navy-200)] bg-white px-4 py-1.5 mb-6 shadow-sm">
-              <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)]" />
-              <span className="text-xs font-semibold tracking-wider text-[var(--color-navy-950)] uppercase">
+            <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-1.5 mb-6 shadow-sm">
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+              <span className="text-xs font-semibold tracking-wider text-slate-900 uppercase">
                 Case Studies
               </span>
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--color-navy-950)] leading-[1.1]">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-[1.1]">
               Field proven.
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-navy-500)] to-[var(--color-navy-800)]">Revenue driven.</span>
+              <br className="hidden md:block" />
+              <span className="text-[var(--color-green-500)]">Revenue driven.</span>
             </h2>
           </motion.div>
           
@@ -70,9 +70,9 @@ export function CaseStudies() {
             whileInView="visible"
             viewport={viewportOnce}
             variants={fadeUp}
-            className="lg:max-w-sm lg:pb-2 flex flex-col md:flex-row lg:flex-col justify-between md:items-end lg:items-start gap-6"
+            className="lg:max-w-md lg:pb-2 flex flex-col items-start lg:items-end text-left lg:text-right"
           >
-            <p className="text-[17px] text-[var(--color-gray-600)] leading-relaxed">
+            <p className="text-[17px] text-[var(--color-gray-600)] leading-relaxed mb-6">
               See how industry leaders use OpsFlo to eliminate revenue leakage, reduce downtime, and enforce field compliance.
             </p>
             
@@ -80,17 +80,17 @@ export function CaseStudies() {
             <div className="flex items-center gap-3">
               <button 
                 onClick={() => scroll("left")}
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-white border border-[var(--color-gray-200)] text-[var(--color-navy-950)] shadow-sm hover:shadow-md hover:border-[var(--color-navy-300)] transition-all"
+                className="group w-10 h-10 flex items-center justify-center rounded-full bg-white border border-[var(--color-gray-200)] text-[var(--color-navy-950)] shadow-sm hover:shadow-md hover:border-[var(--color-navy-300)] hover:scale-105 active:scale-95 transition-all duration-300"
                 aria-label="Scroll left"
               >
-                <ArrowLeft className="w-4 h-4" />
+                <ArrowLeft className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1" />
               </button>
               <button 
                 onClick={() => scroll("right")}
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-white border border-[var(--color-gray-200)] text-[var(--color-navy-950)] shadow-sm hover:shadow-md hover:border-[var(--color-navy-300)] transition-all"
+                className="group w-10 h-10 flex items-center justify-center rounded-full bg-white border border-[var(--color-gray-200)] text-[var(--color-navy-950)] shadow-sm hover:shadow-md hover:border-[var(--color-navy-300)] hover:scale-105 active:scale-95 transition-all duration-300"
                 aria-label="Scroll right"
               >
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
             </div>
           </motion.div>

@@ -11,11 +11,11 @@ export const metadata: Metadata = buildMetadata({
 const data: ModulePageData = {
   bannerTitle: "Inspections",
   eyebrow: "Platform / Inspections",
-  headline: "Inspections That Actually Get Done",
+  headline: "Inspections That Actually **Get Done**",
   body: "Digital checklists and inspection forms that work offline, enforce completion standards, and generate audit-ready documentation.",
   heroImage: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=80",
   problem: {
-    headline: "Paper Inspections Are a Liability",
+    headline: "Paper Inspections Are a **Liability**",
     points: [
       "Paper checklists get lost, damaged, or filled out from memory hours after the fact.",
       "Incomplete inspections create compliance gaps that are invisible until an audit.",
@@ -24,7 +24,7 @@ const data: ModulePageData = {
     ],
   },
   howItWorks: {
-    headline: "How Digital Inspections Work",
+    headline: "How **Digital Inspections** Work",
     steps: [
       {
         title: "Configure Forms",
@@ -51,7 +51,7 @@ const data: ModulePageData = {
     "Integration with asset registry",
   ],
   differentiator: {
-    headline: "From Inspection to Action in Seconds",
+    headline: "From Inspection to **Action** in Seconds",
     body: "Other tools capture data. OpsFlo acts on it. Critical findings automatically generate work orders and escalate to the right people. Nothing sits in a report waiting to be read.",
   },
 };

@@ -12,11 +12,11 @@ export const metadata: Metadata = buildMetadata({
 const data: ModulePageData = {
   bannerTitle: "Predictive Maintenance",
   eyebrow: "Platform / Predictive Maintenance",
-  headline: "Prevent Failures. Do Not Just React to Them.",
+  headline: "**Prevent Failures**. Do Not Just React to Them.",
   body: "Predictive Maintenance analyzes inspection data, service history, and operational patterns to forecast equipment failures  -  so you can schedule repairs on your terms, not on the asset's terms.",
   heroImage: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1400&q=80",
   problem: {
-    headline: "Reactive Maintenance Is the Most Expensive Kind",
+    headline: "Reactive Maintenance Is the **Most Expensive Kind**",
     points: [
       "Unplanned equipment failures cost 3-10x more than planned maintenance  -  in emergency repairs, lost production, and customer penalties.",
       "Calendar-based maintenance over-services healthy equipment and misses degradation patterns on others.",
@@ -25,7 +25,7 @@ const data: ModulePageData = {
     ],
   },
   howItWorks: {
-    headline: "How Predictive Maintenance Works",
+    headline: "How **Predictive Maintenance** Works",
     steps: [
       {
         title: "Data Aggregation",
@@ -55,7 +55,7 @@ const data: ModulePageData = {
     "API integration with IoT sensors and SCADA",
   ],
   differentiator: {
-    headline: "Predictions Built on Your Operational Data",
+    headline: "**Predictions** Built on Your Operational Data",
     body: "Most predictive maintenance tools require expensive sensor deployments. OpsFlo builds predictions from the inspection and work order data your crews already capture  -  delivering value from day one.",
   },
   problemImage: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80",

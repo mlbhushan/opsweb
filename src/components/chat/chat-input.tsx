@@ -48,51 +48,57 @@ export function ChatInput({ input, onChange, onSubmit, isLoading }: Props) {
         placeholder="Ask FloAssist anything..."
         rows={1}
         disabled={isLoading}
+        className="chat-textarea"
         style={{
           flex: 1,
           resize: "none",
-          border: "1.5px solid rgba(8,65,130,0.12)",
-          borderRadius: 10,
-          padding: "9px 12px",
-          fontFamily: "'Cabinet Grotesk', var(--font-heading), sans-serif",
+          border: "1px solid rgba(8,65,130,0.15)",
+          borderRadius: 8,
+          padding: "10px 14px",
+          fontFamily: "'Inter', sans-serif",
           fontSize: 14,
           lineHeight: 1.5,
-          color: "#1a1d1f",
-          background: "#f7f7f5",
+          color: "#032044",
+          background: "#fff",
           outline: "none",
           minHeight: 40,
           maxHeight: 96,
           overflow: "auto",
-          transition: "border-color 200ms ease",
+          transition: "border-color 200ms ease, box-shadow 200ms ease",
         }}
         onFocus={(e) => {
           e.target.style.borderColor = "var(--color-primary, #6bbf54)";
-          e.target.style.background = "#fff";
+          e.target.style.boxShadow = "0 0 0 2px rgba(107,191,84,0.15)";
         }}
         onBlur={(e) => {
-          e.target.style.borderColor = "rgba(8,65,130,0.12)";
-          e.target.style.background = "#f7f7f5";
+          e.target.style.borderColor = "rgba(8,65,130,0.15)";
+          e.target.style.boxShadow = "none";
         }}
       />
+      <style dangerouslySetInnerHTML={{__html: `
+        .chat-textarea::-webkit-scrollbar { display: none; }
+        .chat-textarea { -ms-overflow-style: none; scrollbar-width: none; }
+      `}} />
       <button
         type="button"
         onClick={onSubmit}
         disabled={!input.trim() || isLoading}
         style={{
-          width: 38,
-          height: 38,
-          borderRadius: 10,
+          width: 40,
+          height: 40,
+          borderRadius: 8,
           background:
             !input.trim() || isLoading
-              ? "#e2e5e9"
-              : "var(--color-primary, #6bbf54)",
+              ? "rgba(8,65,130,0.06)"
+              : "#032044",
+          color: !input.trim() || isLoading ? "rgba(8,65,130,0.3)" : "#fff",
           border: "none",
           cursor: !input.trim() || isLoading ? "not-allowed" : "pointer",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           flexShrink: 0,
-          transition: "background 200ms ease",
+          transition: "all 200ms ease",
         }}
         aria-label="Send message"
       >
@@ -101,8 +107,8 @@ export function ChatInput({ input, onChange, onSubmit, isLoading }: Props) {
           height="16"
           viewBox="0 0 24 24"
           fill="none"
-          stroke="white"
-          strokeWidth="2.5"
+          stroke="currentColor"
+          strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
         >

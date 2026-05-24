@@ -11,11 +11,11 @@ export const metadata: Metadata = buildMetadata({
 const data: ModulePageData = {
   bannerTitle: "Field Ticketing",
   eyebrow: "Platform / Field Ticketing",
-  headline: "From Wellsite to Invoice in Hours",
+  headline: "From Wellsite to **Invoice** in Hours",
   body: "Digital field tickets captured on-site with all the detail needed for immediate invoicing. No more chasing paper.",
   heroImage: "https://images.unsplash.com/photo-1590959651373-a3db0f38a961?auto=format&fit=crop&w=1400&q=80",
   problem: {
-    headline: "Paper Tickets = Lost Revenue",
+    headline: "Paper Tickets = **Lost Revenue**",
     points: [
       "Handwritten field tickets are illegible, incomplete, or lost before they reach billing.",
       "Average billing cycle of 45+ days means cash flow is constantly strained.",
@@ -24,7 +24,7 @@ const data: ModulePageData = {
     ],
   },
   howItWorks: {
-    headline: "How Digital Field Ticketing Works",
+    headline: "How **Digital Field Ticketing** Works",
     steps: [
       {
         title: "Capture at Wellsite",
@@ -51,7 +51,7 @@ const data: ModulePageData = {
     "Dispute resolution with audit trail",
   ],
   differentiator: {
-    headline: "Zero Revenue Left on the Table",
+    headline: "**Zero Revenue** Left on the Table",
     body: "OpsFlo's Field Ticketing module captures every billable event at the point of work. No more lost tickets, no more disputed charges, no more 45-day billing cycles.",
   },
 };

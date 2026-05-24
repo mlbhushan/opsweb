@@ -12,11 +12,11 @@ export const metadata: Metadata = buildMetadata({
 const data: ModulePageData = {
   bannerTitle: "AI Decision Engine",
   eyebrow: "Platform / AI Decision Engine",
-  headline: "Intelligence That Works in the Field",
+  headline: "**Intelligence** That Works in the Field",
   body: "The AI Decision Engine transforms raw operational data into prescriptive actions  -  predicting equipment failures, recommending crew allocations, and surfacing revenue at risk before it\u2019s lost.",
   heroImage: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1400&q=80",
   problem: {
-    headline: "Decisions Based on Gut Feel Cost Millions",
+    headline: "Decisions Based on **Gut Feel** Cost Millions",
     points: [
       "Maintenance decisions are reactive  -  you fix what breaks instead of preventing the break.",
       "Crew dispatch relies on supervisor intuition, not workload data or proximity.",
@@ -25,7 +25,7 @@ const data: ModulePageData = {
     ],
   },
   howItWorks: {
-    headline: "How the AI Decision Engine Works",
+    headline: "How the **AI Decision Engine** Works",
     steps: [
       {
         title: "Continuous Data Ingestion",
@@ -55,7 +55,7 @@ const data: ModulePageData = {
     "Continuous model improvement from feedback loops",
   ],
   differentiator: {
-    headline: "AI Tied to Outcomes, Not Buzzwords",
+    headline: "AI Tied to **Outcomes**, Not Buzzwords",
     body: "Every prediction is linked to a dollar figure or a safety metric. No abstract dashboards  -  just actionable intelligence your supervisors can act on immediately, even offline.",
   },
   problemImage: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80",

@@ -84,15 +84,15 @@ export function PainStrip() {
             transition={{ duration: 0.5 }}
             className="flex-shrink-0 max-w-sm"
           >
-            <div className="inline-flex items-center gap-2 mb-4">
-              <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] shadow-[0_0_8px_var(--color-green-400)] animate-pulse" />
-              <h2 className="text-xs font-mono font-bold tracking-widest text-[var(--color-green-600)] uppercase m-0">
+            <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-1.5 mb-6 shadow-sm">
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+              <span className="text-xs font-semibold tracking-wider text-slate-900 uppercase">
                 {painStrip.eyebrow}
-              </h2>
+              </span>
             </div>
-            <p className="text-2xl md:text-3xl text-[var(--color-navy-950)] font-semibold leading-[1.2] tracking-tight">
-              What happens when the field disconnects from the office?
-            </p>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight text-slate-900 leading-[1.2]">
+              What happens when the field <span className="text-[var(--color-green-500)]">disconnects</span> from the office?
+            </h2>
           </motion.div>
 
           {/* Stats Grid */}

@@ -30,7 +30,7 @@ const data: SolutionPageData = {
 
   problem: {
     label: "The Problem",
-    headline: "Reactive Maintenance Costs More Than You Think",
+    headline: "Reactive Maintenance **Costs More** Than You Think",
     body: "When equipment fails unexpectedly, the cost is not just the repair. It's the emergency mobilization, the idle crews waiting for parts, the jobs delayed downstream, and the customer who questions your reliability. Calendar-based maintenance doesn't solve this — it over-services healthy equipment while missing the assets that are actually degrading.",
     bullets: [
       "Emergency repair costs run 3-10x more than planned maintenance",
@@ -42,7 +42,7 @@ const data: SolutionPageData = {
 
   solution: {
     label: "How OpsFlo Prevents It",
-    headline: "Data. Prediction. Action.",
+    headline: "Data. **Prediction**. **Action**.",
     steps: [
       {
         icon: Activity,
@@ -66,7 +66,7 @@ const data: SolutionPageData = {
   },
 
   outcomes: {
-    headline: "What Changes After OpsFlo",
+    headline: "What **Changes** After OpsFlo",
     items: [
       "Unplanned downtime reduced by up to 60%",
       "Maintenance costs shifted from emergency to planned",

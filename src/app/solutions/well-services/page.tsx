@@ -30,7 +30,7 @@ const data: SolutionPageData = {
 
   problem: {
     label: "The Industry Problem",
-    headline: "Complex Jobs Need More Than Spreadsheets",
+    headline: "Complex Jobs Need More Than **Spreadsheets**",
     body: "Well service jobs span multiple days, multiple crews, and dozens of equipment configurations. Tracking progress, materials, and time across these operations with spreadsheets and paper leads to missed billing items, coordination failures, and compliance gaps. The more complex the job, the more revenue slips through.",
     bullets: [
       "Multi-stage job handoffs between crews lose critical billing information",
@@ -42,7 +42,7 @@ const data: SolutionPageData = {
 
   solution: {
     label: "The OpsFlo Approach",
-    headline: "Stage by Stage. Crew by Crew.",
+    headline: "**Stage by Stage**. Crew by Crew.",
     steps: [
       {
         icon: Layers,
@@ -66,7 +66,7 @@ const data: SolutionPageData = {
   },
 
   outcomes: {
-    headline: "Outcomes for Well Services Companies",
+    headline: "Outcomes for **Well Services** Companies",
     items: [
       "Complete revenue capture on complex multi-stage jobs",
       "Real-time coordination across crews and equipment fleets",
@@ -81,7 +81,7 @@ const data: SolutionPageData = {
     ctaHeadline: "Well Services Pilot",
     ctaBody:
       "30-day pilot on your actual well service jobs. We'll capture every stage, every crew, and every billable item — and show you what you've been missing.",
-    primaryCta: { label: "Start a Pilot", href: "/contact?industry=well-services" },
+    primaryCta: { label: "Book a Demo", href: "/contact?industry=well-services" },
     secondaryCta: { label: "View Field Execution", href: "/platform/field-execution" },
     relatedLinks: [
       { label: "Oilfield Services Industry", href: "/solutions/oilfield-services" },

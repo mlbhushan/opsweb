@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { HOME } from "@/lib/content/home";
@@ -9,11 +10,31 @@ import { staggerContainer, fadeUp, viewportOnce } from "@/lib/animations";
 
 export function PositioningWedge() {
   const { positioningWedge } = HOME;
+  const [videoOpacity, setVideoOpacity] = useState(1);
 
   return (
     <section className="relative py-20 md:py-24 bg-[var(--color-navy-950)] overflow-hidden">
-      {/* Dynamic Ambient Background */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* Dynamic Ambient Background with Video */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 bg-black">
+        <video
+          src="https://res.cloudinary.com/dmghhstx4/video/upload/v1779621384/two_lgseeh.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover grayscale mix-blend-luminosity transition-opacity duration-[800ms]"
+          style={{ opacity: videoOpacity === 1 ? 0.75 : 0 }}
+          onTimeUpdate={(e) => {
+            const video = e.currentTarget;
+            if (video.duration && video.duration - video.currentTime < 0.8) {
+              setVideoOpacity(0);
+            } else if (videoOpacity === 0) {
+              setVideoOpacity(1);
+            }
+          }}
+        />
+        <div className="absolute inset-0 bg-[var(--color-navy-950)]/90 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-navy-950)]/70 via-[var(--color-navy-950)]/40 to-[var(--color-navy-950)]/95" />
         <svg className="absolute inset-0 w-full h-full opacity-[0.02]" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="grid-dark-wedge" width="40" height="40" patternUnits="userSpaceOnUse">
@@ -39,20 +60,16 @@ export function PositioningWedge() {
             viewport={viewportOnce}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            {/* Animated Badge */}
-            <div className="inline-flex items-center gap-3 rounded-full border border-[var(--color-green-500)]/30 bg-[var(--color-green-500)]/10 px-4 py-2 mb-8 self-start shadow-[0_0_20px_-5px_rgba(34,197,94,0.3)]">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--color-green-400)] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--color-green-500)]"></span>
-              </span>
-              <span className="text-xs font-bold tracking-widest text-[var(--color-green-400)] uppercase">
+            <div className="inline-flex items-center gap-3 rounded-full border border-slate-700 bg-[var(--color-navy-900)] px-4 py-1.5 mb-6 shadow-sm self-start">
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+              <span className="text-xs font-semibold tracking-wider text-slate-200 uppercase">
                 {positioningWedge.eyebrow}
               </span>
             </div>
             
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1] mb-6">
-              The Missing <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-green-400)] to-[var(--color-green-600)] drop-shadow-[0_0_15px_rgba(34,197,94,0.3)]">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.1] mb-6">
+              The Missing <br className="hidden md:block" />
+              <span className="text-[var(--color-green-500)]">
                 Execution Layer
               </span>
             </h2>
@@ -131,7 +148,7 @@ export function PositioningWedge() {
                     )}
                   >
                     {layer.highlight ? (
-                      <div className="relative w-8 h-8">
+                      <div className="relative w-10 h-10">
                         <Image
                           src="/OpsFloIcon.png"
                           alt="OpsFlo"

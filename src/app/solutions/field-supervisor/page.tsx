@@ -30,7 +30,7 @@ const data: SolutionPageData = {
 
   problem: {
     label: "Your Current Reality",
-    headline: "Paper Forms Are Killing Your Efficiency",
+    headline: "Paper Forms Are **Killing** Your Efficiency",
     body: "Your crews arrive at a remote wellsite with no connectivity and a stack of paper forms. By the end of the shift, half the forms are incomplete, some are illegible, and others are left in the truck. Back at the office, billing is waiting on data that won't arrive until Friday's batch.",
     bullets: [
       "Dead zones mean digital tools become unavailable at the worst times",
@@ -42,7 +42,7 @@ const data: SolutionPageData = {
 
   solution: {
     label: "How OpsFlo Works in the Field",
-    headline: "Mobile. Offline. Complete.",
+    headline: "**Mobile**. **Offline**. Complete.",
     steps: [
       {
         icon: WifiOff,
@@ -66,7 +66,7 @@ const data: SolutionPageData = {
   },
 
   outcomes: {
-    headline: "What Changes for Your Crew",
+    headline: "What **Changes** for Your Crew",
     items: [
       "Full digital capability in areas with no cell coverage",
       "Inspections completed 40% faster with structured checklists",
@@ -81,7 +81,7 @@ const data: SolutionPageData = {
     ctaHeadline: "See It in the Field",
     ctaBody:
       "30-day pilot with your crew on your job types. We'll show you what full digital execution looks like on your actual sites.",
-    primaryCta: { label: "Start a Pilot", href: "/contact" },
+    primaryCta: { label: "Book a Demo", href: "/contact" },
     secondaryCta: { label: "See Mobile App", href: "/platform/mobile" },
     relatedLinks: [
       { label: "Operations Manager Role", href: "/solutions/operations-manager" },

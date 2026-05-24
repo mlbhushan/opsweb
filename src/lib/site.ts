@@ -7,7 +7,7 @@ export const SITE = {
   primaryCTAs: {
     demo: "See How OpsFlo Ensures Execution",
     revenue: "Get a Revenue Diagnostic",
-    pilot: "Start a Pilot",
+    pilot: "Book a Demo",
     roi: "Calculate Your ROI",
   },
   social: {

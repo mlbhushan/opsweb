@@ -30,7 +30,7 @@ const data: SolutionPageData = {
 
   problem: {
     label: "Why Generic Tools Fail",
-    headline: "Generic Tools Break in the Field",
+    headline: "Generic Tools **Break** in the Field",
     body: "Horizontal FSM platforms and ERP systems are engineered for connected, controlled environments. Oilfield operations are none of those things. Dead zones, extreme temperatures, complex multi-stage jobs, and custom rate structures all break tools that weren't designed with this environment in mind.",
     bullets: [
       "Connectivity-dependent tools become useless 60 miles from the nearest tower",
@@ -42,7 +42,7 @@ const data: SolutionPageData = {
 
   solution: {
     label: "Purpose-Built Capabilities",
-    headline: "Engineered for the Patch.",
+    headline: "**Engineered** for the Patch.",
     steps: [
       {
         icon: WifiOff,
@@ -66,7 +66,7 @@ const data: SolutionPageData = {
   },
 
   outcomes: {
-    headline: "What Oilfield Operators See",
+    headline: "What Oilfield Operators **See**",
     items: [
       "100% data capture with zero connectivity dependency",
       "Complex multi-stage job tracking across multiple crews",
@@ -81,7 +81,7 @@ const data: SolutionPageData = {
     ctaHeadline: "Start an Oilfield Pilot",
     ctaBody:
       "30-day pilot with 1-2 field crews on your actual jobs. No long-term commitment until you see results on your operations.",
-    primaryCta: { label: "Start a Pilot", href: "/contact?industry=oilfield" },
+    primaryCta: { label: "Book a Demo", href: "/contact?industry=oilfield" },
     secondaryCta: { label: "View Platform", href: "/platform" },
     relatedLinks: [
       { label: "Well Services Industry", href: "/solutions/well-services" },

@@ -5,7 +5,7 @@ import { Container } from "@/components/ui/container";
 import { HOME } from "@/lib/content/home";
 import { INTEGRATIONS } from "@/lib/content/integrations";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 export function IntegrationsStrip() {
   const { integrationsStrip } = HOME;
@@ -58,9 +58,9 @@ export function IntegrationsStrip() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 md:mb-12">
           <div className="max-w-2xl">
             {/* Minimalist Top Indicator */}
-            <div className="mb-4 flex items-center gap-3">
-              <span className="h-[2px] w-8 rounded-full bg-slate-300"></span>
-              <span className="text-xs font-semibold tracking-[0.2em] text-slate-500 uppercase">
+            <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-1.5 mb-6 shadow-sm">
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+              <span className="text-xs font-semibold tracking-wider text-slate-900 uppercase">
                 Integration Ecosystem
               </span>
             </div>
@@ -73,10 +73,13 @@ export function IntegrationsStrip() {
 
           <Link
             href="/integrations"
-            className="group inline-flex items-center gap-2 text-sm font-semibold text-slate-900 transition-colors hover:text-[var(--color-green-500)] pb-1 border-b-2 border-slate-900 hover:border-[var(--color-green-500)] whitespace-nowrap self-start md:self-auto"
+            className="group inline-flex items-center gap-3 text-sm font-bold tracking-[0.1em] text-white uppercase hover:text-[var(--color-navy-950)] transition-colors bg-[var(--color-navy-950)] border border-[var(--color-navy-950)] pl-6 pr-2 py-2 rounded-full shadow-sm hover:shadow-md hover:bg-[var(--color-green-400)] self-start md:self-auto"
           >
             Explore all integrations
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            <span className="relative overflow-hidden w-8 h-8 flex items-center justify-center bg-white/20 group-hover:bg-white/30 rounded-full transition-colors">
+               <ArrowUpRight className="w-4 h-4 absolute group-hover:translate-x-[200%] group-hover:-translate-y-[200%] transition-transform duration-300" />
+               <ArrowUpRight className="w-4 h-4 absolute -translate-x-[200%] translate-y-[200%] group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300" />
+            </span>
           </Link>
         </div>
       </Container>

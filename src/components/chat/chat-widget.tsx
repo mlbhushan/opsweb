@@ -42,18 +42,36 @@ function getSuggestions(lastBotMessage: string): string[] {
 }
 
 const panelVariants = {
-  hidden: { opacity: 0, y: 20, scale: 0.96 },
+  hidden: { 
+    opacity: 0, 
+    scale: 0, 
+    y: 66, 
+    x: 0,
+    borderRadius: 50 
+  },
   visible: {
     opacity: 1,
-    y: 0,
     scale: 1,
-    transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
+    y: 0,
+    x: 0,
+    borderRadius: 12,
+    transition: { 
+      type: "spring",
+      stiffness: 400,
+      damping: 28,
+      mass: 0.8
+    },
   },
   exit: {
     opacity: 0,
-    y: 16,
-    scale: 0.97,
-    transition: { duration: 0.2, ease: [0.65, 0, 0.35, 1] as [number, number, number, number] },
+    scale: 0,
+    y: 66,
+    x: 0,
+    borderRadius: 50,
+    transition: { 
+      duration: 0.2, 
+      ease: [0.4, 0, 1, 1] 
+    },
   },
 };
 
@@ -63,22 +81,7 @@ export function ChatWidget() {
   const [demoSuccess, setDemoSuccess] = useState(false);
   const pathname = usePathname();
 
-  const [hovered, setHovered] = useState(false);
-  const [showScroll, setShowScroll] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
 
-  useEffect(() => {
-    const onScroll = () => {
-      const h = document.documentElement;
-      const total = h.scrollHeight - h.clientHeight;
-      const p = total > 0 ? h.scrollTop / total : 0;
-      setScrollProgress(p);
-      setShowScroll(h.scrollTop > 400);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   const { messages, input, setInput, isLoading, sendMessage, append } = useChatStream([
     WELCOME_MESSAGE,
@@ -126,19 +129,20 @@ export function ChatWidget() {
             exit="exit"
             style={{
               position: "fixed",
-              bottom: "calc(80px + 24px + 12px)",
+              bottom: 90,
               right: 24,
               width: "min(400px, calc(100vw - 32px))",
               height: "min(600px, calc(100vh - 180px))",
               background: "#fff",
-              borderRadius: 16,
+              borderRadius: 12,
               boxShadow:
-                "0 24px 64px rgba(8,65,130,0.16), 0 4px 12px rgba(8,65,130,0.08)",
+                "0 20px 40px -8px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.1)",
               display: "flex",
               flexDirection: "column",
               overflow: "hidden",
               zIndex: 50,
               border: "1px solid rgba(8,65,130,0.08)",
+              transformOrigin: "bottom right",
             }}
           >
             <div
@@ -151,21 +155,20 @@ export function ChatWidget() {
                 flexShrink: 0,
               }}
             >
-              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                 <div
                   style={{
-                    width: 34,
-                    height: 34,
-                    borderRadius: "50%",
-                    background: "rgba(107,191,84,0.15)",
-                    border: "2px solid rgba(107,191,84,0.4)",
+                    width: 32,
+                    height: 32,
+                    borderRadius: 6,
+                    background: "var(--color-green-500, #6bbf54)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     fontSize: 13,
-                    fontWeight: 700,
-                    color: "#6bbf54",
-                    fontFamily: "'Cabinet Grotesk', sans-serif",
+                    fontWeight: 800,
+                    color: "#032044",
+                    fontFamily: "'Inter', sans-serif",
                   }}
                 >
                   F
@@ -291,39 +294,8 @@ export function ChatWidget() {
       <div
         className="fixed z-50 flex flex-col items-center"
         style={{ bottom: 24, right: 24 }}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
       >
-        <AnimatePresence>
-          {showScroll && hovered && !open && (
-            <motion.button
-              initial={{ y: 54, scale: 0.5, opacity: 0 }}
-              animate={{ y: 0, scale: 1, opacity: 1 }}
-              exit={{ y: 54, scale: 0.5, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 350, damping: 20 }}
-              type="button"
-              aria-label="Scroll to top"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="relative inline-flex h-[42px] w-[42px] items-center justify-center rounded-full bg-[var(--brand-navy)] text-[var(--brand-lime)] shadow-xl mb-3"
-            >
-              <svg className="absolute inset-0 -rotate-90 w-full h-full" viewBox="0 0 50 50">
-                <circle cx="25" cy="25" r="22" stroke="currentColor" strokeOpacity="0.2" strokeWidth="2.5" fill="none" />
-                <circle
-                  cx="25"
-                  cy="25"
-                  r="22"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  fill="none"
-                  strokeDasharray={2 * Math.PI * 22}
-                  strokeDashoffset={2 * Math.PI * 22 * (1 - scrollProgress)}
-                  strokeLinecap="round"
-                />
-              </svg>
-              <ArrowRightIcon className="relative h-5 w-5 -rotate-90" strokeWidth={2.5} />
-            </motion.button>
-          )}
-        </AnimatePresence>
+
 
         <button
           type="button"

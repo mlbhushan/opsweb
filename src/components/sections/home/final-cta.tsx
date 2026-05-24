@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { HOME } from "@/lib/content/home";
 import { Container } from "@/components/ui/container";
 import { fadeUp, viewportOnce } from "@/lib/animations";
@@ -57,54 +57,71 @@ export function FinalCTA() {
       </div>
 
       <Container className="relative z-10">
-        <div className="mx-auto max-w-4xl">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportOnce}
-            variants={fadeUp}
-            className="flex flex-col items-center text-center"
-          >
-            {/* Minimalist Top Indicator */}
-            <div className="mb-6 flex items-center gap-4">
-              <span className="h-[2px] w-12 rounded-full bg-slate-300"></span>
-              <span className="text-xs font-semibold tracking-[0.2em] text-slate-500 uppercase">
-                Ready to Execute
-              </span>
-              <span className="h-[2px] w-12 rounded-full bg-slate-300"></span>
-            </div>
+        <div className="mx-auto w-full">
+          {/* Header Layout */}
+          <div className="flex flex-col lg:flex-row justify-between lg:items-end gap-6 mb-12 md:mb-16">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewportOnce}
+              variants={fadeUp}
+              className="max-w-2xl text-left"
+            >
+              {/* Minimalist Top Indicator */}
+              <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-1.5 mb-6 shadow-sm">
+                <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+                <span className="text-xs font-semibold tracking-wider text-slate-900 uppercase">
+                  Ready to Execute
+                </span>
+              </div>
 
-            {/* Headline with Dual-Color Swiss Treatment */}
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-medium tracking-tight text-slate-900 leading-[1.05]">
-              {/* @ts-ignore */}
-              {finalCTA.headlineStart}{" "}
-              {/* @ts-ignore */}
-              <span className="text-blue-600 font-semibold">{finalCTA.headlineHighlight}</span>{" "}
-              {/* @ts-ignore */}
-              {finalCTA.headlineEnd}
-            </h2>
+              {/* Headline with Dual-Color Swiss Treatment */}
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-[1.1]">
+                {/* @ts-ignore */}
+                {finalCTA.headlineStart}{" "}
+                <br className="hidden md:block" />
+                <span className="text-[var(--color-green-500)]">{finalCTA.headlineHighlight}</span>{" "}
+                {/* @ts-ignore */}
+                {finalCTA.headlineEnd}
+              </h2>
+            </motion.div>
 
-            <p className="mt-4 max-w-2xl text-base sm:text-lg leading-relaxed text-slate-600 font-medium">
-              {finalCTA.body}
-            </p>
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewportOnce}
+              variants={fadeUp}
+              className="lg:max-w-md lg:pb-2 flex flex-col items-start lg:items-end text-left lg:text-right"
+            >
+              <p className="text-[17px] text-slate-600 leading-relaxed mb-6">
+                {finalCTA.body}
+              </p>
 
-            {/* Swiss Style Buttons - Clean, Structured */}
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto">
-              <Link
-                href={finalCTA.primaryCTA.href}
-                className="group relative inline-flex h-10 w-full sm:w-auto items-center justify-center gap-2 overflow-hidden rounded-xl bg-slate-900 px-6 font-semibold text-white transition-all duration-300 hover:bg-blue-600 shadow-xl shadow-slate-900/10 hover:shadow-blue-600/20"
-              >
-                <span className="relative z-10 text-sm tracking-wide">{finalCTA.primaryCTA.label}</span>
-                <ArrowRight className="relative z-10 h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-              <Link
-                href={finalCTA.secondaryCTA.href}
-                className="group inline-flex h-10 w-full sm:w-auto items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white/50 backdrop-blur-md px-6 font-semibold text-slate-900 transition-all duration-300 hover:border-slate-400 hover:bg-white hover:shadow-sm"
-              >
-                <span className="text-sm tracking-wide">{finalCTA.secondaryCTA.label}</span>
-              </Link>
-            </div>
-          </motion.div>
+              {/* Swiss Style Buttons - Clean, Structured */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center sm:justify-start gap-3 sm:gap-4 w-full sm:w-auto">
+                <Link
+                  href={finalCTA.primaryCTA.href}
+                  className="group inline-flex items-center text-left justify-between gap-3 text-sm font-bold tracking-[0.1em] text-white uppercase hover:text-[var(--color-navy-950)] transition-colors bg-[var(--color-navy-950)] border border-[var(--color-navy-950)] pl-6 pr-2 py-2 rounded-full shadow-sm hover:shadow-md hover:bg-[var(--color-green-400)]"
+                >
+                  <span className="leading-snug">{finalCTA.primaryCTA.label}</span>
+                  <span className="relative shrink-0 overflow-hidden w-8 h-8 flex items-center justify-center bg-white/20 group-hover:bg-white/30 rounded-full transition-colors">
+                    <ArrowUpRight className="w-4 h-4 absolute group-hover:translate-x-[200%] group-hover:-translate-y-[200%] transition-transform duration-300" />
+                    <ArrowUpRight className="w-4 h-4 absolute -translate-x-[200%] translate-y-[200%] group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300" />
+                  </span>
+                </Link>
+                <Link
+                  href={finalCTA.secondaryCTA.href}
+                  className="group inline-flex items-center text-left justify-between gap-3 text-sm font-bold tracking-[0.1em] text-white uppercase hover:text-[var(--color-navy-950)] transition-colors bg-[var(--color-navy-950)] border border-[var(--color-navy-950)] pl-6 pr-2 py-2 rounded-full shadow-sm hover:shadow-md hover:bg-[var(--color-green-400)]"
+                >
+                  <span className="leading-snug">{finalCTA.secondaryCTA.label}</span>
+                  <span className="relative shrink-0 overflow-hidden w-8 h-8 flex items-center justify-center bg-white/20 group-hover:bg-white/30 rounded-full transition-colors">
+                    <ArrowUpRight className="w-4 h-4 absolute group-hover:translate-x-[200%] group-hover:-translate-y-[200%] transition-transform duration-300" />
+                    <ArrowUpRight className="w-4 h-4 absolute -translate-x-[200%] translate-y-[200%] group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300" />
+                  </span>
+                </Link>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </Container>
     </section>

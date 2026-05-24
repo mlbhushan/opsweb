@@ -30,7 +30,7 @@ const data: SolutionPageData = {
 
   problem: {
     label: "The Leadership Gap",
-    headline: "You Cannot Optimize What You Cannot See",
+    headline: "You Cannot **Optimize** What You Cannot See",
     body: "Strategic decisions about operations, capacity, and growth are being made with incomplete data. You see financial results 30-60 days after the operational reality. Your competitive edge is being eroded by inefficiency you cannot quantify. And the cost of inaction — in lost revenue, unplanned downtime, and compliance risk — compounds every quarter.",
     bullets: [
       "Financial reporting lags operational reality by 30-60 days",
@@ -42,7 +42,7 @@ const data: SolutionPageData = {
 
   solution: {
     label: "How OpsFlo Serves Leadership",
-    headline: "Visibility. Intelligence. ROI.",
+    headline: "**Visibility**. Intelligence. ROI.",
     steps: [
       {
         icon: BarChart3,
@@ -66,7 +66,7 @@ const data: SolutionPageData = {
   },
 
   outcomes: {
-    headline: "Executive Outcomes",
+    headline: "**Executive** Outcomes",
     items: [
       "Complete operational visibility in real time — no report wait",
       "Measurable ROI with typical payback under 6 months",

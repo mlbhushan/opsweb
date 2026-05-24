@@ -159,34 +159,39 @@ export function PlatformBento() {
       
       <Container>
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={viewportOnce}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16"
-        >
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-3 mb-6">
-              <span className="h-2 w-2 rounded-full bg-[var(--color-green-500)]" />
-              <span className="text-[12px] font-mono font-bold tracking-widest text-[var(--color-green-500)] uppercase">
+        <div className="flex flex-col lg:flex-row justify-between lg:items-end gap-6 mb-12 md:mb-16">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            variants={fadeUp}
+            className="max-w-2xl"
+          >
+            <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-1.5 mb-6 shadow-sm">
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+              <span className="text-xs font-semibold tracking-wider text-slate-900 uppercase">
                 End-to-End Execution
               </span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl lg:text-[56px] font-medium tracking-tight text-[var(--color-navy-950)] leading-[1.05]">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-[1.1]">
               Unified workflow. <br className="hidden md:block" />
-              <span className="text-[var(--color-navy-500)]">From field to finance.</span>
+              <span className="text-[var(--color-green-500)]">From field to finance.</span>
             </h2>
-          </div>
+          </motion.div>
 
-          <div className="max-w-md pb-2">
-            <div className="h-px w-12 bg-[var(--color-navy-200)] mb-6 hidden lg:block" />
-            <p className="text-[16px] md:text-[17px] text-[var(--color-navy-600)] leading-relaxed font-normal text-balance">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            variants={fadeUp}
+            className="lg:max-w-md lg:pb-2 flex flex-col items-start lg:items-end text-left lg:text-right"
+          >
+            <p className="text-[17px] text-[var(--color-gray-600)] leading-relaxed">
               OpsFlo eliminates the chaos between field capture and back-office billing. One unified workflow that ensures every job is tracked, validated, and instantly invoiced.
             </p>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
 
         {/* Modern AI-Style Cards Grid */}
         <motion.div

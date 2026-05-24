@@ -30,7 +30,7 @@ const data: SolutionPageData = {
 
   problem: {
     label: "The Industry Problem",
-    headline: "Revenue Leaks at Every Handoff",
+    headline: "Revenue **Leaks** at Every Handoff",
     body: "Equipment rental operations have multiple points where revenue disappears: assets deployed but not activated in billing, rental periods extended but not captured, maintenance costs not billed back to the customer, and returns processed without finalizing the invoice. Each gap seems small — collectively, they add up to millions.",
     bullets: [
       "Equipment deployed but not activated in the billing system for days",
@@ -42,7 +42,7 @@ const data: SolutionPageData = {
 
   solution: {
     label: "The OpsFlo Approach",
-    headline: "Rent. Track. Maintain. Bill.",
+    headline: "Rent. **Track**. Maintain. **Bill**.",
     steps: [
       {
         icon: Package,
@@ -66,7 +66,7 @@ const data: SolutionPageData = {
   },
 
   outcomes: {
-    headline: "Outcomes for Equipment Rental Companies",
+    headline: "Outcomes for **Equipment Rental** Companies",
     items: [
       "Zero unbilled rental days — every deployment day captured and invoiced",
       "Maintenance costs automatically billed back where contractually applicable",
