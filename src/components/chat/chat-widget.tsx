@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { useChatStream, type ChatMessage } from "./use-chat-stream";
 import { ChatMessages } from "./chat-messages";
 import { ChatInput } from "./chat-input";
@@ -41,7 +41,7 @@ function getSuggestions(lastBotMessage: string): string[] {
   return ["How does OpsFlo work offline?", "See customer case studies", "Book a demo"];
 }
 
-const panelVariants = {
+const panelVariants: Variants = {
   hidden: { 
     opacity: 0, 
     scale: 0, 
