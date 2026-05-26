@@ -10,25 +10,27 @@ import { cn } from "@/lib/utils";
    Image look-up table  -  maps path prefixes → background images
    Longer / more-specific prefixes take priority over shorter ones.
 ───────────────────────────────────────────────────────────────── */
+const BANNER_IMAGE_URL = "https://res.cloudinary.com/dmghhstx4/image/upload/v1779799694/pexels-tomfisk-10396410_ykon4g.jpg";
+
 const BANNER_IMAGES: { prefix: string; image: string }[] = [
-  { prefix: "/about", image: "/images/about/equipment.jpg" },
-  { prefix: "/solutions", image: "/images/services/offshore.jpg" },
-  { prefix: "/platform", image: "/images/services/oilfield.jpg" },
-  { prefix: "/blog", image: "/images/services/refining.jpg" },
-  { prefix: "/news", image: "/images/services/refining.jpg" },
-  { prefix: "/careers", image: "/images/services/oilfield.jpg" },
-  { prefix: "/contact", image: "/images/services/petrochemicals.jpg" },
-  { prefix: "/integrations", image: "/images/services/pipelines.jpg" },
-  { prefix: "/partners", image: "/images/services/pipelines.jpg" },
-  { prefix: "/case-studies", image: "/images/services/offshore.jpg" },
-  { prefix: "/resources", image: "/images/services/refining.jpg" },
-  { prefix: "/roi-calculator", image: "/images/services/petrochemicals.jpg" },
-  { prefix: "/security", image: "/images/hero/refinery-tower.jpg" },
-  { prefix: "/faq", image: "/images/hero/refinery-tower.jpg" },
-  { prefix: "/legal", image: "/images/hero/refinery-tower.jpg" },
+  { prefix: "/about", image: BANNER_IMAGE_URL },
+  { prefix: "/solutions", image: BANNER_IMAGE_URL },
+  { prefix: "/platform", image: BANNER_IMAGE_URL },
+  { prefix: "/blog", image: BANNER_IMAGE_URL },
+  { prefix: "/news", image: BANNER_IMAGE_URL },
+  { prefix: "/careers", image: BANNER_IMAGE_URL },
+  { prefix: "/contact", image: BANNER_IMAGE_URL },
+  { prefix: "/integrations", image: BANNER_IMAGE_URL },
+  { prefix: "/partners", image: BANNER_IMAGE_URL },
+  { prefix: "/case-studies", image: BANNER_IMAGE_URL },
+  { prefix: "/resources", image: BANNER_IMAGE_URL },
+  { prefix: "/roi-calculator", image: BANNER_IMAGE_URL },
+  { prefix: "/security", image: BANNER_IMAGE_URL },
+  { prefix: "/faq", image: BANNER_IMAGE_URL },
+  { prefix: "/legal", image: BANNER_IMAGE_URL },
 ];
 
-const BANNER_IMAGE_DEFAULT = "/images/hero/refinery-tower.jpg";
+const BANNER_IMAGE_DEFAULT = BANNER_IMAGE_URL;
 
 function resolveBannerImage(pathname: string): string {
   // Find longest matching prefix (most specific wins)
@@ -155,7 +157,7 @@ export function PageBanner({ title, backgroundImage, className }: PageBannerProp
         fill
         priority
         sizes="100vw"
-        className="object-cover object-center"
+        className="object-cover object-[center_65%]"
       />
 
       {/* Left → center dark gradient overlay (matches reference) */}

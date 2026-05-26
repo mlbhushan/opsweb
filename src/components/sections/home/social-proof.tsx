@@ -21,8 +21,8 @@ export function SocialProof() {
               </div>
               
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.1] text-balance">
-                Built for the <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-green-400)] to-[var(--color-green-600)] drop-shadow-[0_0_15px_rgba(34,197,94,0.2)]">field.</span><br />
-                Proven in the <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-green-400)] to-[var(--color-green-600)] drop-shadow-[0_0_15px_rgba(34,197,94,0.2)]">dirt.</span>
+                Built for the field.<br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-green-400)] to-[var(--color-green-600)] drop-shadow-[0_0_15px_rgba(34,197,94,0.2)]">Proven in<br />the dirt.</span>
               </h2>
             </div>
 

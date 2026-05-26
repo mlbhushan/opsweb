@@ -14,7 +14,7 @@ const data: ModulePageData = {
   eyebrow: "Platform / Asset Intelligence",
   headline: "Know Every Asset. **Predict Every Failure**.",
   body: "Asset Intelligence gives you a complete, real-time view of every piece of equipment  -  its condition, service history, location, and predicted failure window  -  so you can act before downtime hits.",
-  heroImage: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1400&q=80",
+
   problem: {
     headline: "Blind Spots **Kill Equipment Uptime**",
     points: [
@@ -58,8 +58,9 @@ const data: ModulePageData = {
     headline: "**Intelligence**, Not Just Inventory",
     body: "Most asset management is a glorified spreadsheet. Asset Intelligence connects inspection data, work orders, and sensor feeds to build a living picture of each asset's health and predicted lifespan.",
   },
-  problemImage: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80",
-  solutionImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
+  heroImage: "/images/platform/asset_hero.png",
+  problemImage: "/images/platform/asset_problem.png",
+  solutionImage: "/images/platform/asset_solution.png",
   relatedModules: [
     {
       "title": "Field Execution",

@@ -12,20 +12,22 @@ export function ContactForm() {
 
   if (state.success) {
     return (
-      <div className="surface-card flex flex-col items-center text-center">
-        <CheckCircle2 className="h-12 w-12 text-[var(--color-green-450)]" />
-        <h3 className="mt-4 text-lg font-semibold text-[var(--color-navy-900)]">
-          We&apos;ve received your request
+      <div className="flex flex-col items-center justify-center text-center p-12 bg-white/50 backdrop-blur-sm rounded-[1.5rem] border border-[var(--color-green-100)] shadow-inner">
+        <div className="w-16 h-16 rounded-full bg-[var(--color-green-50)] flex items-center justify-center mb-6 shadow-sm border border-[var(--color-green-100)]">
+          <CheckCircle2 className="h-8 w-8 text-[var(--color-green-500)]" />
+        </div>
+        <h3 className="text-2xl font-semibold text-[var(--color-navy-900)] mb-3">
+          Request Received
         </h3>
-        <p className="mt-2 text-sm text-[var(--color-text-muted)]">
-          Our team will reach out within 24 hours to schedule your diagnostic.
+        <p className="text-[var(--color-text-secondary)] text-lg max-w-sm">
+          Our team is reviewing your details and will reach out within 24 hours.
         </p>
       </div>
     );
   }
 
   return (
-    <form action={formAction} className="space-y-5">
+    <form action={formAction} className="space-y-6">
       {/* Honeypot - visually hidden */}
       <input
         type="text"
@@ -36,12 +38,13 @@ export function ContactForm() {
       />
 
       {state.error && (
-        <p className="rounded-lg bg-red-50 px-4 py-2 text-sm text-red-700">
+        <div className="rounded-xl bg-red-50/80 backdrop-blur-sm border border-red-100 px-5 py-3.5 text-sm font-medium text-red-800 shadow-sm flex items-center gap-3">
+          <div className="w-1.5 h-1.5 rounded-full bg-red-500 flex-shrink-0 animate-pulse"></div>
           {state.error}
-        </p>
+        </div>
       )}
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-5 sm:grid-cols-2">
         <Field
           label="Full Name"
           name="name"
@@ -57,7 +60,7 @@ export function ContactForm() {
         />
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-5 sm:grid-cols-2">
         <Field
           label="Company"
           name="company"
@@ -72,7 +75,7 @@ export function ContactForm() {
         />
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-5 sm:grid-cols-2">
         <Field
           label="Number of Field Crews"
           name="crews"
@@ -95,23 +98,24 @@ export function ContactForm() {
       />
 
       <div>
-        <label className="mb-1.5 block text-sm font-medium text-[var(--color-navy-900)]">
-          Anything else? (optional)
+        <label className="mb-2 block text-sm font-semibold text-[var(--color-navy-900)] tracking-wide">
+          Anything else? <span className="text-[var(--color-text-muted)] font-normal ml-1">(optional)</span>
         </label>
         <textarea
           name="message"
           rows={3}
-          className="w-full rounded-lg border border-[var(--color-gray-200)] bg-white px-4 py-2.5 text-sm text-[var(--color-navy-900)] placeholder:text-[var(--color-text-muted)] focus:border-[var(--color-green-450)] focus:outline-none focus:ring-1 focus:ring-[var(--color-green-450)]"
+          className="w-full rounded-xl border border-[var(--color-gray-200)] bg-white/50 backdrop-blur-sm px-4 py-3.5 text-[15px] text-[var(--color-navy-900)] placeholder:text-[var(--color-gray-400)] shadow-sm transition-all duration-200 hover:border-[var(--color-gray-300)] hover:bg-white focus:border-[var(--color-green-450)] focus:bg-white focus:outline-none focus:ring-4 focus:ring-[var(--color-green-450)]/20 resize-none"
         />
       </div>
 
       <button
         type="submit"
         disabled={pending}
-        className="btn-pill-lime w-full justify-center disabled:opacity-50"
+        className="group relative w-full flex justify-center items-center gap-2 rounded-xl bg-gradient-to-r from-[var(--color-green-600)] to-[var(--color-green-450)] px-6 py-4 text-[15px] font-bold text-white shadow-lg shadow-[var(--color-green-500)]/20 transition-all duration-300 hover:shadow-xl hover:shadow-[var(--color-green-500)]/30 hover:-translate-y-0.5 disabled:opacity-50 disabled:pointer-events-none overflow-hidden"
       >
-        {pending ? "Sending…" : "Get Your Revenue Diagnostic"}
-        <ArrowRight className="h-4 w-4" />
+        <div className="absolute inset-0 bg-white/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100 mix-blend-overlay" />
+        <span className="relative z-10">{pending ? "Sending request…" : "Get Your Revenue Diagnostic"}</span>
+        <ArrowRight className="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
       </button>
     </form>
   );
@@ -135,20 +139,20 @@ function Field({
 }) {
   return (
     <div>
-      <label className="mb-1.5 block text-sm font-medium text-[var(--color-navy-900)]">
+      <label className="mb-2 block text-sm font-semibold text-[var(--color-navy-900)] tracking-wide">
         {label}
-        {required && <span className="text-red-500"> *</span>}
+        {required && <span className="text-[var(--color-green-600)] ml-1">*</span>}
       </label>
       <input
         type={type}
         name={name}
         required={required}
         placeholder={placeholder}
-        className="w-full rounded-lg border border-[var(--color-gray-200)] bg-white px-4 py-2.5 text-sm text-[var(--color-navy-900)] placeholder:text-[var(--color-text-muted)] focus:border-[var(--color-green-450)] focus:outline-none focus:ring-1 focus:ring-[var(--color-green-450)]"
+        className="w-full rounded-xl border border-[var(--color-gray-200)] bg-white/50 backdrop-blur-sm px-4 py-3.5 text-[15px] text-[var(--color-navy-900)] placeholder:text-[var(--color-gray-400)] shadow-sm transition-all duration-200 hover:border-[var(--color-gray-300)] hover:bg-white focus:border-[var(--color-green-450)] focus:bg-white focus:outline-none focus:ring-4 focus:ring-[var(--color-green-450)]/20"
       />
       {errors?.map((e) => (
-        <p key={e} className="mt-1 text-xs text-red-600">
-          {e}
+        <p key={e} className="mt-1.5 text-xs font-medium text-red-600 flex items-center gap-1.5">
+          <span className="w-1 h-1 rounded-full bg-red-600"></span>{e}
         </p>
       ))}
     </div>
@@ -168,28 +172,35 @@ function SelectField({
 }) {
   return (
     <div>
-      <label className="mb-1.5 block text-sm font-medium text-[var(--color-navy-900)]">
+      <label className="mb-2 block text-sm font-semibold text-[var(--color-navy-900)] tracking-wide">
         {label}
-        <span className="text-red-500"> *</span>
+        <span className="text-[var(--color-green-600)] ml-1">*</span>
       </label>
-      <select
-        name={name}
-        required
-        defaultValue=""
-        className="w-full rounded-lg border border-[var(--color-gray-200)] bg-white px-4 py-2.5 text-sm text-[var(--color-navy-900)] focus:border-[var(--color-green-450)] focus:outline-none focus:ring-1 focus:ring-[var(--color-green-450)]"
-      >
-        <option value="" disabled>
-          Select…
-        </option>
-        {options.map((opt) => (
-          <option key={opt} value={opt}>
-            {opt}
+      <div className="relative">
+        <select
+          name={name}
+          required
+          defaultValue=""
+          className="w-full appearance-none rounded-xl border border-[var(--color-gray-200)] bg-white/50 backdrop-blur-sm px-4 py-3.5 pr-10 text-[15px] text-[var(--color-navy-900)] shadow-sm transition-all duration-200 hover:border-[var(--color-gray-300)] hover:bg-white focus:border-[var(--color-green-450)] focus:bg-white focus:outline-none focus:ring-4 focus:ring-[var(--color-green-450)]/20 cursor-pointer"
+        >
+          <option value="" disabled className="text-[var(--color-gray-400)]">
+            Select an option…
           </option>
-        ))}
-      </select>
+          {options.map((opt) => (
+            <option key={opt} value={opt} className="text-[var(--color-navy-900)]">
+              {opt}
+            </option>
+          ))}
+        </select>
+        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-[var(--color-gray-500)]">
+          <svg className="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+          </svg>
+        </div>
+      </div>
       {errors?.map((e) => (
-        <p key={e} className="mt-1 text-xs text-red-600">
-          {e}
+        <p key={e} className="mt-1.5 text-xs font-medium text-red-600 flex items-center gap-1.5">
+          <span className="w-1 h-1 rounded-full bg-red-600"></span>{e}
         </p>
       ))}
     </div>

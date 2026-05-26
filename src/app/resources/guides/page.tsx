@@ -190,48 +190,48 @@ export default async function GuidesPage() {
                 <div>
                   <div className="mb-6 flex items-center gap-3">
                     <span className="h-4 w-4 shrink-0 block bg-[var(--color-green-500)] rounded-sm" />
-                    <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)]">
+                    <span className="text-xs font-bold tracking-widest text-[var(--color-gray-500)] uppercase">
                       Featured
                     </span>
                   </div>
 
                   <Link
                     href={("fileUrl" in featured && featured.fileUrl) ? (featured.fileUrl as string) : "/contact"}
-                    className="group block overflow-hidden rounded-3xl border border-[var(--color-navy-800)] bg-[var(--color-navy-950)] p-8 md:p-10 shadow-xl transition-all hover:shadow-2xl hover:-translate-y-1 relative"
+                    className="group block overflow-hidden rounded-[24px] border border-[var(--color-gray-200)] bg-white p-8 md:p-10 shadow-lg shadow-[var(--color-navy-900)]/5 transition-all hover:shadow-xl hover:border-[var(--color-green-400)] hover:-translate-y-1 relative"
                   >
-                    <div className="absolute right-[-10%] top-[-10%] w-[100%] h-[100%] bg-[radial-gradient(ellipse_at_center,_var(--color-green-500)_0%,_transparent_60%)] opacity-10 pointer-events-none transition-opacity duration-700 group-hover:opacity-20" />
+                    <div className="absolute right-[-10%] top-[-10%] w-[100%] h-[100%] bg-[radial-gradient(ellipse_at_center,_var(--color-green-500)_0%,_transparent_60%)] opacity-[0.03] pointer-events-none transition-opacity duration-700 group-hover:opacity-[0.06]" />
                     <div className="relative z-10">
                       <div className="mb-6 flex items-start justify-between gap-4">
-                        <div className="flex items-center gap-3 bg-[var(--color-navy-900)] rounded-full pl-2 pr-4 py-1.5 border border-[var(--color-navy-700)] shadow-sm">
-                          <div className="flex size-6 items-center justify-center rounded-full bg-[var(--color-navy-800)]">
-                            <BookOpen className="size-3 text-[var(--color-green-500)]" />
+                        <div className="flex items-center gap-3 bg-[var(--color-gray-50)] rounded-full pl-2 pr-4 py-1.5 border border-[var(--color-gray-200)] shadow-sm transition-colors group-hover:border-[var(--color-green-200)]">
+                          <div className="flex size-6 items-center justify-center rounded-full bg-white border border-[var(--color-gray-200)] shadow-sm">
+                            <BookOpen className="size-3 text-[var(--color-green-600)]" />
                           </div>
-                          <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-green-500)]">
+                          <span className="text-xs font-bold tracking-widest text-[var(--color-navy-800)] uppercase">
                             {featured.type}
                           </span>
                           {"pages" in featured && (featured.pages as number) > 0 && (
-                            <span className="text-xs text-[var(--color-gray-400)] ml-2 border-l border-[var(--color-navy-700)] pl-3">
+                            <span className="text-xs text-[var(--color-gray-500)] ml-2 border-l border-[var(--color-gray-300)] pl-3 font-medium">
                               {String(featured.pages)} pages
                             </span>
                           )}
                         </div>
                         {"stat" in featured && (
-                          <span className="shrink-0 rounded-full border border-[var(--color-green-400)] bg-[var(--color-green-500)]/10 px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-[var(--color-green-400)]">
+                          <span className="shrink-0 rounded-full border border-[var(--color-green-200)] bg-[var(--color-green-50)] px-3 py-1.5 text-xs font-bold tracking-widest text-[var(--color-green-700)] uppercase">
                             {String(featured.stat)}
                           </span>
                         )}
                       </div>
 
                       <h2
-                        className="mb-4 text-2xl font-black uppercase leading-tight tracking-tight text-white md:text-3xl text-balance"
+                        className="mb-4 text-2xl font-extrabold leading-tight tracking-tight text-[var(--color-navy-950)] md:text-3xl text-balance transition-colors group-hover:text-[var(--color-green-700)]"
                         style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                       >
                         {featured.title}
                       </h2>
-                      <p className="mb-8 text-sm font-medium leading-relaxed text-[var(--color-gray-400)] max-w-2xl">
+                      <p className="mb-8 text-base font-medium leading-relaxed text-[var(--color-gray-600)] max-w-2xl">
                         {featured.description}
                       </p>
-                      <div className="inline-flex items-center gap-2 rounded-xl bg-[var(--color-green-500)] px-6 py-3.5 text-sm font-bold uppercase tracking-widest text-[var(--color-navy-950)] transition-all shadow-sm group-hover:bg-[var(--color-green-400)] group-hover:shadow-md group-hover:-translate-y-0.5">
+                      <div className="inline-flex items-center gap-2 rounded-xl bg-[var(--color-navy-950)] px-6 py-3.5 text-sm font-bold tracking-widest text-white transition-all shadow-sm group-hover:bg-[var(--color-green-500)] group-hover:text-[var(--color-navy-950)] group-hover:shadow-md group-hover:-translate-y-0.5 uppercase">
                         <Download className="size-4" />
                         Download Free
                       </div>
@@ -243,7 +243,7 @@ export default async function GuidesPage() {
                 <div>
                   <div className="mb-6 flex items-center gap-3">
                     <span className="h-4 w-4 shrink-0 block bg-[var(--color-navy-950)] rounded-sm" />
-                    <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)]">
+                    <span className="text-xs font-bold tracking-widest text-[var(--color-gray-500)] uppercase">
                       All Guides
                     </span>
                   </div>
@@ -256,23 +256,23 @@ export default async function GuidesPage() {
                         <Link
                           key={g.title}
                           href={(g.fileUrl as string | null) ?? "/contact"}
-                          className="group flex flex-col sm:flex-row sm:items-stretch gap-0 rounded-3xl border border-[var(--color-gray-200)] bg-white transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-[var(--color-green-400)] overflow-hidden"
+                          className="group flex flex-col sm:flex-row sm:items-stretch gap-0 rounded-[24px] border border-[var(--color-gray-200)] bg-white transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-[var(--color-navy-900)]/5 hover:-translate-y-1 hover:border-[var(--color-green-400)] overflow-hidden"
                         >
                           <div className="flex-1 p-6 md:p-8">
                             <div className="mb-4 flex flex-wrap items-center gap-2">
-                              <span className={`rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest ${topicStyle}`}>
+                              <span className={`rounded-full px-3 py-1 text-[10px] font-bold tracking-widest uppercase ${topicStyle}`}>
                                 {g.topic}
                               </span>
-                              <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-gray-400)] group-hover:text-[var(--color-gray-500)] transition-colors">
+                              <span className="text-[10px] font-bold tracking-widest text-[var(--color-gray-400)] group-hover:text-[var(--color-gray-500)] transition-colors uppercase">
                                 {g.type} · {(g.pages as number) > 0 ? `${g.pages} pages` : ""}
                               </span>
                               {"stat" in g && g.stat && (
-                                <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-green-600)] group-hover:text-[var(--color-green-500)] transition-colors ml-auto sm:ml-2">
+                                <span className="text-[10px] font-bold tracking-widest text-[var(--color-green-600)] group-hover:text-[var(--color-green-600)] transition-colors ml-auto sm:ml-2 uppercase bg-[var(--color-green-50)] px-2 py-0.5 rounded-full border border-[var(--color-green-100)]">
                                   {String(g.stat)}
                                 </span>
                               )}
                             </div>
-                            <h3 className="mb-2 text-lg font-black uppercase tracking-tight text-[var(--color-navy-950)] transition-colors leading-tight" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                            <h3 className="mb-2 text-xl font-bold tracking-tight text-[var(--color-navy-950)] transition-colors leading-tight group-hover:text-[var(--color-green-700)]" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
                               {g.title}
                             </h3>
                             <p className="text-sm font-medium leading-relaxed text-[var(--color-gray-500)] transition-colors line-clamp-2 sm:line-clamp-none">
@@ -280,10 +280,11 @@ export default async function GuidesPage() {
                             </p>
                           </div>
                           
-                          <div className="flex sm:flex-col items-center justify-center gap-3 p-6 bg-[var(--color-gray-50)] transition-colors group-hover:bg-[var(--color-green-50)] border-t sm:border-t-0 sm:border-l border-[var(--color-gray-100)] w-full sm:w-24 shrink-0">
-                            <Icon className="size-6 text-[var(--color-gray-400)] group-hover:text-[var(--color-green-600)] transition-colors hidden sm:block" />
-                            <Download className="size-5 text-[var(--color-gray-400)] group-hover:text-[var(--color-green-600)] transition-transform group-hover:-translate-y-1" />
-                            <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)] group-hover:text-[var(--color-green-700)] sm:hidden">Download</span>
+                          <div className="flex sm:flex-col items-center justify-center gap-3 p-6 bg-transparent transition-colors w-full sm:w-24 shrink-0">
+                            <div className="w-12 h-12 rounded-full bg-[var(--color-gray-50)] flex items-center justify-center border border-[var(--color-gray-200)] group-hover:border-[var(--color-green-200)] group-hover:bg-[var(--color-green-50)] transition-colors duration-300">
+                              <Download className="size-5 text-[var(--color-gray-400)] group-hover:text-[var(--color-green-600)] transition-transform group-hover:-translate-y-0.5" />
+                            </div>
+                            <span className="text-xs font-bold tracking-widest text-[var(--color-gray-500)] group-hover:text-[var(--color-green-700)] sm:hidden uppercase">Download</span>
                           </div>
                         </Link>
                       );
@@ -321,29 +322,31 @@ export default async function GuidesPage() {
               <aside className="lg:col-span-4 space-y-6">
 
                 {/* CTA card */}
-                <div className="rounded-3xl bg-[var(--color-navy-950)] p-8 shadow-xl relative overflow-hidden group">
-                  <div className="absolute right-[-10%] top-[-10%] w-[100%] h-[100%] bg-[radial-gradient(ellipse_at_center,_var(--color-green-500)_0%,_transparent_60%)] opacity-10 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none" />
+                <div className="rounded-[24px] bg-white border border-[var(--color-gray-200)] p-8 shadow-xl shadow-[var(--color-navy-900)]/5 relative overflow-hidden group">
+                  <div className="absolute right-0 top-0 w-32 h-32 bg-[radial-gradient(ellipse_at_center,_var(--color-green-500)_0%,_transparent_70%)] opacity-10 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none translate-x-1/3 -translate-y-1/3" />
                   <div className="relative z-10">
-                    <Zap className="mb-4 size-8 text-[var(--color-green-500)]" />
+                    <div className="w-12 h-12 rounded-full bg-[var(--color-gray-50)] flex items-center justify-center border border-[var(--color-gray-200)] mb-6 shadow-sm">
+                      <Zap className="size-5 text-[var(--color-green-600)]" />
+                    </div>
                     <h3
-                      className="mb-2 text-2xl font-black uppercase tracking-tighter text-white leading-tight"
+                      className="mb-2 text-2xl font-extrabold tracking-tight text-[var(--color-navy-950)] leading-tight"
                       style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                     >
                       See OpsFlo Live
                     </h3>
-                    <p className="mb-6 text-sm font-medium leading-relaxed text-[var(--color-gray-400)]">
+                    <p className="mb-8 text-sm font-medium leading-relaxed text-[var(--color-gray-600)]">
                       Guides are a start. A 15-minute diagnostic of your operation shows exactly where you are losing revenue today.
                     </p>
                     <Link
                       href="/contact"
-                      className="group/cta mb-3 flex w-full items-center justify-between rounded-xl bg-[var(--color-green-500)] px-5 py-4 text-sm font-bold uppercase tracking-wider text-[var(--color-navy-950)] transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-400)]"
+                      className="group/cta mb-3 flex w-full items-center justify-between rounded-xl bg-[var(--color-navy-950)] px-5 py-4 text-sm font-bold tracking-wider text-white transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-500)] hover:text-[var(--color-navy-950)] uppercase"
                     >
                       Book a Demo
                       <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-1" />
                     </Link>
                     <Link
                       href="/roi-calculator"
-                      className="group/cta2 flex w-full items-center justify-between rounded-xl border border-[var(--color-navy-700)] px-5 py-4 text-sm font-bold uppercase tracking-wider text-[var(--color-gray-300)] transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-[var(--color-gray-400)] hover:text-white"
+                      className="group/cta2 flex w-full items-center justify-between rounded-xl border border-[var(--color-gray-200)] bg-[var(--color-gray-50)] px-5 py-4 text-sm font-bold tracking-wider text-[var(--color-navy-800)] transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-[var(--color-green-300)] hover:bg-white uppercase"
                     >
                       Try ROI Calculator
                       <ChevronRight className="size-4 transition-transform group-hover/cta2:translate-x-1" />
@@ -352,8 +355,8 @@ export default async function GuidesPage() {
                 </div>
 
                 {/* Related solutions */}
-                <div className="rounded-3xl bg-white border border-[var(--color-gray-200)] p-8 shadow-sm">
-                  <p className="mb-5 text-xs font-bold uppercase tracking-widest text-[var(--color-navy-900)]">
+                <div className="rounded-[24px] bg-white border border-[var(--color-gray-200)] p-8 shadow-sm hover:border-[var(--color-green-300)] transition-colors duration-500 group">
+                  <p className="mb-5 text-xs font-bold tracking-widest text-[var(--color-green-600)] uppercase">
                     Relevant Solutions
                   </p>
                   <ul className="space-y-2">
@@ -361,13 +364,13 @@ export default async function GuidesPage() {
                       <li key={link.href}>
                         <Link
                           href={link.href}
-                          className="group flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium text-[var(--color-gray-600)] transition-all hover:bg-[var(--color-gray-50)] hover:text-[var(--color-navy-900)]"
+                          className="group/link flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium text-[var(--color-gray-600)] transition-all hover:bg-[var(--color-gray-50)] hover:text-[var(--color-navy-900)]"
                         >
                           <div className="flex items-center gap-3">
-                            <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)]" />
+                            <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-gray-300)] group-hover/link:bg-[var(--color-green-500)] transition-colors" />
                             <span>{link.label}</span>
                           </div>
-                          <ChevronRight className="size-4 text-[var(--color-gray-300)] transition-transform group-hover:translate-x-1" />
+                          <ChevronRight className="size-4 text-[var(--color-gray-300)] transition-transform group-hover/link:translate-x-1 group-hover/link:text-[var(--color-green-500)]" />
                         </Link>
                       </li>
                     ))}
@@ -375,49 +378,49 @@ export default async function GuidesPage() {
                 </div>
 
                 {/* Webinars cross-link */}
-                <div className="rounded-3xl bg-[var(--color-gray-50)] border border-[var(--color-gray-200)] p-8 relative overflow-hidden">
-                  <div className="absolute top-0 left-0 w-1.5 h-full bg-[var(--color-green-500)]" />
+                <div className="rounded-[24px] bg-[var(--color-gray-50)] border border-[var(--color-gray-200)] p-8 relative overflow-hidden hover:border-[var(--color-green-300)] transition-colors duration-500 group">
+                  <div className="absolute top-0 left-0 w-1.5 h-full bg-[var(--color-gray-200)] group-hover:bg-[var(--color-green-500)] transition-colors duration-500" />
                   <div className="pl-2">
-                    <p className="mb-2 text-xs font-bold uppercase tracking-widest text-[var(--color-green-700)]">
+                    <p className="mb-2 text-xs font-bold tracking-widest text-[var(--color-green-600)] uppercase">
                       Prefer to Watch?
                     </p>
                     <h4
-                      className="mb-3 text-lg font-black uppercase tracking-tight text-[var(--color-navy-950)]"
+                      className="mb-3 text-lg font-bold tracking-tight text-[var(--color-navy-950)]"
                       style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                     >
                       On-Demand Webinars
                     </h4>
-                    <p className="mb-4 text-sm font-medium text-[var(--color-gray-600)]">
+                    <p className="mb-6 text-sm font-medium text-[var(--color-gray-500)] leading-relaxed">
                       Expert sessions on field operations, predictive maintenance, revenue recovery, and compliance.
                     </p>
                     <Link
                       href="/resources/webinars"
-                      className="group inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-[var(--color-navy-950)] underline underline-offset-4 transition-colors hover:text-[var(--color-navy-700)]"
+                      className="group/link inline-flex items-center gap-2 text-sm font-bold tracking-wide text-[var(--color-navy-800)] transition-colors hover:text-[var(--color-green-700)] uppercase"
                     >
                       View All Webinars
-                      <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                      <ArrowRight className="size-4 transition-transform group-hover/link:translate-x-1" />
                     </Link>
                   </div>
                 </div>
 
                 {/* Pull quote */}
-                <div className="rounded-3xl border border-[var(--color-gray-200)] bg-[var(--color-navy-50)] p-8 relative shadow-sm">
+                <div className="rounded-[24px] border border-[var(--color-gray-200)] bg-white p-8 relative shadow-sm hover:border-[var(--color-green-300)] transition-colors duration-500 group">
                   <div className="absolute top-0 right-8 -translate-y-1/2">
-                    <div className="flex size-10 items-center justify-center rounded-full bg-[var(--color-green-500)] shadow-sm">
-                      <FileText className="size-4 text-[var(--color-navy-950)]" />
+                    <div className="flex size-10 items-center justify-center rounded-full bg-white border border-[var(--color-gray-200)] shadow-sm group-hover:border-[var(--color-green-200)] transition-colors duration-500">
+                      <FileText className="size-4 text-[var(--color-green-600)]" />
                     </div>
                   </div>
                   <blockquote>
-                    <p className="mb-6 text-sm font-medium italic leading-relaxed text-[var(--color-gray-700)]">
+                    <p className="mb-6 text-sm font-medium italic leading-relaxed text-[var(--color-gray-600)]">
                       &ldquo;The Revenue Recovery guide alone identified $800K in billing gaps we didn&apos;t know existed. We actioned it in 60 days.&rdquo;
                     </p>
-                    <footer className="border-t border-[var(--color-navy-100)] pt-4">
-                      <div className="text-xs font-bold uppercase tracking-widest text-[var(--color-navy-950)]">
+                    <footer className="border-t border-[var(--color-gray-100)] pt-4 flex flex-col">
+                      <span className="text-xs font-bold tracking-widest text-[var(--color-navy-950)] uppercase">
                         VP of Finance
-                      </div>
-                      <div className="text-xs font-medium text-[var(--color-gray-500)] mt-0.5">
+                      </span>
+                      <span className="text-xs font-medium text-[var(--color-gray-500)] mt-0.5">
                         Oilfield Services, AB
-                      </div>
+                      </span>
                     </footer>
                   </blockquote>
                 </div>
@@ -432,7 +435,7 @@ export default async function GuidesPage() {
           <Container className="relative z-10">
             <div className="flex flex-col items-start justify-between gap-10 lg:flex-row lg:items-center">
               <div className="max-w-2xl">
-                <div className="inline-flex items-center gap-3 rounded-full border border-slate-700 bg-[var(--color-navy-900)] px-4 py-1.5 mb-6 shadow-sm">
+                <div className="inline-flex items-center gap-3 rounded-full border border-[var(--color-navy-800)] bg-[var(--color-navy-900)] px-4 py-1.5 mb-6 shadow-sm">
                   <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
                   <span className="text-xs font-semibold tracking-wider text-slate-300 uppercase">
                     Take Action
@@ -450,14 +453,14 @@ export default async function GuidesPage() {
               <div className="flex w-full flex-col gap-3 lg:w-[380px]">
                 <Link
                   href="/contact"
-                  className="group/cta flex w-full items-center justify-between rounded-xl bg-[var(--color-green-500)] px-6 py-5 text-sm font-bold uppercase tracking-widest text-[var(--color-navy-950)] transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-400)]"
+                  className="group/cta flex w-full items-center justify-between rounded-xl bg-[var(--color-green-500)] px-6 py-5 text-sm font-bold tracking-widest text-[var(--color-navy-950)] transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-400)] uppercase"
                 >
                   <span>Book a 15-Min Diagnostic</span>
                   <ArrowRight className="size-5 transition-transform group-hover/cta:translate-x-1" />
                 </Link>
                 <Link
                   href="/resources/webinars"
-                  className="group/cta2 flex w-full items-center justify-between rounded-xl border border-[var(--color-navy-700)] bg-[var(--color-navy-950)] px-6 py-5 text-sm font-bold uppercase tracking-widest text-white transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-[var(--color-gray-500)] hover:bg-[var(--color-navy-900)]"
+                  className="group/cta2 flex w-full items-center justify-between rounded-xl border border-[var(--color-navy-700)] bg-[var(--color-navy-950)] px-6 py-5 text-sm font-bold tracking-widest text-white transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-navy-900)] uppercase"
                 >
                   <span>View Webinars</span>
                   <ArrowRight className="size-5 transition-transform group-hover/cta2:translate-x-1" />

@@ -231,10 +231,10 @@ export function AiIntelligence() {
           >
             <Link
               href="/platform/ai"
-              className="group inline-flex items-center gap-3 text-sm font-bold tracking-[0.1em] text-white uppercase hover:text-[var(--color-navy-950)] transition-colors bg-[var(--color-navy-950)] border border-[var(--color-navy-950)] pl-6 pr-2 py-2 rounded-full shadow-sm hover:shadow-md hover:bg-[var(--color-green-400)]"
+              className="group inline-flex items-center text-left gap-3 text-sm font-bold tracking-[0.1em] text-white uppercase hover:text-[var(--color-navy-950)] transition-colors bg-[var(--color-navy-950)] border border-[var(--color-navy-950)] pl-6 pr-2 py-2 rounded-full shadow-sm hover:shadow-md hover:bg-[var(--color-green-400)]"
             >
-              See AI in Action
-              <span className="relative overflow-hidden w-8 h-8 flex items-center justify-center bg-white/20 group-hover:bg-white/30 rounded-full transition-colors">
+              <span className="whitespace-nowrap">See AI in Action</span>
+              <span className="relative overflow-hidden w-8 h-8 flex-shrink-0 flex items-center justify-center bg-white/20 group-hover:bg-white/30 rounded-full transition-colors">
                  <ArrowUpRight className="w-4 h-4 absolute group-hover:translate-x-[200%] group-hover:-translate-y-[200%] transition-transform duration-300" />
                  <ArrowUpRight className="w-4 h-4 absolute -translate-x-[200%] translate-y-[200%] group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300" />
               </span>

@@ -14,7 +14,7 @@ const data: ModulePageData = {
   eyebrow: "Platform / Analytics & Reporting",
   headline: "**See Everything**. Guess Nothing.",
   body: "Real-time dashboards and automated reports give operations leaders, finance teams, and executives a shared view of what\u2019s happening in the field  -  updated as work is completed, not days later.",
-  heroImage: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1400&q=80",
+
   problem: {
     headline: "You Can't Manage What You **Can't See**",
     points: [
@@ -58,8 +58,9 @@ const data: ModulePageData = {
     headline: "**Field-Generated Data**. Not Re-Keyed Data.",
     body: "Unlike BI tools bolted onto legacy systems, OpsFlo analytics are built on data captured at the point of work  -  which means they\u2019re accurate, timely, and complete.",
   },
-  problemImage: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80",
-  solutionImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
+  heroImage: "/images/platform/analytics_hero.png",
+  problemImage: "/images/platform/analytics_problem.png",
+  solutionImage: "/images/platform/analytics_solution.png",
   relatedModules: [
     {
       "title": "Field Execution",

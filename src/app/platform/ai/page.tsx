@@ -14,7 +14,7 @@ const data: ModulePageData = {
   eyebrow: "Platform / AI Decision Engine",
   headline: "**Intelligence** That Works in the Field",
   body: "The AI Decision Engine transforms raw operational data into prescriptive actions  -  predicting equipment failures, recommending crew allocations, and surfacing revenue at risk before it\u2019s lost.",
-  heroImage: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1400&q=80",
+
   problem: {
     headline: "Decisions Based on **Gut Feel** Cost Millions",
     points: [
@@ -58,8 +58,9 @@ const data: ModulePageData = {
     headline: "AI Tied to **Outcomes**, Not Buzzwords",
     body: "Every prediction is linked to a dollar figure or a safety metric. No abstract dashboards  -  just actionable intelligence your supervisors can act on immediately, even offline.",
   },
-  problemImage: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80",
-  solutionImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
+  heroImage: "/images/platform/ai_hero.png",
+  problemImage: "/images/platform/ai_problem.png",
+  solutionImage: "/images/platform/ai_solution.png",
   relatedModules: [
     {
       "title": "Field Execution",

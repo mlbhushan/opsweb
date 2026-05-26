@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Shield, Zap, TrendingUp, Users, Target } from "lucide-react";
+import { ArrowRight, ArrowUpRight, CheckCircle2, Shield, Zap, TrendingUp, Users, Target } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
 import { SiteHeader } from "@/components/sections/site-header";
 import { SiteFooter } from "@/components/sections/site-footer";
 import { PageBanner } from "@/components/sections/page-banner";
+import { CoreBeliefs } from "@/components/sections/core-beliefs";
+import { WhoAreWe } from "@/components/sections/about/who-are-we";
 import { Container } from "@/components/ui/container";
 import { ScrollRevealText } from "@/components/ui/scroll-reveal-text";
 import { CTARow } from "@/components/ui/cta-row";
@@ -37,69 +39,13 @@ export default function AboutPage() {
               />
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-0 items-start border-t border-[var(--color-gray-200)] pt-20">
-              {/* Left Side: Big Number */}
-              <div className="relative flex flex-col items-start gap-0 lg:border-r border-[var(--color-gray-200)] lg:pr-20 pb-12 lg:pb-0">
-                <div className="hidden lg:inline-flex mb-8 items-center rounded-full border border-[var(--color-navy-800)]/20 px-4 py-2">
-                  <span className="flex size-2 rounded-full bg-[var(--color-green-500)] mr-3"></span>
-                  <span className="text-sm font-semibold tracking-widest text-[var(--color-navy-950)] uppercase">Who Are We?</span>
-                </div>
-                
-                <div className="relative inline-block">
-                  <span 
-                    className="text-[var(--color-navy-950)] leading-[0.8] tracking-tighter"
-                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif", fontSize: "250px", fontWeight: 600 }}
-                  >
-                    2M+
-                  </span>
-                  <div className="absolute right-0 bottom-[-8px] flex gap-2">
-                    <span className="text-[12px] font-bold uppercase tracking-widest text-[var(--color-navy-950)]">
-                      FIELD TICKETS
-                    </span>
-                    <span className="text-[12px] font-bold uppercase tracking-widest text-[var(--color-navy-950)]">
-                      PROCESSED
-                    </span>
-                  </div>
-                </div>
-                
-                <div className="mt-8 flex items-center gap-6">
-                  <div className="flex -space-x-3">
-                    {[1, 2, 3].map((i) => (
-                      <div key={i} className="relative size-10 overflow-hidden rounded-full border-2 border-white bg-gray-200">
-                        <Image
-                          src={`https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=100&q=80&sig=${i}`}
-                          alt={`Operator ${i}`}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                  <div className="text-[11px] font-bold leading-snug tracking-wide text-[var(--color-navy-950)] uppercase">
-                    TRUSTED BY HUNDREDS OF <br />
-                    <span className="opacity-70">SKILLED OPERATORS</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Side: Text & Image */}
-              <div className="lg:pl-20 flex flex-col pt-8 lg:pt-4">
-                <div className="mb-10 text-lg leading-relaxed text-[var(--color-gray-600)]">
-                  <p>
-                    {hero.body} Our founders spent years managing field operations across the United States. They saw the same pattern everywhere: operators used 3 to 5 disconnected tools, lost revenue to missed field tickets, and dealt with billing cycles measured in weeks instead of hours.
-                  </p>
-                </div>
-                
-                <div className="relative aspect-[21/10] w-full overflow-hidden rounded-xl">
-                  <Image
-                    src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80"
-                    alt="OpsFlo field operations"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-            </div>
+            <WhoAreWe 
+              bodyText={
+                <>
+                  {hero.body} Our founders spent years managing field operations across the United States. They saw the same pattern everywhere: operators used 3 to 5 disconnected tools, lost revenue to missed field tickets, and dealt with billing cycles measured in weeks instead of hours.
+                </>
+              } 
+            />
           </Container>
         </section>
 
@@ -161,72 +107,7 @@ export default function AboutPage() {
         </div>
 
         {/* Core Beliefs / Values Section */}
-        <section className="bg-[var(--color-navy-950)] text-white py-20 md:py-32 relative overflow-hidden">
-          {/* Subtle grid texture */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:64px_64px] pointer-events-none opacity-50"></div>
-          
-          {/* Glow effect */}
-          <div className="pointer-events-none absolute right-0 top-0 h-[600px] w-[600px] bg-[var(--color-green-500)]/10 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2"></div>
-          
-          <Container className="relative z-10">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 md:mb-24">
-              <div className="max-w-3xl">
-                <div className="mb-6 inline-flex items-center rounded-full border border-[var(--color-green-600)]/30 px-4 py-2">
-                  <span className="flex size-2 rounded-full bg-[var(--color-green-500)] mr-3"></span>
-                  <span className="text-sm font-semibold tracking-widest text-[var(--color-green-50)] uppercase">Strategic Pillars</span>
-                </div>
-                <h2 className="text-5xl md:text-7xl font-black uppercase leading-[0.9] tracking-tighter text-white">
-                  Our <span className="text-[var(--color-green-500)]">Core Beliefs</span>
-                </h2>
-              </div>
-              <div className="max-w-md pb-2">
-                <p className="text-lg md:text-xl font-light text-[var(--color-gray-300)] leading-relaxed">
-                  We are driven by principles forged in the field, not the boardroom. Zero compromises. Zero excuses. Just a relentless focus on protecting your revenue and empowering your crew.
-                </p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
-              {[
-                {
-                  id: "01",
-                  title: "Execution Over Aspiration",
-                  description: "Promises don't haul fluid or service wells. Execution does. We trade empty corporate speak for relentless reliability. When your crew needs our system to work, it works. No excuses."
-                },
-                {
-                  id: "02",
-                  title: "Built for the Frontlines",
-                  description: "We respect the gritty reality of the oilfield. If software can't survive dead zones, harsh environments, and grueling shifts, it doesn't belong in your operators' hands. We build tools for the dirt, not the desk."
-                },
-                {
-                  id: "03",
-                  title: "Defending Your Margins",
-                  description: "Every drop of sweat your team expends should translate to a paid invoice. We build systems that catch missed tickets, eliminate leakage, and ensure you never leave hard-earned revenue on the table."
-                },
-                {
-                  id: "04",
-                  title: "Guided by the Field",
-                  description: "Our roadmap isn't written in a boardroom. It's built alongside the people wearing hard hats. We listen to your dispatchers and your drivers, adapting our software to solve the exact bottlenecks holding your business back."
-                }
-              ].map((value, idx) => (
-                <div key={idx} className="group relative flex flex-col pt-8 border-t-2 border-[var(--color-navy-800)] hover:border-[var(--color-green-500)] transition-colors duration-500 cursor-default">
-                  <div 
-                    className="text-5xl md:text-6xl tracking-tighter text-[var(--color-navy-800)] group-hover:text-[var(--color-green-500)] transition-colors duration-500 mb-6 leading-none"
-                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif", fontWeight: 700 }}
-                  >
-                    {value.id}
-                  </div>
-                  <h3 className="text-xl lg:text-2xl font-semibold uppercase tracking-tight mb-4 text-white group-hover:text-[var(--color-green-400)] transition-colors duration-300">
-                    {value.title}
-                  </h3>
-                  <p className="text-base md:text-lg text-[var(--color-gray-400)] font-light leading-relaxed group-hover:text-[var(--color-gray-200)] transition-colors duration-300">
-                    {value.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </Container>
-        </section>
+        <CoreBeliefs />
 
         {/* Story Section */}
         <section className="py-24 md:py-32 bg-white relative overflow-hidden">
@@ -238,18 +119,18 @@ export default function AboutPage() {
               
               {/* Left Content */}
               <div className="lg:col-span-5 flex flex-col justify-center">
-                <div className="mb-8 inline-flex items-center rounded-full border border-[var(--color-navy-200)] px-4 py-2 bg-white">
-                  <span className="flex size-2 rounded-full bg-[var(--color-green-500)] mr-3"></span>
-                  <span className="text-sm font-semibold tracking-widest text-[var(--color-navy-900)] uppercase">Origin Story</span>
+                <div className="inline-flex items-center gap-3 rounded-full border border-[var(--color-navy-200)] bg-white px-4 py-1.5 mb-8 shadow-sm self-start">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+                  <span className="text-xs font-semibold tracking-wider text-[var(--color-navy-900)] uppercase">Origin Story</span>
                 </div>
                 
-                <h2 className="mb-8 text-5xl md:text-6xl lg:text-7xl font-black uppercase leading-[0.9] tracking-tighter text-[var(--color-navy-950)]">
-                  BORN IN THE <span className="text-[var(--color-green-500)]">DIRT.</span><br />
-                  BUILT FOR SCALE.
+                <h2 className="mb-8 text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--color-navy-950)] leading-[1.1] text-balance">
+                  Born in the dirt.<br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-green-500)] to-[var(--color-green-700)]">Built for scale.</span>
                 </h2>
 
-                <div className="space-y-6 text-lg md:text-xl font-light text-[var(--color-gray-600)] leading-relaxed mb-12">
-                  <p className="font-medium text-[var(--color-navy-900)]">
+                <div className="space-y-6 text-lg md:text-xl font-light text-[var(--color-navy-800)] leading-relaxed mb-12">
+                  <p className="font-medium text-[var(--color-navy-950)]">
                     Generic software breaks when it hits the oilfield. We know, because we lived it.
                   </p>
                   <p>
@@ -257,23 +138,29 @@ export default function AboutPage() {
                   </p>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-8 sm:items-center">
+                <div className="flex flex-col sm:flex-row gap-6 sm:gap-6 md:gap-5 sm:items-center">
                   <div>
                     <div className="flex items-baseline gap-1">
                       <span className="text-5xl md:text-6xl tracking-tighter text-[var(--color-navy-950)]" style={{ fontFamily: "'Cabinet Grotesk', sans-serif", fontWeight: 700 }}>500</span>
                       <span className="text-4xl font-bold text-[var(--color-green-500)]">+</span>
                     </div>
-                    <p className="mt-2 text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)]">
+                    <p className="mt-2 text-xs font-bold uppercase tracking-widest text-[var(--color-gray-600)]">
                       Active Fleets Powered
                     </p>
                   </div>
                   
-                  <div className="hidden sm:block w-px h-16 bg-[var(--color-gray-200)]"></div>
+                  <div className="hidden sm:block w-px h-16 bg-[var(--color-gray-300)]"></div>
                   
                   <div>
-                    <Link href="/platform" className="inline-flex items-center justify-center bg-[var(--color-navy-950)] text-white px-8 py-4 font-semibold uppercase tracking-wider text-sm transition-all hover:bg-[var(--color-green-500)] hover:text-[var(--color-navy-950)] group">
-                      Explore Platform
-                      <ArrowRight className="size-4 ml-3 group-hover:translate-x-1 transition-transform" />
+                    <Link 
+                      href="/platform" 
+                      className="group inline-flex items-center text-left gap-3 text-sm font-bold tracking-[0.1em] text-white uppercase hover:text-[var(--color-navy-950)] transition-colors bg-[var(--color-navy-950)] border border-[var(--color-navy-950)] pl-6 pr-2 py-2 rounded-full shadow-sm hover:shadow-md hover:bg-[var(--color-green-400)]"
+                    >
+                      <span className="whitespace-nowrap">Explore Platform</span>
+                      <span className="relative overflow-hidden w-8 h-8 flex-shrink-0 flex items-center justify-center bg-white/20 group-hover:bg-white/30 rounded-full transition-colors">
+                        <ArrowUpRight className="w-4 h-4 absolute group-hover:translate-x-[200%] group-hover:-translate-y-[200%] transition-transform duration-300" />
+                        <ArrowUpRight className="w-4 h-4 absolute -translate-x-[200%] translate-y-[200%] group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300" />
+                      </span>
                     </Link>
                   </div>
                 </div>
@@ -284,27 +171,27 @@ export default function AboutPage() {
                 {/* Column 1 */}
                 <div className="flex flex-col gap-4 md:gap-6">
                   {/* Stat Card 1 - Dark */}
-                  <div className="aspect-square bg-[var(--color-navy-950)] p-6 md:p-8 flex flex-col justify-between border-2 border-[var(--color-navy-950)] group hover:border-[var(--color-green-500)] transition-colors shadow-[8px_8px_0px_0px_var(--color-green-500)]">
+                  <div className="aspect-square bg-[var(--color-navy-950)] p-6 md:p-8 flex flex-col justify-between rounded-[16px] group hover:bg-[var(--color-navy-900)] transition-colors shadow-lg">
                     <div className="flex justify-end">
-                      <Shield className="size-6 text-[var(--color-green-500)] opacity-50 group-hover:opacity-100 transition-opacity" />
+                      <Shield className="size-6 text-[var(--color-green-500)] opacity-70 group-hover:opacity-100 transition-opacity" />
                     </div>
                     <div>
-                      <h3 className="text-5xl md:text-6xl tracking-tighter text-white mb-2" style={{ fontFamily: "'Cabinet Grotesk', sans-serif", fontWeight: 700 }}>
+                      <h3 className="text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-2">
                         99.9<span className="text-3xl ml-1 text-[var(--color-green-500)]">%</span>
                       </h3>
-                      <p className="text-xs font-bold text-[var(--color-gray-400)] uppercase tracking-widest leading-snug">
+                      <p className="text-xs font-semibold text-[var(--color-gray-400)] uppercase tracking-wider leading-snug">
                         System Uptime<br/>Reliability
                       </p>
                     </div>
                   </div>
                   
-                  {/* Image 1 - Tall */}
-                  <div className="aspect-[3/4] relative overflow-hidden bg-[var(--color-gray-100)] border-2 border-[var(--color-navy-950)] group">
+                  {/* Image 1 - Landscape */}
+                  <div className="aspect-[4/3] relative overflow-hidden bg-[var(--color-gray-100)] rounded-[16px] group shadow-lg">
                     <Image 
-                      src="/images/services/services-1.jpg" 
+                      src="https://res.cloudinary.com/dmghhstx4/image/upload/v1779803660/pexels-sergey-sergeev-2153675005-32845698_zwiz1s.jpg" 
                       alt="OpsFlo Software in the field" 
                       fill 
-                      className="object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100" 
+                      className="object-cover object-center transition-all duration-700 scale-100 group-hover:scale-105" 
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-navy-950)]/60 to-transparent mix-blend-multiply"></div>
                   </div>
@@ -312,27 +199,27 @@ export default function AboutPage() {
 
                 {/* Column 2 - Staggered */}
                 <div className="flex flex-col gap-4 md:gap-6 pt-12 md:pt-24">
-                  {/* Image 2 - Tall */}
-                  <div className="aspect-[3/4] relative overflow-hidden bg-[var(--color-gray-100)] border-2 border-[var(--color-navy-950)] group">
+                  {/* Image 2 - Landscape */}
+                  <div className="aspect-[4/3] relative overflow-hidden bg-[var(--color-gray-100)] rounded-[16px] group shadow-lg">
                     <Image 
-                      src="/images/services/services-2.jpg" 
+                      src="https://res.cloudinary.com/dmghhstx4/image/upload/v1779799691/pexels-janzakelj-16862261_di1bfo.jpg" 
                       alt="Field Operation" 
                       fill 
-                      className="object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100" 
+                      className="object-cover object-center transition-all duration-700 scale-100 group-hover:scale-105" 
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-navy-950)]/60 to-transparent mix-blend-multiply"></div>
                   </div>
 
                   {/* Stat Card 2 - Highlight */}
-                  <div className="aspect-square bg-[var(--color-green-500)] p-6 md:p-8 flex flex-col justify-between border-2 border-[var(--color-navy-950)] group hover:bg-[var(--color-green-400)] transition-colors shadow-[8px_8px_0px_0px_var(--color-navy-950)]">
+                  <div className="aspect-square bg-[var(--color-green-500)] p-6 md:p-8 flex flex-col justify-between rounded-[16px] group hover:bg-[var(--color-green-400)] transition-colors shadow-lg">
                     <div className="flex justify-end">
-                      <Target className="size-6 text-[var(--color-navy-950)] opacity-50 group-hover:opacity-100 transition-opacity" />
+                      <Target className="size-6 text-[var(--color-navy-950)] opacity-70 group-hover:opacity-100 transition-opacity" />
                     </div>
                     <div>
-                      <h3 className="text-5xl md:text-6xl tracking-tighter text-[var(--color-navy-950)] mb-2" style={{ fontFamily: "'Cabinet Grotesk', sans-serif", fontWeight: 700 }}>
+                      <h3 className="text-5xl md:text-6xl font-extrabold tracking-tight text-[var(--color-navy-950)] mb-2">
                         &lt;4<span className="text-3xl ml-1">hr</span>
                       </h3>
-                      <p className="text-xs font-bold text-[var(--color-navy-900)] uppercase tracking-widest leading-snug">
+                      <p className="text-xs font-semibold text-[var(--color-navy-900)] uppercase tracking-wider leading-snug">
                         Average Billing<br/>Cycle Time
                       </p>
                     </div>
@@ -353,14 +240,15 @@ export default function AboutPage() {
               {/* Left Column: Title and Context */}
               <div className="md:col-span-4 flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center gap-4 mb-8">
-                    <span className="h-4 w-4 bg-[var(--color-green-500)] block"></span>
-                    <h3 className="text-xs font-bold text-[var(--color-gray-400)] uppercase tracking-widest m-0">
+                  <div className="inline-flex items-center gap-3 rounded-full border border-slate-700 bg-[var(--color-navy-900)] px-4 py-1.5 mb-8 shadow-sm self-start">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+                    <span className="text-xs font-semibold tracking-wider text-slate-200 uppercase">
                       Operator Validation
-                    </h3>
+                    </span>
                   </div>
-                  <h2 className="text-4xl lg:text-5xl font-bold text-white leading-[1.1] tracking-tight text-balance uppercase">
-                    Built for the <span className="text-[var(--color-green-500)]">field.</span><br />Proven in the <span className="text-[var(--color-green-500)]">dirt.</span>
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-[1.1] text-balance">
+                    Built for the field.<br />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-green-400)] to-[var(--color-green-600)] drop-shadow-[0_0_15px_rgba(34,197,94,0.2)]">Proven in<br />the dirt.</span>
                   </h2>
                 </div>
                 
@@ -402,14 +290,14 @@ export default function AboutPage() {
               {/* Left Side: Editorial Typography */}
               <div className="max-w-3xl">
                 {/* Section Marker */}
-                <div className="mb-8 inline-flex items-center rounded-full border border-[var(--color-navy-200)] px-4 py-2 bg-white shadow-sm">
-                  <span className="flex size-2 rounded-full bg-[var(--color-green-500)] mr-3"></span>
-                  <span className="text-sm font-semibold tracking-widest text-[var(--color-navy-900)] uppercase">The Next Step</span>
+                <div className="inline-flex items-center gap-3 rounded-full border border-[var(--color-navy-200)] bg-white px-4 py-1.5 mb-8 shadow-sm self-start">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+                  <span className="text-xs font-semibold tracking-wider text-[var(--color-navy-900)] uppercase">The Next Step</span>
                 </div>
                 
-                <h2 className="text-5xl md:text-7xl font-bold text-[var(--color-navy-950)] leading-[0.9] tracking-tighter text-balance">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--color-navy-950)] leading-[1.1] text-balance">
                   Stop guessing. <br className="hidden md:block"/>
-                  <span className="text-[var(--color-green-500)]">Start building.</span>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-green-500)] to-[var(--color-green-700)]">Start building.</span>
                 </h2>
                 
                 <p className="mt-8 text-xl md:text-2xl text-[var(--color-gray-600)] font-medium leading-snug max-w-2xl">

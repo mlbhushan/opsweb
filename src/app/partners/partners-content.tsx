@@ -109,7 +109,7 @@ export function PartnersContent() {
             {/* Bento Box 1 - Large */}
             <motion.div variants={fadeUp} className="md:col-span-8 rounded-[24px] p-8 relative overflow-hidden group">
               {/* Image Background */}
-              <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1200&auto=format&fit=crop" alt="Industrial Technology" className="absolute inset-0 w-full h-full object-cover z-0 scale-105 group-hover:scale-100 transition-transform duration-700" />
+              <img src="https://res.cloudinary.com/dmghhstx4/image/upload/v1779803667/pexels-tomfisk-10396412_vtvhx9.jpg" alt="Industrial Technology" className="absolute inset-0 w-full h-full object-cover z-0 scale-105 group-hover:scale-100 transition-transform duration-700" />
               <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-navy-950)] via-[var(--color-navy-900)]/90 to-transparent z-0" />
               <div className="absolute inset-0 bg-[var(--color-navy-950)]/40 z-0" />
               
@@ -130,7 +130,7 @@ export function PartnersContent() {
 
             {/* Bento Box 2 - Small Dark */}
             <motion.div variants={fadeUp} className="md:col-span-4 rounded-[24px] p-8 relative overflow-hidden text-white group">
-              <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop" alt="Speed and Connectivity" className="absolute inset-0 w-full h-full object-cover z-0 scale-105 group-hover:scale-100 transition-transform duration-700" />
+              <img src="https://res.cloudinary.com/dmghhstx4/image/upload/v1779799679/pexels-alice1-7080938_hxy3us.jpg" alt="Speed and Connectivity" className="absolute inset-0 w-full h-full object-cover z-0 scale-105 group-hover:scale-100 transition-transform duration-700" />
               <div className="absolute inset-0 bg-[var(--color-green-900)]/80 z-0 mix-blend-multiply" />
               <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-navy-950)] to-transparent opacity-90 z-0" />
               
@@ -151,7 +151,7 @@ export function PartnersContent() {
 
             {/* Bento Box 3 - Medium */}
             <motion.div variants={fadeUp} className="md:col-span-5 rounded-[24px] p-8 relative overflow-hidden group">
-               <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" alt="Data Analytics" className="absolute inset-0 w-full h-full object-cover z-0 scale-105 group-hover:scale-100 transition-transform duration-700" />
+               <img src="https://res.cloudinary.com/dmghhstx4/image/upload/v1779803667/pexels-tomfisk-10396412_vtvhx9.jpg" alt="Data Analytics" className="absolute inset-0 w-full h-full object-cover z-0 scale-105 group-hover:scale-100 transition-transform duration-700" />
                <div className="absolute inset-0 bg-white/90 z-0 backdrop-blur-sm" />
                <div className="absolute inset-0 bg-gradient-to-br from-white via-white/80 to-transparent z-0" />
 
@@ -170,7 +170,7 @@ export function PartnersContent() {
 
             {/* Bento Box 4 - Medium Wide */}
             <motion.div variants={fadeUp} className="md:col-span-7 rounded-[24px] p-8 relative overflow-hidden group">
-               <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=1200&auto=format&fit=crop" alt="Integration APIs" className="absolute inset-0 w-full h-full object-cover z-0 scale-105 group-hover:scale-100 transition-transform duration-700" />
+               <img src="https://res.cloudinary.com/dmghhstx4/image/upload/v1779799679/pexels-alice1-7080938_hxy3us.jpg" alt="Integration APIs" className="absolute inset-0 w-full h-full object-cover z-0 scale-105 group-hover:scale-100 transition-transform duration-700" />
                <div className="absolute inset-0 bg-[var(--color-navy-950)]/80 z-0 mix-blend-multiply" />
                <div className="absolute inset-0 bg-gradient-to-l from-[var(--color-navy-950)] to-[var(--color-navy-900)]/90 z-0" />
 

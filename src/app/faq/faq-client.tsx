@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import {
   ChevronDown, ChevronRight, ArrowRight,
-  Zap, Shield, Settings, DollarSign, HeadphonesIcon, HelpCircle,
+  Zap, Shield, Settings, DollarSign, HeadphonesIcon, HelpCircle, MessageCircle, FileText,
 } from "lucide-react";
 import { Container } from "@/components/ui/container";
 
@@ -193,39 +193,42 @@ const FAQ_SECTIONS = [
 
 function AccordionItem({
   item,
-  isOpen,
-  onToggle,
+  isActive,
+  onClick,
 }: {
   item: { id: string; question: string; answer: string };
-  isOpen: boolean;
-  onToggle: () => void;
+  isActive: boolean;
+  onClick: () => void;
 }) {
   return (
-    <div className="border-b border-[var(--color-gray-200)] last:border-0 group/item">
+    <div className={`group rounded-[24px] border transition-all duration-300 ${isActive ? 'border-[var(--color-green-400)] bg-white shadow-lg shadow-[var(--color-navy-900)]/5' : 'border-[var(--color-gray-200)] bg-white shadow-sm hover:border-[var(--color-green-300)] hover:shadow-md'}`}>
       <button
-        onClick={onToggle}
-        className="flex w-full items-start justify-between gap-4 py-6 text-left transition-colors hover:text-[var(--color-green-600)]"
-        aria-expanded={isOpen}
+        onClick={onClick}
+        className="flex w-full items-start justify-between gap-4 p-6 md:p-8 text-left"
+        aria-expanded={isActive}
       >
-        <span
-          className="text-base md:text-lg font-black uppercase tracking-tight text-[var(--color-navy-950)] leading-tight group-hover/item:text-[var(--color-green-700)] transition-colors"
-          style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
-        >
-          {item.question}
-        </span>
-        <div className={`mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${isOpen ? "border-[var(--color-green-500)] bg-[var(--color-green-50)]" : "border-[var(--color-gray-200)] bg-white group-hover/item:border-[var(--color-green-200)]"}`}>
-          <ChevronDown
-            className={`size-4 shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180 text-[var(--color-green-600)]" : "text-[var(--color-gray-400)] group-hover/item:text-[var(--color-green-500)]"}`}
-          />
+        <div className="flex-1">
+          <h3
+            className={`text-lg md:text-xl font-bold tracking-tight leading-snug transition-colors ${isActive ? 'text-[var(--color-green-700)]' : 'text-[var(--color-navy-950)] group-hover:text-[var(--color-green-600)]'}`}
+            style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+          >
+            {item.question}
+          </h3>
+        </div>
+        <div className={`shrink-0 rounded-full p-2 border transition-all duration-300 ${isActive ? 'rotate-180 bg-[var(--color-navy-950)] border-[var(--color-navy-950)] text-white shadow-md' : 'bg-[var(--color-gray-50)] border-[var(--color-gray-200)] text-[var(--color-gray-400)] group-hover:bg-[var(--color-navy-50)] group-hover:border-[var(--color-navy-200)] group-hover:text-[var(--color-navy-600)]'}`}>
+          <ChevronDown className="size-5" />
         </div>
       </button>
-      <div
-        className={`grid transition-all duration-300 ease-in-out ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
+      
+      <div 
+        className={`grid transition-all duration-300 ease-in-out ${isActive ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
       >
         <div className="overflow-hidden">
-          <p className="pb-6 pr-8 text-sm md:text-base font-medium leading-relaxed text-[var(--color-gray-600)]">
-            {item.answer}
-          </p>
+          <div className="px-6 pb-6 md:px-8 md:pb-8 pt-0 text-base md:text-lg font-medium leading-relaxed text-[var(--color-gray-600)]">
+            <div className="border-t border-[var(--color-gray-100)] pt-6">
+              {item.answer}
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -233,256 +236,171 @@ function AccordionItem({
 }
 
 export function FAQClient() {
-  const [activeSection, setActiveSection] = useState("general");
-  const [openItems, setOpenItems] = useState<Record<string, boolean>>({});
+  const [activeCategory, setActiveCategory] = useState("general");
+  const [activeIndex, setActiveIndex] = useState<string | null>(null);
 
   const toggleItem = (id: string) => {
-    setOpenItems((prev) => ({ ...prev, [id]: !prev[id] }));
+    setActiveIndex(activeIndex === id ? null : id);
   };
 
   return (
     <>
       {/* ── HERO ── */}
-      <section className="relative overflow-hidden border-b border-[var(--color-gray-200)]">
+      <section className="relative overflow-hidden border-b border-[var(--color-gray-200)] bg-white">
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:48px_48px]" />
-        <div className="pointer-events-none absolute right-0 top-0 h-[400px] w-[400px] translate-x-1/3 -translate-y-1/4 rounded-full bg-[var(--color-green-500)]/5 blur-[80px]" />
-
         <Container className="relative z-10 py-16 md:py-24">
-          <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-[var(--color-navy-200)] bg-white px-5 py-2 shadow-sm">
-            <span className="flex size-2 rounded-full bg-[var(--color-green-500)] animate-pulse" />
-            <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-navy-950)]">
-              Frequently Asked Questions
-            </span>
-          </div>
-
           <h1
-            className="mb-6 text-5xl font-black uppercase leading-[0.92] tracking-tighter md:text-7xl text-balance"
+            className="mb-6 text-5xl font-extrabold leading-[0.92] tracking-tighter md:text-7xl text-balance"
             style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
           >
-            <span className="text-[var(--color-green-500)]">Questions</span>
+            <span className="text-[var(--color-navy-950)]">Answers to</span>
             <br />
-            <span className="text-[var(--color-navy-950)]">Answered.</span>
+            <span className="text-[var(--color-green-500)]">Your Questions.</span>
           </h1>
-          <p className="max-w-xl text-base font-medium leading-relaxed text-[var(--color-gray-600)] md:text-lg">
-            Everything you need to know about OpsFlo — from how we work offline to what ROI to expect.{" "}
-            <Link href="/contact" className="font-bold text-[var(--color-green-700)] underline underline-offset-4 hover:text-[var(--color-green-600)] transition-colors">
-              Can&apos;t find your answer? Talk to our team.
-            </Link>
+          <p className="max-w-xl text-lg font-medium leading-relaxed text-[var(--color-gray-600)] md:text-xl">
+            Everything you need to know about OpsFlo&apos;s implementation, pricing, security, and ROI. Can&apos;t find what you&apos;re looking for? Reach out to our team.
           </p>
 
-          <div className="mt-12 flex flex-wrap gap-6 border-t border-[var(--color-gray-200)] pt-8">
-            {[
-              { value: `${FAQ_SECTIONS.reduce((a, s) => a + s.items.length, 0)}`, label: "questions answered" },
-              { value: "30-day", label: "risk-free pilot" },
-              { value: "2-4wk", label: "avg. go-live" },
-            ].map((s) => (
-              <div key={s.label} className="flex items-baseline gap-3 rounded-2xl bg-[var(--color-gray-50)] px-5 py-3 border border-[var(--color-gray-100)]">
-                <span
-                  className="text-3xl font-black text-[var(--color-navy-950)]"
-                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+          <div className="mt-10 flex flex-wrap gap-3">
+            {FAQ_SECTIONS.map((section) => {
+              const Icon = section.icon;
+              const isSelected = activeCategory === section.id;
+              return (
+                <button
+                  key={section.id}
+                  onClick={() => {
+                    setActiveCategory(section.id);
+                    setActiveIndex(null);
+                  }}
+                  className={`inline-flex items-center gap-2 rounded-[16px] border px-4 py-3 text-xs md:text-sm font-bold tracking-widest transition-all duration-300 ${
+                    isSelected
+                      ? "border-[var(--color-green-500)] bg-[var(--color-green-50)] text-[var(--color-green-700)] shadow-sm"
+                      : "border-[var(--color-gray-200)] bg-white text-[var(--color-gray-500)] hover:border-[var(--color-green-300)] hover:shadow-md hover:-translate-y-0.5 hover:text-[var(--color-navy-950)]"
+                  } uppercase`}
                 >
-                  {s.value}
-                </span>
-                <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)]">
-                  {s.label}
-                </span>
-              </div>
-            ))}
+                  <Icon className="size-4" />
+                  {section.label}
+                </button>
+              );
+            })}
           </div>
         </Container>
       </section>
 
       {/* ── FAQ BODY ── */}
-      <section className="py-16 md:py-24 bg-[var(--color-gray-50)]/40">
+      <section className="py-16 md:py-24 bg-[var(--color-gray-50)]">
         <Container>
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
+            <div className="lg:col-span-8 space-y-6">
+              {FAQ_SECTIONS.filter((s) => s.id === activeCategory).map((section) => (
+                <div key={section.id} className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                  {section.items.map((item) => (
+                    <AccordionItem
+                      key={item.id}
+                      item={item}
+                      isActive={activeIndex === item.id}
+                      onClick={() => toggleItem(item.id)}
+                    />
+                  ))}
+                </div>
+              ))}
+            </div>
 
-            {/* ── LEFT NAV (Sticky) ── */}
-            <nav className="lg:col-span-3">
-              <div className="sticky top-24 space-y-6">
-                <div className="space-y-1">
-                  <p className="mb-4 text-xs font-bold uppercase tracking-widest text-[var(--color-gray-400)] pl-4">
-                    Jump to Section
+            <aside className="lg:col-span-4 space-y-6">
+              <div className="rounded-[24px] bg-[var(--color-navy-950)] p-8 shadow-xl relative overflow-hidden group border border-[var(--color-navy-700)]">
+                <div className="absolute right-0 top-0 w-64 h-64 bg-[radial-gradient(ellipse_at_center,_var(--color-green-500)_0%,_transparent_70%)] opacity-10 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none translate-x-1/3 -translate-y-1/3" />
+                <div className="relative z-10">
+                  <MessageCircle className="mb-4 size-8 text-[var(--color-green-500)]" />
+                  <h3
+                    className="mb-2 text-2xl font-bold tracking-tighter text-white leading-tight"
+                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                  >
+                    Need More Help?
+                  </h3>
+                  <p className="mb-6 text-sm font-medium leading-relaxed text-[var(--color-gray-400)]">
+                    Our team is ready to answer any specific questions about how OpsFlo fits your operation.
                   </p>
-                  {FAQ_SECTIONS.map((section) => {
-                    const Icon = section.icon;
-                    const isActive = activeSection === section.id;
+                  <Link
+                    href="/contact"
+                    className="group/cta mb-3 flex w-full items-center justify-between rounded-xl bg-[var(--color-green-500)] px-5 py-4 text-sm font-bold tracking-wider text-[var(--color-navy-950)] transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-400)] uppercase"
+                  >
+                    Contact Sales
+                    <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-1" />
+                  </Link>
+                  <a
+                    href="mailto:support@opsflo.com"
+                    className="group/cta2 flex w-full items-center justify-between rounded-xl border border-[var(--color-navy-700)] px-5 py-4 text-sm font-bold tracking-wider text-[var(--color-gray-300)] transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-[var(--color-gray-400)] hover:text-white uppercase"
+                  >
+                    Email Support
+                    <ChevronRight className="size-4 transition-transform group-hover/cta2:translate-x-1" />
+                  </a>
+                </div>
+              </div>
+
+              <div className="rounded-[24px] bg-[var(--color-gray-50)] border border-[var(--color-gray-200)] p-8 shadow-sm hover:border-[var(--color-green-300)] transition-colors duration-500">
+                <p className="mb-5 text-xs font-bold uppercase tracking-widest text-[var(--color-navy-900)]">
+                  Additional Resources
+                </p>
+                <ul className="space-y-3">
+                  {[
+                    { label: "Case Studies", path: "/case-studies", icon: FileText },
+                    { label: "ROI Calculator", path: "/roi-calculator", icon: Shield },
+                    { label: "Solutions by Role", path: "/solutions/operations", icon: Settings },
+                  ].map((link) => {
+                    const Icon = link.icon;
                     return (
-                      <button
-                        key={section.id}
-                        onClick={() => setActiveSection(section.id)}
-                        className={`group flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-sm font-bold tracking-wide uppercase transition-all ${
-                          isActive
-                            ? "bg-[var(--color-navy-950)] text-white shadow-sm"
-                            : "text-[var(--color-gray-500)] hover:bg-white hover:text-[var(--color-navy-950)] hover:shadow-sm"
-                        }`}
-                      >
-                        <Icon
-                          className={`size-4 shrink-0 transition-colors ${
-                            isActive
-                              ? "text-[var(--color-green-400)]"
-                              : "text-[var(--color-gray-400)] group-hover:text-[var(--color-green-500)]"
-                          }`}
-                        />
-                        {section.label}
-                        <ChevronRight
-                          className={`ml-auto size-4 transition-transform ${
-                            isActive ? "text-[var(--color-green-400)]" : "text-transparent group-hover:text-[var(--color-gray-300)]"
-                          }`}
-                        />
-                      </button>
+                      <li key={link.path}>
+                        <Link
+                          href={link.path}
+                          className="group flex items-center justify-between rounded-xl px-4 py-3.5 text-sm font-bold text-[var(--color-navy-950)] transition-all duration-300 shadow-sm border border-[var(--color-gray-200)] bg-white hover:-translate-y-1 hover:shadow-md hover:border-[var(--color-green-400)]"
+                        >
+                          <div className="flex items-center gap-3">
+                            <Icon className="size-4 text-[var(--color-green-500)]" />
+                            <span>{link.label}</span>
+                          </div>
+                          <ChevronRight className="size-4 text-[var(--color-gray-300)] transition-transform group-hover:translate-x-1 group-hover:text-[var(--color-green-500)]" />
+                        </Link>
+                      </li>
                     );
                   })}
-                </div>
-
-                <div className="rounded-3xl border border-[var(--color-gray-200)] bg-white p-6 shadow-sm overflow-hidden relative group">
-                  <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
-                    <HeadphonesIcon className="size-20" />
-                  </div>
-                  <div className="relative z-10">
-                    <p className="text-xs font-bold uppercase tracking-widest text-[var(--color-green-600)] mb-2">
-                      Still unsure?
-                    </p>
-                    <p className="text-sm font-medium text-[var(--color-gray-600)] mb-5">
-                      Talk to our team. 15 minutes, no pressure, specific to your operation.
-                    </p>
-                    <Link
-                      href="/contact"
-                      className="group/cta flex w-full items-center justify-between rounded-xl border border-[var(--color-navy-700)] bg-[var(--color-navy-950)] px-4 py-3 text-xs font-bold uppercase tracking-wider text-white transition-all shadow-sm hover:-translate-y-0.5 hover:shadow-md hover:bg-[var(--color-navy-900)]"
-                    >
-                      Book a Call
-                      <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-1" />
-                    </Link>
-                  </div>
-                </div>
+                </ul>
               </div>
-            </nav>
-
-            {/* ── FAQ CONTENT ── */}
-            <div className="lg:col-span-9 space-y-12">
-              {FAQ_SECTIONS.map((section, sectionIdx) => {
-                if (section.id !== activeSection) return null;
-                const Icon = section.icon;
-                return (
-                  <div key={section.id} id={section.id} className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <div className="mb-6 flex items-center gap-4">
-                      <div className="flex size-12 items-center justify-center rounded-xl bg-[var(--color-navy-950)] text-[var(--color-green-500)] shadow-sm">
-                        <Icon className="size-6" />
-                      </div>
-                      <div>
-                        <h2
-                          className="text-2xl md:text-3xl font-black uppercase tracking-tight text-[var(--color-navy-950)]"
-                          style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
-                        >
-                          {section.label}
-                        </h2>
-                        <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)]">
-                          {section.items.length} questions
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="rounded-3xl border border-[var(--color-gray-200)] bg-white px-6 md:px-10 shadow-sm">
-                      {section.items.map((item) => (
-                        <AccordionItem
-                          key={item.id}
-                          item={item}
-                          isOpen={!!openItems[item.id]}
-                          onToggle={() => toggleItem(item.id)}
-                        />
-                      ))}
-                    </div>
-
-                    <div className="mt-8 flex justify-end">
-                      {sectionIdx < FAQ_SECTIONS.length - 1 && (
-                        <button
-                          onClick={() => {
-                            setActiveSection(FAQ_SECTIONS[sectionIdx + 1].id);
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                          }}
-                          className="group flex items-center gap-2 rounded-full border border-[var(--color-gray-200)] bg-white px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)] transition-all shadow-sm hover:shadow-md hover:border-[var(--color-green-400)] hover:text-[var(--color-navy-950)]"
-                        >
-                          Next: {FAQ_SECTIONS[sectionIdx + 1].label}
-                          <ChevronRight className="size-4 transition-transform group-hover:translate-x-1" />
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
-
-              {/* Still have questions */}
-              <div className="rounded-3xl border border-[var(--color-navy-800)] bg-[var(--color-navy-950)] p-8 md:p-12 shadow-xl relative overflow-hidden group">
-                <div className="absolute right-[-10%] top-[-10%] w-[100%] h-[100%] bg-[radial-gradient(ellipse_at_center,_var(--color-green-500)_0%,_transparent_60%)] opacity-10 pointer-events-none transition-opacity duration-700 group-hover:opacity-20" />
-                <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center gap-8 justify-between">
-                  <div>
-                    <p className="text-xs font-bold uppercase tracking-widest text-[var(--color-green-500)] mb-2">
-                      Didn&apos;t find your answer?
-                    </p>
-                    <h3
-                      className="text-3xl font-black uppercase tracking-tight text-white mb-3"
-                      style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
-                    >
-                      Talk to Our Team
-                    </h3>
-                    <p className="text-sm font-medium text-[var(--color-gray-400)] max-w-sm">
-                      15 minutes, specific to your operation, zero pressure. We&apos;ll answer anything.
-                    </p>
-                  </div>
-                  <div className="flex shrink-0 flex-col gap-3 w-full sm:w-[220px]">
-                    <Link
-                      href="/contact"
-                      className="group/cta flex items-center justify-between rounded-xl bg-[var(--color-green-500)] px-6 py-4 text-sm font-bold uppercase tracking-widest text-[var(--color-navy-950)] transition-all shadow-sm hover:-translate-y-0.5 hover:shadow-md hover:bg-[var(--color-green-400)]"
-                    >
-                      Book a Call{" "}
-                      <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-1" />
-                    </Link>
-                    <Link
-                      href="/roi-calculator"
-                      className="group/cta2 flex items-center justify-between rounded-xl border border-[var(--color-navy-700)] bg-transparent px-6 py-4 text-sm font-bold uppercase tracking-widest text-white transition-all hover:-translate-y-0.5 hover:border-[var(--color-gray-500)] hover:bg-[var(--color-navy-900)]"
-                    >
-                      Calculate ROI{" "}
-                      <ChevronRight className="size-4 transition-transform group-hover/cta2:translate-x-1" />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </aside>
           </div>
         </Container>
       </section>
 
       {/* ── BOTTOM CTA ── */}
-      <section className="relative overflow-hidden border-t border-[var(--color-gray-200)] bg-[var(--color-navy-950)] py-20">
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:48px_48px]" />
+      <section className="relative overflow-hidden border-t border-[var(--color-gray-200)] bg-white py-24">
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:48px_48px]" />
         <Container className="relative z-10">
           <div className="flex flex-col items-start justify-between gap-10 lg:flex-row lg:items-center">
             <div className="max-w-2xl">
               <h2
-                className="text-4xl font-black uppercase leading-[0.92] tracking-tighter md:text-5xl text-balance"
+                className="text-5xl font-extrabold leading-[0.92] tracking-tighter md:text-6xl text-balance"
                 style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
               >
-                <span className="text-[var(--color-green-500)]">Ready to See</span>
+                <span className="text-[var(--color-navy-950)]">Ready for Your Own</span>
                 <br />
-                <span className="text-white">OpsFlo in Action?</span>
+                <span className="text-[var(--color-green-500)]">Success Story?</span>
               </h2>
-              <p className="mt-6 text-base font-medium leading-relaxed text-[var(--color-gray-400)]">
-                A 30-day pilot with your operation answers every remaining question — with your data, your crews, and your results on the line.
+              <p className="mt-6 text-lg font-medium leading-relaxed text-[var(--color-gray-600)]">
+                Start a 30-day pilot. See results with your crews, your data, and your actual workflows before committing long-term.
               </p>
             </div>
-            <div className="flex w-full flex-col gap-3 lg:w-[380px]">
+            <div className="flex w-full flex-col gap-4 lg:w-[380px]">
               <Link
                 href="/contact"
-                className="group/cta flex w-full items-center justify-between rounded-xl bg-[var(--color-green-500)] px-6 py-5 text-sm font-bold uppercase tracking-widest text-[var(--color-navy-950)] transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-400)]"
+                className="group/cta flex w-full items-center justify-between rounded-xl bg-[var(--color-green-500)] px-6 py-5 text-sm font-bold tracking-widest text-[var(--color-navy-950)] shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-400)] uppercase"
               >
-                <span>Start a 30-Day Pilot</span>
+                <span>Start 30-Day Pilot</span>
                 <ArrowRight className="size-5 transition-transform group-hover/cta:translate-x-1" />
               </Link>
               <Link
-                href="/case-studies"
-                className="group/cta2 flex w-full items-center justify-between rounded-xl border border-[var(--color-navy-700)] bg-[var(--color-navy-950)] px-6 py-5 text-sm font-bold uppercase tracking-widest text-white transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-[var(--color-gray-500)] hover:bg-[var(--color-navy-900)]"
+                href="/roi-calculator"
+                className="group/cta2 flex w-full items-center justify-between rounded-xl border border-[var(--color-gray-200)] bg-white px-6 py-5 text-sm font-bold tracking-widest text-[var(--color-navy-950)] shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-gray-50)] hover:border-[var(--color-gray-300)] uppercase"
               >
-                <span>View Customer Stories</span>
+                <span>Calculate Potential ROI</span>
                 <ArrowRight className="size-5 transition-transform group-hover/cta2:translate-x-1" />
               </Link>
             </div>

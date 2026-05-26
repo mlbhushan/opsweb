@@ -14,7 +14,7 @@ const data: ModulePageData = {
   eyebrow: "Platform / Carbon & Climate",
   headline: "**Track Emissions**. Prove Compliance. Reduce Impact.",
   body: "Carbon & Climate gives oilfield operators a clear, auditable view of operational emissions  -  from fleet fuel consumption to equipment runtime  -  tied to the jobs and assets that generate them.",
-  heroImage: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1400&q=80",
+
   problem: {
     headline: "**Emissions Reporting** Should Not Require a Consulting Firm",
     points: [
@@ -58,7 +58,7 @@ const data: ModulePageData = {
     headline: "**Built Into Operations**. Not Bolted On.",
     body: "Carbon tracking that works because it pulls from the same data your crews already capture  -  job logs, equipment hours, fuel receipts  -  without adding a single extra step to the field workflow.",
   },
-  problemImage: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80",
+  heroImage: "/images/platform/carbon_hero.png",
   solutionImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
   relatedModules: [
     {

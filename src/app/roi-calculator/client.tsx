@@ -40,27 +40,27 @@ function SliderInput({
   format: (v: number) => string;
 }) {
   return (
-    <div className="rounded-2xl border border-[var(--color-gray-200)] bg-white p-4 md:p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md hover:border-[var(--color-green-400)]">
-      <div className="mb-3 md:mb-4 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2">
+    <div className="rounded-[20px] border border-[var(--color-gray-200)] bg-white p-3 md:p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[var(--color-navy-900)]/5 hover:border-[var(--color-green-400)]">
+      <div className="mb-2 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2">
         <div>
           <div
-            className="text-sm font-black uppercase tracking-tight text-[var(--color-navy-950)] leading-none"
+            className="text-sm font-extrabold tracking-tight text-[var(--color-navy-950)] leading-none"
             style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
           >
             {label}
           </div>
-          <div className="mt-1.5 text-xs font-medium text-[var(--color-gray-500)] leading-none">
+          <div className="mt-1.5 text-xs font-medium text-[var(--color-gray-600)] leading-none">
             {hint}
           </div>
         </div>
         <div
-          className="shrink-0 rounded-full bg-[var(--color-green-50)] px-3 py-1.5 text-sm md:text-base font-black text-[var(--color-green-700)] shadow-sm border border-[var(--color-green-200)]"
+          className="shrink-0 rounded-full bg-[var(--color-navy-950)] px-3 py-1.5 text-sm md:text-base font-bold tracking-widest text-[var(--color-green-400)] shadow-sm"
           style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
         >
           {format(value)}
         </div>
       </div>
-      <div className="relative mt-4">
+      <div className="relative mt-3">
         <input
           type="range"
           min={min}
@@ -130,7 +130,7 @@ export default function ROICalculatorClient() {
                 </div>
 
                 <h1
-                  className="mb-6 text-5xl font-black uppercase leading-[0.92] tracking-tighter md:text-7xl text-balance"
+                  className="mb-6 text-5xl font-extrabold leading-[0.92] tracking-tighter md:text-7xl text-balance"
                   style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                 >
                   <span className="text-[var(--color-navy-950)]">Calculate Your</span>
@@ -141,23 +141,23 @@ export default function ROICalculatorClient() {
                   Enter your operational data below. In 60 seconds, see exactly how much revenue you&apos;re leaving on the table — and what OpsFlo can recover for your business.
                 </p>
 
-                <div className="mt-10 grid grid-cols-3 gap-0 rounded-3xl border border-[var(--color-gray-200)] bg-white shadow-sm overflow-hidden divide-x divide-[var(--color-gray-200)]">
+                <div className="mt-10 grid grid-cols-3 gap-0 rounded-[24px] border border-[var(--color-gray-200)] bg-white shadow-lg shadow-[var(--color-navy-900)]/5 overflow-hidden divide-x divide-[var(--color-gray-200)]">
                   {[
                     { value: "5-15%", label: "Revenue Recovered" },
                     { value: "85%", label: "Faster Billing" },
                     { value: "3-6mo", label: "Avg. Payback" },
                   ].map((s, i) => (
-                    <div key={s.label} className="p-4 md:p-6 text-center bg-white transition-colors hover:bg-[var(--color-gray-50)]">
-                      <div className="text-2xl md:text-3xl font-black text-[var(--color-navy-950)]" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                    <div key={s.label} className="p-4 md:p-6 text-center bg-white transition-colors hover:bg-[var(--color-gray-50)] group">
+                      <div className="text-2xl md:text-3xl font-bold text-[var(--color-navy-950)] group-hover:text-[var(--color-green-600)] transition-colors" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
                         {s.value}
                       </div>
-                      <div className="mt-2 text-[10px] md:text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)]">{s.label}</div>
+                      <div className="mt-2 text-[10px] md:text-xs font-bold tracking-widest text-[var(--color-gray-500)] uppercase">{s.label}</div>
                     </div>
                   ))}
                 </div>
               </div>
               
-              <div className="relative aspect-square md:aspect-video lg:aspect-square w-full overflow-hidden rounded-3xl border border-[var(--color-gray-200)] shadow-xl">
+              <div className="relative aspect-square md:aspect-video lg:aspect-square w-full overflow-hidden rounded-[24px] border border-[var(--color-gray-200)] shadow-xl shadow-[var(--color-navy-900)]/10">
                 <Image
                   src="/images/hero/refinery-tower.jpg"
                   alt="Oilfield operations facility"
@@ -185,7 +185,7 @@ export default function ROICalculatorClient() {
                   </span>
                 </div>
 
-                <div className="grid gap-3 md:gap-4">
+                <div className="grid gap-2 md:gap-3">
                   <SliderInput
                     label="Field Crews"
                     hint="Total number of active field crews"
@@ -236,7 +236,7 @@ export default function ROICalculatorClient() {
                 </div>
                 
                 {/* How we calculate */}
-                <div className="mt-10 rounded-3xl border border-[var(--color-gray-200)] bg-white p-6 md:p-8 shadow-sm">
+                <div className="mt-10 rounded-[24px] border border-[var(--color-gray-200)] bg-white p-6 md:p-8 shadow-sm hover:border-[var(--color-green-300)] transition-colors duration-500">
                   <p className="mb-6 text-xs font-bold uppercase tracking-widest text-[var(--color-navy-950)] border-b border-[var(--color-gray-100)] pb-4">
                     How We Calculate This
                   </p>
@@ -278,14 +278,14 @@ export default function ROICalculatorClient() {
                   </span>
                 </div>
 
-                <div className="rounded-3xl border border-[var(--color-navy-800)] bg-[var(--color-navy-950)] shadow-xl overflow-hidden flex flex-col transition-all relative group">
-                  <div className="absolute right-[-20%] top-[-10%] w-[150%] h-[150%] bg-[radial-gradient(ellipse_at_center,_var(--color-green-500)_0%,_transparent_50%)] opacity-10 pointer-events-none transition-opacity duration-700 group-hover:opacity-20" />
-                  <div className="p-8 md:p-10 space-y-10 relative z-10">
+                <div className="rounded-[24px] border border-[var(--color-navy-700)] bg-[var(--color-navy-950)] shadow-xl overflow-hidden flex flex-col transition-all relative group">
+                  <div className="absolute right-0 top-0 w-96 h-96 bg-[radial-gradient(ellipse_at_center,_var(--color-green-500)_0%,_transparent_70%)] opacity-10 pointer-events-none transition-opacity duration-700 group-hover:opacity-20 translate-x-1/3 -translate-y-1/3" />
+                  <div className="p-6 md:p-8 space-y-6 relative z-10">
                     <div>
-                      <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-gray-400)] mb-3">
+                      <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-gray-400)] mb-1.5">
                         Annual Revenue At Risk
                       </div>
-                      <div className="text-5xl lg:text-6xl font-black text-rose-500 tracking-tighter" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                      <div className="text-4xl lg:text-5xl font-extrabold text-rose-500 tracking-tighter" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
                         {fmt(results.revenueAtRisk)}
                       </div>
                     </div>
@@ -293,40 +293,40 @@ export default function ROICalculatorClient() {
                     <div className="h-px w-full bg-gradient-to-r from-[var(--color-navy-800)] to-transparent" />
 
                     <div>
-                      <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-gray-400)] mb-3">
+                      <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-gray-400)] mb-1.5">
                         Projected Recovery
                       </div>
-                      <div className="text-5xl lg:text-6xl font-black text-[var(--color-green-400)] tracking-tighter drop-shadow-[0_0_15px_rgba(74,222,128,0.2)]" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                      <div className="text-4xl lg:text-5xl font-extrabold text-[var(--color-green-400)] tracking-tighter drop-shadow-[0_0_15px_rgba(74,222,128,0.2)]" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
                         {fmt(results.recoveredRevenue)}
                       </div>
                     </div>
 
                     <div className="h-px w-full bg-gradient-to-r from-[var(--color-navy-800)] to-transparent" />
 
-                    <div className="grid grid-cols-2 gap-6">
+                    <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-gray-400)] mb-2">
+                        <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-gray-400)] mb-1.5">
                           New Billing Cycle
                         </div>
-                        <div className="text-3xl font-black text-white tracking-tighter" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                        <div className="text-2xl font-extrabold text-white tracking-tighter" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
                           {results.billingReduction} Days
                         </div>
                       </div>
                       <div>
-                        <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-gray-400)] mb-2">
+                        <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-gray-400)] mb-1.5">
                           Payback Period
                         </div>
-                        <div className="text-3xl font-black text-white tracking-tighter" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                        <div className="text-2xl font-extrabold text-white tracking-tighter" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
                           {results.paybackMonths} {results.paybackMonths === 1 ? "Mo" : "Mos"}
                         </div>
                       </div>
                     </div>
 
                     <div>
-                      <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-gray-400)] mb-2">
+                      <div className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-gray-400)] mb-1.5">
                         Projected ROI
                       </div>
-                      <div className="text-4xl font-black text-[var(--color-green-400)] tracking-tighter" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                      <div className="text-3xl font-extrabold text-[var(--color-green-400)] tracking-tighter" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
                         {results.roi}%
                       </div>
                     </div>
@@ -334,7 +334,7 @@ export default function ROICalculatorClient() {
 
                   <Link
                     href={`/contact?crews=${crews}&jobs=${monthlyJobs}&ticket=${avgTicket}`}
-                    className="group/btn relative z-10 flex items-center justify-between bg-[var(--color-green-500)] px-8 py-6 text-sm font-bold uppercase tracking-widest text-[var(--color-navy-950)] transition-colors hover:bg-[var(--color-green-400)]"
+                    className="group/btn relative z-10 flex items-center justify-between bg-[var(--color-green-500)] px-6 py-4 text-sm font-bold tracking-widest text-[var(--color-navy-950)] transition-colors hover:bg-[var(--color-green-400)] uppercase"
                   >
                     <span>Get Your Real Number</span>
                     <ArrowRight className="size-5 transition-transform group-hover/btn:translate-x-1" />
@@ -353,7 +353,7 @@ export default function ROICalculatorClient() {
             <div className="flex flex-col items-start justify-between gap-10 lg:flex-row lg:items-center">
               <div className="max-w-2xl">
                 <h2
-                  className="text-5xl font-black uppercase leading-[0.92] tracking-tighter md:text-6xl text-balance"
+                  className="text-5xl font-extrabold leading-[0.92] tracking-tighter md:text-6xl text-balance"
                   style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                 >
                   <span className="text-[var(--color-navy-950)]">The Number</span>
@@ -367,14 +367,14 @@ export default function ROICalculatorClient() {
               <div className="flex w-full flex-col gap-4 lg:w-[380px]">
                 <Link
                   href="/contact"
-                  className="group/cta flex w-full items-center justify-between rounded-xl bg-[var(--color-green-500)] px-6 py-5 text-sm font-bold uppercase tracking-widest text-[var(--color-navy-950)] shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-400)]"
+                  className="group/cta flex w-full items-center justify-between rounded-xl bg-[var(--color-green-500)] px-6 py-5 text-sm font-bold tracking-widest text-[var(--color-navy-950)] shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-400)] uppercase"
                 >
                   <span>Get Your Real Number</span>
                   <ArrowRight className="size-5 transition-transform group-hover/cta:translate-x-1" />
                 </Link>
                 <Link
                   href="/case-studies"
-                  className="group/cta2 flex w-full items-center justify-between rounded-xl border border-[var(--color-gray-200)] bg-white px-6 py-5 text-sm font-bold uppercase tracking-widest text-[var(--color-navy-950)] shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-gray-50)] hover:border-[var(--color-gray-300)]"
+                  className="group/cta2 flex w-full items-center justify-between rounded-xl border border-[var(--color-gray-200)] bg-white px-6 py-5 text-sm font-bold tracking-widest text-[var(--color-navy-950)] shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-gray-50)] hover:border-[var(--color-gray-300)] uppercase"
                 >
                   <span>See Customer Proof</span>
                   <ArrowRight className="size-5 transition-transform group-hover/cta2:translate-x-1" />
