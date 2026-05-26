@@ -101,7 +101,7 @@ export function PainStrip() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={viewportOnce}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="w-full xl:flex-1 grid grid-cols-1 md:grid-cols-3 -mx-8"
+            className="w-full xl:flex-1 grid grid-cols-1 md:grid-cols-3 md:-mx-8"
           >
             {painStrip.items.map((item, index) => (
               <StatItem
