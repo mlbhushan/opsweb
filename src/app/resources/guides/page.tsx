@@ -335,12 +335,6 @@ export default async function GuidesPage() {
                       See OpsFlo Live
                     </h3>
                     <p className="mb-8 text-sm font-medium leading-relaxed text-[var(--color-gray-600)]">
-                      Guides are a start. A 15-minute diagnostic of your operation shows exactly where you are losing revenue today.
-                    </p>
-                    <Link
-                      href="/contact"
-                      className="group/cta mb-3 flex w-full items-center justify-between rounded-xl bg-[var(--color-navy-950)] px-5 py-4 text-sm font-bold tracking-wider text-white transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-500)] hover:text-[var(--color-navy-950)] uppercase"
-                    >
                       See how much revenue your operation is leaving unbilled every month.
                     </p>
                     <Link
