@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ChevronRight, TrendingUp, Shield, Zap, BarChart3, Quote, Briefcase, Calculator, Tag } from "lucide-react";
+import { ArrowRight, ChevronRight, TrendingUp, Shield, Zap, BarChart3, Quote, Briefcase, Calculator, Tag, Search, Pin, Folder } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
 import { SiteHeader } from "@/components/sections/site-header";
 import { SiteFooter } from "@/components/sections/site-footer";
@@ -280,54 +280,135 @@ export default async function CaseStudiesPage() {
               {/* ── SIDEBAR ── */}
               <aside className="lg:col-span-4 space-y-6">
 
-                {/* Calculator CTA */}
+                {/* Search */}
                 <div className="rounded-[24px] bg-white border border-[var(--color-gray-200)] p-8 shadow-sm hover:border-[var(--color-green-300)] transition-colors duration-500">
-                  <div className="flex size-12 items-center justify-center rounded-xl bg-[var(--color-green-50)] text-[var(--color-green-600)] mb-6 border border-[var(--color-green-200)]">
-                    <Calculator className="size-6" />
-                  </div>
-                  <h3
-                    className="mb-2 text-2xl font-bold tracking-tight text-[var(--color-navy-950)] leading-tight"
-                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
-                  >
-                    Calculate Your ROI
-                  </h3>
-                  <p className="mb-6 text-sm font-medium leading-relaxed text-[var(--color-gray-600)]">
-                    Plug in your crew count and ticket volume to see exactly what OpsFlo could recover for your operation.
-                  </p>
-                  <Link
-                    href="/roi-calculator"
-                    className="group/cta flex w-full items-center justify-between rounded-xl bg-[var(--color-navy-950)] px-5 py-4 text-sm font-bold tracking-wider text-white transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-500)] hover:text-[var(--color-navy-950)] uppercase"
-                  >
-                    Open Calculator
-                    <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-1" />
-                  </Link>
+                  <form className="relative" action="/case-studies">
+                    <input
+                      name="q"
+                      type="text"
+                      placeholder="Search case studies..."
+                      className="w-full rounded-xl border border-[var(--color-gray-200)] bg-[var(--color-gray-50)] py-4 pl-5 pr-14 text-sm font-medium focus:border-[var(--color-green-400)] focus:bg-white focus:outline-none transition-all shadow-sm focus:ring-4 focus:ring-[var(--color-green-500)]/10"
+                    />
+                    <button
+                      type="submit"
+                      className="absolute bottom-1.5 right-1.5 top-1.5 flex w-12 items-center justify-center rounded-lg bg-[var(--color-navy-950)] text-white transition-all shadow-sm hover:bg-[var(--color-green-500)] hover:text-[var(--color-navy-950)]"
+                    >
+                      <Search className="size-5" />
+                    </button>
+                  </form>
                 </div>
 
-                {/* Related Solutions */}
-                <div className="rounded-[24px] bg-[var(--color-gray-50)] border border-[var(--color-gray-200)] p-8 shadow-sm hover:border-[var(--color-green-300)] transition-colors duration-500">
+                {/* CTA card */}
+                <div className="rounded-[24px] bg-white border border-[var(--color-gray-200)] p-8 shadow-xl shadow-[var(--color-navy-900)]/5 relative overflow-hidden group">
+                  <div className="absolute right-0 top-0 w-32 h-32 bg-[radial-gradient(ellipse_at_center,_var(--color-green-500)_0%,_transparent_70%)] opacity-10 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none translate-x-1/3 -translate-y-1/3" />
+                  <div className="relative z-10">
+                    <h3
+                      className="mb-2 text-2xl font-extrabold tracking-tight text-[var(--color-navy-950)] leading-tight"
+                      style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    >
+                      Calculate Your Revenue Gap
+                    </h3>
+                    <p className="mb-8 text-sm font-medium leading-relaxed text-[var(--color-gray-600)]">
+                      See how much revenue your operation is leaving unbilled every month.
+                    </p>
+                    <Link
+                      href="/roi-calculator"
+                      className="group/cta flex w-full items-center justify-between rounded-xl bg-[var(--color-navy-950)] px-5 py-4 text-sm font-bold tracking-wider text-white transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-500)] hover:text-[var(--color-navy-950)] uppercase"
+                    >
+                      Try ROI Calculator
+                      <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-1" />
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Recent Case Studies */}
+                <div className="rounded-[24px] bg-white border border-[var(--color-gray-200)] p-8 shadow-sm hover:border-[var(--color-green-300)] transition-colors duration-500">
                   <h3 className="mb-6 flex items-center gap-2 text-sm font-bold tracking-widest text-[var(--color-navy-950)] uppercase">
-                    <Briefcase className="size-4 text-[var(--color-green-500)]" />
-                    Solutions by Role
+                    <Pin className="size-4 fill-[var(--color-green-500)] text-[var(--color-green-500)]" />
+                    Recent Stories
                   </h3>
-                  <ul className="flex flex-col space-y-3">
-                    {[
-                      { role: "Operations Managers", path: "/solutions/operations" },
-                      { role: "Finance & Accounting", path: "/solutions/finance" },
-                      { role: "Field Supervisors", path: "/solutions/field" },
-                      { role: "HSE Directors", path: "/solutions/hse" },
-                    ].map((item) => (
-                      <li key={item.role}>
-                        <Link
-                          href={item.path}
-                          className="group flex items-center justify-between rounded-xl border border-[var(--color-gray-200)] bg-white px-4 py-3.5 text-sm font-bold text-[var(--color-navy-950)] tracking-wide transition-all duration-300 shadow-sm hover:-translate-y-1 hover:border-[var(--color-green-400)] hover:shadow-md uppercase"
-                        >
-                          {item.role}
-                          <ChevronRight className="size-4 text-[var(--color-gray-300)] transition-transform group-hover:translate-x-1 group-hover:text-[var(--color-green-500)]" />
-                        </Link>
-                      </li>
+                  <div className="flex flex-col gap-5">
+                    {rest.slice(0, 3).map((study) => (
+                      <Link
+                        key={study.slug}
+                        href={`/case-studies/${study.slug}`}
+                        className="group flex items-center gap-4"
+                      >
+                        <div className="relative size-16 shrink-0 overflow-hidden rounded-xl border border-[var(--color-gray-200)] shadow-sm">
+                          <Image
+                            src={study.image}
+                            alt={study.company}
+                            fill
+                            className="object-cover transition duration-500 group-hover:scale-110"
+                          />
+                        </div>
+                        <div>
+                          <h4 className="line-clamp-2 text-sm font-bold leading-tight text-[var(--color-navy-950)] transition-colors group-hover:text-[var(--color-green-700)]" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                            {study.company}
+                          </h4>
+                          <p className="mt-1 text-xs font-medium text-[var(--color-gray-500)]">
+                            {study.industry}
+                          </p>
+                        </div>
+                      </Link>
                     ))}
+                  </div>
+                </div>
+
+                {/* Industries */}
+                <div className="rounded-[24px] bg-white border border-[var(--color-gray-200)] p-8 shadow-sm hover:border-[var(--color-green-300)] transition-colors duration-500">
+                  <h3 className="mb-6 flex items-center gap-2 text-sm font-bold tracking-widest text-[var(--color-navy-950)] uppercase">
+                    <Folder className="size-4 text-[var(--color-green-500)]" />
+                    Industries
+                  </h3>
+                  <ul className="flex flex-col space-y-1">
+                    {["Oilfield Services", "Equipment Rental", "Midstream Pipeline"].map((ind) => {
+                      const style = INDUSTRY_COLORS[ind] ?? "bg-[var(--color-gray-50)] text-[var(--color-gray-700)] border-[var(--color-gray-200)]";
+                      return (
+                        <li key={ind}>
+                          <Link
+                            href={`/case-studies?industry=${ind}`}
+                            className="group/link flex items-center justify-between rounded-xl px-4 py-2.5 text-sm font-medium text-[var(--color-gray-600)] transition-all hover:bg-[var(--color-gray-50)] hover:text-[var(--color-navy-900)]"
+                          >
+                            <div className="flex items-center gap-3">
+                              <span className={`rounded-sm border px-1.5 py-0.5 text-xs font-bold ${style}`}>
+                                {ind}
+                              </span>
+                            </div>
+                            <ChevronRight className="size-4 text-[var(--color-gray-300)] transition-transform group-hover/link:translate-x-1 group-hover/link:text-[var(--color-green-500)]" />
+                          </Link>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
+
+                {/* Webinars cross-link */}
+                <div className="rounded-[24px] bg-[var(--color-gray-50)] border border-[var(--color-gray-200)] p-8 relative overflow-hidden hover:border-[var(--color-green-300)] transition-colors duration-500 group">
+                  <div className="absolute top-0 left-0 w-1.5 h-full bg-[var(--color-gray-200)] group-hover:bg-[var(--color-green-500)] transition-colors duration-500" />
+                  <div className="pl-2">
+                    <p className="mb-2 text-xs font-bold tracking-widest text-[var(--color-green-600)] uppercase">
+                      Go deeper
+                    </p>
+                    <h4
+                      className="mb-3 text-lg font-bold tracking-tight text-[var(--color-navy-950)]"
+                      style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    >
+                      Webinars & Events
+                    </h4>
+                    <p className="mb-6 text-sm font-medium text-[var(--color-gray-500)] leading-relaxed">
+                      Watch how operators put these success stories into action.
+                    </p>
+                    <Link
+                      href="/resources/webinars"
+                      className="group/link inline-flex items-center gap-2 text-sm font-bold tracking-wide text-[var(--color-navy-800)] transition-colors hover:text-[var(--color-green-700)] uppercase"
+                    >
+                      View Webinars
+                      <ArrowRight className="size-4 transition-transform group-hover/link:translate-x-1" />
+                    </Link>
+                  </div>
+                </div>
+
               </aside>
             </div>
           </Container>

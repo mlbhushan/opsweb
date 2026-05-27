@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import {
   FileText, Download, ArrowRight, ChevronRight,
-  BookOpen, Zap, TrendingUp, Shield, Wrench, BarChart3,
+  BookOpen, Zap, TrendingUp, Shield, Wrench, BarChart3, Search, Pin, Folder
 } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
 import { SiteHeader } from "@/components/sections/site-header";
@@ -341,89 +341,100 @@ export default async function GuidesPage() {
                       href="/contact"
                       className="group/cta mb-3 flex w-full items-center justify-between rounded-xl bg-[var(--color-navy-950)] px-5 py-4 text-sm font-bold tracking-wider text-white transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-500)] hover:text-[var(--color-navy-950)] uppercase"
                     >
-                      Book a Demo
-                      <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-1" />
-                    </Link>
+                      See how much revenue your operation is leaving unbilled every month.
+                    </p>
                     <Link
                       href="/roi-calculator"
-                      className="group/cta2 flex w-full items-center justify-between rounded-xl border border-[var(--color-gray-200)] bg-[var(--color-gray-50)] px-5 py-4 text-sm font-bold tracking-wider text-[var(--color-navy-800)] transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-[var(--color-green-300)] hover:bg-white uppercase"
+                      className="group/cta flex w-full items-center justify-between rounded-xl bg-[var(--color-navy-950)] px-5 py-4 text-sm font-bold tracking-wider text-white transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-500)] hover:text-[var(--color-navy-950)] uppercase"
                     >
                       Try ROI Calculator
-                      <ChevronRight className="size-4 transition-transform group-hover/cta2:translate-x-1" />
+                      <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-1" />
                     </Link>
                   </div>
                 </div>
 
-                {/* Related solutions */}
-                <div className="rounded-[24px] bg-white border border-[var(--color-gray-200)] p-8 shadow-sm hover:border-[var(--color-green-300)] transition-colors duration-500 group">
-                  <p className="mb-5 text-xs font-bold tracking-widest text-[var(--color-green-600)] uppercase">
-                    Relevant Solutions
-                  </p>
-                  <ul className="space-y-2">
-                    {SIDEBAR_LINKS.map((link) => (
-                      <li key={link.href}>
-                        <Link
-                          href={link.href}
-                          className="group/link flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium text-[var(--color-gray-600)] transition-all hover:bg-[var(--color-gray-50)] hover:text-[var(--color-navy-900)]"
-                        >
-                          <div className="flex items-center gap-3">
-                            <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-gray-300)] group-hover/link:bg-[var(--color-green-500)] transition-colors" />
-                            <span>{link.label}</span>
+                {/* Recent Guides */}
+                <div className="rounded-[24px] bg-white border border-[var(--color-gray-200)] p-8 shadow-sm hover:border-[var(--color-green-300)] transition-colors duration-500">
+                  <h3 className="mb-6 flex items-center gap-2 text-sm font-bold tracking-widest text-[var(--color-navy-950)] uppercase">
+                    <Pin className="size-4 fill-[var(--color-green-500)] text-[var(--color-green-500)]" />
+                    Recent Guides
+                  </h3>
+                  <div className="flex flex-col gap-5">
+                    {rest.slice(0, 3).map((guide) => {
+                      const Icon = guide.icon || FileText;
+                      return (
+                        <div key={guide.title} className="group flex items-center gap-4 cursor-pointer">
+                          <div className="relative size-12 shrink-0 flex items-center justify-center rounded-xl bg-[var(--color-gray-50)] border border-[var(--color-gray-200)] shadow-sm group-hover:bg-[var(--color-green-50)] group-hover:border-[var(--color-green-200)] transition-colors">
+                            <Icon className="size-5 text-[var(--color-navy-950)] group-hover:text-[var(--color-green-600)] transition-colors" />
                           </div>
-                          <ChevronRight className="size-4 text-[var(--color-gray-300)] transition-transform group-hover/link:translate-x-1 group-hover/link:text-[var(--color-green-500)]" />
-                        </Link>
-                      </li>
-                    ))}
+                          <div>
+                            <h4 className="line-clamp-2 text-sm font-bold leading-tight text-[var(--color-navy-950)] transition-colors group-hover:text-[var(--color-green-700)]" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                              {guide.title}
+                            </h4>
+                            <p className="mt-1 text-xs font-medium text-[var(--color-gray-500)] uppercase tracking-wider">
+                              {guide.topic}
+                            </p>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Topics */}
+                <div className="rounded-[24px] bg-white border border-[var(--color-gray-200)] p-8 shadow-sm hover:border-[var(--color-green-300)] transition-colors duration-500">
+                  <h3 className="mb-6 flex items-center gap-2 text-sm font-bold tracking-widest text-[var(--color-navy-950)] uppercase">
+                    <Folder className="size-4 text-[var(--color-green-500)]" />
+                    Topics
+                  </h3>
+                  <ul className="flex flex-col space-y-1">
+                    {Object.keys(TOPIC_COLORS).map((topic) => {
+                      const style = TOPIC_COLORS[topic];
+                      return (
+                        <li key={topic}>
+                          <Link
+                            href={`/resources/guides?topic=${topic}`}
+                            className="group/link flex items-center justify-between rounded-xl px-4 py-2.5 text-sm font-medium text-[var(--color-gray-600)] transition-all hover:bg-[var(--color-gray-50)] hover:text-[var(--color-navy-900)]"
+                          >
+                            <div className="flex items-center gap-3">
+                              <span className={`rounded-sm border px-1.5 py-0.5 text-xs font-bold ${style}`}>
+                                {topic}
+                              </span>
+                            </div>
+                            <ChevronRight className="size-4 text-[var(--color-gray-300)] transition-transform group-hover/link:translate-x-1 group-hover/link:text-[var(--color-green-500)]" />
+                          </Link>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
 
-                {/* Webinars cross-link */}
+                {/* Blog cross-link */}
                 <div className="rounded-[24px] bg-[var(--color-gray-50)] border border-[var(--color-gray-200)] p-8 relative overflow-hidden hover:border-[var(--color-green-300)] transition-colors duration-500 group">
                   <div className="absolute top-0 left-0 w-1.5 h-full bg-[var(--color-gray-200)] group-hover:bg-[var(--color-green-500)] transition-colors duration-500" />
                   <div className="pl-2">
                     <p className="mb-2 text-xs font-bold tracking-widest text-[var(--color-green-600)] uppercase">
-                      Prefer to Watch?
+                      Go deeper
                     </p>
                     <h4
                       className="mb-3 text-lg font-bold tracking-tight text-[var(--color-navy-950)]"
                       style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                     >
-                      On-Demand Webinars
+                      Our Blog
                     </h4>
                     <p className="mb-6 text-sm font-medium text-[var(--color-gray-500)] leading-relaxed">
-                      Expert sessions on field operations, predictive maintenance, revenue recovery, and compliance.
+                      Tactical insights and news on field operations and revenue recovery.
                     </p>
                     <Link
-                      href="/resources/webinars"
+                      href="/blog"
                       className="group/link inline-flex items-center gap-2 text-sm font-bold tracking-wide text-[var(--color-navy-800)] transition-colors hover:text-[var(--color-green-700)] uppercase"
                     >
-                      View All Webinars
+                      Read the Blog
                       <ArrowRight className="size-4 transition-transform group-hover/link:translate-x-1" />
                     </Link>
                   </div>
                 </div>
 
-                {/* Pull quote */}
-                <div className="rounded-[24px] border border-[var(--color-gray-200)] bg-white p-8 relative shadow-sm hover:border-[var(--color-green-300)] transition-colors duration-500 group">
-                  <div className="absolute top-0 right-8 -translate-y-1/2">
-                    <div className="flex size-10 items-center justify-center rounded-full bg-white border border-[var(--color-gray-200)] shadow-sm group-hover:border-[var(--color-green-200)] transition-colors duration-500">
-                      <FileText className="size-4 text-[var(--color-green-600)]" />
-                    </div>
-                  </div>
-                  <blockquote>
-                    <p className="mb-6 text-sm font-medium italic leading-relaxed text-[var(--color-gray-600)]">
-                      &ldquo;The Revenue Recovery guide alone identified $800K in billing gaps we didn&apos;t know existed. We actioned it in 60 days.&rdquo;
-                    </p>
-                    <footer className="border-t border-[var(--color-gray-100)] pt-4 flex flex-col">
-                      <span className="text-xs font-bold tracking-widest text-[var(--color-navy-950)] uppercase">
-                        VP of Finance
-                      </span>
-                      <span className="text-xs font-medium text-[var(--color-gray-500)] mt-0.5">
-                        Oilfield Services, AB
-                      </span>
-                    </footer>
-                  </blockquote>
-                </div>
               </aside>
             </div>
           </Container>
