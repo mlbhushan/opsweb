@@ -13,7 +13,9 @@ const data: ModulePageData = {
   eyebrow: "Platform / Inspections",
   headline: "Inspections That Actually **Get Done**",
   body: "Digital checklists and inspection forms that work offline, enforce completion standards, and generate audit-ready documentation.",
-  heroImage: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=80",
+  heroImage: "/images/platform/inspections_hero.png",
+  problemImage: "/images/platform/inspections_problem.png",
+  solutionImage: "/images/platform/inspections_solution.png",
   problem: {
     headline: "Paper Inspections Are a **Liability**",
     points: [

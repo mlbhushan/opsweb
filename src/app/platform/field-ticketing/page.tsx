@@ -13,7 +13,9 @@ const data: ModulePageData = {
   eyebrow: "Platform / Field Ticketing",
   headline: "From Wellsite to **Invoice** in Hours",
   body: "Digital field tickets captured on-site with all the detail needed for immediate invoicing. No more chasing paper.",
-  heroImage: "https://images.unsplash.com/photo-1590959651373-a3db0f38a961?auto=format&fit=crop&w=1400&q=80",
+  heroImage: "/images/platform/ticketing_hero.png",
+  problemImage: "/images/platform/ticketing_problem.png",
+  solutionImage: "/images/platform/ticketing_solution.png",
   problem: {
     headline: "Paper Tickets = **Lost Revenue**",
     points: [

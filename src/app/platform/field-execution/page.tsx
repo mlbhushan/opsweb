@@ -13,7 +13,9 @@ const data: ModulePageData = {
   eyebrow: "Platform / Field Execution",
   headline: "Every Job Assigned. Every Job **Completed**.",
   body: "The Field Execution Engine tracks every task from assignment to completion, ensuring nothing slips through the cracks.",
-  heroImage: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1400&q=80",
+  heroImage: "/images/platform/execution_hero.png",
+  problemImage: "/images/platform/execution_problem.png",
+  solutionImage: "/images/platform/execution_solution.png",
   problem: {
     headline: "The Cost of **Dropped Tasks**",
     points: [

@@ -92,41 +92,35 @@ export default async function CaseStudiesPage() {
           <div className="pointer-events-none absolute right-0 top-0 h-[400px] w-[400px] translate-x-1/3 -translate-y-1/4 rounded-full bg-[var(--color-green-500)]/8 blur-[100px]" />
 
           <Container className="relative z-10 py-16 md:py-24">
-            <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-[var(--color-navy-200)] bg-white px-5 py-2 shadow-sm">
-              <span className="flex size-2 rounded-full bg-[var(--color-green-500)] animate-pulse" />
-              <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-navy-950)]">
+            <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-1.5 mb-6 shadow-sm">
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+              <span className="text-xs font-semibold tracking-wider text-slate-700 uppercase">
                 Customer Stories
               </span>
             </div>
 
-            <h1
-              className="mb-4 text-5xl font-black uppercase leading-[0.92] tracking-tighter md:text-7xl text-balance"
-              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
-            >
+            <h1 className="text-[32px] md:text-[40px] font-extrabold tracking-tight leading-[1.05] mb-8 text-balance">
               <span className="text-[var(--color-green-500)]">Results</span>
-              <br />
+              <br className="hidden sm:block" />
               <span className="text-[var(--color-navy-950)]">That Prove It.</span>
             </h1>
             <p className="max-w-xl text-base font-medium leading-relaxed text-[var(--color-gray-600)] md:text-lg">
               Real oilfield operations. Real numbers. See how companies like yours recovered revenue, eliminated downtime, and achieved compliance with OpsFlo.
             </p>
 
-            {/* Aggregate stats strip */}
-            <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4">
-              {AGGREGATE_STATS.map((s, i) => (
-                <div
-                  key={s.label}
-                  className="rounded-3xl border border-[var(--color-gray-200)] bg-white p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-1 hover:border-[var(--color-green-400)]"
-                >
-                  <div
-                    className="text-2xl font-black text-[var(--color-navy-950)] md:text-3xl"
+            {/* Aggregate stats strip styled like guides */}
+            <div className="mt-12 flex flex-wrap gap-6 border-t border-[var(--color-gray-200)] pt-8">
+              {AGGREGATE_STATS.map((s) => (
+                <div key={s.label} className="flex items-baseline gap-3 rounded-2xl bg-[var(--color-gray-50)] px-5 py-3 border border-[var(--color-gray-100)]">
+                  <span
+                    className="text-3xl font-black text-[var(--color-navy-950)]"
                     style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                   >
                     {s.value}
-                  </div>
-                  <div className="mt-2 text-xs font-semibold leading-snug text-[var(--color-gray-500)] uppercase tracking-wider">
+                  </span>
+                  <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)]">
                     {s.label}
-                  </div>
+                  </span>
                 </div>
               ))}
             </div>
@@ -384,72 +378,64 @@ export default async function CaseStudiesPage() {
                 </div>
 
                 {/* Explore More Resources */}
-                <div className="rounded-[24px] bg-[var(--color-gray-50)] border border-[var(--color-gray-200)] p-8 relative overflow-hidden transition-colors duration-500 group">
-                  <div className="absolute top-0 left-0 w-1.5 h-full bg-[var(--color-gray-200)] group-hover:bg-[var(--color-green-500)] transition-colors duration-500" />
-                  <div className="pl-2">
-                    <p className="mb-2 text-xs font-bold tracking-widest text-[var(--color-green-600)] uppercase">
-                      Go Deeper
-                    </p>
-                    <h4
-                      className="mb-6 text-lg font-bold tracking-tight text-[var(--color-navy-950)]"
-                      style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
-                    >
-                      More Resources
-                    </h4>
-                    
-                    <ul className="flex flex-col space-y-4">
-                      {/* Blog */}
-                      <li>
-                        <Link href="/blog" className="group/res flex items-start gap-4">
-                          <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-white border border-[var(--color-gray-200)] shadow-sm group-hover/res:border-[var(--color-green-200)] group-hover/res:bg-[var(--color-green-50)] transition-colors">
-                            <BookOpen className="size-4 text-[var(--color-navy-950)] group-hover/res:text-[var(--color-green-600)]" />
-                          </div>
-                          <div>
-                            <h5 className="text-sm font-bold text-[var(--color-navy-950)] group-hover/res:text-[var(--color-green-700)] transition-colors" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
-                              Our Blog
-                            </h5>
-                            <p className="mt-1 text-xs font-medium text-[var(--color-gray-500)]">
-                              Tactical insights and industry news.
-                            </p>
-                          </div>
-                        </Link>
-                      </li>
+                <div className="rounded-[24px] bg-white border border-[var(--color-gray-200)] p-6 shadow-sm hover:border-[var(--color-green-300)] transition-colors duration-500">
+                  <h3 className="mb-5 flex items-center gap-2 text-sm font-bold tracking-widest text-[var(--color-navy-950)] uppercase">
+                    <ArrowRight className="size-4 text-[var(--color-green-500)]" />
+                    More Resources
+                  </h3>
+                  
+                  <ul className="flex flex-col gap-3">
+                    {/* Blog */}
+                    <li>
+                      <Link href="/blog" className="group/res flex items-center gap-3 rounded-xl border border-transparent p-2 -mx-2 hover:bg-[var(--color-gray-50)] hover:border-[var(--color-gray-200)] transition-all">
+                        <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[var(--color-gray-50)] border border-[var(--color-gray-200)] shadow-sm group-hover/res:bg-white group-hover/res:border-[var(--color-green-200)] transition-colors">
+                          <BookOpen className="size-4 text-[var(--color-navy-950)] group-hover/res:text-[var(--color-green-600)]" />
+                        </div>
+                        <div>
+                          <h5 className="text-sm font-bold text-[var(--color-navy-950)] group-hover/res:text-[var(--color-green-700)] transition-colors leading-tight" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                            Our Blog
+                          </h5>
+                          <p className="text-[11px] font-medium text-[var(--color-gray-500)] leading-tight mt-0.5 line-clamp-1">
+                            Tactical insights and industry news.
+                          </p>
+                        </div>
+                      </Link>
+                    </li>
 
-                      {/* Guides & Whitepapers */}
-                      <li>
-                        <Link href="/resources/guides" className="group/res flex items-start gap-4">
-                          <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-white border border-[var(--color-gray-200)] shadow-sm group-hover/res:border-[var(--color-green-200)] group-hover/res:bg-[var(--color-green-50)] transition-colors">
-                            <FileText className="size-4 text-[var(--color-navy-950)] group-hover/res:text-[var(--color-green-600)]" />
-                          </div>
-                          <div>
-                            <h5 className="text-sm font-bold text-[var(--color-navy-950)] group-hover/res:text-[var(--color-green-700)] transition-colors" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
-                              Guides & Whitepapers
-                            </h5>
-                            <p className="mt-1 text-xs font-medium text-[var(--color-gray-500)]">
-                              In-depth playbooks for operations.
-                            </p>
-                          </div>
-                        </Link>
-                      </li>
+                    {/* Guides & Whitepapers */}
+                    <li>
+                      <Link href="/resources/guides" className="group/res flex items-center gap-3 rounded-xl border border-transparent p-2 -mx-2 hover:bg-[var(--color-gray-50)] hover:border-[var(--color-gray-200)] transition-all">
+                        <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[var(--color-gray-50)] border border-[var(--color-gray-200)] shadow-sm group-hover/res:bg-white group-hover/res:border-[var(--color-green-200)] transition-colors">
+                          <FileText className="size-4 text-[var(--color-navy-950)] group-hover/res:text-[var(--color-green-600)]" />
+                        </div>
+                        <div>
+                          <h5 className="text-sm font-bold text-[var(--color-navy-950)] group-hover/res:text-[var(--color-green-700)] transition-colors leading-tight" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                            Guides & Whitepapers
+                          </h5>
+                          <p className="text-[11px] font-medium text-[var(--color-gray-500)] leading-tight mt-0.5 line-clamp-1">
+                            In-depth playbooks for operations.
+                          </p>
+                        </div>
+                      </Link>
+                    </li>
 
-                      {/* Webinars */}
-                      <li>
-                        <Link href="/resources/webinars" className="group/res flex items-start gap-4">
-                          <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-white border border-[var(--color-gray-200)] shadow-sm group-hover/res:border-[var(--color-green-200)] group-hover/res:bg-[var(--color-green-50)] transition-colors">
-                            <PlayCircle className="size-4 text-[var(--color-navy-950)] group-hover/res:text-[var(--color-green-600)]" />
-                          </div>
-                          <div>
-                            <h5 className="text-sm font-bold text-[var(--color-navy-950)] group-hover/res:text-[var(--color-green-700)] transition-colors" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
-                              On-Demand Webinars
-                            </h5>
-                            <p className="mt-1 text-xs font-medium text-[var(--color-gray-500)]">
-                              Expert sessions and product demos.
-                            </p>
-                          </div>
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
+                    {/* Webinars */}
+                    <li>
+                      <Link href="/resources/webinars" className="group/res flex items-center gap-3 rounded-xl border border-transparent p-2 -mx-2 hover:bg-[var(--color-gray-50)] hover:border-[var(--color-gray-200)] transition-all">
+                        <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[var(--color-gray-50)] border border-[var(--color-gray-200)] shadow-sm group-hover/res:bg-white group-hover/res:border-[var(--color-green-200)] transition-colors">
+                          <PlayCircle className="size-4 text-[var(--color-navy-950)] group-hover/res:text-[var(--color-green-600)]" />
+                        </div>
+                        <div>
+                          <h5 className="text-sm font-bold text-[var(--color-navy-950)] group-hover/res:text-[var(--color-green-700)] transition-colors leading-tight" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                            On-Demand Webinars
+                          </h5>
+                          <p className="text-[11px] font-medium text-[var(--color-gray-500)] leading-tight mt-0.5 line-clamp-1">
+                            Expert sessions and product demos.
+                          </p>
+                        </div>
+                      </Link>
+                    </li>
+                  </ul>
                 </div>
 
               </aside>
@@ -458,34 +444,37 @@ export default async function CaseStudiesPage() {
         </section>
 
         {/* ── BOTTOM CTA ── */}
-        <section className="relative overflow-hidden border-t border-[var(--color-gray-200)] bg-white py-24">
-          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:48px_48px]" />
+        <section className="relative overflow-hidden border-t border-[var(--color-gray-200)] bg-[var(--color-navy-950)] py-20">
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:48px_48px]" />
           <Container className="relative z-10">
             <div className="flex flex-col items-start justify-between gap-10 lg:flex-row lg:items-center">
               <div className="max-w-2xl">
-                <h2
-                  className="text-5xl font-extrabold leading-[0.92] tracking-tighter md:text-6xl text-balance"
-                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
-                >
-                  <span className="text-[var(--color-navy-950)]">Ready for Your Own</span>
-                  <br />
+                <div className="inline-flex items-center gap-3 rounded-full border border-[var(--color-navy-800)] bg-[var(--color-navy-900)] px-4 py-1.5 mb-6 shadow-sm">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+                  <span className="text-xs font-semibold tracking-wider text-slate-300 uppercase">
+                    Take Action
+                  </span>
+                </div>
+                <h2 className="text-[32px] md:text-[40px] font-extrabold tracking-tight leading-[1.05] mb-8 text-balance">
+                  <span className="text-white">Ready for Your Own</span>
+                  <br className="hidden sm:block" />
                   <span className="text-[var(--color-green-500)]">Success Story?</span>
                 </h2>
-                <p className="mt-6 text-lg font-medium leading-relaxed text-[var(--color-gray-600)]">
-                  Start a 30-day pilot. See results with your crews, your data, and your actual workflows before committing long-term.
+                <p className="mt-6 text-base font-medium leading-relaxed text-[var(--color-gray-400)]">
+                  A 15-minute OpsFlo diagnostic applies these proven frameworks directly to your operations — showing you the exact revenue and efficiency gaps you can close today.
                 </p>
               </div>
-              <div className="flex w-full flex-col gap-4 lg:w-[380px]">
+              <div className="flex w-full flex-col gap-3 lg:w-[380px]">
                 <Link
                   href="/contact"
-                  className="group/cta flex w-full items-center justify-between rounded-xl bg-[var(--color-green-500)] px-6 py-5 text-sm font-bold tracking-widest text-[var(--color-navy-950)] shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-400)] uppercase"
+                  className="group/cta flex w-full items-center justify-between rounded-xl bg-[var(--color-green-500)] px-6 py-5 text-sm font-bold tracking-widest text-[var(--color-navy-950)] transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-400)] uppercase"
                 >
-                  <span>Start 30-Day Pilot</span>
+                  <span>Book a 15-Min Diagnostic</span>
                   <ArrowRight className="size-5 transition-transform group-hover/cta:translate-x-1" />
                 </Link>
                 <Link
                   href="/roi-calculator"
-                  className="group/cta2 flex w-full items-center justify-between rounded-xl border border-[var(--color-gray-200)] bg-white px-6 py-5 text-sm font-bold tracking-widest text-[var(--color-navy-950)] shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-gray-50)] hover:border-[var(--color-gray-300)] uppercase"
+                  className="group/cta2 flex w-full items-center justify-between rounded-xl border border-[var(--color-navy-700)] bg-[var(--color-navy-950)] px-6 py-5 text-sm font-bold tracking-widest text-white transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-navy-900)] uppercase"
                 >
                   <span>Calculate Potential ROI</span>
                   <ArrowRight className="size-5 transition-transform group-hover/cta2:translate-x-1" />

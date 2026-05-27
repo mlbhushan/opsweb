@@ -163,9 +163,8 @@ export function ModulePage({ data }: { data: ModulePageData }) {
                     src={defaultHeroImage}
                     alt={data.headline}
                     fill
-                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 opacity-90 group-hover:opacity-100 group-hover:scale-105"
+                    className="object-cover transition-all duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-[var(--color-navy-950)]/20 group-hover:bg-transparent transition-colors duration-500" />
                 </div>
               </div>
             </div>
@@ -257,7 +256,7 @@ export function ModulePage({ data }: { data: ModulePageData }) {
                           src={defaultSolutionImage}
                           alt="The Solution"
                           fill
-                          className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 mix-blend-luminosity group-hover:mix-blend-normal"
+                          className="object-cover transition-all duration-700 group-hover:scale-105"
                         />
                       </div>
                     </div>

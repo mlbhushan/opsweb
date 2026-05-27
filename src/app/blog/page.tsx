@@ -108,36 +108,35 @@ export default async function BlogPage() {
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:48px_48px]" />
           <div className="pointer-events-none absolute right-0 bottom-0 h-[360px] w-[360px] translate-x-1/4 translate-y-1/4 rounded-full bg-[var(--color-green-500)]/8 blur-[80px]" />
 
-          <Container className="relative z-10 py-16 md:py-20">
-            <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-[var(--color-navy-200)] bg-white px-5 py-2 shadow-sm">
-              <span className="flex size-2 rounded-full bg-[var(--color-green-500)] animate-pulse" />
-              <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-navy-950)]">
+          <Container className="relative z-10 py-16 md:py-24">
+            <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-1.5 mb-6 shadow-sm">
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+              <span className="text-xs font-semibold tracking-wider text-slate-700 uppercase">
                 Insights & Ideas
               </span>
             </div>
 
-            <h1
-              className="mb-4 text-5xl font-black uppercase leading-[0.92] tracking-tighter md:text-7xl text-balance"
-              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
-            >
+            <h1 className="text-[32px] md:text-[40px] font-extrabold tracking-tight leading-[1.05] mb-8 text-balance">
               <span className="text-[var(--color-green-500)]">Field Ops</span>
-              <br />
+              <br className="hidden sm:block" />
               <span className="text-[var(--color-navy-950)]">Intelligence.</span>
             </h1>
             <p className="max-w-xl text-base font-medium leading-relaxed text-[var(--color-gray-600)] md:text-lg">
               Practical insights on revenue recovery, predictive maintenance, HSE compliance, and digital transformation for oilfield services operations leaders.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-2">
+            {/* Categories strip styled as stats */}
+            <div className="mt-12 flex flex-wrap gap-4 border-t border-[var(--color-gray-200)] pt-8">
               {CATEGORIES.map((cat) => {
-                const style = CATEGORY_COLORS[cat] ?? "bg-gray-50 text-gray-600 border-gray-200";
                 return (
                   <Link
                     key={cat}
                     href={`/blog?category=${cat}`}
-                    className={`inline-flex items-center gap-1.5 rounded-sm border px-3 py-1.5 text-xs font-bold uppercase tracking-wide transition-all hover:opacity-80 ${style}`}
+                    className="flex items-baseline gap-3 rounded-2xl bg-[var(--color-gray-50)] px-5 py-3 border border-[var(--color-gray-100)] transition-colors hover:border-[var(--color-green-300)]"
                   >
-                    {cat}
+                    <span className="text-xs font-bold uppercase tracking-widest text-[var(--color-gray-500)]">
+                      {cat}
+                    </span>
                   </Link>
                 );
               })}
@@ -444,72 +443,64 @@ export default async function BlogPage() {
                 </div>
 
                 {/* Explore More Resources */}
-                <div className="rounded-[24px] bg-[var(--color-gray-50)] border border-[var(--color-gray-200)] p-8 relative overflow-hidden transition-colors duration-500 group">
-                  <div className="absolute top-0 left-0 w-1.5 h-full bg-[var(--color-gray-200)] group-hover:bg-[var(--color-green-500)] transition-colors duration-500" />
-                  <div className="pl-2">
-                    <p className="mb-2 text-xs font-bold tracking-widest text-[var(--color-green-600)] uppercase">
-                      Go Deeper
-                    </p>
-                    <h4
-                      className="mb-6 text-lg font-bold tracking-tight text-[var(--color-navy-950)]"
-                      style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
-                    >
-                      More Resources
-                    </h4>
-                    
-                    <ul className="flex flex-col space-y-4">
-                      {/* Case Studies */}
-                      <li>
-                        <Link href="/case-studies" className="group/res flex items-start gap-4">
-                          <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-white border border-[var(--color-gray-200)] shadow-sm group-hover/res:border-[var(--color-green-200)] group-hover/res:bg-[var(--color-green-50)] transition-colors">
-                            <Briefcase className="size-4 text-[var(--color-navy-950)] group-hover/res:text-[var(--color-green-600)]" />
-                          </div>
-                          <div>
-                            <h5 className="text-sm font-bold text-[var(--color-navy-950)] group-hover/res:text-[var(--color-green-700)] transition-colors" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
-                              Case Studies
-                            </h5>
-                            <p className="mt-1 text-xs font-medium text-[var(--color-gray-500)]">
-                              Real-world ROI and success stories.
-                            </p>
-                          </div>
-                        </Link>
-                      </li>
+                <div className="rounded-[24px] bg-white border border-[var(--color-gray-200)] p-6 shadow-sm hover:border-[var(--color-green-300)] transition-colors duration-500">
+                  <h3 className="mb-5 flex items-center gap-2 text-sm font-bold tracking-widest text-[var(--color-navy-950)] uppercase">
+                    <ArrowRight className="size-4 text-[var(--color-green-500)]" />
+                    More Resources
+                  </h3>
+                  
+                  <ul className="flex flex-col gap-3">
+                    {/* Case Studies */}
+                    <li>
+                      <Link href="/case-studies" className="group/res flex items-center gap-3 rounded-xl border border-transparent p-2 -mx-2 hover:bg-[var(--color-gray-50)] hover:border-[var(--color-gray-200)] transition-all">
+                        <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[var(--color-gray-50)] border border-[var(--color-gray-200)] shadow-sm group-hover/res:bg-white group-hover/res:border-[var(--color-green-200)] transition-colors">
+                          <Briefcase className="size-4 text-[var(--color-navy-950)] group-hover/res:text-[var(--color-green-600)]" />
+                        </div>
+                        <div>
+                          <h5 className="text-sm font-bold text-[var(--color-navy-950)] group-hover/res:text-[var(--color-green-700)] transition-colors leading-tight" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                            Case Studies
+                          </h5>
+                          <p className="text-[11px] font-medium text-[var(--color-gray-500)] leading-tight mt-0.5 line-clamp-1">
+                            Real-world ROI and success stories.
+                          </p>
+                        </div>
+                      </Link>
+                    </li>
 
-                      {/* Guides & Whitepapers */}
-                      <li>
-                        <Link href="/resources/guides" className="group/res flex items-start gap-4">
-                          <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-white border border-[var(--color-gray-200)] shadow-sm group-hover/res:border-[var(--color-green-200)] group-hover/res:bg-[var(--color-green-50)] transition-colors">
-                            <FileText className="size-4 text-[var(--color-navy-950)] group-hover/res:text-[var(--color-green-600)]" />
-                          </div>
-                          <div>
-                            <h5 className="text-sm font-bold text-[var(--color-navy-950)] group-hover/res:text-[var(--color-green-700)] transition-colors" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
-                              Guides & Whitepapers
-                            </h5>
-                            <p className="mt-1 text-xs font-medium text-[var(--color-gray-500)]">
-                              In-depth playbooks for operations.
-                            </p>
-                          </div>
-                        </Link>
-                      </li>
+                    {/* Guides & Whitepapers */}
+                    <li>
+                      <Link href="/resources/guides" className="group/res flex items-center gap-3 rounded-xl border border-transparent p-2 -mx-2 hover:bg-[var(--color-gray-50)] hover:border-[var(--color-gray-200)] transition-all">
+                        <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[var(--color-gray-50)] border border-[var(--color-gray-200)] shadow-sm group-hover/res:bg-white group-hover/res:border-[var(--color-green-200)] transition-colors">
+                          <FileText className="size-4 text-[var(--color-navy-950)] group-hover/res:text-[var(--color-green-600)]" />
+                        </div>
+                        <div>
+                          <h5 className="text-sm font-bold text-[var(--color-navy-950)] group-hover/res:text-[var(--color-green-700)] transition-colors leading-tight" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                            Guides & Whitepapers
+                          </h5>
+                          <p className="text-[11px] font-medium text-[var(--color-gray-500)] leading-tight mt-0.5 line-clamp-1">
+                            In-depth playbooks for operations.
+                          </p>
+                        </div>
+                      </Link>
+                    </li>
 
-                      {/* Webinars */}
-                      <li>
-                        <Link href="/resources/webinars" className="group/res flex items-start gap-4">
-                          <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-white border border-[var(--color-gray-200)] shadow-sm group-hover/res:border-[var(--color-green-200)] group-hover/res:bg-[var(--color-green-50)] transition-colors">
-                            <PlayCircle className="size-4 text-[var(--color-navy-950)] group-hover/res:text-[var(--color-green-600)]" />
-                          </div>
-                          <div>
-                            <h5 className="text-sm font-bold text-[var(--color-navy-950)] group-hover/res:text-[var(--color-green-700)] transition-colors" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
-                              On-Demand Webinars
-                            </h5>
-                            <p className="mt-1 text-xs font-medium text-[var(--color-gray-500)]">
-                              Expert sessions and product demos.
-                            </p>
-                          </div>
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
+                    {/* Webinars */}
+                    <li>
+                      <Link href="/resources/webinars" className="group/res flex items-center gap-3 rounded-xl border border-transparent p-2 -mx-2 hover:bg-[var(--color-gray-50)] hover:border-[var(--color-gray-200)] transition-all">
+                        <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[var(--color-gray-50)] border border-[var(--color-gray-200)] shadow-sm group-hover/res:bg-white group-hover/res:border-[var(--color-green-200)] transition-colors">
+                          <PlayCircle className="size-4 text-[var(--color-navy-950)] group-hover/res:text-[var(--color-green-600)]" />
+                        </div>
+                        <div>
+                          <h5 className="text-sm font-bold text-[var(--color-navy-950)] group-hover/res:text-[var(--color-green-700)] transition-colors leading-tight" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                            On-Demand Webinars
+                          </h5>
+                          <p className="text-[11px] font-medium text-[var(--color-gray-500)] leading-tight mt-0.5 line-clamp-1">
+                            Expert sessions and product demos.
+                          </p>
+                        </div>
+                      </Link>
+                    </li>
+                  </ul>
                 </div>
               </aside>
             </div>

@@ -196,35 +196,46 @@ export default async function IntegrationsPage() {
               ))}
             </div>
 
-            {/* Bottom CTA Section */}
-            <div className="mt-16 md:mt-24 max-w-[1200px] mx-auto relative group">
-              <Link href="/contact" className="block relative rounded-3xl border border-[var(--color-navy-800)] overflow-hidden bg-[var(--color-navy-950)] shadow-xl transition-all hover:shadow-2xl hover:-translate-y-1">
-                
-                {/* Moving Background Elements */}
-                <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-                  <div className="absolute right-[-10%] top-[-10%] w-[100%] h-[100%] bg-[radial-gradient(ellipse_at_center,_var(--color-green-500)_0%,_transparent_60%)] opacity-10 pointer-events-none transition-opacity duration-700 group-hover:opacity-20" />
-                </div>
+          </Container>
+        </section>
 
-                <div className="relative z-10 py-16 md:py-24 px-6 sm:px-12 flex flex-col items-center text-center">
-                  <h2 
-                    className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter text-white mb-6 max-w-3xl mx-auto"
-                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
-                  >
-                    Unify your <span className="text-[var(--color-green-500)]">tech stack</span>
-                  </h2>
-                  
-                  <p className="text-lg md:text-xl font-medium text-[var(--color-gray-400)] mb-10 max-w-2xl mx-auto leading-relaxed">
-                    Stop jumping between tools. See how OpsFlo integrates with your existing software to eliminate double data entry and create a single source of truth for your field operations.
-                  </p>
-                  
-                  <div className="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-20">
-                    <div className="group/btn inline-flex items-center gap-2 rounded-xl bg-[var(--color-green-500)] px-6 py-4 text-sm font-bold uppercase tracking-widest text-[var(--color-navy-950)] shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md hover:bg-[var(--color-green-400)]">
-                      Request a Demo
-                      <ArrowRight className="size-5 transition-transform group-hover/btn:translate-x-1" />
-                    </div>
-                  </div>
+        {/* ── BOTTOM CTA ── */}
+        <section className="relative overflow-hidden border-t border-[var(--color-gray-200)] bg-[var(--color-navy-950)] py-20">
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:48px_48px]" />
+          <Container className="relative z-10">
+            <div className="flex flex-col items-start justify-between gap-10 lg:flex-row lg:items-center">
+              <div className="max-w-2xl">
+                <div className="inline-flex items-center gap-3 rounded-full border border-[var(--color-navy-800)] bg-[var(--color-navy-900)] px-4 py-1.5 mb-6 shadow-sm">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+                  <span className="text-xs font-semibold tracking-wider text-slate-300 uppercase">
+                    Take Action
+                  </span>
                 </div>
-              </Link>
+                <h2 className="text-[32px] md:text-[40px] font-extrabold tracking-tight leading-[1.05] mb-8 text-balance">
+                  <span className="text-white">Unify Your</span>
+                  <br className="hidden sm:block" />
+                  <span className="text-[var(--color-green-500)]">Tech Stack.</span>
+                </h2>
+                <p className="mt-6 text-base font-medium leading-relaxed text-[var(--color-gray-400)]">
+                  Stop jumping between tools. See how OpsFlo integrates with your existing software to eliminate double data entry and create a single source of truth for your field operations.
+                </p>
+              </div>
+              <div className="flex w-full flex-col gap-3 lg:w-[380px]">
+                <Link
+                  href="/contact"
+                  className="group/cta flex w-full items-center justify-between rounded-xl bg-[var(--color-green-500)] px-6 py-5 text-sm font-bold tracking-widest text-[var(--color-navy-950)] transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-400)] uppercase"
+                >
+                  <span>Book a Demo</span>
+                  <ArrowRight className="size-5 transition-transform group-hover/cta:translate-x-1" />
+                </Link>
+                <Link
+                  href="/case-studies"
+                  className="group/cta2 flex w-full items-center justify-between rounded-xl border border-[var(--color-navy-700)] bg-[var(--color-navy-950)] px-6 py-5 text-sm font-bold tracking-widest text-white transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-navy-900)] uppercase"
+                >
+                  <span>See Case Studies</span>
+                  <ArrowRight className="size-5 transition-transform group-hover/cta2:translate-x-1" />
+                </Link>
+              </div>
             </div>
           </Container>
         </section>

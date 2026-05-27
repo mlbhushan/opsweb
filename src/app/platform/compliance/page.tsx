@@ -14,7 +14,7 @@ const data: ModulePageData = {
   eyebrow: "Platform / Compliance & Audit",
   headline: "**Audit-Ready**. Always.",
   body: "Compliance & Audit captures every inspection result, corrective action, and safety event with timestamps, photos, and e-signatures  -  creating an unbroken chain of documentation that satisfies regulators without burdening field crews.",
-  heroImage: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1400&q=80",
+
   problem: {
     headline: "Compliance Gaps **Hide** Until Auditors Find Them",
     points: [
@@ -58,8 +58,9 @@ const data: ModulePageData = {
     headline: "Compliance as a **Byproduct** of Operations",
     body: "When crews use OpsFlo to do their actual work, compliance documentation is generated automatically. No duplicate data entry. No after-the-fact paperwork. Compliance just happens.",
   },
-  problemImage: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80",
-  solutionImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
+  heroImage: "/images/platform/compliance_hero.png",
+  problemImage: "/images/platform/compliance_problem.png",
+  solutionImage: "/images/platform/compliance_solution.png",
   relatedModules: [
     {
       "title": "Field Execution",

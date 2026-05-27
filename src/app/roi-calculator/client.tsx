@@ -347,34 +347,37 @@ export default function ROICalculatorClient() {
         </section>
 
         {/* ── BOTTOM CTA ── */}
-        <section className="relative overflow-hidden border-t border-[var(--color-gray-200)] bg-white py-24">
-          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:48px_48px]" />
+        <section className="relative overflow-hidden border-t border-[var(--color-gray-200)] bg-[var(--color-navy-950)] py-20">
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:48px_48px]" />
           <Container className="relative z-10">
             <div className="flex flex-col items-start justify-between gap-10 lg:flex-row lg:items-center">
               <div className="max-w-2xl">
-                <h2
-                  className="text-5xl font-extrabold leading-[0.92] tracking-tighter md:text-6xl text-balance"
-                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
-                >
-                  <span className="text-[var(--color-navy-950)]">The Number</span>
-                  <br />
+                <div className="inline-flex items-center gap-3 rounded-full border border-[var(--color-navy-800)] bg-[var(--color-navy-900)] px-4 py-1.5 mb-6 shadow-sm">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-green-500)] animate-pulse" />
+                  <span className="text-xs font-semibold tracking-wider text-slate-300 uppercase">
+                    Take Action
+                  </span>
+                </div>
+                <h2 className="text-[32px] md:text-[40px] font-extrabold tracking-tight leading-[1.05] mb-8 text-balance">
+                  <span className="text-white">The Number</span>
+                  <br className="hidden sm:block" />
                   <span className="text-[var(--color-green-500)]">Is Bigger Than You Think.</span>
                 </h2>
-                <p className="mt-6 text-lg font-medium leading-relaxed text-[var(--color-gray-600)]">
+                <p className="mt-6 text-base font-medium leading-relaxed text-[var(--color-gray-400)]">
                   This calculator uses conservative industry averages. A personalized diagnostic with your actual data almost always reveals a larger gap. Let us show you the real number.
                 </p>
               </div>
-              <div className="flex w-full flex-col gap-4 lg:w-[380px]">
+              <div className="flex w-full flex-col gap-3 lg:w-[380px]">
                 <Link
                   href="/contact"
-                  className="group/cta flex w-full items-center justify-between rounded-xl bg-[var(--color-green-500)] px-6 py-5 text-sm font-bold tracking-widest text-[var(--color-navy-950)] shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-400)] uppercase"
+                  className="group/cta flex w-full items-center justify-between rounded-xl bg-[var(--color-green-500)] px-6 py-5 text-sm font-bold tracking-widest text-[var(--color-navy-950)] transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-green-400)] uppercase"
                 >
                   <span>Get Your Real Number</span>
                   <ArrowRight className="size-5 transition-transform group-hover/cta:translate-x-1" />
                 </Link>
                 <Link
                   href="/case-studies"
-                  className="group/cta2 flex w-full items-center justify-between rounded-xl border border-[var(--color-gray-200)] bg-white px-6 py-5 text-sm font-bold tracking-widest text-[var(--color-navy-950)] shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-gray-50)] hover:border-[var(--color-gray-300)] uppercase"
+                  className="group/cta2 flex w-full items-center justify-between rounded-xl border border-[var(--color-navy-700)] bg-[var(--color-navy-950)] px-6 py-5 text-sm font-bold tracking-widest text-white transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-[var(--color-navy-900)] uppercase"
                 >
                   <span>See Customer Proof</span>
                   <ArrowRight className="size-5 transition-transform group-hover/cta2:translate-x-1" />

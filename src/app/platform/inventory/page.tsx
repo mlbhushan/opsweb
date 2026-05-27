@@ -14,7 +14,7 @@ const data: ModulePageData = {
   eyebrow: "Platform / Inventory & Parts",
   headline: "Every Part **Tracked**. Every Usage **Billed**.",
   body: "Inventory & Parts gives you real-time visibility into stock levels across warehouses, service trucks, and job sites  -  ensuring crews never wait for parts and every component used is captured on the ticket.",
-  heroImage: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1400&q=80",
+
   problem: {
     headline: "Untracked Parts Are **Unbilled Revenue**",
     points: [
@@ -58,7 +58,7 @@ const data: ModulePageData = {
     headline: "Inventory That **Feeds Billing** Automatically",
     body: "Every part consumed is linked to a job and a ticket. That means accurate billing, complete cost tracking, and no revenue left on the table  -  without asking field crews to do extra paperwork.",
   },
-  problemImage: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80",
+  heroImage: "/images/platform/inventory_hero.png",
   solutionImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
   relatedModules: [
     {

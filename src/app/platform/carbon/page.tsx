@@ -58,8 +58,9 @@ const data: ModulePageData = {
     headline: "**Built Into Operations**. Not Bolted On.",
     body: "Carbon tracking that works because it pulls from the same data your crews already capture  -  job logs, equipment hours, fuel receipts  -  without adding a single extra step to the field workflow.",
   },
+  problemImage: "/images/platform/carbon_problem.png",
+  solutionImage: "/images/platform/carbon_solution.png",
   heroImage: "/images/platform/carbon_hero.png",
-  solutionImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
   relatedModules: [
     {
       "title": "Field Execution",
