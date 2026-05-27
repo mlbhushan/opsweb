@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import {
   FileText, Download, ArrowRight, ChevronRight,
-  BookOpen, Zap, TrendingUp, Shield, Wrench, BarChart3, Search, Pin, Folder
+  BookOpen, Zap, TrendingUp, Shield, Wrench, BarChart3, Search, Pin, Folder, Briefcase, PlayCircle
 } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
 import { SiteHeader } from "@/components/sections/site-header";
@@ -403,29 +403,72 @@ export default async function GuidesPage() {
                   </ul>
                 </div>
 
-                {/* Blog cross-link */}
-                <div className="rounded-[24px] bg-[var(--color-gray-50)] border border-[var(--color-gray-200)] p-8 relative overflow-hidden hover:border-[var(--color-green-300)] transition-colors duration-500 group">
+                {/* Explore More Resources */}
+                <div className="rounded-[24px] bg-[var(--color-gray-50)] border border-[var(--color-gray-200)] p-8 relative overflow-hidden transition-colors duration-500 group">
                   <div className="absolute top-0 left-0 w-1.5 h-full bg-[var(--color-gray-200)] group-hover:bg-[var(--color-green-500)] transition-colors duration-500" />
                   <div className="pl-2">
                     <p className="mb-2 text-xs font-bold tracking-widest text-[var(--color-green-600)] uppercase">
-                      Go deeper
+                      Go Deeper
                     </p>
                     <h4
-                      className="mb-3 text-lg font-bold tracking-tight text-[var(--color-navy-950)]"
+                      className="mb-6 text-lg font-bold tracking-tight text-[var(--color-navy-950)]"
                       style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
                     >
-                      Our Blog
+                      More Resources
                     </h4>
-                    <p className="mb-6 text-sm font-medium text-[var(--color-gray-500)] leading-relaxed">
-                      Tactical insights and news on field operations and revenue recovery.
-                    </p>
-                    <Link
-                      href="/blog"
-                      className="group/link inline-flex items-center gap-2 text-sm font-bold tracking-wide text-[var(--color-navy-800)] transition-colors hover:text-[var(--color-green-700)] uppercase"
-                    >
-                      Read the Blog
-                      <ArrowRight className="size-4 transition-transform group-hover/link:translate-x-1" />
-                    </Link>
+                    
+                    <ul className="flex flex-col space-y-4">
+                      {/* Blog */}
+                      <li>
+                        <Link href="/blog" className="group/res flex items-start gap-4">
+                          <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-white border border-[var(--color-gray-200)] shadow-sm group-hover/res:border-[var(--color-green-200)] group-hover/res:bg-[var(--color-green-50)] transition-colors">
+                            <BookOpen className="size-4 text-[var(--color-navy-950)] group-hover/res:text-[var(--color-green-600)]" />
+                          </div>
+                          <div>
+                            <h5 className="text-sm font-bold text-[var(--color-navy-950)] group-hover/res:text-[var(--color-green-700)] transition-colors" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                              Our Blog
+                            </h5>
+                            <p className="mt-1 text-xs font-medium text-[var(--color-gray-500)]">
+                              Tactical insights and industry news.
+                            </p>
+                          </div>
+                        </Link>
+                      </li>
+
+                      {/* Case Studies */}
+                      <li>
+                        <Link href="/case-studies" className="group/res flex items-start gap-4">
+                          <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-white border border-[var(--color-gray-200)] shadow-sm group-hover/res:border-[var(--color-green-200)] group-hover/res:bg-[var(--color-green-50)] transition-colors">
+                            <Briefcase className="size-4 text-[var(--color-navy-950)] group-hover/res:text-[var(--color-green-600)]" />
+                          </div>
+                          <div>
+                            <h5 className="text-sm font-bold text-[var(--color-navy-950)] group-hover/res:text-[var(--color-green-700)] transition-colors" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                              Case Studies
+                            </h5>
+                            <p className="mt-1 text-xs font-medium text-[var(--color-gray-500)]">
+                              Real-world ROI and success stories.
+                            </p>
+                          </div>
+                        </Link>
+                      </li>
+
+                      {/* Webinars */}
+                      <li>
+                        <Link href="/resources/webinars" className="group/res flex items-start gap-4">
+                          <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-white border border-[var(--color-gray-200)] shadow-sm group-hover/res:border-[var(--color-green-200)] group-hover/res:bg-[var(--color-green-50)] transition-colors">
+                            <PlayCircle className="size-4 text-[var(--color-navy-950)] group-hover/res:text-[var(--color-green-600)]" />
+                          </div>
+                          <div>
+                            <h5 className="text-sm font-bold text-[var(--color-navy-950)] group-hover/res:text-[var(--color-green-700)] transition-colors" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                              On-Demand Webinars
+                            </h5>
+                            <p className="mt-1 text-xs font-medium text-[var(--color-gray-500)]">
+                              Expert sessions and product demos.
+                            </p>
+                          </div>
+                        </Link>
+                      </li>
+                    </ul>
                   </div>
                 </div>
 
